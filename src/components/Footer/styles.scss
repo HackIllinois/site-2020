@@ -1,0 +1,23 @@
+.Footer {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #11112f;
+  background-color: red;
+
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: #12112f;
+
+    > img {
+      width: 32px;
+      margin: 4px;
+    }
+  }
+}
