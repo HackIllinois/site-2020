@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "10.4.0"
+cache:
+  directories:
+    - node_modules
+before_script:
+  - |
+      if [ "$TRAVIS_BRANCH" = "staging" ]; then
+        eval export STAGING_URL="https://test.hackillinois.org"
+      fi
+  - npm install
+script:
+  - npm run build && npm run export
+deploy:
+ - provider: s3
+   access_key_id: $ACCESS_KEY_ID
+   secret_access_key: $SECRET_ACCESS_KEY
+   bucket: $STAGING_BUCKET
+   skip_cleanup: true
+   local_dir: build
+   on:
+    branch: staging
