@@ -7,7 +7,7 @@ cache:
 before_script:
   - |
       if [ "$TRAVIS_BRANCH" = "staging" ]; then
-        eval export STAGING_URL="https://test.hackillinois.org"
+        eval export STAGING_URL="https://dev.hackillinois.org"
       fi
   - npm install
 script:
