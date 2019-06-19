@@ -11,7 +11,7 @@ before_script:
       fi
   - npm install
 script:
-  - npm run build && npm run export
+  - npm run build
 deploy:
  - provider: s3
    access_key_id: $ACCESS_KEY_ID
