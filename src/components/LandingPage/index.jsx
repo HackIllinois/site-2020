@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from "@material-ui/core/styles";
 import Footer from "../Footer";
-import logo from 'assets/logo.svg';
+// import logo from 'assets/logo.svg';
 import backgroundImage from 'assets/hack2020-landing-page.svg';
 
 const styles = theme => ({
