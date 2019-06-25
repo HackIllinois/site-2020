@@ -1,0 +1,80 @@
+.background {
+    background: url('../../assets/hack2020_background.svg');
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.info {
+    position: relative;
+    left: 11vh;
+    top: 10vh;
+    width: 400px;
+}
+
+.logo {
+    width: 100px;
+}
+
+@media only screen and (max-width: 1249px) {
+    .logo {
+        width: 75px;
+    }
+
+    .info {
+        width: 200px;
+
+        h1 {
+            font-size: 1.3em
+        }
+        h3 {
+            font-size: 0.76em
+        }
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .info {
+        left: 2.5vh
+    }
+}
+
+@media only screen and (min-width: 1401px) {
+    .info {
+        left: 5vh
+    }
+}
+
+@media only screen and (min-width: 1541px) {
+    .info {
+        width: 500px;
+
+        h1 {
+            font-size: 2.4em
+        }
+
+        h3 {
+            font-size: 1.4em
+        }
+    }
+}
+
+@media only screen and (min-width: 2200px) {
+    .info {
+        width: 700px;
+
+        h1 {
+            font-size: 2.8em
+        }
+
+        h3 {
+            font-size: 1.64em
+        }
+    }
+}
