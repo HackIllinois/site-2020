@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { withStyles } from "@material-ui/core/styles";
 import Footer from "../Footer";
-// import logo from 'assets/logo.svg';
 import logoAndTagline from 'assets/hack_logo_and_tagline.svg';
+import bus from "assets/bus.svg";
+import car from "assets/car.svg";
 
 import './styles.scss';
 
@@ -28,6 +29,8 @@ export class LandingPage extends Component {
           <h3>February 28 - March 1, 2020</h3>
           <Footer />
         </div>
+        <img className='bus' src={bus} alt="Bus" />
+        <img className='car' src={car} alt="Car" />
       </div>
     )
   }

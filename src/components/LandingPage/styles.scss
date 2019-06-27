@@ -11,6 +11,20 @@
     -o-background-size: cover;
 }
 
+.car {
+    position: fixed;
+    width: 60vh;
+    left: 15vh;
+    bottom: 0px;
+}
+
+.bus {
+    position: fixed;
+    width: 100vh;
+    right: -40vh;
+    bottom: 5vh;
+}
+
 .info {
     position: relative;
     left: 11vh;
@@ -38,6 +52,10 @@
             font-size: 0.76em;
         }
     }
+
+    .car {
+        left: 2.5vh;
+    }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 1000px) {
@@ -63,11 +81,17 @@
 //     }
 // }
 
-// @media only screen and (min-width: 1401px) {
-//     .info {
-//         left: 5vh
-//     }
-// }
+@media only screen and (max-width: 1401px) and (min-height: 1084px) {
+    .bus {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .bus {
+        display: none;
+    }
+}
 
 @media only screen and (min-width: 1700px) {
     .info {
