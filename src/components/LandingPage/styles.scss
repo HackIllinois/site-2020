@@ -3,7 +3,7 @@
 
     height: 100%;
 
-    background-position: center;
+    background-position: left bottom;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -22,36 +22,54 @@
     width: 100px;
 }
 
-@media only screen and (max-width: 1249px) {
+@media only screen and (max-width: 399px) {
     .logo {
-        width: 75px;
+        width: 50px;
     }
 
     .info {
         width: 200px;
 
         h1 {
-            font-size: 1.3em
+            font-size: 1.3em;
+        }
+
+        h3 {
+            font-size: 0.76em;
+        }
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1000px) {
+    .logo {
+        width: 75px;
+    }
+
+    .info {
+        width: 300px;
+
+        h1 {
+            font-size: 1.5em
         }
         h3 {
-            font-size: 0.76em
+            font-size: 0.88em
         }
     }
 }
 
-@media only screen and (min-width: 1250px) {
-    .info {
-        left: 2.5vh
-    }
-}
+// @media only screen and (min-width: 1250px) {
+//     .info {
+//         left: 2.5vh
+//     }
+// }
 
-@media only screen and (min-width: 1401px) {
-    .info {
-        left: 5vh
-    }
-}
+// @media only screen and (min-width: 1401px) {
+//     .info {
+//         left: 5vh
+//     }
+// }
 
-@media only screen and (min-width: 1541px) {
+@media only screen and (min-width: 1700px) {
     .info {
         width: 500px;
 
@@ -78,3 +96,7 @@
         }
     }
 }
+
+// @media only screen and (min-width: 2560px) {
+//     .background
+// }
