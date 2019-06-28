@@ -11,6 +11,22 @@
     -o-background-size: cover;
 }
 
+h1, h3 {
+  color: #0a093f;
+}
+
+h1 {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-weight: 900;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
 .car {
     position: fixed;
     width: 60vh;
@@ -29,36 +45,49 @@
     position: relative;
     left: 11vh;
     top: 10vh;
-    width: 400px;
+    width: 450px;
 }
 
 .logo {
     width: 100px;
 }
 
-@media only screen and (max-width: 399px) {
-    .logo {
-        width: 50px;
+@media only screen and (max-width: 415px) {
+    .background {
+        background: url('../../assets/hack2020_vertical.svg');
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
     }
-
     .info {
-        width: 200px;
+        left: 0vh;
+        margin: auto;
+        top: 5vh;
+        width: 250px;
 
         h1 {
-            font-size: 1.3em;
+            font-size: 1em;
         }
 
         h3 {
             font-size: 0.76em;
         }
     }
-
-    .car {
-        left: 2.5vh;
+    .logo {
+        width: 50px;
     }
+    .bus {
+        display: none;
+    }
+    // .car {
+    //     display: none;
+    // }
 }
 
-@media only screen and (min-width: 400px) and (max-width: 1000px) {
+@media only screen and (min-width: 416px) and (max-width: 1000px) and (min-height: 550px) {
     .logo {
         width: 75px;
     }
@@ -67,10 +96,10 @@
         width: 300px;
 
         h1 {
-            font-size: 1.5em
+            font-size: 1.3em
         }
         h3 {
-            font-size: 0.88em
+            font-size: 1em
         }
     }
 }
@@ -81,19 +110,20 @@
 //     }
 // }
 
-@media only screen and (max-width: 1401px) and (min-height: 1084px) {
+@media only screen and (max-width: 1401px) and (min-height: 1084px),
+            screen and (max-width: 800px) and (min-height: 640px) {
     .bus {
         display: none;
     }
 }
 
-@media only screen and (max-width: 800px) {
-    .bus {
-        display: none;
-    }
-}
+// @media only screen and (max-width: 1500px) {
+//     .info {
+//         left: 5.1vh;
+//     }
+// }
 
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 1700px) and (min-height: 850px) {
     .info {
         width: 500px;
 
