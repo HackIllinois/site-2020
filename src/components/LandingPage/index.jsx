@@ -14,23 +14,23 @@ class LandingPage extends React.Component {
     return (
       <div class="LandingPage">
         <div class="info">
-          <img class="logo" src={logo} />
+          <img class="logo" src={logo} alt="logo" />
 
           <h1>Explore. Connect. Build.</h1>
           <h2>February 28 - March 1, 2020</h2>
 
           <div class="social">
               <a href="https://www.facebook.com/hackillinois">
-                  <img src={facebook}/>
+                  <img src={facebook} alt="facebook" />
               </a>
               <a href="https://www.instagram.com/hackillinois">
-                  <img src={instagram}/>
+                  <img src={instagram} alt="instagram" />
               </a>
               <a href="https://twitter.com/hackillinois">
-                  <img src={twitter}/>
+                  <img src={twitter} alt="twitter" />
               </a>
               <a href="https://www.github.com/hackillinois">
-                  <img src={github}/>
+                  <img src={github} alt="github" />
               </a>
           </div>
         </div>
