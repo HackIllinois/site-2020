@@ -11,12 +11,10 @@
     }
 
     h1 {
-      margin-bottom: 8px;
       font-weight: 800;
     }
 
     h2 {
-      margin-bottom: 8px;
       font-weight: 400;
     }
 
@@ -33,6 +31,14 @@
     background-position: left top;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+
+  h1 {
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    margin-bottom: 8px;
   }
 
   // tall
@@ -77,6 +83,7 @@
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-y: scroll;
 
     .info {
       font-size: 3vw;
@@ -84,7 +91,16 @@
       margin-top: 10vh;
 
       .logo {
+        margin-bottom: 48px;
         width: 32vw;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        margin-bottom: 24px;
       }
 
       .social img {
