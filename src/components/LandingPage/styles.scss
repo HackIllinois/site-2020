@@ -39,9 +39,11 @@ html {
       h2 {
         margin-bottom: 8px;
       }
+    }
 
-      // tall
-      @media (max-aspect-ratio: 16/9) {
+    // tall
+    @media (max-aspect-ratio: 16/9) {
+      .info {
         font-size: 1.8vh;
         margin-left: 12vh;
         margin-top: 10vh;
@@ -54,12 +56,20 @@ html {
           width: 3vh;
         }
       }
+    }
 
-      // short
-      @media (min-aspect-ratio: 16/9) {
+    // short
+    @media (min-aspect-ratio: 16/9) {
+      padding-top: 9 / 16 * 100%;
+      position: relative;
+      width: 100%;
+
+      .info {
+        display: block;
         font-size: 1.8vw * 9 / 16;
-        margin-left: 12vw * 9 / 16;
-        margin-top: 10vw * 9 / 16;
+        left: 12vw * 9 / 16;
+        position: absolute;
+        top: 10vw * 9 / 16;
 
         .logo {
           width: 16vw * 9 / 16;
