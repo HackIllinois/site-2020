@@ -1,156 +1,95 @@
-.background {
-    background: url('../../assets/hack2020_background.svg');
+.LandingPage {
+  height: 100%;
+  overflow: auto;
 
-    height: 100%;
+  .info {
+    display: table;
+    text-align: center;
 
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
+    .logo {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .social img {
+      margin: 0 2px;
+    }
+  }
+}
+
+// desktop
+@media only screen and (min-device-width: 480px) {
+  .LandingPage {
+    background: url('../../assets/background_desktop.svg');
+    background-position: left top;
     background-size: cover;
-    -o-background-size: cover;
-}
+    background-repeat: no-repeat;
+  }
 
-h1, h3 {
-  color: #0a093f;
-}
+  // tall
+  @media (max-aspect-ratio: 16/9) {
+    .LandingPage .info {
+      font-size: 1.8vh;
+      margin-left: 12vh;
+      margin-top: 10vh;
 
-h1 {
-  margin-top: 15px;
-  margin-bottom: 0px;
-  font-weight: 900;
-}
+      .logo {
+        width: 16vh;
+      }
 
-h3 {
-  margin-top: 10px;
-  margin-bottom: 0px;
-  font-weight: 400;
-}
-
-.car {
-    position: fixed;
-    width: 60vh;
-    left: 15vh;
-    bottom: 0px;
-}
-
-.bus {
-    position: fixed;
-    width: 100vh;
-    right: -40vh;
-    bottom: 5vh;
-}
-
-.info {
-    position: relative;
-    left: 11vh;
-    top: 10vh;
-    width: 450px;
-}
-
-.logo {
-    width: 100px;
-}
-
-@media only screen and (max-width: 415px) {
-    .background {
-        background: url('../../assets/hack2020_vertical.svg');
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-        -o-background-size: cover;
+      .social img {
+        width: 3vh;
+      }
     }
-    .info {
-        left: 0vh;
-        margin: auto;
-        top: 5vh;
-        width: 250px;
+  }
 
-        h1 {
-            font-size: 1em;
-        }
+  // short
+  @media (min-aspect-ratio: 16/9) {
+    .LandingPage .info {
+      font-size: 1.8vw * 9 / 16;
+      margin-left: 12vw * 9 / 16;
+      margin-top: 10vw * 9 / 16;
 
-        h3 {
-            font-size: 0.76em;
-        }
+      .logo {
+        width: 16vw * 9 / 16;
+      }
+
+      .social img {
+        width: 3vw * 9 / 16;
+      }
     }
-    .logo {
-        width: 50px;
-    }
-    .bus {
-        display: none;
-    }
-    // .car {
-    //     display: none;
-    // }
+  }
 }
 
-@media only screen and (min-width: 416px) and (max-width: 1000px) and (min-height: 550px) {
-    .logo {
-        width: 75px;
-    }
+// mobile
+@media only screen and (max-device-width: 480px) {
+  .LandingPage {
+    background: url('../../assets/background_mobile.svg');
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     .info {
-        width: 300px;
+      font-size: 3vw;
+      margin: 0 auto;
+      margin-top: 10vh;
 
-        h1 {
-            font-size: 1.3em
-        }
-        h3 {
-            font-size: 1em
-        }
+      .logo {
+        width: 32vw;
+      }
+
+      .social img {
+        width: 6vw;
+      }
     }
+  }
 }
-
-// @media only screen and (min-width: 1250px) {
-//     .info {
-//         left: 2.5vh
-//     }
-// }
-
-@media only screen and (max-width: 1401px) and (min-height: 1084px),
-            screen and (max-width: 800px) and (min-height: 640px) {
-    .bus {
-        display: none;
-    }
-}
-
-// @media only screen and (max-width: 1500px) {
-//     .info {
-//         left: 5.1vh;
-//     }
-// }
-
-@media only screen and (min-width: 1700px) and (min-height: 850px) {
-    .info {
-        width: 500px;
-
-        h1 {
-            font-size: 2.4em
-        }
-
-        h3 {
-            font-size: 1.4em
-        }
-    }
-}
-
-@media only screen and (min-width: 2200px) {
-    .info {
-        width: 700px;
-
-        h1 {
-            font-size: 2.8em
-        }
-
-        h3 {
-            font-size: 1.64em
-        }
-    }
-}
-
-// @media only screen and (min-width: 2560px) {
-//     .background
-// }
