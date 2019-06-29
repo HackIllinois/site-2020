@@ -1,76 +1,73 @@
-.LandingPage {
+html {
   height: 100%;
-  overflow: auto;
+}
 
-  .info {
-    display: table;
-    text-align: center;
+.info {
+  display: table;
+  text-align: center;
 
-    .logo {
-      margin-bottom: 16px;
-    }
+  .logo {
+    margin-bottom: 16px;
+  }
 
-    h1 {
-      font-weight: 800;
-    }
+  h1 {
+    font-weight: 800;
+  }
 
-    h2 {
-      font-weight: 400;
-    }
+  h2 {
+    font-weight: 400;
+  }
 
-    .social img {
-      margin: 0 2px;
-    }
+  .social img {
+    margin: 0 2px;
   }
 }
 
 // desktop
 @media only screen and (min-device-width: 480px) {
-  .LandingPage {
+  body {
     background: url('../../assets/background_desktop.svg');
-    background-position: left top;
+    background-position: top left;
     background-size: cover;
     background-repeat: no-repeat;
-  }
 
-  h1 {
-    margin-bottom: 8px;
-  }
-
-  h2 {
-    margin-bottom: 8px;
-  }
-
-  // tall
-  @media (max-aspect-ratio: 16/9) {
-    .LandingPage .info {
-      font-size: 1.8vh;
-      margin-left: 12vh;
-      margin-top: 10vh;
-
-      .logo {
-        width: 16vh;
+    .info {
+      h1 {
+        margin-bottom: 8px;
       }
 
-      .social img {
-        width: 3vh;
-      }
-    }
-  }
-
-  // short
-  @media (min-aspect-ratio: 16/9) {
-    .LandingPage .info {
-      font-size: 1.8vw * 9 / 16;
-      margin-left: 12vw * 9 / 16;
-      margin-top: 10vw * 9 / 16;
-
-      .logo {
-        width: 16vw * 9 / 16;
+      h2 {
+        margin-bottom: 8px;
       }
 
-      .social img {
-        width: 3vw * 9 / 16;
+      // tall
+      @media (max-aspect-ratio: 16/9) {
+        font-size: 1.8vh;
+        margin-left: 12vh;
+        margin-top: 10vh;
+
+        .logo {
+          width: 16vh;
+        }
+
+        .social img {
+          width: 3vh;
+        }
+      }
+
+      // short
+      @media (min-aspect-ratio: 16/9) {
+        font-size: 1.8vw * 9 / 16;
+        margin-left: 12vw * 9 / 16;
+        margin-top: 10vw * 9 / 16;
+
+        .logo {
+          width: 16vw * 9 / 16;
+        }
+
+        .social img {
+          width: 3vw * 9 / 16;
+        }
       }
     }
   }
@@ -78,17 +75,22 @@
 
 // mobile
 @media only screen and (max-device-width: 480px) {
-  .LandingPage {
+  body {
     background: url('../../assets/background_mobile.svg');
-    background-position: center top;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
-    overflow-y: scroll;
+    padding-top: 812 / 375 * 100%;
+    position: relative;
+    width: 100%;
 
     .info {
+      display: block;
       font-size: 3vw;
-      margin: 0 auto;
-      margin-top: 10vh;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 10vh;
 
       .logo {
         margin-bottom: 48px;
