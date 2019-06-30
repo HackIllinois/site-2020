@@ -41,6 +41,10 @@ html {
       }
     }
 
+    .car {
+      position: absolute;
+    }
+
     // tall
     @media (max-aspect-ratio: 16/9) {
       .info {
@@ -55,6 +59,12 @@ html {
         .social img {
           width: 3vh;
         }
+      }
+
+      .car {
+        bottom: 0;
+        left: 20vh;
+        width: 50vh;
       }
     }
 
@@ -78,6 +88,11 @@ html {
         .social img {
           width: 3vw * 9 / 16;
         }
+      }
+
+      .car {
+        left: 20vw * 9 / 16;
+        width: 50vw * 9 / 16;
       }
     }
   }
@@ -118,6 +133,10 @@ html {
       .social img {
         width: 6vw;
       }
+    }
+
+    .car {
+      visibility: hidden;
     }
   }
 }
