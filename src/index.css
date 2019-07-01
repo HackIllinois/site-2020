@@ -1,4 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
+
 * {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+html {
+  height: 300%;
+}
+
+body, #root {
+  height: 100%;
 }

@@ -1,98 +1,113 @@
-html {
-  height: 100%;
-}
+.LandingPage {
+  .info {
+    text-align: center;
 
-.info {
-  display: table;
-  text-align: center;
-
-  .logo {
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-weight: 800;
-  }
-
-  h2 {
-    font-weight: 400;
-  }
-
-  .social img {
-    margin: 0 2px;
+    h2 {
+      font-weight: 400;
+    }
   }
 }
 
 // desktop
 @media only screen and (min-device-width: 480px) {
-  body {
+  .LandingPage {
     background: url('../../assets/background_desktop.svg');
-    background-position: top left;
     background-size: cover;
-    background-repeat: no-repeat;
+  }
 
-    .info {
-      h1 {
-        margin-bottom: 8px;
-      }
+  // tall (crop right)
+  @media (max-aspect-ratio: 16 / 9) {
+    .LandingPage {
+      background-attachment: fixed;
+      height: 100%;
+      position: relative;
 
-      h2 {
-        margin-bottom: 8px;
-      }
-    }
-
-    .car {
-      position: absolute;
-    }
-
-    // tall
-    @media (max-aspect-ratio: 16/9) {
       .info {
         font-size: 1.8vh;
-        margin-left: 12vh;
-        margin-top: 10vh;
+        left: 12vh;
+        position: fixed;
+        top: 10vh;
 
         .logo {
+          margin-bottom: 1.5vh;
           width: 16vh;
         }
 
+        h1, h2 {
+          margin: 1vh 0;
+        }
+
         .social img {
+          margin: 0 0.3vh;
           width: 3vh;
         }
       }
 
+      .bus, .car {
+        position: fixed;
+      }
+
+      .bus {
+        bottom: 4vh;
+        width: 100vh;
+      }
+
       .car {
         bottom: 0;
-        left: 20vh;
         width: 50vh;
       }
     }
+  }
 
-    // short
-    @media (min-aspect-ratio: 16/9) {
-      padding-top: 9 / 16 * 100%;
-      position: relative;
-      width: 100%;
+  // short (scroll)
+  @media (min-aspect-ratio: 16 / 9) {
+    .scrollingContainer {
+      align-items: flex-start;
+      display: flex;
+      height: 100%;
 
-      .info {
-        display: block;
-        font-size: 1.8vw * 9 / 16;
-        left: 12vw * 9 / 16;
-        position: absolute;
-        top: 10vw * 9 / 16;
+      .LandingPage {
+        align-self: flex-end;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-top: 9 / 16 * 100%;
+        position: sticky;
+        width: 100%;
 
-        .logo {
-          width: 16vw * 9 / 16;
+        .info {
+          font-size: 1.8vw * 9 / 16;
+          left: 12vw * 9 / 16;
+          position: absolute;
+          top: 10vw * 9 / 16;
+
+          .logo {
+            margin-bottom: 1.5vw * 9 / 16;
+            width: 16vw * 9 / 16;
+          }
+
+          h1, h2 {
+            margin: 1vw * 9 / 16 0;
+          }
+
+          .social img {
+            margin: 0 0.3vw * 9 / 16;
+            width: 3vw * 9 / 16;
+          }
         }
 
-        .social img {
-          width: 3vw * 9 / 16;
+        .bus, .car {
+          position: absolute;
         }
-      }
 
-      .car {
-        left: 20vw * 9 / 16;
-        width: 50vw * 9 / 16;
+        .bus {
+          bottom: 4vw * 9 / 16;
+          width: 100vw * 9 / 16;
+        }
+
+        .car {
+          bottom: 0;
+          width: 50vw * 9 / 16;
+        }
       }
     }
   }
@@ -100,43 +115,55 @@ html {
 
 // mobile
 @media only screen and (max-device-width: 480px) {
-  body {
-    background: url('../../assets/background_mobile.svg');
-    background-position: top center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-top: 812 / 375 * 100%;
-    position: relative;
-    width: 100%;
+  .scrollingContainer {
+    align-items: flex-start;
+    display: flex;
+    height: 100%;
 
-    .info {
-      display: block;
-      font-size: 3vw;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 10vh;
+    .LandingPage {
+      align-self: flex-end;
+      background: url('../../assets/background_mobile.svg');
+      background-repeat: no-repeat;
+      bottom: 0;
+      overflow-x: hidden;
+      padding-top: 812 / 375 * 100%;
+      position: sticky;
+      width: 100%;
 
-      .logo {
-        margin-bottom: 48px;
-        width: 32vw;
+      .info {
+        font-size: 3vw;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 8vh;
+
+        .logo {
+          margin-bottom: 2vh;
+          width: 28vw;
+        }
+
+        h1 {
+          margin-bottom: 1vh;
+        }
+
+        h2 {
+          margin-bottom: 1vh;
+        }
+
+        .social img {
+          width: 6vw;
+        }
       }
 
-      h1 {
-        margin-bottom: 24px;
+      .bus {
+        width: 0;
       }
 
-      h2 {
-        margin-bottom: 24px;
+      .car {
+        bottom: 0;
+        position: absolute;
+        width: 60vw;
       }
-
-      .social img {
-        width: 6vw;
-      }
-    }
-
-    .car {
-      visibility: hidden;
     }
   }
 }
