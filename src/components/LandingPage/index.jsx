@@ -30,7 +30,6 @@ class LandingPage extends React.Component {
   }
 
   getScrollPercent() {
-    let h = this.getHeight();
     return document.body.scrollTop / document.body.scrollHeight;
   }
 
