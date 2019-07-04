@@ -10,6 +10,14 @@
 
 // desktop
 @media only screen and (min-device-width: 480px) {
+  html {
+    height: 300%;
+  }
+
+  body, #root {
+    height: 100%;
+  }
+
   .LandingPage {
     background: url('../../assets/background_desktop.svg');
     background-size: cover;
@@ -48,7 +56,7 @@
       }
 
       .bus {
-        bottom: 4vh;
+        bottom: 5vh;
         width: 100vh;
       }
 
@@ -100,7 +108,7 @@
         }
 
         .bus {
-          bottom: 4vw * 9 / 16;
+          bottom: 5vw * 9 / 16;
           width: 100vw * 9 / 16;
         }
 
@@ -115,55 +123,40 @@
 
 // mobile
 @media only screen and (max-device-width: 480px) {
-  .scrollingContainer {
-    align-items: flex-start;
-    display: flex;
+  html, body, #root {
     height: 100%;
+  }
 
-    .LandingPage {
-      align-self: flex-end;
-      background: url('../../assets/background_mobile.svg');
-      background-repeat: no-repeat;
-      bottom: 0;
-      overflow-x: hidden;
-      padding-top: 812 / 375 * 100%;
-      position: sticky;
-      width: 100%;
+  .LandingPage {
+    background: url('../../assets/background_mobile.svg');
+    background-repeat: no-repeat;
+    padding-top: 812 / 375 * 100%;
+    width: 100%;
 
-      .info {
-        font-size: 3vw;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 8vh;
+    .info {
+      font-size: 3vw;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 8vh;
 
-        .logo {
-          margin-bottom: 2vh;
-          width: 28vw;
-        }
-
-        h1 {
-          margin-bottom: 1vh;
-        }
-
-        h2 {
-          margin-bottom: 1vh;
-        }
-
-        .social img {
-          width: 6vw;
-        }
+      .logo {
+        margin-bottom: 2vh;
+        width: 28vw;
       }
 
-      .bus {
-        width: 0;
+      h1, h2 {
+        margin-bottom: 1vh;
       }
 
-      .car {
-        bottom: 0;
-        position: absolute;
-        width: 60vw;
+      .social img {
+        margin: 1vw;
+        width: 6vw;
       }
+    }
+
+    .bus, .car {
+      width: 0;
     }
   }
 }

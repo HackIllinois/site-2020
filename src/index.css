@@ -8,11 +8,3 @@
 ::-webkit-scrollbar {
     width: 0px;
 }
-
-html {
-  height: 300%;
-}
-
-body, #root {
-  height: 100%;
-}
