@@ -55,7 +55,6 @@ class LandingPage extends React.Component {
 
     // Move the cars the width of the window plus a little more.
     let dx = this.getWidth() * 2;
-    console.log(dx);
     return {
       busX: dx * (BUS_START_PERCENT - percent),
       carX: dx * (CAR_START_PERCENT + percent),
