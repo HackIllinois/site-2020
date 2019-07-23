@@ -6,6 +6,12 @@ cache:
     - node_modules
 before_script:
   - npm install
+  - |
+      if [ "$TRAVIS_BRANCH" = "master" ]; then
+        eval export BASE_URL="https://www.hackillinois.org"
+      elif [ "$TRAVIS_BRANCH" = "staging" ]; then
+        eval export BASE_URL="https://dev.hackillinois.org"
+      fi
 script:
   - npm run build
 deploy:
