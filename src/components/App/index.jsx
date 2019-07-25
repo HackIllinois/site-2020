@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Apply from 'components/Apply';
 import Auth from 'components/Auth';
@@ -9,10 +9,12 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Route exact path="/" component={LandingPage} />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
 
-        <Route exact path="/apply" component={Apply} />
-        <Route exact path="/auth" component={Auth} />
+          <Route path="/apply" component={Apply} />
+          <Route path="/auth" component={Auth} />
+        </Switch>
       </BrowserRouter>
     );
   }
