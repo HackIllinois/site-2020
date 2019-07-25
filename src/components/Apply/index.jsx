@@ -9,8 +9,9 @@ class Apply extends React.Component {
     if (token) {
       console.log(`${token}!`);
     } else {
-      const URL = process.env.BASE_URL;
-      getOAuthCode('github', `${URL}/auth/?to=${URL}/apply`);
+      const BASE_URL = 'https://dev.hackillinois.org';
+      let to = encodeURIComponent(`${BASE_URL}/apply`);
+      getOAuthCode('github', `${BASE_URL}/auth/?to=${to}`);
     }
   }
 

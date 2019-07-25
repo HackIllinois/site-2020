@@ -1,5 +1,9 @@
 const BASE_URL = 'https://api.hackillinois.org';
 
+function redirect(path) {
+  window.location.replace(`${BASE_URL}${path}`);
+}
+
 function post(path, body) {
   return fetch(`${BASE_URL}${path}`, {
     method: 'POST',
@@ -8,11 +12,8 @@ function post(path, body) {
   });
 }
 
-function redirect(path) {
-  window.location.replace(`${BASE_URL}${path}`);
-}
-
 export function getOAuthCode(provider, redirectURI) {
+  redirectURI = encodeURIComponent(redirectURI);
   redirect(`/auth/${provider}/?redirect_uri=${redirectURI}`);
 }
 
