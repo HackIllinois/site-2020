@@ -25,6 +25,7 @@ class Auth extends React.Component {
         });
     }
 
+    console.log(to);
     // window.location.replace(to);
   }
 
