@@ -5,6 +5,7 @@ function redirect(path) {
 }
 
 function post(path, body) {
+  console.log(`POST ${path} ${body}`);
   return fetch(`${BASE_URL}${path}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -17,6 +18,6 @@ export function getOAuthCode(provider, redirectURI) {
   redirect(`/auth/${provider}/?redirect_uri=${redirectURI}`);
 }
 
-export function getToken(provider, code, redirectURI) {
-  return post(`/auth/code/${provider}/?redirect_uri=${redirectURI}`, code);
+export function getToken(provider, code) {
+  return post(`/auth/code/${provider}/`, code);
 }

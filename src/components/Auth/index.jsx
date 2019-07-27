@@ -10,14 +10,22 @@ class Auth extends React.Component {
 
     if (isAndroid || isiOS) {
       let os = isAndroid ? 'android' : 'ios';
-      mobileRedirect(os, code);
+      to = mobileRedirect(os, code);
     } else {
-      getToken('github', code, to)
+      getToken('github', code)
         .then(res => {
-          let token = res.json();
-          localStorage.setItem('token', token);
+          console.log(res.status);
+          if (res.ok) {
+            let token = res.json();
+            localStorage.setItem('token', token);
+          }
+        })
+        .catch(err => {
+          console.log(err);
         });
     }
+
+    // window.location.replace(to);
   }
 
   render() {
@@ -27,8 +35,7 @@ class Auth extends React.Component {
 
 function mobileRedirect(os, code) {
   const BASE_URL = `hackillinois://org.hackillinois.${os}`;
-  let to = `${BASE_URL}/auth?code=${code}`;
-  window.location.replace(to);
+  return `${BASE_URL}/auth?code=${code}`;
 }
 
 export default Auth;

@@ -11,7 +11,6 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-
           <Route path="/apply" component={Apply} />
           <Route path="/auth" component={Auth} />
         </Switch>
