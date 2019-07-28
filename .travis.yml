@@ -6,12 +6,12 @@ cache:
     - node_modules
 
 before_script:
-  - npm install
   - if [ $TRAVIS_BRANCH == "dev" ]; then
       export BASE_URL="https://dev.hackillinois.org";
     else
       export BASE_URL="https://hackillinois.org";
     fi
+  - npm install
 script:
   - npm run build
 
