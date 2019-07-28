@@ -11,6 +11,7 @@ before_script:
     else
       export BASE_URL="https://hackillinois.org";
     fi
+  - export BASE_URL="https://dev.hackillinois.org"
   - npm install
 script:
   - npm run build
