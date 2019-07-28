@@ -9,9 +9,7 @@ class Apply extends React.Component {
     if (token) {
       console.log(token);
     } else {
-      console.log(process.env);
-      const BASE_URL = process.env.BASE_URL;
-      console.log(BASE_URL);
+      const BASE_URL = process.env.REACT_APP_URL;
       authenticate('github', `${BASE_URL}/auth/?to=/apply`);
     }
   }

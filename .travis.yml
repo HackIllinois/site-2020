@@ -7,11 +7,10 @@ cache:
 
 before_script:
   - if [ $TRAVIS_BRANCH == "dev" ]; then
-      export BASE_URL="https://dev.hackillinois.org";
+      echo REACT_APP_URL=https://dev.hackillinois.org > .env;
     else
-      export BASE_URL="https://hackillinois.org";
+      echo REACT_APP_URL=https://hackillinois.org > .env;
     fi
-  - export BASE_URL="https://dev.hackillinois.org"
   - npm install
 script:
   - npm run build
