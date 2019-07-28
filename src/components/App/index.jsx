@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Apply from 'components/Apply';
 import Auth from 'components/Auth';
+import Error from 'components/Error';
 import LandingPage from 'components/LandingPage';
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/apply" component={Apply} />
           <Route path="/auth" component={Auth} />
+          <Route component={() => <Error message="404 Not Found" />} />
         </Switch>
       </BrowserRouter>
     );
