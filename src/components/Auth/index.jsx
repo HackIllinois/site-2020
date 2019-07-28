@@ -5,28 +5,25 @@ import { getToken } from 'API';
 
 class Auth extends React.Component {
   componentDidMount() {
-    let query = this.props.location.search;
-    let { code, isAndroid, isiOS, to } = queryString.parse(query);
+    let queries = queryString.parse(this.props.location.search);
+    let { code, isAndroid, isiOS, to } = queries;
+
+    if (!code) {
+      return;
+    }
 
     if (isAndroid || isiOS) {
       let os = isAndroid ? 'android' : 'ios';
-      to = mobileRedirect(os, code);
+      to = getMobileRedirect(os, code);
+      window.location.replace(to);
     } else {
-      getToken('github', code)
-        .then(res => {
-          console.log(res.status);
-          if (res.ok) {
-            let token = res.json();
-            localStorage.setItem('token', token);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      getToken(code).then(token => {
+        localStorage.setItem('token', token);
+        window.location.replace(to);
+      }).catch(err => {
+        alert('Authentication failed.');
+      });
     }
-
-    console.log(to);
-    // window.location.replace(to);
   }
 
   render() {
@@ -34,9 +31,8 @@ class Auth extends React.Component {
   }
 }
 
-function mobileRedirect(os, code) {
-  const BASE_URL = `hackillinois://org.hackillinois.${os}`;
-  return `${BASE_URL}/auth?code=${code}`;
+function getMobileRedirect(os, code) {
+  return `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
 }
 
 export default Auth;

@@ -1,23 +1,21 @@
 const BASE_URL = 'https://api.hackillinois.org';
 
-function redirect(path) {
-  window.location.replace(`${BASE_URL}${path}`);
+export function authenticate(provider, to) {
+  to = `${BASE_URL}/auth/${provider}/?redirect_uri=${to}`;
+  window.location.replace(to);
 }
 
-function post(path, body) {
-  console.log(`POST ${path} ${body}`);
-  return fetch(`${BASE_URL}${path}`, {
+export function getToken(code) {
+  return fetch(`${BASE_URL}/auth/code/github/`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({body})
+    body: JSON.stringify({code})
+  }).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+    throw Error(res.statusText);
+  }).then(data => {
+    return data.token;
   });
-}
-
-export function getOAuthCode(provider, redirectURI) {
-  redirectURI = encodeURIComponent(redirectURI);
-  redirect(`/auth/${provider}/?redirect_uri=${redirectURI}`);
-}
-
-export function getToken(provider, code) {
-  return post(`/auth/code/${provider}/`, code);
 }
