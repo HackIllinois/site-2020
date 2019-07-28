@@ -4,7 +4,7 @@ import { authenticate } from 'API';
 
 class Apply extends React.Component {
   componentDidMount() {
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
 
     if (token) {
       console.log(token);
