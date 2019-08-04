@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { apply, authenticate, getApplication, getRoles } from 'API';
+import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
 import Loading from 'components/Loading';
 
 export default class Apply extends React.Component {
@@ -18,7 +18,10 @@ export default class Apply extends React.Component {
   }
 
   componentDidMount() {
-    authenticate('github', '/apply');
+    if (!isAuthenticated()) {
+      authenticate('github', '/apply');
+      return;
+    }
 
     getRoles().then(roles => {
       if (roles.roles.includes('Applicant')) {
