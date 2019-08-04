@@ -23,6 +23,7 @@ export default class Apply extends React.Component {
     } else {
       console.log('Not authenticated.');
       authenticate('/apply');
+      return;
     }
 
     getRoles().then(roles => {
