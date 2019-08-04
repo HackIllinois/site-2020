@@ -18,10 +18,7 @@ export default class Apply extends React.Component {
   }
 
   componentDidMount() {
-    if (isAuthenticated()) {
-      console.log('Authenticated.');
-    } else {
-      console.log('Not authenticated.');
+    if (!isAuthenticated()) {
       authenticate('/apply');
       return;
     }
@@ -29,7 +26,6 @@ export default class Apply extends React.Component {
     getRoles().then(roles => {
       if (roles.roles.includes('Applicant')) {
         getApplication().then(app => {
-          console.log('Loaded application.');
           this.setState({
             application: app,
             editing: true,
@@ -42,7 +38,7 @@ export default class Apply extends React.Component {
         this.setState({loading: false});
       }
     }).catch(err => {
-      console.log(err);
+      alert('Failed to load user\'s roles.');
     });
   }
 
@@ -89,7 +85,7 @@ const FAKE_APPLICATION = {
   gender: "OTHER",
   shirtSize: "L",
 
-  email: "systems@hackillinois.org",
+  email: "dev@hackillinois.org",
   phone: "0000000000",
 
   school: "University of Illinois Urbana - Champaign",
