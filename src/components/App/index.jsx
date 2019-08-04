@@ -6,7 +6,7 @@ import Auth from 'components/Auth';
 import Error from 'components/Error';
 import LandingPage from 'components/LandingPage';
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -20,5 +20,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

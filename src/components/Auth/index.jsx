@@ -1,9 +1,10 @@
-import queryString from 'query-string';
 import React from 'react';
+import queryString from 'query-string';
 
 import { getToken } from 'API';
+import Loading from 'components/Loading';
 
-class Auth extends React.Component {
+export default class Auth extends React.Component {
   componentDidMount() {
     let queries = queryString.parse(this.props.location.search);
     let { code, isAndroid, isiOS, to } = queries;
@@ -14,11 +15,10 @@ class Auth extends React.Component {
 
     if (isAndroid || isiOS) {
       let os = isAndroid ? 'android' : 'ios';
-      to = getMobileRedirect(os, code);
+      to = mobileRedirect(os, code);
       window.location.replace(to);
     } else {
       getToken(code).then(token => {
-        sessionStorage.setItem('token', token);
         window.location.replace(to);
       }).catch(err => {
         alert('Authentication failed.');
@@ -27,12 +27,10 @@ class Auth extends React.Component {
   }
 
   render() {
-    return <p>/auth</p>
+    return <Loading />
   }
 }
 
-function getMobileRedirect(os, code) {
+function mobileRedirect(os, code) {
   return `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
 }
-
-export default Auth;
