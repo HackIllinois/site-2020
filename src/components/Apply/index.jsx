@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
+import { apply, authenticate, getApplication, getRoles } from 'API';
 import Loading from 'components/Loading';
 
 export default class Apply extends React.Component {
