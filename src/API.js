@@ -4,14 +4,15 @@ export function isAuthenticated() {
   return sessionStorage.getItem('token');
 }
 
-export function authenticate(provider, to) {
+export function authenticate(to) {
   if (process.env.REACT_APP_TOKEN) {
     sessionStorage.setItem('token', process.env.REACT_APP_TOKEN);
+    to = `${process.env.REACT_APP_URL}${to}`;
   } else {
     to = `${process.env.REACT_APP_URL}/auth/?to=${to}`;
-    to = `${API}/auth/${provider}/?redirect_uri=${to}`;
-    window.location.replace(to);
+    to = `${API}/auth/github/?redirect_uri=${to}`;
   }
+  window.location.replace(to);
 }
 
 export function getToken(code) {

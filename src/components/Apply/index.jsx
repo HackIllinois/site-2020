@@ -18,14 +18,17 @@ export default class Apply extends React.Component {
   }
 
   componentDidMount() {
-    if (!isAuthenticated()) {
-      authenticate('github', '/apply');
-      return;
+    if (isAuthenticated()) {
+      console.log('Authenticated.');
+    } else {
+      console.log('Not authenticated.');
+      authenticate('/apply');
     }
 
     getRoles().then(roles => {
       if (roles.roles.includes('Applicant')) {
         getApplication().then(app => {
+          console.log('Loaded application.');
           this.setState({
             application: app,
             editing: true,
