@@ -1,12 +1,11 @@
 const API = 'https://api.hackillinois.org';
 
 export function authenticate(provider, to) {
-  let token = process.env.REACT_APP_TOKEN;
-  if (token) {
-    sessionStorage.setItem('token', token);
+  if (process.env.REACT_APP_TOKEN) {
+    sessionStorage.setItem('token', process.env.REACT_APP_TOKEN);
   }
 
-  token = sessionStorage.getItem('token');
+  let token = sessionStorage.getItem('token');
   if (!token) {
     to = `${process.env.REACT_APP_URL}/auth/?to=${to}`;
     to = `${API}/auth/${provider}/?redirect_uri=${to}`;
