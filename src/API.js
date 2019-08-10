@@ -27,7 +27,8 @@ export function getApplication() {
   return request('GET', '/registration/attendee/');
 }
 
-export function apply(method, application) {
+export function apply(isEditing, application) {
+  let method = isEditing ? 'PUT' : 'POST';
   return request(method, '/registration/attendee/', application);
 }
 

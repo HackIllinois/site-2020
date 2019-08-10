@@ -1,47 +1,39 @@
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
 import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
-import { Page1, Page2 } from 'components/Apply/Pages';
 import Loading from 'components/Loading';
 
 
-const PAGES = [<Page1 />, <Page2 />];
-
 const EMPTY_APP = {
   firstName: '',
+  lastName: '',
+  gender: 'NOANSWER',
   shirtSize: '',
-
-  lastName: 'Dev',
   diet: [],
-  age: 7,
-  gender: 'OTHER',
 
-  email: 'dev@hackillinois.org',
-  phone: '0000000000',
-
-  school: 'University of Illinois Urbana - Champaign',
-  major: 'Computer Science',
+  school: '',
+  major: '',
   graduationYear: 2020,
-  transportation: 'NONE',
 
-  github: 'hackillinois-dev',
-  linkedin: 'linkedin.com/in/hackillinois-dev',
-  skills: [],
   interests: [],
 
-  priorAttendance: true,
+  age: 7,
+  beginnerInfo: {
+    pullRequest: 5,
+    technicalSkills: [],
+    versionControl: 5,
+    yearsExperience: 7
+  },
+  extraInfo: '',
   isBeginner: false,
   isOSContributor: true,
-  beginnerInfo: {
-    versionControl: 5,
-    pullRequest: 5,
-    yearsExperience: 7,
-    technicalSkills: []
-  },
+  linkedin: 'linkedin.com/in/hackillinois-dev',
+  phone: '0000000000',
+  priorAttendance: true,
+  skills: [],
   teamMembers: [],
-
-  extraInfo: ''
+  transportation: 'NONE'
 };
 
 export default class Apply extends React.Component {
@@ -90,9 +82,7 @@ export default class Apply extends React.Component {
   submit = (values) => {
     this.setState({isLoading: true});
 
-    let method = this.state.isEditing ? 'PUT' : 'POST';
-
-    apply(method, values).then(app => {
+    apply(this.state.isEditing, values).then(app => {
       this.props.history.push('/');
     }).catch(err => {
       this.setState({isLoading: false});
@@ -105,28 +95,72 @@ export default class Apply extends React.Component {
       return <Loading />
     }
 
-    let isFirstPage = this.state.page === 0;
-    let isLastPage = this.state.page === PAGES.length - 1;
-
-    let backButton = <button type="button" onClick={this.back}>Back</button>
-    let nextButton = <button type="button" onClick={this.next}>Next</button>
-    let submitButton = <button type="submit">Submit</button>
+    let pages = [<this.page1 />, <this.page2 />];
 
     return (
       <Formik
         initialValues={this.state.application}
         enableReinitialize
         onSubmit={this.submit}
-        render={() => (
+        render={props => (
           <Form>
-            {PAGES[this.state.page]}
-            {!isFirstPage && backButton}
-            {!isLastPage && nextButton}
-            {isLastPage && submitButton}
+            {pages[this.state.page]}
+            <pre>{JSON.stringify(props.values, null, 2)}</pre>
           </Form>
         )}
       />
     );
   }
+
+  page1 = () => (
+    <div>
+      <p>First Name</p>
+      <Field name="firstName" placeholder="Brian" />
+
+      <p>Last Name</p>
+      <Field name="lastName" placeholder="Strauch" />
+
+      <p>Gender</p>
+      <Field name="gender" component="select">
+        <option value="NOANSWER"></option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="NONBINARY">Non-Binary</option>
+      </Field>
+
+      <p>Shirt Size</p>
+      <Field name="shirtSize" component="select">
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">Extra Large</option>
+      </Field>
+
+      <br />
+      <button type="button" onClick={this.next}>Next</button>
+    </div>
+  );
+
+  page2 = () => (
+    <div>
+      <p>School</p>
+      <Field name="school" component="select">
+        <option></option>
+        <option>University of Illinois</option>
+        <option>Somewhere not as good</option>
+      </Field>
+
+      <p>Major</p>
+      <Field name="major" component="select">
+        <option></option>
+        <option>Computer Science</option>
+        <option>Something not as good</option>
+      </Field>
+
+      <br />
+      <button type="button" onClick={this.back}>Back</button>
+      <button type="submit">Submit</button>
+    </div>
+  );
 }
 
