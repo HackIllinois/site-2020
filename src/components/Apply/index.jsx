@@ -2,6 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
 import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
+import MultipleSelectField from 'components/MultipleSelectField';
 import Loading from 'components/Loading';
 
 
@@ -91,11 +92,11 @@ export default class Apply extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
+    if (this.state.isLoading) {
       return <Loading />
     }
 
-    let pages = [<this.page1 />, <this.page2 />];
+    let pages = [this.page1, this.page2, this.page3];
 
     return (
       <Formik
@@ -104,7 +105,7 @@ export default class Apply extends React.Component {
         onSubmit={this.submit}
         render={props => (
           <Form>
-            {pages[this.state.page]}
+            {pages[this.state.page](props)}
             <pre>{JSON.stringify(props.values, null, 2)}</pre>
           </Form>
         )}
@@ -112,7 +113,7 @@ export default class Apply extends React.Component {
     );
   }
 
-  page1 = () => (
+  page1 = props => (
     <div>
       <p>First Name</p>
       <Field name="firstName" placeholder="Brian" />
@@ -122,7 +123,6 @@ export default class Apply extends React.Component {
 
       <p>Gender</p>
       <Field name="gender" component="select">
-        <option value="NOANSWER"></option>
         <option value="MALE">Male</option>
         <option value="FEMALE">Female</option>
         <option value="NONBINARY">Non-Binary</option>
@@ -136,6 +136,14 @@ export default class Apply extends React.Component {
         <option value="XL">Extra Large</option>
       </Field>
 
+      <p>Dietary Restrictions</p>
+      <MultipleSelectField name="diet">
+        <option value="NOGLUTEN">Gluten Free</option>
+        <option value="NOPEANUT">Peanut Allergy</option>
+        <option value="VEGAN">Vegan</option>
+        <option value="VEGETARIAN">Vegetarian</option>
+      </MultipleSelectField>
+
       <br />
       <button type="button" onClick={this.next}>Next</button>
     </div>
@@ -145,17 +153,29 @@ export default class Apply extends React.Component {
     <div>
       <p>School</p>
       <Field name="school" component="select">
-        <option></option>
         <option>University of Illinois</option>
         <option>Somewhere not as good</option>
       </Field>
 
       <p>Major</p>
       <Field name="major" component="select">
-        <option></option>
         <option>Computer Science</option>
         <option>Something not as good</option>
       </Field>
+
+      <br />
+      <button type="button" onClick={this.back}>Back</button>
+      <button type="button" onClick={this.next}>Next</button>
+    </div>
+  );
+
+  page3 = props => (
+    <div>
+      <p>Career Interests</p>
+      <MultipleSelectField name="interests">
+        <option value="INTERNSHIP">Internship</option>
+        <option value="FULLTIME">Full-time</option>
+      </MultipleSelectField>
 
       <br />
       <button type="button" onClick={this.back}>Back</button>
