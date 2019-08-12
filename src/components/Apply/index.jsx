@@ -43,7 +43,7 @@ export default class Apply extends React.Component {
 
     this.state = {
       application: EMPTY_APP,
-      page: 1,
+      page: 0,
       isEditing: false,
       isLoading: true
     };
@@ -106,7 +106,6 @@ export default class Apply extends React.Component {
         render={props => (
           <Form>
             {pages[this.state.page](props)}
-            <pre>{JSON.stringify(props.values, null, 2)}</pre>
           </Form>
         )}
       />
