@@ -2,24 +2,21 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
 import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
-import MultipleSelectField from 'components/MultipleSelectField';
 import Loading from 'components/Loading';
+import SelectField from 'components/Select';
 
 
 const EMPTY_APP = {
   firstName: '',
   lastName: '',
-  gender: 'NOANSWER',
-  shirtSize: '',
-  diet: [],
 
   school: '',
   major: '',
-  graduationYear: 2020,
+  graduationYear: 0,
 
   interests: [],
 
-  age: 7,
+  age: 20,
   beginnerInfo: {
     pullRequest: 5,
     technicalSkills: [],
@@ -27,11 +24,14 @@ const EMPTY_APP = {
     yearsExperience: 7
   },
   extraInfo: '',
+  diet: [],
+  gender: 'MALE',
   isBeginner: false,
   isOSContributor: true,
-  linkedin: 'linkedin.com/in/hackillinois-dev',
-  phone: '0000000000',
+  linkedin: 'linkedin.com/in/brian-strauch',
+  phone: '6308158395',
   priorAttendance: true,
+  shirtSize: 'L',
   skills: [],
   teamMembers: [],
   transportation: 'NONE'
@@ -43,7 +43,7 @@ export default class Apply extends React.Component {
 
     this.state = {
       application: EMPTY_APP,
-      page: 0,
+      page: 1,
       isEditing: false,
       isLoading: true
     };
@@ -113,7 +113,7 @@ export default class Apply extends React.Component {
     );
   }
 
-  page1 = props => (
+  page1 = () => (
     <div>
       <p>First Name</p>
       <Field name="firstName" placeholder="Brian" />
@@ -121,30 +121,8 @@ export default class Apply extends React.Component {
       <p>Last Name</p>
       <Field name="lastName" placeholder="Strauch" />
 
-      <p>Gender</p>
-      <Field name="gender" component="select">
-        <option value="MALE">Male</option>
-        <option value="FEMALE">Female</option>
-        <option value="NONBINARY">Non-Binary</option>
-      </Field>
-
-      <p>Shirt Size</p>
-      <Field name="shirtSize" component="select">
-        <option value="S">Small</option>
-        <option value="M">Medium</option>
-        <option value="L">Large</option>
-        <option value="XL">Extra Large</option>
-      </Field>
-
-      <p>Dietary Restrictions</p>
-      <MultipleSelectField name="diet">
-        <option value="NOGLUTEN">Gluten Free</option>
-        <option value="NOPEANUT">Peanut Allergy</option>
-        <option value="VEGAN">Vegan</option>
-        <option value="VEGETARIAN">Vegetarian</option>
-      </MultipleSelectField>
-
       <br />
+
       <button type="button" onClick={this.next}>Next</button>
     </div>
   );
@@ -152,32 +130,42 @@ export default class Apply extends React.Component {
   page2 = () => (
     <div>
       <p>School</p>
-      <Field name="school" component="select">
-        <option>University of Illinois</option>
-        <option>Somewhere not as good</option>
-      </Field>
+      <SelectField name="school" options={[
+        {value: 'University of Illinois'},
+        {value: 'Other'}
+      ]} />
 
       <p>Major</p>
-      <Field name="major" component="select">
-        <option>Computer Science</option>
-        <option>Something not as good</option>
-      </Field>
+      <SelectField name="major" options={[
+        {value: 'Computer Science'},
+        {value: 'Computer Engineering'},
+        {value: 'Other Engineering'},
+        {value: 'Business'},
+        {value: 'Liberal Arts'},
+        {value: 'Other'}
+      ]} />
 
-      <br />
+      <p>Graduation Year</p>
+      <SelectField name="graduationYear" options={[
+        {value: 2020},
+        {value: 2021},
+        {value: 2022},
+        {value: 2023}
+      ]} />
+
       <button type="button" onClick={this.back}>Back</button>
       <button type="button" onClick={this.next}>Next</button>
     </div>
   );
 
-  page3 = props => (
+  page3 = () => (
     <div>
       <p>Career Interests</p>
-      <MultipleSelectField name="interests">
-        <option value="INTERNSHIP">Internship</option>
-        <option value="FULLTIME">Full-time</option>
-      </MultipleSelectField>
+      <SelectField name="interests" multiple options={[
+        {label: 'Internship', value: 'INTERNSHIP'},
+        {label: 'Full-time', value: 'FULLTIME'}
+      ]} />
 
-      <br />
       <button type="button" onClick={this.back}>Back</button>
       <button type="submit">Submit</button>
     </div>
