@@ -66,6 +66,8 @@ export default class Apply extends React.Component {
         }).catch(err => {
           this.setState({isLoading: false});
         });
+      } else {
+        this.setState({isLoading: false});
       }
     }).catch(err => {
       this.setState({isLoading: false});
