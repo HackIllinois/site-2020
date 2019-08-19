@@ -1,24 +1,33 @@
 .select {
+  position: relative;
   width: 200px;
 
-  .selected {
-    background-color: black;
-    color: white;
-  }
-
   input {
-    border: 1px solid black;
     width: 100%;
   }
 
-  div {
-    max-height: 100px;
-    overflow: scroll;
+  ul {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 
     li {
-      border: 1px solid black;
-      border-top: 0px;
+      background: #EEEEEE;
+      color: black;
       list-style: none;
+    }
+
+    li.selected {
+      background: black;
+      color: white;
+    }
+
+    li:hover {
+      background: black;
+      color: white;
     }
   }
 }

@@ -2,6 +2,8 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
 import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
+import schools from './schools';
+
 import Loading from 'components/Loading';
 import SelectField from 'components/Select';
 
@@ -117,10 +119,16 @@ export default class Apply extends React.Component {
   page1 = () => (
     <div>
       <p>First Name</p>
-      <Field name="firstName" placeholder="Brian" />
+      <Field
+        name="firstName"
+        placeholder="Brian"
+      />
 
       <p>Last Name</p>
-      <Field name="lastName" placeholder="Strauch" />
+      <Field
+        name="lastName"
+        placeholder="Strauch"
+      />
 
       <br />
 
@@ -131,28 +139,39 @@ export default class Apply extends React.Component {
   page2 = () => (
     <div>
       <p>School</p>
-      <SelectField name="school" options={[
-        {value: 'University of Illinois'},
-        {value: 'Other'}
-      ]} />
+      <SelectField
+        name="school"
+        placeholder="University of Illinois"
+        options={schools.map(school => {
+          return {'value': school};
+        })}
+      />
 
       <p>Major</p>
-      <SelectField name="major" options={[
-        {value: 'Computer Science'},
-        {value: 'Computer Engineering'},
-        {value: 'Other Engineering'},
-        {value: 'Business'},
-        {value: 'Liberal Arts'},
-        {value: 'Other'}
-      ]} />
+      <SelectField
+        name="major"
+        placeholder="Computer Science"
+        options={[
+          {value: 'Computer Science'},
+          {value: 'Computer Engineering'},
+          {value: 'Other Engineering'},
+          {value: 'Business'},
+          {value: 'Liberal Arts'},
+          {value: 'Other'}
+        ]}
+      />
 
       <p>Graduation Year</p>
-      <SelectField name="graduationYear" options={[
-        {value: 2020},
-        {value: 2021},
-        {value: 2022},
-        {value: 2023}
-      ]} />
+      <SelectField
+        name="graduationYear"
+        placeholder="2020"
+        options={[
+          {value: 2020},
+          {value: 2021},
+          {value: 2022},
+          {value: 2023}
+        ]}
+      />
 
       <button type="button" onClick={this.back}>Back</button>
       <button type="button" onClick={this.next}>Next</button>
@@ -162,10 +181,19 @@ export default class Apply extends React.Component {
   page3 = () => (
     <div>
       <p>Career Interests</p>
-      <SelectField name="interests" multiple options={[
-        {label: 'Internship', value: 'INTERNSHIP'},
-        {label: 'Full-time', value: 'FULLTIME'}
-      ]} />
+      <SelectField
+        name="interests"
+        placeholder="Internship"
+        multiple options={[
+          {label: 'Internship', value: 'INTERNSHIP'},
+          {label: 'Full-time', value: 'FULLTIME'}
+        ]}
+      />
+
+      <p>Resume</p>
+      <input type="file" accept="application/pdf" />
+
+      <br />
 
       <button type="button" onClick={this.back}>Back</button>
       <button type="submit">Submit</button>

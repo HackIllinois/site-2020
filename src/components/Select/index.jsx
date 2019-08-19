@@ -13,17 +13,45 @@ class Select extends React.Component {
     super(props);
 
     this.state = {
-      expanded: false,
-      selected: props.field.value
+      expanded: false
     };
   }
 
-  toggle = () => {
-    this.setState({expanded: !this.state.expanded});
+  getValue = selected => {
+    if (this.props.multiple) {
+      return selected.map(this.getLabel).join(', ');
+    } else {
+      return this.getLabel(selected);
+    }
+  }
+
+  getLabel = val => {
+    let options = this.props.options;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].value === val) {
+        return options[i].label || options[i].value;
+      }
+    }
+    return '';
+  }
+
+  handleClick = event => {
+    if (!this.ref.contains(event.target)) {
+      this.setState({expanded: false})
+    }
+  }
+
+  isSelected = (selected, option) => {
+    if (this.props.multiple) {
+      return selected.includes(option.value);
+    } else {
+      return selected === option.value;
+    }
   }
 
   select = val => {
-    let selected = this.state.selected;
+    let name = this.props.field.name;
+    let selected = this.props.field.value;
 
     if (this.props.multiple) {
       let idx = selected.indexOf(val);
@@ -40,41 +68,30 @@ class Select extends React.Component {
       }
     }
 
-    this.props.form.setFieldValue(this.props.field.name, selected);
-    this.setState({selected: selected});
+    this.props.form.setFieldValue(name, selected);
+    this.setState({expanded: this.props.multiple});
   }
 
-  getLabel = val => {
-    let options = this.props.options;
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value === val) {
-        return options[i].label || options[i].value;
-      }
-    }
-    return '';
+  toggle = () => {
+    this.setState({expanded: !this.state.expanded});
+  }
+
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick);
   }
 
   render() {
-    let selected;
-    if (this.props.multiple) {
-      selected = this.state.selected
-        .map(this.getLabel)
-        .join(', ');
-    } else {
-      selected = this.getLabel(this.state.selected);
-    }
+    let selected = this.props.field.value;
 
+    let value = this.getValue(selected);
     let options = this.props.options.map(option => {
-      let isSelected;
-      if (this.props.multiple) {
-        isSelected = this.state.selected.includes(option.value);
-      } else {
-        isSelected = this.state.selected === option.value;
-      }
-
       return (
         <li
-          className={isSelected ? "selected" : undefined}
+          className={this.isSelected(selected, option) ? "selected" : undefined}
           key={option.value}
           onClick={() => this.select(option.value)}
         >
@@ -84,12 +101,14 @@ class Select extends React.Component {
     });
 
     return (
-      <div
-        className="select"
-        onClick={this.toggle}
-      >
-        <input readOnly value={selected} />
-        {this.state.expanded && <div>{options}</div>}
+      <div className="select" ref={ref => this.ref = ref}>
+        <input
+          onClick={this.toggle}
+          readOnly
+          value={value}
+          {...this.props}
+        />
+        {this.state.expanded && <ul>{options}</ul>}
       </div>
     );
   }
