@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
-import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'API';
+import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'api';
 import schools from './schools';
 
 import Loading from 'components/Loading';

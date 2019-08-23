@@ -1,7 +1,7 @@
 import React from 'react';
 import queryString from 'query-string';
 
-import { getToken } from 'API';
+import { getToken } from 'api';
 import Loading from 'components/Loading';
 
 export default class Auth extends React.Component {
