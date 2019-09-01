@@ -1,4 +1,5 @@
 const schools = [
+  'University of Illinois Urbana - Champaign',
   'Anna University',
   'Appalachian State University',
   'Arizona State University',
@@ -154,7 +155,6 @@ const schools = [
   'University of Houston',
   'University of Illinois - Chicago',
   'University of Illinois - Springfield',
-  'University of Illinois Urbana - Champaign',
   'University of Iowa',
   'University of Kansas',
   'University of Louisiana at Monroe',

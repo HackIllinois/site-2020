@@ -19,7 +19,8 @@ export function getToken(code) {
 }
 
 export function getRoles() {
-  return request('GET', '/auth/roles/');
+  return request('GET', '/auth/roles/')
+    .then(res => res.roles);
 }
 
 export function getApplication() {

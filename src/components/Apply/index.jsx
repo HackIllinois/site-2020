@@ -1,7 +1,13 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
 
-import { apply, authenticate, getApplication, getRoles, isAuthenticated } from 'api';
+import {
+  apply,
+  authenticate,
+  getApplication,
+  getRoles,
+  isAuthenticated
+} from 'api';
 import schools from './schools';
 
 import Loading from 'components/Loading';
@@ -44,7 +50,7 @@ export default class Apply extends React.Component {
     super(props);
 
     this.state = {
-      application: EMPTY_APP,
+      application: {},
       page: 0,
       isEditing: false,
       isLoading: true
@@ -58,19 +64,16 @@ export default class Apply extends React.Component {
     }
 
     getRoles().then(roles => {
-      if (roles.roles.includes('Applicant')) {
-        getApplication().then(app => {
-          this.setState({
-            application: app,
-            isEditing: true,
-            isLoading: false
-          });
-        }).catch(err => {
-          this.setState({isLoading: false});
-        });
-      } else {
-        this.setState({isLoading: false});
+      if (roles.includes('Applicant')) {
+        this.setState({isEditing: true});
+        return getApplication();
       }
+      return EMPTY_APP;
+    }).then(app => {
+      this.setState({
+        application: app,
+        isLoading: false
+      });
     }).catch(err => {
       this.setState({isLoading: false});
     });
@@ -84,10 +87,10 @@ export default class Apply extends React.Component {
     this.setState({page: this.state.page + 1});
   }
 
-  submit = (values) => {
+  submit = app => {
     this.setState({isLoading: true});
 
-    apply(this.state.isEditing, values).then(app => {
+    apply(this.state.isEditing, app).then(app => {
       this.props.history.push('/');
     }).catch(err => {
       this.setState({isLoading: false});
@@ -107,9 +110,9 @@ export default class Apply extends React.Component {
         initialValues={this.state.application}
         enableReinitialize
         onSubmit={this.submit}
-        render={props => (
+        render={() => (
           <Form>
-            {pages[this.state.page](props)}
+            {pages[this.state.page]()}
           </Form>
         )}
       />
