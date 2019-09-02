@@ -1,5 +1,21 @@
-const schools = [
-  'University of Illinois Urbana - Champaign',
+export const graduationYears = [
+  2020,
+  2021,
+  2022,
+  2023
+];
+
+export const majors = [
+  'Computer Science',
+  'Computer Engineering',
+  'Other Engineering',
+  'Business',
+  'Liberal Arts',
+  'Other'
+];
+
+export const schools = [
+  'University of Illinois - Urbana-Champaign',
   'Anna University',
   'Appalachian State University',
   'Arizona State University',
@@ -19,7 +35,7 @@ const schools = [
   'Bucknell University',
   'California Institute of Technology',
   'California Polytechnic State University',
-  'California State University-Long Beach',
+  'California State University - Long Beach',
   'Carleton College',
   'Carnegie Mellon University',
   'Case Western Reserve University',
@@ -148,15 +164,7 @@ const schools = [
   'University of California - Santa Cruz',
   'University of Central Florida',
   'University of Chicago',
-  'University of Cincinnati',
-  'University of Colorado - Boulder',
-  'University of Florida',
-  'University of Georgia',
-  'University of Houston',
-  'University of Illinois - Chicago',
-  'University of Illinois - Springfield',
-  'University of Iowa',
-  'University of Kansas',
+  'University of Cincinnati', 'University of Colorado - Boulder', 'University of Florida', 'University of Georgia', 'University of Houston', 'University of Illinois - Chicago', 'University of Illinois - Springfield', 'University of Iowa', 'University of Kansas',
   'University of Louisiana at Monroe',
   'University of Louisville',
   'University of Maryland',
@@ -200,7 +208,6 @@ const schools = [
   'Wheaton College',
   'Worcester Polytechnic Institute',
   'Wright State University',
-  'Yale University'
+  'Yale University',
+  'Other'
 ];
-
-export default schools;

@@ -8,10 +8,14 @@ import {
   getRoles,
   isAuthenticated
 } from 'api';
-import schools from './schools';
+import {
+  graduationYears,
+  majors,
+  schools
+} from './lists';
 
 import Loading from 'components/Loading';
-import SelectField from 'components/Select';
+import SelectField from 'components/SelectField';
 
 
 const EMPTY_APP = {
@@ -146,7 +150,7 @@ export default class Apply extends React.Component {
         name="school"
         placeholder="University of Illinois"
         options={schools.map(school => {
-          return {'value': school};
+          return {'value': school, 'label': school};
         })}
       />
 
@@ -154,26 +158,18 @@ export default class Apply extends React.Component {
       <SelectField
         name="major"
         placeholder="Computer Science"
-        options={[
-          {value: 'Computer Science'},
-          {value: 'Computer Engineering'},
-          {value: 'Other Engineering'},
-          {value: 'Business'},
-          {value: 'Liberal Arts'},
-          {value: 'Other'}
-        ]}
+        options={majors.map(major => {
+          return {'value': major, 'label': major};
+        })}
       />
 
       <p>Graduation Year</p>
       <SelectField
         name="graduationYear"
         placeholder="2020"
-        options={[
-          {value: 2020},
-          {value: 2021},
-          {value: 2022},
-          {value: 2023}
-        ]}
+        options={graduationYears.map(year => {
+          return {'value': year, 'label': year};
+        })}
       />
 
       <button type="button" onClick={this.back}>Back</button>
@@ -185,9 +181,10 @@ export default class Apply extends React.Component {
     <div>
       <p>Career Interests</p>
       <SelectField
+        isMulti
         name="interests"
         placeholder="Internship"
-        multiple options={[
+        options={[
           {label: 'Internship', value: 'INTERNSHIP'},
           {label: 'Full-time', value: 'FULLTIME'}
         ]}
