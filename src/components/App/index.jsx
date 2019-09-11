@@ -6,6 +6,7 @@ import Auth from 'components/Auth';
 import Error from 'components/Error';
 import Home from 'components/Home';
 import PDF from 'components/PDF';
+import Token from 'components/Token';
 
 export default class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends React.Component {
 
           <Route path="/apply" component={Apply} />
           <Route path="/auth" component={Auth} />
+          <Route path="/token" component={Token} />
 
           <Route exact path="/mentor" component={
             () => <PDF path="documents/mentorship.pdf" />

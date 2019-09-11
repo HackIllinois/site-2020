@@ -28,7 +28,7 @@ export default class Auth extends React.Component {
   }
 
   render() {
-    return <Loading />
+    return <Loading />;
   }
 }
 
