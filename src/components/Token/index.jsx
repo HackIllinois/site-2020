@@ -19,7 +19,7 @@ export default class Token extends React.Component {
 
   componentDidMount() {
     if (!isAuthenticated()) {
-      authenticate('/apply');
+      authenticate('/token');
       return;
     }
 
