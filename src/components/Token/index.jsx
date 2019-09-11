@@ -32,7 +32,7 @@ export default class Token extends React.Component {
     }
     
     return (
-      <div>
+      <div class="Token">
         <h1>Copy Me!</h1>
         <p>{sessionStorage.token}</p>
       </div>

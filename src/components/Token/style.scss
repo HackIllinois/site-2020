@@ -1,15 +1,14 @@
-div {
+.Token {
   text-align: center;
-}
+  h1 {
+    padding-bottom: 8px;
+  }
 
-h1 {
-  padding-bottom: 8px;
-}
-
-p {
-  border: 1px solid black;
-  display: inline-block;
-  padding: 8px;
-  width: 50%;
-  word-wrap: break-word;
+  p {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 8px;
+    width: 50%;
+    word-wrap: break-word;
+  }
 }
