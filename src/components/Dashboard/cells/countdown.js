@@ -17,19 +17,19 @@ class CountDown extends React.Component{
   }
 
   initializeState(){
-    var hackIllinoisStartDate = new Date("February 28, 2020 00:00:00");
-    var hackIllinoisEndDate = new Date("March 1, 2020 11:59:59");
-    var hackillinoisStartTime = hackIllinoisStartDate.getTime()
-    var hackIllinoisEndTime = hackIllinoisEndDate.getTime();
+    const hackIllinoisStartDate = new Date("February 28, 2020 00:00:00");
+    const hackIllinoisEndDate = new Date("March 1, 2020 11:59:59");
+    const hackillinoisStartTime = hackIllinoisStartDate.getTime()
+    const hackIllinoisEndTime = hackIllinoisEndDate.getTime();
 
     var currentTime = new Date();
     var difference = hackillinoisStartTime - currentTime.getTime();
     var hasStarted = false;
-    if(difference < 0){ //passed the start time
+    if (difference < 0) { //passed the start time
       difference = hackIllinoisEndTime - currentTime.getTime();
       hasStarted = true;
     }
-    if(difference < 0){ //passed the end time
+    if (difference < 0) { //passed the end time
       return {
         days: 0,
         hours: 0,
@@ -68,18 +68,18 @@ class CountDown extends React.Component{
   }
 
   componentDidMount(){
-    if(!this.state.completed)
+    if (!this.state.completed)
       this.interval = setInterval(this.setTime, 1000);
   }
   componentWillUnmount(){
-    if(!this.state.completed)
-    clearInterval(this.interval);
+    if (!this.state.completed)
+      clearInterval(this.interval);
   }
 
   setTime(){
     var currentTime = new Date();
     var difference = this.state.hackillinoisStartTime - currentTime.getTime();
-    if(difference < 0){ //passed the start time
+    if (difference < 0) { //passed the start time
       difference = this.state.hackillinoisEndTime - currentTime.getTime();
     } 
 

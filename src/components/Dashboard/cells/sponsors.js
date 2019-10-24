@@ -1,27 +1,27 @@
 import React from 'react';
 
 
-import Amadeus from '../assets/Sponsors/Amadeus.png';
-import BP from '../assets/Sponsors/BP.png';
-import C1 from '../assets/Sponsors/C1.png';
-import Caterpillar from '../assets/Sponsors/Caterpillar.png';
-import Citadel from '../assets/Sponsors/Citadel.png';
-import Facebook from '../assets/Sponsors/Facebook.png';
-import Fulcrum from '../assets/Sponsors/Fulcrum.png';
-import Google from '../assets/Sponsors/Google.png';
-import IMC from '../assets/Sponsors/IMC.png';
-import Jackson from '../assets/Sponsors/Jackson.png';
-import MirusResearch from '../assets/Sponsors/MirusResearch.png';
-import Mozilla from '../assets/Sponsors/Mozilla.png';
-import npm from '../assets/Sponsors/npm.svg';
-import Nvisia from '../assets/Sponsors/Nvisia.png';
-import Optum from '../assets/Sponsors/Optum.png';
-import Particle from '../assets/Sponsors/Particle.png';
-import RC from '../assets/Sponsors/RC.png';
-import Schlum from '../assets/Sponsors/Schlum.png';
-import SNL from '../assets/Sponsors/SNL.png';
-import TwoSigma from '../assets/Sponsors/TwoSigma.png';
-import Zeit from '../assets/Sponsors/Zeit.svg';
+import amadeus from '../../../assets/sponsors/amadeus.png';
+import bp from '../../../assets/sponsors/bp.png';
+import c1 from '../../../assets/sponsors/c1.png';
+import caterpillar from '../../../assets/sponsors/caterpillar.png';
+import citadel from '../../../assets/sponsors/citadel.png';
+import facebook from '../../../assets/sponsors/facebook.png';
+import fulcrum from '../../../assets/sponsors/fulcrum.png';
+import google from '../../../assets/sponsors/google.png';
+import imc from '../../../assets/sponsors/imc.png';
+import jackson from '../../../assets/sponsors/jackson.png';
+import mirus_research from '../../../assets/sponsors/mirus_research.png';
+import mozilla from '../../../assets/sponsors/mozilla.png';
+import npm from '../../../assets/sponsors/npm.svg';
+import nvisia from '../../../assets/sponsors/nvisia.png';
+import optum from '../../../assets/sponsors/optum.png';
+import particle from '../../../assets/sponsors/particle.png';
+import rc from '../../../assets/sponsors/rc.png';
+import schlum from '../../../assets/sponsors/schlum.png';
+import snl from '../../../assets/sponsors/snl.png';
+import two_sigma from '../../../assets/sponsors/two_sigma.png';
+import zeit from '../../../assets/sponsors/zeit.svg';
 
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
 function shuffle(array) {
@@ -72,13 +72,13 @@ class Sponsors extends React.Component{
     this.interval = null;
 
     //list of all our sponsors
-    this.images = [Amadeus, BP, C1, Caterpillar, Citadel, Facebook, Fulcrum, Google,
-    IMC, Jackson, MirusResearch, Mozilla, npm, Nvisia, Optum, Particle,
-    RC, Schlum, SNL, TwoSigma, Zeit];
+    this.images = [amadeus, bp, c1, caterpillar, citadel, facebook, fulcrum, google,
+    imc, jackson, mirus_research, mozilla, npm, nvisia, optum, particle,
+    rc, schlum, snl, two_sigma, zeit];
 
     //will contain a list of randomly generated indices
     var array = new Array(this.images.length);
-    for(var i=0; i<array.length; i++){
+    for (var i=0; i<array.length; i++) {
       array[i] = i;
     }
     array = shuffle(array);

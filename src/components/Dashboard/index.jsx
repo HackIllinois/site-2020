@@ -18,14 +18,14 @@ class SplitColumn extends React.Component {
   }
 
   renderSideTop(){
-    if(this.props.pos === "left"){ //top left
+    if (this.props.pos === "left") { //top left
       return (
         <div className={"split-cell " + this.props.theme}> 
           TEMP 
         </div>
       );
     }
-    else if(this.props.pos === "right"){ //top right
+    else if (this.props.pos === "right") { //top right
       return (
         <div className = "split-cell">
           Other Temp
@@ -35,17 +35,18 @@ class SplitColumn extends React.Component {
   }
 
   renderSideBottom() {
-    if(this.props.pos === "left"){ //bottom left
+    if (this.props.pos === "left") { //bottom left
       return (
         <div className="split-cell"> 
           TEMP 
         </div>
       );
     }
-    else if(this.props.pos === "right") //bottom right
+    else if (this.props.pos === "right") {//bottom right
       return (
         <Sponsors theme={this.props.theme}/>
       )
+    }
   }
 
   render(){
@@ -86,15 +87,15 @@ export default class Dashboard extends React.Component {
     var currentMinute = currentTime.getMinutes();
     currentHour = currentHour + currentMinute/60;
 
-    if(currentHour >= 5 && currentHour < 10){
+    if (currentHour >= 5 && currentHour < 10) {
       //5Am to 10am
       return 'early-morning';
     }
-    else if(currentHour >= 10 && currentHour < 18.5){
+    else if (currentHour >= 10 && currentHour < 18.5) {
       //10am to 6:30pm
       return 'mid-day';
     }
-    else if(currentHour >= 18.5 && currentHour < 21){
+    else if (currentHour >= 18.5 && currentHour < 21) {
       //6:30 to 9pm
       return 'afternoon';
     }
@@ -106,7 +107,7 @@ export default class Dashboard extends React.Component {
   updateTheme(){
     var newTheme = this.getTheme();
     //to avoid constantly setting the state of the dashboard, just check if it changed
-    if(newTheme.localeCompare(this.state.theme) !== 0){
+    if (newTheme.localeCompare(this.state.theme) !== 0) {
       this.setState({
         theme: this.getTheme()
       })
