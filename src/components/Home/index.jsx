@@ -5,6 +5,7 @@ import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
 import sponsor from 'assets/svgs/Sponsor.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
+import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
 
 const Container = Styled.div`
   position: relative;
@@ -33,6 +34,17 @@ const Content = Styled.div`
   align-items: center;
 `;
 
+const SubContent = Styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media(max-width: 500px) {
+    flex-direction: column;
+  }
+`;
+
 const Tagline = Styled.img`
   width: 75vw;
   max-width: 600px;
@@ -43,8 +55,8 @@ const Tagline = Styled.img`
 `;
 
 const Sponsor = Styled.img`
-margin-top: 30px;
-max-width: 600px;
+  margin-top: 30px;
+  max-width: 600px;
   width: 75vw;
   display: none;
   @media(max-width: 425px){
@@ -53,8 +65,13 @@ max-width: 600px;
 `;
 
 const City = Styled.img`
-  width: 50vw;
+  width: 70vw;
   margin: 15vh auto 15vh -16.5vw;
+`;
+
+const Backdrop1 = Styled.img`
+  width: 70vw;
+  margin: 15vh -13vw 0 auto;
 `;
 
 const Logo = Styled.img`
@@ -81,7 +98,10 @@ export default class Home extends React.Component {
         <Content>
           <Tagline src={tagline} alt={'tagline'} />
           <Sponsor src={sponsor} alt={'sponsor'} />
-          <City src={city} alt={'city'} />
+          <SubContent>
+            <City src={city} alt={'city'} />
+            <Backdrop1 src={backdrop1} alt={'backdrop1'} />
+          </SubContent>
         </Content>
       </Container>
     );
