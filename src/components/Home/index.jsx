@@ -13,10 +13,14 @@ const Container = Styled.div`
 const BackgroundWrapper = Styled.div`
   overflow: hidden;
   width: 100%;
-  min-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 `;
 const Background = Styled.img`
   width: 100%;
+  min-width: 500px;
 `;
 
 const Content = Styled.div`
@@ -24,52 +28,62 @@ const Content = Styled.div`
   top: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Tagline = Styled.img`
-  display: block;
-  width: 40vw;
-  margin: 25vh auto 5vh auto;
-
-  @media(max-width: 900px) {
-    margin: 15vh auto 3vh auto;
+  width: 75vw;
+  max-width: 600px;
+  margin-top: 75px;
+  @media(max-width: 425px){
+    margin-top: 80px;
   }
-
-  /* @media(max-width: 300px) {
-    margin: 0 auto 2vh auto;
-  }
-  @media(max-width: 1000px) {
-    margin: 15vh auto 4vh auto;
-  } */
-
-
 `;
 
 const Sponsor = Styled.img`
-  display: block;
-  width: 40vw;
-  margin: 15vh auto;
+margin-top: 30px;
+max-width: 600px;
+  width: 75vw;
+  display: none;
+  @media(max-width: 425px){
+    display: block;
+  }
 `;
 
 const City = Styled.img`
-  display: block;
   width: 50vw;
   margin: 15vh auto 15vh -16.5vw;
 `;
 
+const Logo = Styled.img`
+  width: 10vw;
+  height: auto;
+  min-width: 100px;
+  position: auto;
+  top: 20px;
+  left: 35px;
+  position: absolute;
+  @media(max-width: 600px){
+    top: 15px;
+    left: 15px;
+  }
+`;
 export default class Home extends React.Component {
   render() {
     return (
-    <Container>
-      <BackgroundWrapper>
-        <Background src={bg} alt={'background'}/>
-      </BackgroundWrapper>
+      <Container>
+        <Logo src={logo} />
+        <BackgroundWrapper>
+          <Background src={bg} alt={'background'} />
+        </BackgroundWrapper>
         <Content>
-          <Tagline src={tagline} alt={'tagline'}/>
-          <Sponsor src={sponsor} alt={'sponsor'}/>
-          <City src={city} alt={'city'}/>
+          <Tagline src={tagline} alt={'tagline'} />
+          <Sponsor src={sponsor} alt={'sponsor'} />
+          <City src={city} alt={'city'} />
         </Content>
-    </Container>
+      </Container>
     );
   }
 }
