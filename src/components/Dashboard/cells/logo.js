@@ -1,5 +1,5 @@
 import React from 'react';
-import hackillinoislogo from '../assets/logo.svg';
+import hackillinoislogo from '../../../assets/hackillinois_logo.svg'
 
 class Logo extends React.Component{
   render(){

@@ -26,10 +26,8 @@
         display: flex;
         justify-content: center;
 
-        // animation: mymove 5s infinite;
-
         animation-name: driveright;
-        animation-duration: 8s;
+        animation-duration: 8s; //ensure this number matches the duration specified in sponsors.js
         animation-iteration-count: infinite;
         animation-timing-function: linear;
         
@@ -49,19 +47,12 @@
   }
 }
 
-@keyframes mymove {
-  0%   {top: 0px; background: red; width: 100px;}
-  100% {top: 200px; background: yellow; width: 300px;}
-}
-
 
 @keyframes driveright {
   0% {
     transform: translateX(-90%);
-    // left: -100%;
   }
   100%{
     transform: translateX(100%);
-    // left: 100%;
   }
 }

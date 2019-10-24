@@ -3,7 +3,7 @@ import React from 'react';
 class Time extends React.Component{
   constructor(props){
     super(props);
-    this.state = this.initializeState();
+    this.state = this.getTime();
     
     this.interval = null;
 
@@ -11,24 +11,24 @@ class Time extends React.Component{
 
   }
 
-  initializeState(){
+  getTime(){
     const today = new Date();
     var hours = today.getHours();
     var minutes = today.getMinutes();
 
     const isAm = hours < 12; 
 
-    if( hours === 0){
+    if (hours === 0) {
       hours = 12;
     }
-    if(!isAm){
+    if (!isAm) {
       hours -= 12;
     }
 
-    if(hours < 10){
+    if (hours < 10) {
       hours = this.addLeadingZero(hours);
     }
-    if(minutes < 10){
+    if (minutes < 10) {
       minutes = this.addLeadingZero(minutes);
     }
 
@@ -51,33 +51,8 @@ class Time extends React.Component{
   }
 
   setTime(){
-    const today = new Date();
-    var hours = today.getHours();
-    var minutes = today.getMinutes();
-
-    const isAm = hours < 12; 
-
-    if( hours === 0){
-      hours = 12;
-    }
-    if(!isAm){
-      hours -= 12;
-    }
-
-    if(hours < 10){
-      hours = this.addLeadingZero(hours);
-    }
-    if(minutes < 10){
-      minutes = this.addLeadingZero(minutes);
-    }
-
-    
-
-    this.setState({
-      hours: hours,
-      minutes: minutes,
-      isAm: isAm
-    });
+    const newTime = this.getTime();
+    this.setState(newTime);
   }
 
   render(){

@@ -15,10 +15,8 @@
     margin-left: 1vw;
     margin-right: 1vw;
     
-    // background-color: paleturquoise;
     box-sizing: border-box;
 
-    // border: 12px solid black;
     position: relative;
     h1, h2, h3, h4, h5, h6, p{
       transition-duration: $theme-transition-duration;
@@ -28,11 +26,11 @@
   }
 
   .early-morning{
-
+    background-color: $early-morning-cell-color;
   }
 
   .mid-day{
-
+    background-color: $mid-day-cell-color;
   }
 
   .afternoon{
@@ -81,14 +79,12 @@
 
 
 #logo-cell {
-  // background-color: rgba(0,0,0,0);
   display: flex;
   justify-content: space-between;
   img {
     height: 100%;
   }
   h1 {
-    // color: $text-color-header;
     font-size: calc(1.5vw + 20px);
     height: 100%;
     word-wrap: break-word;
@@ -96,7 +92,6 @@
 }
 
 #time-cell {
-  // background-color: red;
   text-align: center;
   p{
     font-size: calc(1.5vw + 15px);
@@ -110,7 +105,6 @@
 }
 
 #countdown-cell {
-  // background-color: paleturquoise;
   text-align: center;
 
   .clocks {
@@ -132,14 +126,6 @@
         width: 100%;
       }
     }
-
-
-    // p{
-    //   margin: auto;
-    //   padding: 0;
-    //   width: 100%;
-    //   font-size: 2em;
-    // }
   }
   
 }
