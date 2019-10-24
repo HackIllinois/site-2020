@@ -1,0 +1,67 @@
+#sponsors-cell {
+  width: 100%; 
+  background-repeat: no-repeat;
+  background-size: 200%;
+  .sponsor-grid-wrapper{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .lane{
+      padding-top: 3px;
+      padding-bottom: 3px;
+      height: 100%;
+      width: 100%;
+      background-color: aqua;
+
+      overflow: hidden;
+      .car{
+        position: relative;
+
+        height: 100%;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+
+        // animation: mymove 5s infinite;
+
+        animation-name: driveright;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        
+        img{
+          height: 80%;
+          max-width: 40%;
+        }
+      }
+    }
+
+    .lane:first-of-type{
+      padding-top: 0px;
+    }
+    .lane:last-of-type{
+      padding-bottom: 0px;
+    }
+  }
+}
+
+@keyframes mymove {
+  0%   {top: 0px; background: red; width: 100px;}
+  100% {top: 200px; background: yellow; width: 300px;}
+}
+
+
+@keyframes driveright {
+  0% {
+    transform: translateX(-90%);
+    // left: -100%;
+  }
+  100%{
+    transform: translateX(100%);
+    // left: 100%;
+  }
+}
