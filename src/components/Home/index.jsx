@@ -4,11 +4,17 @@ import bg from 'assets/svgs/background.svg';
 import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
 import sponsor from 'assets/svgs/Sponsor.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
+import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
 
 const Container = Styled.div`
   position: relative;
 `;
 
+const BackgroundWrapper = Styled.div`
+  overflow: hidden;
+  width: 100%;
+  min-width: 600px;
+`;
 const Background = Styled.img`
   width: 100%;
 `;
@@ -55,7 +61,9 @@ export default class Home extends React.Component {
   render() {
     return (
     <Container>
+      <BackgroundWrapper>
         <Background src={bg} alt={'background'}/>
+      </BackgroundWrapper>
         <Content>
           <Tagline src={tagline} alt={'tagline'}/>
           <Sponsor src={sponsor} alt={'sponsor'}/>
