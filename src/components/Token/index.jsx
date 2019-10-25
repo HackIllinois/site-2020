@@ -27,7 +27,8 @@ export default class Token extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading) {
+    const { isLoading } = this.state;
+    if (isLoading) {
       return <Loading />;
     }
 

@@ -1,10 +1,9 @@
+// We disable the rule prenting use of ...props because these are higher order components
+/* eslint react/jsx-props-no-spreading: 0 */
+
 import { Field } from 'formik';
 import React from 'react';
 import Select from 'react-select';
-
-const SelectField = (props) => (
-  <Field key={props.name} component={FormikSelect} {...props} />
-);
 
 class FormikSelect extends React.Component {
   getValue = () => {
@@ -31,10 +30,11 @@ class FormikSelect extends React.Component {
   }
 
   render() {
+    const { field } = this.props;
     return (
       <Select
         hideSelectedOptions={false}
-        name={this.props.field.name}
+        name={field.name}
         onChange={this.handleChange}
         value={this.getValue()}
         {...this.props}
@@ -42,5 +42,9 @@ class FormikSelect extends React.Component {
     );
   }
 }
+
+const SelectField = ({ name, ...props }) => (
+  <Field key={name} component={FormikSelect} {...props} />
+);
 
 export default SelectField;

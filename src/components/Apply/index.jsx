@@ -78,49 +78,30 @@ export default class Apply extends React.Component {
         application: app,
         isLoading: false,
       });
-    }).catch((err) => {
+    }).catch(() => {
       this.setState({ isLoading: false });
     });
   }
 
   back = () => {
-    this.setState({ page: this.state.page - 1 });
+    this.setState((prevState) => ({ page: prevState.page - 1 }));
   }
 
   next = () => {
-    this.setState({ page: this.state.page + 1 });
+    this.setState((prevState) => ({ page: prevState.page + 1 }));
   }
 
   submit = (app) => {
     this.setState({ isLoading: true });
 
-    apply(this.state.isEditing, app).then((app) => {
-      this.props.history.push('/');
-    }).catch((err) => {
+    const { isEditing } = this.state;
+    const { history } = this.props;
+    apply(isEditing, app).then(() => {
+      history.push('/');
+    }).catch(() => {
       this.setState({ isLoading: false });
       alert('Failed to submit.');
     });
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <Loading />;
-    }
-
-    const pages = [this.page1, this.page2, this.page3];
-
-    return (
-      <Formik
-        initialValues={this.state.application}
-        enableReinitialize
-        onSubmit={this.submit}
-        render={() => (
-          <Form>
-            {pages[this.state.page]()}
-          </Form>
-        )}
-      />
-    );
   }
 
   page1 = () => (
@@ -193,4 +174,26 @@ export default class Apply extends React.Component {
       <button type="submit">Submit</button>
     </div>
   );
+
+  render() {
+    const { isLoading, application, page } = this.state;
+    if (isLoading) {
+      return <Loading />;
+    }
+
+    const pages = [this.page1, this.page2, this.page3];
+
+    return (
+      <Formik
+        initialValues={application}
+        enableReinitialize
+        onSubmit={this.submit}
+        render={() => (
+          <Form>
+            {pages[page]()}
+          </Form>
+        )}
+      />
+    );
+  }
 }

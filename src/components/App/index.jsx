@@ -8,38 +8,36 @@ import Home from 'components/Home';
 import PDF from 'components/PDF';
 import Token from 'components/Token';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
 
-          <Route path="/apply" component={Apply} />
-          <Route path="/auth" component={Auth} />
-          <Route path="/token" component={Token} />
+        <Route path="/apply" component={Apply} />
+        <Route path="/auth" component={Auth} />
+        <Route path="/token" component={Token} />
 
-          <Route
-            exact
-            path="/mentor"
-            component={
-            () => <PDF path="documents/mentorship.pdf" />
-          }
-          />
-          <Route
-            exact
-            path="/sponsor"
-            component={
-            () => <PDF path="documents/sponsorship.pdf" />
-          }
-          />
+        <Route
+          exact
+          path="/mentor"
+          component={
+          () => <PDF path="documents/mentorship.pdf" />
+        }
+        />
+        <Route
+          exact
+          path="/sponsor"
+          component={
+          () => <PDF path="documents/sponsorship.pdf" />
+        }
+        />
 
-          <Route component={
-            () => <Error message="404 Not Found" />
-          }
-          />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
+        <Route component={
+          () => <Error message="404 Not Found" />
+        }
+        />
+      </Switch>
+    </BrowserRouter>
+  );
 }
