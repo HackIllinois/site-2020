@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   authenticate,
-  isAuthenticated
+  isAuthenticated,
 } from 'api';
 import Loading from 'components/Loading';
 
@@ -13,7 +13,7 @@ export default class Token extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -23,16 +23,16 @@ export default class Token extends React.Component {
       return;
     }
 
-    this.setState({isLoading: false});
+    this.setState({ isLoading: false });
   }
 
   render() {
     if (this.state.isLoading) {
       return <Loading />;
     }
-    
+
     return (
-      <div class="Token">
+      <div className="Token">
         <h1>Copy Me!</h1>
         <p>{sessionStorage.token}</p>
       </div>

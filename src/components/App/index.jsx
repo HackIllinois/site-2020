@@ -19,16 +19,25 @@ export default class App extends React.Component {
           <Route path="/auth" component={Auth} />
           <Route path="/token" component={Token} />
 
-          <Route exact path="/mentor" component={
+          <Route
+            exact
+            path="/mentor"
+            component={
             () => <PDF path="documents/mentorship.pdf" />
-          } />
-          <Route exact path="/sponsor" component={
+          }
+          />
+          <Route
+            exact
+            path="/sponsor"
+            component={
             () => <PDF path="documents/sponsorship.pdf" />
-          } />
+          }
+          />
 
           <Route component={
             () => <Error message="404 Not Found" />
-          } />
+          }
+          />
         </Switch>
       </BrowserRouter>
     );

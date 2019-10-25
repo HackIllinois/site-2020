@@ -2,31 +2,30 @@ import { Field } from 'formik';
 import React from 'react';
 import Select from 'react-select';
 
-const SelectField = props => (
+const SelectField = (props) => (
   <Field key={props.name} component={FormikSelect} {...props} />
 );
 
 class FormikSelect extends React.Component {
   getValue = () => {
-    let { field, isMulti, options } = this.props;
+    const { field, isMulti, options } = this.props;
 
     if (isMulti) {
-      let match = opt => field.value.includes(opt.value);
+      const match = (opt) => field.value.includes(opt.value);
       return options.filter(match);
-    } else {
-      let match = opt => opt.value === field.value;
-      return options.find(match);
     }
+    const match = (opt) => opt.value === field.value;
+    return options.find(match);
   }
 
-  handleChange = selected => {
-    let { field, form, isMulti } = this.props;
+  handleChange = (selected) => {
+    const { field, form, isMulti } = this.props;
 
     if (isMulti) {
-      let values = selected ? selected.map(opt => opt.value) : [];
+      const values = selected ? selected.map((opt) => opt.value) : [];
       form.setFieldValue(field.name, values);
     } else {
-      let value = selected.value;
+      const { value } = selected;
       form.setFieldValue(field.name, value);
     }
   }
