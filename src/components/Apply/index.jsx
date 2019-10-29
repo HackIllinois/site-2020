@@ -67,13 +67,13 @@ export default class Apply extends React.Component {
       return;
     }
 
-    getRoles().then((roles) => {
+    getRoles().then(roles => {
       if (roles.includes('Applicant')) {
         this.setState({ isEditing: true });
         return getApplication();
       }
       return EMPTY_APP;
-    }).then((app) => {
+    }).then(app => {
       this.setState({
         application: app,
         isLoading: false,
@@ -84,14 +84,14 @@ export default class Apply extends React.Component {
   }
 
   back = () => {
-    this.setState((prevState) => ({ page: prevState.page - 1 }));
+    this.setState(prevState => ({ page: prevState.page - 1 }));
   }
 
   next = () => {
-    this.setState((prevState) => ({ page: prevState.page + 1 }));
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   }
 
-  submit = (app) => {
+  submit = app => {
     this.setState({ isLoading: true });
 
     const { isEditing } = this.state;
@@ -130,21 +130,21 @@ export default class Apply extends React.Component {
       <SelectField
         name="school"
         placeholder="University of Illinois"
-        options={schools.map((school) => ({ value: school, label: school }))}
+        options={schools.map(school => ({ value: school, label: school }))}
       />
 
       <p>Major</p>
       <SelectField
         name="major"
         placeholder="Computer Science"
-        options={majors.map((major) => ({ value: major, label: major }))}
+        options={majors.map(major => ({ value: major, label: major }))}
       />
 
       <p>Graduation Year</p>
       <SelectField
         name="graduationYear"
         placeholder="2020"
-        options={graduationYears.map((year) => ({ value: year, label: year }))}
+        options={graduationYears.map(year => ({ value: year, label: year }))}
       />
 
       <button type="button" onClick={this.back}>Back</button>

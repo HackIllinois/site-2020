@@ -24,7 +24,7 @@ export default class Auth extends React.Component {
       to = mobileRedirect(os, code);
       window.location.replace(to);
     } else {
-      getToken(code).then((token) => {
+      getToken(code).then(token => {
         sessionStorage.setItem('token', token.token);
         window.location.replace(to);
       }).catch(() => {

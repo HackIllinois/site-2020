@@ -22,15 +22,15 @@ export default function App() {
           exact
           path="/mentor"
           component={
-          () => <PDF path="documents/mentorship.pdf" />
-        }
+            () => <PDF path="documents/mentorship.pdf" />
+          }
         />
         <Route
           exact
           path="/sponsor"
           component={
-          () => <PDF path="documents/sponsorship.pdf" />
-        }
+            () => <PDF path="documents/sponsorship.pdf" />
+          }
         />
 
         <Route component={

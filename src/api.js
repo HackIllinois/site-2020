@@ -1,5 +1,26 @@
 const API = 'https://api.hackillinois.org';
 
+function headers() {
+  return {
+    Authorization: sessionStorage.getItem('token'),
+    'Content-Type': 'application/json',
+  };
+}
+
+function request(method, endpoint, body) {
+  return fetch(API + endpoint, {
+    method,
+    headers: headers(),
+    body: JSON.stringify(body),
+  }).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+    throw Error(res);
+  }).then(obj => obj);
+}
+
+
 export function isAuthenticated() {
   return sessionStorage.getItem('token');
 }
@@ -15,7 +36,7 @@ export function authenticate(to) {
 }
 
 export function getToken(code) {
-  return request('POST', '/auth/code/github/', {code});
+  return request('POST', '/auth/code/github/', { code });
 }
 
 export function getRoles() {
@@ -28,26 +49,6 @@ export function getApplication() {
 }
 
 export function apply(isEditing, application) {
-  let method = isEditing ? 'PUT' : 'POST';
+  const method = isEditing ? 'PUT' : 'POST';
   return request(method, '/registration/attendee/', application);
-}
-
-function request(method, endpoint, body) {
-  return fetch(API + endpoint, {
-    method: method,
-    headers: headers(),
-    body: JSON.stringify(body)
-  }).then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-    throw Error(res);
-  }).then(obj => obj);
-}
-
-function headers() {
-  return {
-    'Authorization': sessionStorage.getItem('token'),
-    'Content-Type': 'application/json'
-  }
 }
