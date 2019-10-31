@@ -6,16 +6,16 @@ import {
   authenticate,
   getApplication,
   getRoles,
-  isAuthenticated
+  isAuthenticated,
 } from 'api';
-import {
-  graduationYears,
-  majors,
-  schools
-} from './lists';
 
 import Loading from 'components/Loading';
 import SelectField from 'components/SelectField';
+import {
+  graduationYears,
+  majors,
+  schools,
+} from './lists';
 
 
 const EMPTY_APP = {
@@ -33,7 +33,7 @@ const EMPTY_APP = {
     pullRequest: 5,
     technicalSkills: [],
     versionControl: 5,
-    yearsExperience: 7
+    yearsExperience: 7,
   },
   extraInfo: '',
   diet: [],
@@ -46,7 +46,7 @@ const EMPTY_APP = {
   shirtSize: 'L',
   skills: [],
   teamMembers: [],
-  transportation: 'NONE'
+  transportation: 'NONE',
 };
 
 export default class Apply extends React.Component {
@@ -57,7 +57,7 @@ export default class Apply extends React.Component {
       application: {},
       page: 0,
       isEditing: false,
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -69,58 +69,39 @@ export default class Apply extends React.Component {
 
     getRoles().then(roles => {
       if (roles.includes('Applicant')) {
-        this.setState({isEditing: true});
+        this.setState({ isEditing: true });
         return getApplication();
       }
       return EMPTY_APP;
     }).then(app => {
       this.setState({
         application: app,
-        isLoading: false
+        isLoading: false,
       });
-    }).catch(err => {
-      this.setState({isLoading: false});
+    }).catch(() => {
+      this.setState({ isLoading: false });
     });
   }
 
   back = () => {
-    this.setState({page: this.state.page - 1});
+    this.setState(prevState => ({ page: prevState.page - 1 }));
   }
 
   next = () => {
-    this.setState({page: this.state.page + 1});
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   }
 
   submit = app => {
-    this.setState({isLoading: true});
+    this.setState({ isLoading: true });
 
-    apply(this.state.isEditing, app).then(app => {
-      this.props.history.push('/');
-    }).catch(err => {
-      this.setState({isLoading: false});
+    const { isEditing } = this.state;
+    const { history } = this.props;
+    apply(isEditing, app).then(() => {
+      history.push('/');
+    }).catch(() => {
+      this.setState({ isLoading: false });
       alert('Failed to submit.');
     });
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <Loading />
-    }
-
-    let pages = [this.page1, this.page2, this.page3];
-
-    return (
-      <Formik
-        initialValues={this.state.application}
-        enableReinitialize
-        onSubmit={this.submit}
-        render={() => (
-          <Form>
-            {pages[this.state.page]()}
-          </Form>
-        )}
-      />
-    );
   }
 
   page1 = () => (
@@ -149,27 +130,21 @@ export default class Apply extends React.Component {
       <SelectField
         name="school"
         placeholder="University of Illinois"
-        options={schools.map(school => {
-          return {'value': school, 'label': school};
-        })}
+        options={schools.map(school => ({ value: school, label: school }))}
       />
 
       <p>Major</p>
       <SelectField
         name="major"
         placeholder="Computer Science"
-        options={majors.map(major => {
-          return {'value': major, 'label': major};
-        })}
+        options={majors.map(major => ({ value: major, label: major }))}
       />
 
       <p>Graduation Year</p>
       <SelectField
         name="graduationYear"
         placeholder="2020"
-        options={graduationYears.map(year => {
-          return {'value': year, 'label': year};
-        })}
+        options={graduationYears.map(year => ({ value: year, label: year }))}
       />
 
       <button type="button" onClick={this.back}>Back</button>
@@ -185,8 +160,8 @@ export default class Apply extends React.Component {
         name="interests"
         placeholder="Internship"
         options={[
-          {label: 'Internship', value: 'INTERNSHIP'},
-          {label: 'Full-time', value: 'FULLTIME'}
+          { label: 'Internship', value: 'INTERNSHIP' },
+          { label: 'Full-time', value: 'FULLTIME' },
         ]}
       />
 
@@ -199,5 +174,26 @@ export default class Apply extends React.Component {
       <button type="submit">Submit</button>
     </div>
   );
-}
 
+  render() {
+    const { isLoading, application, page } = this.state;
+    if (isLoading) {
+      return <Loading />;
+    }
+
+    const pages = [this.page1, this.page2, this.page3];
+
+    return (
+      <Formik
+        initialValues={application}
+        enableReinitialize
+        onSubmit={this.submit}
+        render={() => (
+          <Form>
+            {pages[page]()}
+          </Form>
+        )}
+      />
+    );
+  }
+}

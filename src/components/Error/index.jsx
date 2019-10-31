@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default class Error extends React.Component {
-  render() {
-    return <p>Error: {this.props.message}</p>
-  }
+export default function Error({ message }) {
+  return (
+    <p>Error: {message}</p>
+  );
 }
