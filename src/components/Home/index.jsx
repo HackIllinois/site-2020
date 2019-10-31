@@ -22,8 +22,11 @@ const BackgroundWrapper = Styled.div`
 `;
 const Background = Styled.img`
   width: 100%;
+  /* height: 100% */
   min-width: 500px;
-  margin-bottom: 2000px;
+  @media(max-width: 1000px){
+    width: 200%;
+  }
 `;
 
 const Content = Styled.div`
@@ -38,13 +41,13 @@ const Content = Styled.div`
 
 const SubContent = Styled.div`
   width: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  /* align-items: space-between; */
+  align-items: space-between;
 
-  @media(max-width: 425px) {
+  @media(max-width: 600px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 const Tagline = Styled.img`
@@ -61,20 +64,44 @@ const Sponsor = Styled.img`
   max-width: 600px;
   width: 75vw;
   display: none;
-  @media(max-width: 425px) {
+  /* @media(max-width: 425px) {
     display: block;
-  }
+  } */
 `;
 
 const City = Styled.img`
-  width: 100%;
-  margin-right: -500px;
+  position: absolute;
+  width: 1000px;
+  flex-grow: 0;
+  transform: translate(-100px, 200px);
+  margin-right: -600px;
+  margin-left: -10vw;
+  z-index: 1;
+
+  @media(max-width: 1300px) {
+    transform: translate(-100px, 100px);
+    width: 80vw;
+  }
+
+  @media(max-width: 1000px) {
+    width: 100vw;
+  }
 `;
 
 const Backdrop1 = Styled.img`
-  /* position: absolute; */
-  margin-right: -300px;
+  position: absolute;
+  /* flex-grow: 0;
+  flex-shrink: 0; */
+  right: -300px;
   width: 1800px;
+  z-index: 2;
+  @media(max-width: 1300px) {
+    transform: translate(0, 150px);
+  }
+  
+  @media(max-width: 1000px) {
+    transform: translate(0, 350px);
+  }
 `;
 
 const Logo = Styled.img`
