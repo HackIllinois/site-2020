@@ -1,17 +1,26 @@
 import React from 'react';
+import {ThemeContext} from '../theme-context';
+
+function pad(num){
+  if(num < 10){
+    return '0' + num;
+  }
+  else{
+    return num;
+  }
+}
 
 class Time extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = this.getTime();
     
     this.interval = null;
 
     this.setTime = this.setTime.bind(this);
-
   }
 
-  getTime(){
+  getTime() {
     const today = new Date();
     var hours = today.getHours();
     var minutes = today.getMinutes();
@@ -25,12 +34,8 @@ class Time extends React.Component{
       hours -= 12;
     }
 
-    if (hours < 10) {
-      hours = this.addLeadingZero(hours);
-    }
-    if (minutes < 10) {
-      minutes = this.addLeadingZero(minutes);
-    }
+    hours = pad(hours);
+    minutes = pad(minutes);
 
     return {
       hours: hours,
@@ -39,25 +44,22 @@ class Time extends React.Component{
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.interval = setInterval(this.setTime, 1000);
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  addLeadingZero(num){
-    return '0' + num;
-  }
-
-  setTime(){
+  setTime() {
     const newTime = this.getTime();
     this.setState(newTime);
   }
 
-  render(){
+  render() {
     return (
-      <div className = {"cell short-cell "+this.props.theme} id ="time-cell">
+      <div className = {"cell short-cell " + this.context} id ="time-cell">
         <h1>CURRENT TIME</h1>
         <p>{this.state.hours} : {this.state.minutes} {this.state.isAm ? "AM" : "PM"}</p>
       </div>
@@ -65,5 +67,5 @@ class Time extends React.Component{
   }
 }
 
-
+Time.contextType = ThemeContext;
 export default Time;
