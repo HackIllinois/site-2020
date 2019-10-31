@@ -1,27 +1,28 @@
 import React from 'react';
+import {ThemeContext} from '../theme-context';
 
+import amadeus from 'assets/sponsors/amadeus.png';
+import bp from 'assets/sponsors/bp.png';
+import c1 from 'assets/sponsors/c1.png';
+import caterpillar from 'assets/sponsors/caterpillar.png';
+import citadel from 'assets/sponsors/citadel.png';
+import facebook from 'assets/sponsors/facebook.png';
+import fulcrum from 'assets/sponsors/fulcrum.png';
+import google from 'assets/sponsors/google.png';
+import imc from 'assets/sponsors/imc.png';
+import jackson from 'assets/sponsors/jackson.png';
+import mirus_research from 'assets/sponsors/mirus_research.png';
+import mozilla from 'assets/sponsors/mozilla.png';
+import npm from 'assets/sponsors/npm.svg';
+import nvisia from 'assets/sponsors/nvisia.png';
+import optum from 'assets/sponsors/optum.png';
+import particle from 'assets/sponsors/particle.png';
+import rc from 'assets/sponsors/rc.png';
+import schlum from 'assets/sponsors/schlum.png';
+import snl from 'assets/sponsors/snl.png';
+import two_sigma from 'assets/sponsors/two_sigma.png';
+import zeit from 'assets/sponsors/zeit.svg';
 
-import amadeus from '../../../assets/sponsors/amadeus.png';
-import bp from '../../../assets/sponsors/bp.png';
-import c1 from '../../../assets/sponsors/c1.png';
-import caterpillar from '../../../assets/sponsors/caterpillar.png';
-import citadel from '../../../assets/sponsors/citadel.png';
-import facebook from '../../../assets/sponsors/facebook.png';
-import fulcrum from '../../../assets/sponsors/fulcrum.png';
-import google from '../../../assets/sponsors/google.png';
-import imc from '../../../assets/sponsors/imc.png';
-import jackson from '../../../assets/sponsors/jackson.png';
-import mirus_research from '../../../assets/sponsors/mirus_research.png';
-import mozilla from '../../../assets/sponsors/mozilla.png';
-import npm from '../../../assets/sponsors/npm.svg';
-import nvisia from '../../../assets/sponsors/nvisia.png';
-import optum from '../../../assets/sponsors/optum.png';
-import particle from '../../../assets/sponsors/particle.png';
-import rc from '../../../assets/sponsors/rc.png';
-import schlum from '../../../assets/sponsors/schlum.png';
-import snl from '../../../assets/sponsors/snl.png';
-import two_sigma from '../../../assets/sponsors/two_sigma.png';
-import zeit from '../../../assets/sponsors/zeit.svg';
 
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
 function shuffle(array) {
@@ -78,7 +79,7 @@ class Sponsors extends React.Component{
 
     //will contain a list of randomly generated indices
     var array = new Array(this.images.length);
-    for (var i=0; i<array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       array[i] = i;
     }
     array = shuffle(array);
@@ -93,28 +94,27 @@ class Sponsors extends React.Component{
     this.updateImages = this.updateImages.bind(this);
   }
 
-  updateImages(){
-    var newOffset = (this.state.offset+4) % this.state.indices.length;
+  updateImages() {
+    var newOffset = (this.state.offset + 4) % this.state.indices.length;
     this.setState({
       offset: newOffset
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.interval = setInterval(this.updateImages, this.state.refreshrate);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-
-
-  getImage(index){
+  getImage(index) {
     var array = this.state.indices;
-    var arrayIndex = (this.state.offset+index) % array.length;
+    var arrayIndex = (this.state.offset + index) % array.length;
     return this.images[array[arrayIndex]];
   }
+
   render() {
     return (
       <div className = "split-cell" id = "sponsors-cell">
@@ -127,6 +127,7 @@ class Sponsors extends React.Component{
       </div>
     )
   }
-
 }
+
+Sponsors.contextType = ThemeContext;
 export default Sponsors;

@@ -1,4 +1,5 @@
 import React from 'react';
+import {ThemeContext} from '../theme-context';
 
 //This component is in the top row, center
 class CountDown extends React.Component{
@@ -10,15 +11,11 @@ class CountDown extends React.Component{
 
     this.setTime = this.setTime.bind(this);
     this.initializeState = this.initializeState.bind(this);
-    this.renderDays = this.renderDays.bind(this);
-    this.renderHours = this.renderHours.bind(this);
-    this.renderMinutes = this.renderMinutes.bind(this);
-    this.renderValue = this.renderValue.bind(this);
   }
 
-  initializeState(){
-    const hackIllinoisStartDate = new Date("February 28, 2020 00:00:00");
-    const hackIllinoisEndDate = new Date("March 1, 2020 11:59:59");
+  initializeState() {
+    const hackIllinoisStartDate = new Date("February 28, 2020 05:00:00 UTC"); //UTC is 5 hours ahead of CDT
+    const hackIllinoisEndDate = new Date("March 2, 2020 4:59:59 UTC");
     const hackillinoisStartTime = hackIllinoisStartDate.getTime()
     const hackIllinoisEndTime = hackIllinoisEndDate.getTime();
 
@@ -42,7 +39,7 @@ class CountDown extends React.Component{
       }
     }
 
-    difference = difference/1000; //remove the garbage
+    difference = difference / 1000; //remove the garbage
     
     const days = Math.floor(difference / 86400);
     difference -= days * 86400;
@@ -67,16 +64,16 @@ class CountDown extends React.Component{
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (!this.state.completed)
       this.interval = setInterval(this.setTime, 1000);
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     if (!this.state.completed)
       clearInterval(this.interval);
   }
 
-  setTime(){
+  setTime() {
     var currentTime = new Date();
     var difference = this.state.hackillinoisStartTime - currentTime.getTime();
     if (difference < 0) { //passed the start time
@@ -105,18 +102,7 @@ class CountDown extends React.Component{
     });
   }
 
-  renderDays(){
-  }
-
-  renderHours(){
-
-  }
-
-  renderMinutes(){
-
-  }
-
-  renderValue(value, type){
+  renderValue(value, type) {
     var tensdigit = Math.floor(value / 10);
     var onesdigit = value % 10;
 
@@ -128,9 +114,9 @@ class CountDown extends React.Component{
     )
   }
 
-  render(){
+  render() {
     return (
-      <div className = {"cell short-cell "+this.props.theme} id="countdown-cell">
+      <div className = {"cell short-cell " + this.context} id="countdown-cell">
         <h1>COUNTDOWN</h1>
         <div className = "clocks">
           {this.renderValue(this.state.days, "D")}
@@ -144,4 +130,5 @@ class CountDown extends React.Component{
   }
 }
 
+CountDown.contextType = ThemeContext;
 export default CountDown;

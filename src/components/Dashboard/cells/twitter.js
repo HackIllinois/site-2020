@@ -1,5 +1,6 @@
 import React from 'react';
 import {TwitterTimelineEmbed} from 'react-twitter-embed';
+import {ThemeContext} from '../theme-context';
 
 class TwitterFeed extends React.Component{
   render() {
@@ -20,4 +21,5 @@ class TwitterFeed extends React.Component{
   }
 }
 
+TwitterFeed.contextType = ThemeContext;
 export default TwitterFeed;
