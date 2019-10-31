@@ -71,16 +71,20 @@ const Sponsor = Styled.img`
 
 const City = Styled.img`
   position: absolute;
-  width: 1000px;
+  width: 80vw;
   flex-grow: 0;
-  transform: translate(-100px, 200px);
+  transform: translate(-10vw, 200px);
   margin-right: -600px;
   margin-left: -10vw;
-  z-index: 1;
+
+  @media(max-width: 1700px) {
+    transform: translate(-100px, 200px);
+    width: 1000px;
+  }
 
   @media(max-width: 1300px) {
     transform: translate(-100px, 100px);
-    width: 80vw;
+    width: 90vw;
   }
 
   @media(max-width: 1000px) {
@@ -93,10 +97,16 @@ const Backdrop1 = Styled.img`
   /* flex-grow: 0;
   flex-shrink: 0; */
   right: -300px;
-  width: 1800px;
-  z-index: 2;
-  @media(max-width: 1300px) {
+  width: 90vw;
+  transform: translate(5vw, 150px);
+  
+  @media(max-width: 1700px) {
+    width: 1800px;
     transform: translate(0, 150px);
+  }
+  
+  @media(max-width: 1300px) {
+    transform: translate(0, 300px);
   }
   
   @media(max-width: 1000px) {
