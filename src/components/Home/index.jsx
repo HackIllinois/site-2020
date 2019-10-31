@@ -122,6 +122,9 @@ const Logo = Styled.img`
 const GroundContent = Styled.div`
   height: 100px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
 `;
 
 const Road = Styled.img`
@@ -130,7 +133,7 @@ const Road = Styled.img`
 
 const RoadWrapper = Styled.div`
   width: 100vw;
-  margin-top: -15vw;
+  margin-top: -30vw;
   min-width: 1000px;
   overflow: hidden;
 `;
@@ -160,17 +163,17 @@ export default class Home extends React.Component {
             <City src={city} alt={'city'} />
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
           </SubContent>
-          <GroundContent>
+        </Content>
+        <GroundContent>
             <RoadWrapper>
               <Road src={bottomroad} />
-              <FAQContainer>
-                <FAQTitle>
-                  How do I get there to the University/Siebel/etc?
-                </FAQTitle>
-              </FAQContainer>
             </RoadWrapper>
+            <FAQContainer>
+              <FAQTitle>
+                How do I get there to the University/Siebel/etc?
+                </FAQTitle>
+            </FAQContainer>
           </GroundContent>
-        </Content>
       </Container>
     );
   }
