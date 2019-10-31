@@ -6,6 +6,7 @@ import sponsor from 'assets/svgs/Sponsor.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
 import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
+import bottomroad from 'assets/svgs/bottomroad.svg';
 
 const Container = Styled.div`
   position: relative;
@@ -127,6 +128,36 @@ const Logo = Styled.img`
     left: 15px;
   }
 `;
+
+const GroundContent = Styled.div`
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+`;
+
+const Road = Styled.img`
+  width: 100%;
+`;
+
+const RoadWrapper = Styled.div`
+  width: 100vw;
+  margin-top: -30vw;
+  min-width: 1000px;
+  overflow: hidden;
+`;
+
+const FAQContainer = Styled.div`
+  background: #4D8857;
+  padding: 40px;
+  margin-top: -25px;
+`;
+
+const FAQTitle = Styled.div`
+  font-size: 16px;
+  font-weight: 600px;
+`;
 export default class Home extends React.Component {
   render() {
     return (
@@ -143,6 +174,16 @@ export default class Home extends React.Component {
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
           </SubContent>
         </Content>
+        <GroundContent>
+            <RoadWrapper>
+              <Road src={bottomroad} />
+            </RoadWrapper>
+            <FAQContainer>
+              <FAQTitle>
+                How do I get there to the University/Siebel/etc?
+                </FAQTitle>
+            </FAQContainer>
+          </GroundContent>
       </Container>
     );
   }
