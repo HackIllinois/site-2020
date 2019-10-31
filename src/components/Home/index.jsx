@@ -6,8 +6,7 @@ import sponsor from 'assets/svgs/Sponsor.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
 import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
-import ground from 'assets/svgs/HackIllinois_Website_ground.svg';
-import road from 'assets/svgs/HackIllinois_Website_street.svg';
+import bottomroad from 'assets/svgs/bottomroad.svg';
 
 const Container = Styled.div`
   position: relative;
@@ -98,6 +97,27 @@ const GroundContent = Styled.div`
   width: 100%;
 `;
 
+const Road = Styled.img`
+  width: 100%;
+`;
+
+const RoadWrapper = Styled.div`
+  width: 100vw;
+  margin-top: -15vw;
+  min-width: 1000px;
+  overflow: hidden;
+`;
+
+const FAQContainer = Styled.div`
+  background: #4D8857;
+  padding: 40px;
+  margin-top: -25px;
+`;
+
+const FAQTitle = Styled.div`
+  font-size: 16px;
+  font-weight: 600px;
+`;
 export default class Home extends React.Component {
   render() {
     return (
@@ -114,8 +134,14 @@ export default class Home extends React.Component {
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
           </SubContent>
           <GroundContent>
-            <img src={ground} />
-            <img src={road} />
+            <RoadWrapper>
+              <Road src={bottomroad} />
+              <FAQContainer>
+                <FAQTitle>
+                  How do I get there to the University/Siebel/etc?
+                </FAQTitle>
+              </FAQContainer>
+            </RoadWrapper>
           </GroundContent>
         </Content>
       </Container>
