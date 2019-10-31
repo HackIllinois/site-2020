@@ -9,6 +9,7 @@ import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
 
 const Container = Styled.div`
   position: relative;
+  overflow-x: hidden;
 `;
 
 const BackgroundWrapper = Styled.div`
@@ -22,6 +23,7 @@ const BackgroundWrapper = Styled.div`
 const Background = Styled.img`
   width: 100%;
   min-width: 500px;
+  margin-bottom: 2000px;
 `;
 
 const Content = Styled.div`
@@ -38,7 +40,7 @@ const SubContent = Styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: space-between; */
 
   @media(max-width: 425px) {
     flex-direction: column;
@@ -65,14 +67,14 @@ const Sponsor = Styled.img`
 `;
 
 const City = Styled.img`
-  left: 0;
-  width: 70vw;
+  width: 100%;
+  margin-right: -500px;
 `;
 
 const Backdrop1 = Styled.img`
-  position: absolute;
-  right: -18vw;
-  width: 100vw;
+  /* position: absolute; */
+  margin-right: -300px;
+  width: 1800px;
 `;
 
 const Logo = Styled.img`
@@ -100,8 +102,8 @@ export default class Home extends React.Component {
           <Tagline src={tagline} alt={'tagline'} />
           <Sponsor src={sponsor} alt={'sponsor'} />
           <SubContent>
-            <Backdrop1 src={backdrop1} alt={'backdrop1'} />
             <City src={city} alt={'city'} />
+            <Backdrop1 src={backdrop1} alt={'backdrop1'} />
           </SubContent>
         </Content>
       </Container>
