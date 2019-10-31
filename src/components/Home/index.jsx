@@ -48,9 +48,9 @@ const SubContent = Styled.div`
 const Tagline = Styled.img`
   width: 75vw;
   max-width: 600px;
-  margin-top: 75px;
-  @media(max-width: 425px) {
-    margin-top: 80px;
+  margin-top: 125px;
+  @media(max-width: 425px){
+    margin-top: 100px;
   }
 `;
 
@@ -76,9 +76,9 @@ const Backdrop1 = Styled.img`
 `;
 
 const Logo = Styled.img`
-  width: 10vw;
+  width: 15vw;
   height: auto;
-  min-width: 100px;
+  min-width: 120px;
   position: auto;
   top: 20px;
   left: 35px;
@@ -99,10 +99,10 @@ export default class Home extends React.Component {
         <Content>
           <Tagline src={tagline} alt={'tagline'} />
           <Sponsor src={sponsor} alt={'sponsor'} />
-          <div>
+          <SubContent>
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
             <City src={city} alt={'city'} />
-          </div>
+          </SubContent>
         </Content>
       </Container>
     );
