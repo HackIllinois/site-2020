@@ -11,6 +11,7 @@ import road from 'assets/svgs/HackIllinois_Website_street.svg';
 
 const Container = Styled.div`
   position: relative;
+  overflow-x: hidden;
 `;
 
 const BackgroundWrapper = Styled.div`
@@ -24,6 +25,7 @@ const BackgroundWrapper = Styled.div`
 const Background = Styled.img`
   width: 100%;
   min-width: 500px;
+  margin-bottom: 2000px;
 `;
 
 const Content = Styled.div`
@@ -40,9 +42,9 @@ const SubContent = Styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: space-between; */
 
-  @media(max-width: 500px) {
+  @media(max-width: 425px) {
     flex-direction: column;
   }
 `;
@@ -61,19 +63,20 @@ const Sponsor = Styled.img`
   max-width: 600px;
   width: 75vw;
   display: none;
-  @media(max-width: 425px){
+  @media(max-width: 425px) {
     display: block;
   }
 `;
 
 const City = Styled.img`
-  width: 70vw;
-  margin: 15vh auto 15vh -16.5vw;
+  width: 100%;
+  margin-right: -500px;
 `;
 
 const Backdrop1 = Styled.img`
-  width: 70vw;
-  margin: 15vh -13vw 0 auto;
+  /* position: absolute; */
+  margin-right: -300px;
+  width: 1800px;
 `;
 
 const Logo = Styled.img`
