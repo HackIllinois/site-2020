@@ -138,10 +138,33 @@ const RoadWrapper = Styled.div`
   overflow: hidden;
 `;
 
+const TimeWrapper = Styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+  justify-content: space-around;
+  color: white;
+  margin-top: -10px;
+  padding-top: 50px;
+  background: #4D8857;
+`;
+
+const Clickable = Styled.div`
+transition: 0.5s;
+  &:hover{
+    transform: matrix(3, 0 , 0, 3, 0 ,0);
+  }
+`;
+
 const FAQContainer = Styled.div`
   background: #4D8857;
   padding: 40px;
   margin-top: -25px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: 1;
+  max-height: 300px;
+  color: white;
 `;
 
 const FAQTitle = Styled.div`
@@ -165,15 +188,24 @@ export default class Home extends React.Component {
           </SubContent>
         </Content>
         <GroundContent>
-            <RoadWrapper>
-              <Road src={bottomroad} />
-            </RoadWrapper>
-            <FAQContainer>
-              <FAQTitle>
-                How do I get there to the University/Siebel/etc?
+          <RoadWrapper>
+            <Road src={bottomroad} />
+          </RoadWrapper>
+          <TimeWrapper>
+            <Clickable>
+              General
+            </Clickable>
+            <Clickable>
+              Before
+            </Clickable>
+            <Clickable>During</Clickable>
+          </TimeWrapper>
+          <FAQContainer>
+            <FAQTitle>
+              How do I get there to the University/Siebel/etc?
                 </FAQTitle>
-            </FAQContainer>
-          </GroundContent>
+          </FAQContainer>
+        </GroundContent>
       </Container>
     );
   }
