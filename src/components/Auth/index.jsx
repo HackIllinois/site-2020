@@ -4,24 +4,30 @@ import queryString from 'query-string';
 import { getToken } from 'api';
 import Loading from 'components/Loading';
 
+function mobileRedirect(os, code) {
+  return `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
+}
+
 export default class Auth extends React.Component {
   componentDidMount() {
-    let queries = queryString.parse(this.props.location.search);
-    let { code, isAndroid, isiOS, to } = queries;
+    const { location } = this.props;
+    const queries = queryString.parse(location.search);
+    const { code, isAndroid, isiOS } = queries;
+    let { to } = queries;
 
     if (!code) {
       return;
     }
 
     if (isAndroid || isiOS) {
-      let os = isAndroid ? 'android' : 'ios';
+      const os = isAndroid ? 'android' : 'ios';
       to = mobileRedirect(os, code);
       window.location.replace(to);
     } else {
       getToken(code).then(token => {
         sessionStorage.setItem('token', token.token);
         window.location.replace(to);
-      }).catch(err => {
+      }).catch(() => {
         alert('Authentication failed.');
       });
     }
@@ -30,8 +36,4 @@ export default class Auth extends React.Component {
   render() {
     return <Loading />;
   }
-}
-
-function mobileRedirect(os, code) {
-  return `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
 }

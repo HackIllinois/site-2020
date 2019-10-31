@@ -1,6 +1,6 @@
-const PDF = props => {
-  window.location.replace(props.path);
+const PDF = ({ path }) => {
+  window.location.replace(path);
   return null;
-}
+};
 
 export default PDF;
