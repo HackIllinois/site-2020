@@ -36,9 +36,9 @@ const Content = Styled.div`
 const Tagline = Styled.img`
   width: 75vw;
   max-width: 600px;
-  margin-top: 75px;
+  margin-top: 125px;
   @media(max-width: 425px){
-    margin-top: 80px;
+    margin-top: 100px;
   }
 `;
 
@@ -58,9 +58,9 @@ const City = Styled.img`
 `;
 
 const Logo = Styled.img`
-  width: 10vw;
+  width: 15vw;
   height: auto;
-  min-width: 100px;
+  min-width: 120px;
   position: auto;
   top: 20px;
   left: 35px;
