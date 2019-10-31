@@ -40,7 +40,7 @@ const SubContent = Styled.div`
   flex-direction: row;
   align-items: center;
 
-  @media(max-width: 500px) {
+  @media(max-width: 425px) {
     flex-direction: column;
   }
 `;
@@ -49,7 +49,7 @@ const Tagline = Styled.img`
   width: 75vw;
   max-width: 600px;
   margin-top: 75px;
-  @media(max-width: 425px){
+  @media(max-width: 425px) {
     margin-top: 80px;
   }
 `;
@@ -59,19 +59,20 @@ const Sponsor = Styled.img`
   max-width: 600px;
   width: 75vw;
   display: none;
-  @media(max-width: 425px){
+  @media(max-width: 425px) {
     display: block;
   }
 `;
 
 const City = Styled.img`
+  left: 0;
   width: 70vw;
-  margin: 15vh auto 15vh -16.5vw;
 `;
 
 const Backdrop1 = Styled.img`
-  width: 70vw;
-  margin: 15vh -13vw 0 auto;
+  position: absolute;
+  right: -18vw;
+  width: 100vw;
 `;
 
 const Logo = Styled.img`
@@ -98,10 +99,10 @@ export default class Home extends React.Component {
         <Content>
           <Tagline src={tagline} alt={'tagline'} />
           <Sponsor src={sponsor} alt={'sponsor'} />
-          <SubContent>
-            <City src={city} alt={'city'} />
+          <div>
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
-          </SubContent>
+            <City src={city} alt={'city'} />
+          </div>
         </Content>
       </Container>
     );
