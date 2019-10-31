@@ -6,6 +6,8 @@ import sponsor from 'assets/svgs/Sponsor.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
 import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
+import ground from 'assets/svgs/HackIllinois_Website_ground.svg';
+import road from 'assets/svgs/HackIllinois_Website_street.svg';
 
 const Container = Styled.div`
   position: relative;
@@ -87,6 +89,12 @@ const Logo = Styled.img`
     left: 15px;
   }
 `;
+
+const GroundContent = Styled.div`
+  height: 100px;
+  width: 100%;
+`;
+
 export default class Home extends React.Component {
   render() {
     return (
@@ -102,6 +110,10 @@ export default class Home extends React.Component {
             <City src={city} alt={'city'} />
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
           </SubContent>
+          <GroundContent>
+            <img src={ground} />
+            <img src={road} />
+          </GroundContent>
         </Content>
       </Container>
     );
