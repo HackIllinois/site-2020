@@ -6,10 +6,12 @@
     }
   },
   "rules": {
-    "react/prop-types": ["off"],
-    "no-param-reassign": ["off"],
+    "react/prop-types": "off",
+    "no-param-reassign": "off",
     "arrow-parens": ["error", "as-needed"],
-    "react/jsx-one-expression-per-line": ["off"]
+    "react/jsx-one-expression-per-line": "off",
+    "template-curly-spacing" : "off",
+    "indent": "off"
   },
   "settings": {
     "import/resolver": {
