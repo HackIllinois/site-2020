@@ -1,5 +1,5 @@
 import React from 'react';
-import Styled from 'styled-components';
+import Styled, { keyframes } from 'styled-components';
 import bg from 'assets/svgs/background.svg';
 import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
 import sponsor from 'assets/svgs/Sponsor.svg';
@@ -160,9 +160,10 @@ const TimeWrapper = Styled.div`
 `;
 
 const Clickable = Styled.div`
-transition: 0.5s;
+transition: 10s;
   &:hover{
-    transform: matrix(3, 0 , 0, 3, 0 ,0);
+    transform: rotate(100000deg);
+    cursor: pointer;
   }
 `;
 
@@ -170,16 +171,14 @@ const FAQContainer = Styled.div`
   background: #4D8857;
   padding: 40px;
   margin-top: -25px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   max-height: 300px;
   color: white;
 `;
 
 const FAQTitle = Styled.div`
   font-size: 16px;
-  font-weight: 600px;
 `;
 export default class Home extends React.Component {
   render() {
@@ -212,8 +211,20 @@ export default class Home extends React.Component {
           </TimeWrapper>
           <FAQContainer>
             <FAQTitle>
-              How do I get there to the University/Siebel/etc?
-                </FAQTitle>
+              <b>
+                How do I get there to the University of Illinois/Siebel/etc.?
+            </b><br />
+              Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.
+
+            </FAQTitle>
+            <FAQTitle>
+            <b>Do I need to have a programming background to participate?</b><br/>
+No! People of all skill levels are welcomed. 
+            </FAQTitle>
+            <FAQTitle>
+            <b>What should I bring?</b> <br/>
+You should bring a student ID, a reusable water bottle, a change of clothing, personal items such as toiletries, and a laptop & charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.
+</FAQTitle>
           </FAQContainer>
         </GroundContent>
       </Container>
