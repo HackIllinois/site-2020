@@ -16,18 +16,13 @@ const Container = Styled.div`
 const BackgroundWrapper = Styled.div`
   overflow: hidden;
   width: 100%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
-
 `;
 const Background = Styled.img`
   width: 100%;
-  /* height: 100% */
-  min-width: 500px;
-  @media(max-width: 1000px){
-    width: 200%;
-  }
+  min-width: 1500px;
 `;
 
 const Content = Styled.div`
@@ -42,16 +37,12 @@ const Content = Styled.div`
 
 const SubContent = Styled.div`
   width: 100%;
-  /* display: flex;
-  flex-direction: row;
-  align-items: space-between;
-
-  @media(max-width: 600px) {
-    flex-direction: column;
-  } */
+  height: auto;
+  overflow: hidden;
 `;
 
 const Tagline = Styled.img`
+  overflow: hidden;
   width: 75vw;
   max-width: 600px;
   margin-top: 125px;
@@ -72,6 +63,7 @@ const Sponsor = Styled.img`
 
 const City = Styled.img`
   position: absolute;
+  overflow: hidden;
   width: 80vw;
   flex-grow: 0;
   transform: translate(-10vw, 200px);
@@ -95,10 +87,12 @@ const City = Styled.img`
 
 const Backdrop1 = Styled.img`
   position: absolute;
+  overflow: hidden;
   /* flex-grow: 0;
   flex-shrink: 0; */
   right: -300px;
   width: 90vw;
+  
   transform: translate(5vw, 150px);
   
   @media(max-width: 1700px) {
@@ -119,7 +113,7 @@ const Logo = Styled.img`
   width: 15vw;
   height: auto;
   min-width: 120px;
-  position: auto;
+  /* position: auto; */
   top: 20px;
   left: 35px;
   position: absolute;
@@ -130,11 +124,26 @@ const Logo = Styled.img`
 `;
 
 const GroundContent = Styled.div`
-  height: 100px;
   width: 100%;
+  height: 0;
   position: absolute;
-  bottom: 0;
-  z-index: 10;
+  z-index: 3;
+
+  @media(min-width: 1700px) {
+    margin-top: calc(80vw + 250px);
+  }
+
+  @media(max-width: 1700px) {
+    transform: translate(0, 1745px);
+  }
+  
+  @media(max-width: 1300px) {
+    transform: translate(0, 1895px);
+  }
+  
+  @media(max-width: 1000px) {
+    transform: translate(0, 1945px);
+  }
 `;
 
 const Road = Styled.img`
@@ -149,6 +158,7 @@ const RoadWrapper = Styled.div`
 `;
 
 const TimeWrapper = Styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   font-size: 24px;
@@ -168,6 +178,7 @@ transition: 10s;
 `;
 
 const FAQContainer = Styled.div`
+  overflow: hidden;
   background: #4D8857;
   padding: 40px;
   margin-top: -25px;
@@ -180,6 +191,7 @@ const FAQContainer = Styled.div`
 const FAQTitle = Styled.div`
   font-size: 16px;
 `;
+
 export default class Home extends React.Component {
   render() {
     return (
@@ -190,12 +202,32 @@ export default class Home extends React.Component {
         </BackgroundWrapper>
         <Content>
           <Tagline src={tagline} alt={'tagline'} />
-          <Sponsor src={sponsor} alt={'sponsor'} />
+          {/* <Sponsor src={sponsor} alt={'sponsor'} /> */}
           <SubContent>
             <City src={city} alt={'city'} />
             <Backdrop1 src={backdrop1} alt={'backdrop1'} />
+            <GroundContent>
+              <RoadWrapper>
+                <Road src={bottomroad} />
+              </RoadWrapper>
+              <TimeWrapper>
+                <Clickable>
+                  General
+                </Clickable>
+                <Clickable>
+                  Before
+                </Clickable>
+                <Clickable>During</Clickable>
+              </TimeWrapper>
+              <FAQContainer>
+                <FAQTitle>
+                  How do I get there to the University/Siebel/etc?
+                </FAQTitle>
+              </FAQContainer>
+            </GroundContent>
           </SubContent>
         </Content>
+<<<<<<< HEAD
         <GroundContent>
           <RoadWrapper>
             <Road src={bottomroad} />
@@ -227,6 +259,9 @@ You should bring a student ID, a reusable water bottle, a change of clothing, pe
 </FAQTitle>
           </FAQContainer>
         </GroundContent>
+=======
+        
+>>>>>>> 6c1569e2273670d896b9d35ad81905e3cc4e7e13
       </Container>
     );
   }
