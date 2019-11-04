@@ -4,7 +4,7 @@ import bg from 'assets/svgs/background.svg';
 import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
-import backdrop1 from 'assets/svgs/HackIllinois_Website-18.svg';
+import backdrop1 from 'assets/svgs/backdrop.svg';
 import bottomroad from 'assets/svgs/bottomroad.svg';
 
 const Container = Styled.div`
@@ -30,6 +30,20 @@ const SubContent = Styled.div`
   margin-top: 100px;
   grid-template-columns: 100px 1fr 1fr 1fr 1fr;
   grid-template-rows: 500px 400px 300px 300px 500px;
+  @media(max-width: 1800px){
+    grid-template-rows: 700px 200px 300px 300px;
+  }
+  @media(max-width: 1400px){
+    grid-template-rows: 600px 300px 300px;
+  }
+  @media(max-width: 900px){
+    grid-template-rows: 400px 300px;
+  }
+  @media(max-width: 636px){
+    grid-template-columns: 100vw;
+    grid-template-rows: 90vw 300px 800px;
+    justify-items: center;
+  }
 `;
 
 const Tagline = Styled.img`
@@ -47,27 +61,44 @@ const Tagline = Styled.img`
 const City = Styled.img`
   height: 100%;
   z-index: 1;
-  grid-area: 1 / 1 / 3 / 4;
+  grid-area: 1 / 1 / 4 / 4;
   justify-self: start;
-  @media(min-width: 1800px){
-    grid-area: 1 / 1 / 4 / 4;
+  @media(max-width: 1800px){
+    grid-area: 1 / 1 / 3 / 4;
+  }
+  @media(max-width: 1400px){
+    grid-area: 1/1/2/4;
+  }
+  @media(max-width: 636px){
+    justify-self: center;
+    grid-area: 1/1/3/2;
+    height: auto;
+    width: 100%;
+    margin-right: 5vw;
   }
 `;
 
 const Backdrop1 = Styled.div`
   background-image: url(${backdrop1});
   background-size: cover;
-  background-position: 20% 50%;
+  background-position: 25% 50%;
   width: 100%;
   z-index: 2;
   grid-area: 1/2/6/6;
-  @media(max-width: 2000px) {
-    
+  @media(max-width: 1400px) {
+    grid-area: 1/1/5/6;
+    background-position: 30% 50%;
   }
-  @media(min-width: 1600px) {
+  @media(max-width: 900px) {
+    background-position: 30%;
+
   }
-  @media(min-width: 1200px) {
-    grid-area: 1/2/6/6;
+  @media(max-width: 636px){
+    grid-area: 2/1/4/3;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100%;
   }
 `;
 
@@ -88,6 +119,12 @@ const Logo = Styled.img`
 const GroundContent = Styled.div`
   width: 100%;
   z-index: 3;
+  @media(max-width: 570px){
+    margin-top: -60px;
+  }
+  @media(max-width: 380px){
+    margin-top: -90px;
+  }
 `;
 
 const Road = Styled.img`
