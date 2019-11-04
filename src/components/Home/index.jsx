@@ -10,92 +10,64 @@ import bottomroad from 'assets/svgs/bottomroad.svg';
 const Container = Styled.div`
   position: relative;
   overflow-x: hidden;
-`;
-
-const BackgroundWrapper = Styled.div`
-  overflow: hidden;
-  width: 100%;
-  /* display: flex; */
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-
-`;
-const Background = Styled.img`
-  width: 100%;
-  min-width: 1500px;
+  background-image: url(${bg});
+  background-position: center;
+  background-size: cover;
 `;
 
 const Content = Styled.div`
   position: relative;
-  top: 0;
-  left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 `;
 
 const SubContent = Styled.div`
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  height: 100%;
+  display: grid;
+  margin-top: 100px;
+  grid-template-columns: 100px 1fr 1fr 1fr 1fr;
+  grid-template-rows: 500px 400px 300px 300px 500px;
 `;
 
 const Tagline = Styled.img`
   overflow: hidden;
-  width: 75vw;
+  width: auto;
   max-width: 600px;
-  margin-top: 125px;
-  @media(max-width: 425px){
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  @media(max-width: 375px){
     margin-top: 100px;
   }
 `;
 
 const City = Styled.img`
-  position: absolute;
-  overflow: hidden;
-  width: 80vw;
-  flex-grow: 0;
-  transform: translate(-10vw, 200px);
-  margin-right: -600px;
-  margin-left: -10vw;
-
-  @media(max-width: 1700px) {
-    transform: translate(-100px, 200px);
-    width: 1000px;
-  }
-
-  @media(max-width: 1300px) {
-    transform: translate(-100px, 100px);
-    width: 90vw;
-  }
-
-  @media(max-width: 1000px) {
-    width: 100vw;
+  height: 100%;
+  z-index: 1;
+  grid-area: 1 / 1 / 3 / 4;
+  justify-self: start;
+  @media(min-width: 1800px){
+    grid-area: 1 / 1 / 4 / 4;
   }
 `;
 
-const Backdrop1 = Styled.img`
-  position: absolute;
-  overflow: hidden;
-  right: -300px;
-  width: 90vw;
-  
-  transform: translate(5vw, 150px);
-  
-  @media(max-width: 1700px) {
-    width: 1800px;
-    transform: translate(0, 150px);
+const Backdrop1 = Styled.div`
+  background-image: url(${backdrop1});
+  background-size: cover;
+  background-position: 20% 50%;
+  width: 100%;
+  z-index: 2;
+  grid-area: 1/2/6/6;
+  @media(max-width: 2000px) {
+    
   }
-  
-  @media(max-width: 1300px) {
-    transform: translate(0, 300px);
+  @media(min-width: 1600px) {
   }
-  
-  @media(max-width: 1000px) {
-    transform: translate(0, 350px);
+  @media(min-width: 1200px) {
+    grid-area: 1/2/6/6;
   }
 `;
 
@@ -103,7 +75,6 @@ const Logo = Styled.img`
   width: 15vw;
   height: auto;
   min-width: 120px;
-  /* position: auto; */
   top: 20px;
   left: 35px;
   position: absolute;
@@ -111,29 +82,12 @@ const Logo = Styled.img`
     top: 15px;
     left: 15px;
   }
+  z-index: 10;
 `;
 
 const GroundContent = Styled.div`
   width: 100%;
-  height: 0;
-  position: absolute;
   z-index: 3;
-
-  @media(min-width: 1700px) {
-    margin-top: calc(80vw + 250px);
-  }
-
-  @media(max-width: 1700px) {
-    transform: translate(0, 1745px);
-  }
-  
-  @media(max-width: 1300px) {
-    transform: translate(0, 1895px);
-  }
-  
-  @media(max-width: 1000px) {
-    transform: translate(0, 1945px);
-  }
 `;
 
 const Road = Styled.img`
@@ -174,12 +128,17 @@ const FAQContainer = Styled.div`
   margin-top: -25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-height: 300px;
   color: white;
+  @media(max-width: 650px){
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FAQTitle = Styled.div`
   font-size: 16px;
+  @media(max-width: 650px){
+    margin-top: 20px;
+  }
 `;
 
 export default class Home extends React.Component {
@@ -187,26 +146,23 @@ export default class Home extends React.Component {
     return (
       <Container>
         <Logo src={logo} />
-        <BackgroundWrapper>
-          <Background src={bg} alt={'background'} />
-        </BackgroundWrapper>
         <Content>
           <Tagline src={tagline} alt={'tagline'} />
-          {/* <Sponsor src={sponsor} alt={'sponsor'} /> */}
           <SubContent>
-            <City src={city} alt={'city'} />
-            <Backdrop1 src={backdrop1} alt={'backdrop1'} />
-            <GroundContent>
+            <City src={city}/>
+            <Backdrop1 />
+          </SubContent>
+          <GroundContent>
               <RoadWrapper>
                 <Road src={bottomroad} />
               </RoadWrapper>
               <TimeWrapper>
                 <Clickable>
                   General
-            </Clickable>
+                </Clickable>
                 <Clickable>
                   Before
-            </Clickable>
+                </Clickable>
                 <Clickable>During</Clickable>
               </TimeWrapper>
               <FAQContainer>
@@ -215,7 +171,7 @@ export default class Home extends React.Component {
                     How do I get there to the University of Illinois/Siebel/etc.?
             </b><br />
                   Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.
-    
+
             </FAQTitle>
                 <FAQTitle>
                   <b>Do I need to have a programming background to participate?</b><br />
@@ -227,7 +183,6 @@ export default class Home extends React.Component {
             </FAQTitle>
               </FAQContainer>
             </GroundContent>
-          </SubContent>
         </Content>
 
       </Container>
