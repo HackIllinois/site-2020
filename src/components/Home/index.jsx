@@ -5,7 +5,9 @@ import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
 import city from 'assets/svgs/HackIllinois_Website-05.svg';
 import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
 import backdrop1 from 'assets/svgs/backdrop.svg';
-import bottomroad from 'assets/svgs/bottomroad.svg';
+import backgroundRoad from 'assets/svgs/background_road.svg';
+import foregroundBush from 'assets/svgs/foreground_bushes.svg';
+import car from 'assets/svgs/HackIllinois_Website_car.svg';
 
 const Container = Styled.div`
   position: relative;
@@ -141,13 +143,15 @@ const Backdrop1 = Styled.div`
 
 const DescContainer = Styled.div`
   z-index: 3;
+  margin-top: 100px;
   grid-area: 1/4/6/6;
 
-  @media(max-width: 4600px) {
+  @media(max-width: 3600px) {
+    margin-top: 0;
     grid-area: 2/4/6/6;
   }
 
-  @media(max-width: 2600px) {
+  @media(max-width: 2400px) {
     grid-area: 3/4/6/6;
   }
 
@@ -200,11 +204,34 @@ const GroundContent = Styled.div`
   }
 `;
 
-const Road = Styled.img`
-  width: 100%;
+const BackgroundRoad = Styled.img`
+  width: 101%;
+  margin-left: -2px;
+`;
+
+const ForegroundBush = Styled.img`
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  margin: -2.5% 5%;
+`;
+
+const Car = Styled.img.attrs(props => {
+  let p = props.position - 80;
+  return({
+    style: {
+      transform: 'translate(' + (p > 0 ? p * p / 4 : 0) + 'vw)'
+    }
+  })
+})`
+  z-index: 2
+  width: 10%;
+  margin: -3.8% 0;
+  /* transform: {props => 'translate(' + props.position + 'px)'}; */
 `;
 
 const RoadWrapper = Styled.div`
+  z-index: 2
   width: 100vw;
   margin-top: -30vw;
   min-width: 1000px;
@@ -219,24 +246,43 @@ const TimeWrapper = Styled.div`
   justify-content: space-around;
   color: white;
   margin-top: -10px;
-  padding-top: 50px;
-  background: #4D8857;
+  padding: 50px 0 25px 0;
+  background: #4B8655;
 `;
 
 const Clickable = Styled.div`
+  letter-spacing: 0.1em;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
   &:hover{
     cursor: pointer;
   }
 `;
 
 const FAQContainer = Styled.div`
+  z-index: 6;
   overflow: hidden;
-  background: #4D8857;
-  padding: 40px;
+  background: #4B8655;
+  padding-bottom: 9vw;
   margin-top: -25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
+
+  @media(max-width: 3000px){
+    padding-bottom: 7vw;
+  }
+
+  @media(max-width: 2500px){
+    padding-bottom: 5vw;
+  }
+
+  @media(max-width: 2500px){
+    padding: 40px;
+  }
+  
   @media(max-width: 900px){
     grid-template-columns: 1fr;
   }
@@ -248,9 +294,6 @@ const FAQContainer = Styled.div`
 const FAQTitle = Styled.div`
   padding: 10px;
   font-size: 16px;
-  /* @media(max-width: 650px){
-    padding: ;
-  } */
 `;
 
 export default class Home extends React.Component {
@@ -258,15 +301,35 @@ export default class Home extends React.Component {
     super(props);
     this.state = {
       FAQState: 'General',
+      scrollPos: 0,
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
+    this.changeFAQ = this.changeFAQ.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   changeFAQ(title) {
     this.setState({FAQState: title});
   }
 
+  handleScroll() {
+    let h = document.body.clientHeight;
+    let st = document.body.scrollTop;
+    let sh = document.body.scrollHeight;
+    // console.log(h, st, sh);
+    this.setState({scrollPos: st / (sh - h) * 100});
+  }
+
   render() {
-    const { FAQState }= this.state;
+    const { FAQState, scrollPos }= this.state;
 
     const Descriptions = [
       {
@@ -409,7 +472,7 @@ export default class Home extends React.Component {
             </Backdrop1>
             <DescContainer>
               {Descriptions.map(e =>
-                <div>
+                <div key={e.title}>
                   <DescTitle>{e.title}</DescTitle>
                   <Desc>{e.body}</Desc>
                 </div>
@@ -418,7 +481,9 @@ export default class Home extends React.Component {
           </SubContent>
           <GroundContent>
             <RoadWrapper>
-              <Road src={bottomroad} />
+              <BackgroundRoad src={backgroundRoad} alt={'backgroundRoad'}/>
+              <Car src={car} alt={'car'} position={scrollPos}/>
+              <ForegroundBush src={foregroundBush} alt={'foregroundBush'}/>
             </RoadWrapper>
             <TimeWrapper>
               {Clickables.map(e => 
