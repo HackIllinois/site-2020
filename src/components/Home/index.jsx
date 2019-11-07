@@ -55,14 +55,14 @@ const SubContent = Styled.div`
   }
 
   @media(max-width: 700px){
-    grid-template-rows: 90vw 400px 1200px;
+    grid-template-rows: 90vw 250px 150px 1200px;
   }
 
-  @media(max-width: 600px){
+  /* @media(max-width: 600px){
     grid-template-rows: 90vw 400px 1300px;
-  }
+  } */
   @media(max-width: 600px){
-    grid-template-rows: 90vw 400px 1500px;
+    grid-template-rows: 90vw 200px 200px 1500px;
   }
 
   @media(max-width: 450px){
@@ -138,6 +138,10 @@ const Backdrop1 = Styled.div`
     background-repeat: no-repeat;
     width: 100vw;
     height: 100%;
+  }
+
+  @media(max-width: 700px){
+    grid-area: 2/1/5/3;
   }
 `;
 
@@ -220,14 +224,13 @@ const Car = Styled.img.attrs(props => {
   let p = props.position - 80;
   return({
     style: {
-      transform: 'translate(' + (p > 0 ? p * p / 4 : 0) + 'vw)'
+      transform: 'translate(' + (p > 0 ? p * 5 : 0) + 'vw)'
     }
   })
 })`
   z-index: 2
   width: 10%;
   margin: -3.8% 0;
-  /* transform: {props => 'translate(' + props.position + 'px)'}; */
 `;
 
 const RoadWrapper = Styled.div`
