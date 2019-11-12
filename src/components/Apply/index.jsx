@@ -7,6 +7,7 @@ import {
   getApplication,
   getRoles,
   isAuthenticated,
+  uploadResume,
 } from 'api';
 
 import Loading from 'components/Loading';
@@ -54,10 +55,12 @@ export default class Apply extends React.Component {
     super(props);
 
     this.state = {
-      application: {},
-      page: 0,
-      isEditing: false,
       isLoading: true,
+      isEditing: false,
+
+      application: {},
+      resume: undefined,
+      page: 0,
     };
   }
 
@@ -83,6 +86,11 @@ export default class Apply extends React.Component {
     });
   }
 
+  onResumeUpload = event => {
+    const file = event.target.files[0];
+    this.setState({ resume: file });
+  }
+
   back = () => {
     this.setState(prevState => ({ page: prevState.page - 1 }));
   }
@@ -94,13 +102,20 @@ export default class Apply extends React.Component {
   submit = app => {
     this.setState({ isLoading: true });
 
-    const { isEditing } = this.state;
+    const { isEditing, resume } = this.state;
     const { history } = this.props;
+
     apply(isEditing, app).then(() => {
-      history.push('/');
+      if (resume) {
+        return uploadResume(resume).then(() => {
+          history.push('/');
+        }).catch(() => {
+          this.setState({ isLoading: false });
+        });
+      }
+      return {};
     }).catch(() => {
       this.setState({ isLoading: false });
-      alert('Failed to submit.');
     });
   }
 
@@ -166,7 +181,11 @@ export default class Apply extends React.Component {
       />
 
       <p>Resume</p>
-      <input type="file" accept="application/pdf" />
+      <input
+        type="file"
+        accept="application/pdf"
+        onChange={this.onResumeUpload}
+      />
 
       <br />
 
