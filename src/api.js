@@ -47,6 +47,22 @@ export function getApplication() {
   return request('GET', '/registration/attendee/');
 }
 
+export function uploadResume(resume) {
+  return request('GET', '/upload/resume/upload/').then(res => {
+    const url = res.resume;
+    return fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/pdf' },
+      body: resume,
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw Error(res);
+    });
+  });
+}
+
 export function apply(isEditing, application) {
   const method = isEditing ? 'PUT' : 'POST';
   return request(method, '/registration/attendee/', application);
