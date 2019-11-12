@@ -7,7 +7,7 @@ import {
   getApplication,
   getRoles,
   isAuthenticated,
-  uploadResume
+  uploadResume,
 } from 'api';
 
 import Loading from 'components/Loading';
@@ -88,7 +88,7 @@ export default class Apply extends React.Component {
 
   onResumeUpload = event => {
     const file = event.target.files[0];
-    this.setState({resume: file});
+    this.setState({ resume: file });
   }
 
   back = () => {
@@ -104,19 +104,18 @@ export default class Apply extends React.Component {
 
     const { isEditing, resume } = this.state;
     const { history } = this.props;
-    
-    apply(isEditing, app).then(res => {
+
+    apply(isEditing, app).then(() => {
       if (resume) {
         return uploadResume(resume).then(() => {
           history.push('/');
         }).catch(() => {
           this.setState({ isLoading: false });
-          alert('Failed to upload resume.');
         });
       }
+      return {};
     }).catch(() => {
       this.setState({ isLoading: false });
-      alert('Failed to submit.');
     });
   }
 

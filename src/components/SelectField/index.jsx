@@ -11,9 +11,8 @@ class FormikSelect extends React.Component {
 
     if (isMulti) {
       return options.filter(option => field.value.includes(option.value));
-    } else {
-      return options.find(option => field.value === option.value);
     }
+      return options.find(option => field.value === option.value);
   }
 
   handleChange = selected => {
