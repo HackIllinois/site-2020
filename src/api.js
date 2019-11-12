@@ -8,7 +8,7 @@ function headers() {
 }
 
 function request(method, endpoint, body) {
-  return fetch(endpoint, {
+  return fetch(API + endpoint, {
     method,
     headers: headers(),
     body: JSON.stringify(body),
