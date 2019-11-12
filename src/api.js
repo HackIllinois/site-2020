@@ -8,7 +8,7 @@ function headers() {
 }
 
 function request(method, endpoint, body) {
-  return fetch(API + endpoint, {
+  return fetch(endpoint, {
     method,
     headers: headers(),
     body: JSON.stringify(body),
@@ -17,9 +17,8 @@ function request(method, endpoint, body) {
       return res.json();
     }
     throw Error(res);
-  }).then(obj => obj);
+  });
 }
-
 
 export function isAuthenticated() {
   return sessionStorage.getItem('token');

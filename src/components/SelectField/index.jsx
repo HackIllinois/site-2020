@@ -1,4 +1,4 @@
-// We disable the rule prenting use of ...props because these are higher order components
+// We disable the rule preventing the use of ...props because these are higher order components
 /* eslint react/jsx-props-no-spreading: 0 */
 
 import { Field } from 'formik';
@@ -10,11 +10,10 @@ class FormikSelect extends React.Component {
     const { field, isMulti, options } = this.props;
 
     if (isMulti) {
-      const match = opt => field.value.includes(opt.value);
-      return options.filter(match);
+      return options.filter(option => field.value.includes(option.value));
+    } else {
+      return options.find(option => field.value === option.value);
     }
-    const match = opt => opt.value === field.value;
-    return options.find(match);
   }
 
   handleChange = selected => {
@@ -44,7 +43,7 @@ class FormikSelect extends React.Component {
 }
 
 const SelectField = ({ name, ...props }) => (
-  <Field key={name} component={FormikSelect} {...props} />
+  <Field name={name} component={FormikSelect} {...props} />
 );
 
 export default SelectField;
