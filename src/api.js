@@ -49,9 +49,7 @@ export function getApplication() {
 
 export function uploadResume(resume) {
   return request('GET', '/upload/resume/upload/')
-    .then(res => {
-      return res.resume;
-    })
+    .then(res => res.resume)
     .then(url => fetch(url, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/pdf' },
