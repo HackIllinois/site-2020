@@ -49,18 +49,12 @@ export function getApplication() {
 
 export function uploadResume(resume) {
   return request('GET', '/upload/resume/upload/')
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      throw Error(res);
-    })
     .then(res => res.resume)
     .then(url => fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/pdf' },
-        body: resume,
-      }))
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/pdf' },
+      body: resume,
+    }))
     .then(res => {
       if (res.ok) {
         return res;
