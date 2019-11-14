@@ -28,9 +28,10 @@ class FormikSelect extends React.Component {
   }
 
   render() {
-    const { field } = this.props;
+    const { field, styleHelper } = this.props;
     return (
       <Select
+        className={styleHelper ? "formik-select" : ""}
         hideSelectedOptions={false}
         name={field.name}
         onChange={this.handleChange}

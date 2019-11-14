@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
+import './index.scss';
 
 import {
   apply,
@@ -133,9 +134,21 @@ export default class Apply extends React.Component {
         placeholder="Strauch"
       />
 
-      <br />
+      <p>Gender</p>
+      <SelectField
+        styleHelper
+        name="gender"
+        placeholder="What is your gender?"
+        options={[
+          { label: 'Internship', value: 'INTERNSHIP' },
+          { label: 'Full-time', value: 'FULLTIME' },
+        ]}
+      />
 
-      <button type="button" onClick={this.next}>Next</button>
+      <br />
+      <div className="buttons">
+        <button type="button" onClick={this.next}>Next</button>
+      </div>
     </div>
   );
 
@@ -143,6 +156,7 @@ export default class Apply extends React.Component {
     <div>
       <p>School</p>
       <SelectField
+        styleHelper
         name="school"
         placeholder="University of Illinois"
         options={schools.map(school => ({ value: school, label: school }))}
@@ -150,6 +164,7 @@ export default class Apply extends React.Component {
 
       <p>Major</p>
       <SelectField
+        styleHelper
         name="major"
         placeholder="Computer Science"
         options={majors.map(major => ({ value: major, label: major }))}
@@ -157,13 +172,16 @@ export default class Apply extends React.Component {
 
       <p>Graduation Year</p>
       <SelectField
+        styleHelper
         name="graduationYear"
         placeholder="2020"
         options={graduationYears.map(year => ({ value: year, label: year }))}
       />
 
-      <button type="button" onClick={this.back}>Back</button>
-      <button type="button" onClick={this.next}>Next</button>
+      <div className="buttons">
+        <button type="button" onClick={this.back}>Back</button>
+        <button type="button" onClick={this.next}>Next</button>
+      </div>
     </div>
   );
 
@@ -171,7 +189,7 @@ export default class Apply extends React.Component {
     <div>
       <p>Career Interests</p>
       <SelectField
-        isMulti
+        styleHelper
         name="interests"
         placeholder="Internship"
         options={[
@@ -189,8 +207,10 @@ export default class Apply extends React.Component {
 
       <br />
 
-      <button type="button" onClick={this.back}>Back</button>
-      <button type="submit">Submit</button>
+      <div className="buttons">
+        <button type="button" onClick={this.back}>Back</button>
+        <button type="submit">Submit</button>
+      </div>
     </div>
   );
 
@@ -201,18 +221,36 @@ export default class Apply extends React.Component {
     }
 
     const pages = [this.page1, this.page2, this.page3];
+    const pageTitles = ["PERSONAL INFO", "EDUCATIONAL", "PROFESSIONAL INFO",
+                        "EXPERIENCE", "INTERESTS", "HACKILLINOIS INFO"];
 
     return (
-      <Formik
-        initialValues={application}
-        enableReinitialize
-        onSubmit={this.submit}
-        render={() => (
-          <Form>
-            {pages[page]()}
-          </Form>
-        )}
-      />
+      <div className="apply">
+
+        <h1>Registration</h1>
+
+        <div className="progress">
+          {(() =>
+            pageTitles.map((title) => (
+              <p className={page == pageTitles.indexOf(title) ? "selected" : ""}>
+                {title}
+              </p>
+            ))
+          )()}
+        </div>
+
+        <Formik
+          initialValues={application}
+          enableReinitialize
+          onSubmit={this.submit}
+          render={() => (
+            <Form>
+              {pages[page]()}
+            </Form>
+          )}
+        />
+
+      </div>
     );
   }
 }
