@@ -229,6 +229,10 @@ export default class Apply extends React.Component {
     return (
       <div className="apply">
 
+        <div className="placeholder">
+        </div>
+
+        <div className="application">
         <h1>Registration</h1>
 
         <div className="progress">
@@ -251,6 +255,8 @@ export default class Apply extends React.Component {
             </Form>
           )}
         />
+
+        </div>
 
       </div>
     );
