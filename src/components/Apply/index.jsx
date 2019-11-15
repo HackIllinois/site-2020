@@ -147,6 +147,7 @@ export default class Apply extends React.Component {
 
       <br />
       <div className="buttons">
+        <div></div>
         <button type="button" onClick={this.next}>Next</button>
       </div>
     </div>
@@ -156,6 +157,7 @@ export default class Apply extends React.Component {
     <div>
       <p>School</p>
       <SelectField
+        isMulti
         styleHelper
         name="school"
         placeholder="University of Illinois"

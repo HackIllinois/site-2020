@@ -1,11 +1,14 @@
 html, body {
     background-color: #c9e2ea;
+    color: #0A093F;
 }
 
 h1 {
+    margin-top: 55px;
     text-align: center;
     font-weight: 600;
     font-size: 48px;
+    color: #222B5C;
 }
 
 .progress {
@@ -76,7 +79,7 @@ form {
 
 .buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 90px;
     margin-bottom: 30px;
 }
