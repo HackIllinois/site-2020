@@ -10,7 +10,7 @@ export const DESCRIPTIONS = [
   {
     title: 'Join Us',
     body: 'Interested in contributing to open source? Be sure to apply for your chance to attend. Really want to come? Complete our Open Source Challenge for guaranteed admission to HackIllinois 2019. It’s simple—just make one PR to any project between December 1, 2018 and the close of applications. New to open source? No problem. Our workshops and mentors will help guide you through the intricacies of open source, from licensing to making your first PR (pull request).',
-  }
+  },
 ];
 
 export const CLICKABLES = [
@@ -31,7 +31,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'How do I get to the University of Illinois/Siebel/etc.?',
-          a: 'Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.'
+          a: 'Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.',
         },
         {
           q: 'Do I need to have a programming background to participate?',
@@ -72,7 +72,7 @@ export const FAQ_PANELS = {
         {
           q: 'Where do I sleep?',
           a: 'There will be sleeping rooms furnished with air mattresses and pillows. We want you to be healthy and comfortable during the weekend!',
-        }
+        },
       ],
       [
         {
@@ -88,7 +88,7 @@ export const FAQ_PANELS = {
         {
           q: 'How can I contact a mentor?',
           a: 'Room locations for each mentor are up on the website and on our pamphlet. Otherwise, you can contact them on Slack.',
-        }
+        },
       ],
       [
         {
@@ -103,7 +103,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'Do I have to stay in the north quad? (aka Siebel and ECEB)',
-          a: 'Nope! Feel free to roam around Urbana-Champaign and explore what we have to offer.'
+          a: 'Nope! Feel free to roam around Urbana-Champaign and explore what we have to offer.',
         },
       ],
       [

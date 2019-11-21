@@ -9,6 +9,7 @@ import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
 import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+
 const Container = Styled.div`
   position: relative;
   overflow-x: hidden;
@@ -202,12 +203,12 @@ const ForegroundBush = Styled.img`
 `;
 
 const Car = Styled.img.attrs(props => {
-  let p = props.position - 80;
+  const p = props.position - 80;
   return {
     style: {
-      transform: 'translate(' + (p > 0 ? p * 5 : 0) + 'vw)'
-    }
-  }
+      transform: `translate(${ p > 0 ? p * 5 : 0 }vw)`,
+    },
+  };
 })`
   z-index: 2
   width: 10%;
@@ -301,10 +302,10 @@ export default class Home extends React.Component {
   }
 
   handleScroll() {
-    let h = document.body.clientHeight;
-    let st = document.body.scrollTop;
-    let sh = document.body.scrollHeight;
-    this.setState({ SCROLL_POS: st / (sh - h) * 100 });
+    const h = document.body.clientHeight;
+    const st = document.body.scrollTop;
+    const sh = document.body.scrollHeight;
+    this.setState({ SCROLL_POS: (st / (sh - h)) * 100 });
   }
 
   render() {
@@ -313,47 +314,47 @@ export default class Home extends React.Component {
       <Container>
         <Logo src={logo} />
         <Content>
-          <Tagline src={tagline} alt={'tagline'} />
+          <Tagline src={tagline} alt="tagline" />
           <SubContent>
             <City src={city} />
-            <Backdrop1>
-            </Backdrop1>
+            <Backdrop1 />
             <DescriptionContainer>
-              {DESCRIPTIONS.map(e =>
+              {DESCRIPTIONS.map(e => (
                 <div key={e.title}>
                   <DescriptionTitle>{e.title}</DescriptionTitle>
                   <Description>{e.body}</Description>
                 </div>
-              )}
+              ))}
             </DescriptionContainer>
           </SubContent>
           <GroundContent>
             <RoadWrapper>
-              <BackgroundRoad src={backgroundRoad} alt={'backgroundRoad'} />
-              <Car src={car} alt={'car'} position={SCROLL_POS} />
-              <ForegroundBush src={foregroundBush} alt={'foregroundBush'} />
+              <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
+              <Car src={car} alt="car" position={SCROLL_POS} />
+              <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <TimeWrapper>
-              {CLICKABLES.map(e =>
+              {CLICKABLES.map(e => (
                 <Clickable
                   key={e.title}
-                  onClick={() => this.changeFAQ(e.title)}>
+                  onClick={() => this.changeFAQ(e.title)}
+                >
                   {FAQ_STATE
                     === e.title ? <b>{e.title}</b> : e.title}
                 </Clickable>
-              )}
+              ))}
             </TimeWrapper>
             <FAQContainer>
               {FAQ_PANELS[FAQ_STATE
-              ].content.map(e =>
+              ].content.map(e => (
                 <FAQTitle key={e[0].q}>
-                  {e.map(f =>
+                  {e.map(f => (
                     <div key={f.q}>
                       <b>{f.q}</b><br />{f.a}<br /><br />
                     </div>
-                  )}
+                  ))}
                 </FAQTitle>
-              )}
+              ))}
             </FAQContainer>
           </GroundContent>
         </Content>
