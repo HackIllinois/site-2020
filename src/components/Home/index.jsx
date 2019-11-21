@@ -31,34 +31,34 @@ const SubContent = Styled.div`
   margin-top: 100px;
   grid-template-columns: 100px 2.5fr 0.5fr 1fr 1fr 0.4fr;
   grid-template-rows: 400px 200px 300px 300px 300px 500px;
-  @media(max-width: 1800px){
+  @media(max-width: 1800px) {
     grid-template-rows: 500px 300px 400px 300px 500px;
   }
-  @media(max-width: 1400px){
+  @media(max-width: 1400px) {
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 0.3fr;
     grid-template-rows: 600px 400px 300px 400px 300px;
   }
-  @media(max-width: 1100px){
+  @media(max-width: 1100px) {
     grid-template-columns: 100px 0.8fr 1fr 1fr 0.3fr;
     grid-template-rows: 400px 400px 300px 400px 600px;
   }
-  @media(max-width: 900px){
+  @media(max-width: 900px) {
     grid-template-columns: 100vw;
     grid-template-rows: 90vw 400px 1100px;
     justify-items: center;
   }
-  @media(max-width: 700px){
+  @media(max-width: 700px) {
     grid-template-rows: 90vw 250px 150px 1200px;
   }
-  @media(max-width: 600px){
+  @media(max-width: 600px) {
     grid-template-rows: 90vw 200px 200px 1500px;
   }
 
-  @media(max-width: 450px){
+  @media(max-width: 450px) {
     grid-template-rows: 90vw 400px 1800px;
   }
 
-  @media(max-width: 380px){
+  @media(max-width: 380px) {
     grid-template-rows: 90vw 400px 2200px;
   }
 `;
@@ -70,7 +70,7 @@ const Tagline = Styled.img`
   margin-top: 100px;
   margin-left: 20px;
   margin-right: 20px;
-  @media(max-width: 375px){
+  @media(max-width: 375px) {
     margin-top: 100px;
   }
 `;
@@ -80,18 +80,18 @@ const City = Styled.img`
   z-index: 1;
   grid-area: 1 / 1 / 5 / 4;
   justify-self: start;
-  @media(max-width: 1800px){
+  @media(max-width: 1800px) {
     height: auto;
     width: 100%;
     grid-area: 1 / 1 / 4 / 3;
   }
-  @media(max-width: 1400px){
+  @media(max-width: 1400px) {
     grid-area: 1/1/3/4;
   }
-  @media(max-width: 1100px){
+  @media(max-width: 1100px) {
     grid-area: 1/1/3/4;
   }
-  @media(max-width: 900px){
+  @media(max-width: 900px) {
     justify-self: center;
     grid-area: 1/1/3/2;
     height: auto;
@@ -119,14 +119,14 @@ const Backdrop1 = Styled.div`
     grid-area: 2/1/6/6;
     background-position: 80%;
   }
-  @media(max-width: 900px){
+  @media(max-width: 900px) {
     grid-area: 2/1/4/3;
     background-position: 100% 50%;
     background-repeat: no-repeat;
     width: 100vw;
     height: 100%;
   }
-  @media(max-width: 700px){
+  @media(max-width: 700px) {
     grid-area: 2/1/5/3;
   }
 `;
@@ -171,7 +171,7 @@ const Logo = Styled.img`
   top: 20px;
   left: 35px;
   position: absolute;
-  @media(max-width: 600px){
+  @media(max-width: 600px) {
     top: 15px;
     left: 15px;
   }
@@ -254,19 +254,19 @@ const FAQContainer = Styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
-  @media(max-width: 3000px){
+  @media(max-width: 3000px) {
     padding-bottom: 7vw;
   }
-  @media(max-width: 2500px){
+  @media(max-width: 2500px) {
     padding-bottom: 5vw;
   }
-  @media(max-width: 2500px){
+  @media(max-width: 2500px) {
     padding: 40px;
   }
-  @media(max-width: 900px){
+  @media(max-width: 900px) {
     grid-template-columns: 1fr;
   }
-  @media(max-width: 650px){
+  @media(max-width: 650px) {
     padding: 40px 0;
   }
 `;
@@ -304,7 +304,6 @@ export default class Home extends React.Component {
     let h = document.body.clientHeight;
     let st = document.body.scrollTop;
     let sh = document.body.scrollHeight;
-    // console.log(h, st, sh);
     this.setState({ SCROLL_POS: st / (sh - h) * 100 });
   }
 
