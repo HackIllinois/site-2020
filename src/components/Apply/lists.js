@@ -2,7 +2,7 @@ export const graduationYears = [
   2020,
   2021,
   2022,
-  2023
+  2023,
 ];
 
 export const majors = [
@@ -11,7 +11,7 @@ export const majors = [
   'Other Engineering',
   'Business',
   'Liberal Arts',
-  'Other'
+  'Other',
 ];
 
 export const schools = [
@@ -209,5 +209,5 @@ export const schools = [
   'Worcester Polytechnic Institute',
   'Wright State University',
   'Yale University',
-  'Other'
+  'Other',
 ];
