@@ -1,13 +1,13 @@
 import React from 'react';
 import Styled from 'styled-components';
-import bg from 'assets/Background.png';
-import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
-import city from 'assets/svgs/HackIllinois_Website-05.svg';
-import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
-import backdrop1 from 'assets/svgs/backdrop.svg';
-import backgroundRoad from 'assets/svgs/background_road.svg';
-import foregroundBush from 'assets/svgs/foreground_bushes.svg';
-import car from 'assets/svgs/HackIllinois_Website_car.svg';
+import bg from 'assets/home/background.png';
+import tagline from 'assets/home/tagline.svg';
+import city from 'assets/home/city.svg';
+import logo from 'assets/home/logo.svg';
+import backdrop1 from 'assets/home/backdrop.svg';
+import backgroundRoad from 'assets/home/background_road.svg';
+import foregroundBush from 'assets/home/foreground_bushes.svg';
+import car from 'assets/home/car.svg';
 import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
 const Container = Styled.div`
   position: relative;
