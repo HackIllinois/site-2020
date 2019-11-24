@@ -8,13 +8,34 @@ import backdrop1 from 'assets/svgs/backdrop.svg';
 import backgroundRoad from 'assets/svgs/background_road.svg';
 import foregroundBush from 'assets/svgs/foreground_bushes.svg';
 import car from 'assets/svgs/HackIllinois_Website_car.svg';
-import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+import { NAVITEMS, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+
 const Container = Styled.div`
   position: relative;
   overflow-x: hidden;
   background-image: url(${bg});
   background-position: left top;
   background-size: cover;
+`;
+
+const Navbar = Styled.div`
+  position: absolute;
+  right: 0;
+  top : 0;
+  margin: 40px 40px;
+`;
+
+const NavItem = Styled.a`
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #9C1641;
+  
+  &:hover {
+    cursor: pointer;
+    background: #86c2d1;
+  }
 `;
 
 const Content = Styled.div`
@@ -67,7 +88,7 @@ const Tagline = Styled.img`
   overflow: hidden;
   width: auto;
   max-width: 600px;
-  margin-top: 100px;
+  margin-top: 20vh;
   margin-left: 20px;
   margin-right: 20px;
   @media(max-width: 375px){
@@ -240,6 +261,10 @@ const Clickable = Styled.div`
   font-style: normal;
   font-size: 1.2em;
   letter-spacing: 0.1em;
+  background-color: #357835;
+  padding: 10px 20px;
+  border-radius: 50px;
+
   &:hover{
     cursor: pointer;
   }
@@ -314,6 +339,11 @@ export default class Home extends React.Component {
       <Container>
         <Logo src={logo} />
         <Content>
+          <Navbar>
+            {NAVITEMS.map(e => 
+              <NavItem href={e.url}>{e.title}</NavItem>
+            )}
+          </Navbar>
           <Tagline src={tagline} alt={'tagline'} />
           <SubContent>
             <City src={city} />

@@ -1,3 +1,22 @@
+export const NAVITEMS = [
+  {
+    title: "EVENTS",
+    url: "#events",
+  },
+  {
+    title: "MENTORS",
+    url: "/mentor",
+  },
+  {
+    title: "SPONSORS",
+    url: "/sponsor",
+  },
+  {
+    title: "SAMPLE TEXT",
+    url: "#sample",
+  }
+];
+
 export const DESCRIPTIONS = [
   {
     title: 'Open Source',
