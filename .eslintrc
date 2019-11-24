@@ -1,0 +1,23 @@
+{
+  "extends": ["react-app", "airbnb"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "no-param-reassign": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "react/jsx-one-expression-per-line": "off",
+    "template-curly-spacing" : "off",
+    "indent": "off",
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src/"]
+      }
+    }
+  }
+}
