@@ -27,8 +27,6 @@ export default class Auth extends React.Component {
       getToken(code).then(token => {
         sessionStorage.setItem('token', token.token);
         window.location.replace(to);
-      }).catch(() => {
-        alert('Authentication failed.');
       });
     }
   }

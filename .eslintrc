@@ -11,12 +11,12 @@
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-one-expression-per-line": "off",
     "template-curly-spacing" : "off",
-    "indent": "off"
+    "indent": "off",
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src/"]
       }
     }
   }
