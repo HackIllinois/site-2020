@@ -303,14 +303,14 @@ const FAQContainer = Styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
+  
+  
   @media(max-width: 3000px) {
+    padding-top: 40px;
     padding-bottom: 7vw;
   }
   @media(max-width: 2500px) {
     padding-bottom: 5vw;
-  }
-  @media(max-width: 2500px) {
-    padding: 40px;
   }
   @media(max-width: 900px) {
     grid-template-columns: 1fr;
