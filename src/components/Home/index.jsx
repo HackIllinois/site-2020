@@ -1,16 +1,5 @@
 import React from 'react';
 import Styled from 'styled-components';
-<<<<<<< HEAD
-import bg from 'assets/Background.png';
-import tagline from 'assets/svgs/HackIllinois_Website_tagline.svg';
-import city from 'assets/svgs/HackIllinois_Website-05.svg';
-import logo from 'assets/svgs/HackIllinois_Website_logo.svg';
-import backdrop1 from 'assets/svgs/backdrop.svg';
-import backgroundRoad from 'assets/svgs/background_road.svg';
-import foregroundBush from 'assets/svgs/foreground_bushes.svg';
-import car from 'assets/svgs/HackIllinois_Website_car.svg';
-import { NAVITEMS, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
-=======
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
 import city from 'assets/home/city.svg';
@@ -19,8 +8,7 @@ import backdrop1 from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
-import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
->>>>>>> 6d91e3af502e88c5106dac534d4964746178d444
+import { NAVITEMS, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
 
 const Container = Styled.div`
   position: relative;
@@ -256,26 +244,51 @@ const RoadWrapper = Styled.div`
 `;
 
 const TimeWrapper = Styled.div`
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  font-size: 24px;
-  justify-content: space-around;
-  color: white;
-  margin-top: -10px;
-  padding: 50px 0 25px 0;
-  background: #4B8655;
+  grid-area: 1/1/1/1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5em 5em 5em 5em;
+  margin: 2em auto;
+  font-size: 16px;
 `;
 
-const Clickable = Styled.div`
+const Pole = Styled.div`
+  background-color: #222B5F;
+  grid-area: 1/1/1/1;
+  z-index: 0;
+  width: 1em;
+  margin: 0 auto;
+`;
+
+const Clickable = Styled.div.attrs(props => {
+  if(props.isFAQ) {
+    return {
+      style: {
+        color: '#FFF',
+        backgroundColor: '#285163',
+        clipPath: 'polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%)',
+      },
+    }
+  }
+  return {
+    style: {
+      backgroundColor: props.selected ? '#E28B79': '#FBF4EA',
+    },
+  };
+})`
+  z-index: 1;
   letter-spacing: 0.1em;
   font-family: Montserrat;
   font-style: normal;
-  font-size: 1.2em;
-  letter-spacing: 0.1em;
-  background-color: #357835;
-  padding: 10px 20px;
-  border-radius: 50px;
+  font-size: 1.6em;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 0.3em;
+  width: 7em;
+  height: 1.6em;
+  border-radius: 2px;
+  color: #222B5C;
+  transform: ${p => 'rotate(' + p.rotation + 'deg)'};
 
   &:hover{
     cursor: pointer;
@@ -287,7 +300,6 @@ const FAQContainer = Styled.div`
   overflow: hidden;
   background: #4B8655;
   padding-bottom: 9vw;
-  margin-top: -25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
@@ -350,16 +362,10 @@ export default class Home extends React.Component {
       <Container>
         <Logo src={logo} />
         <Content>
-<<<<<<< HEAD
           <Navbar>
-            {NAVITEMS.map(e => 
-              <NavItem href={e.url}>{e.title}</NavItem>
-            )}
+            {NAVITEMS.map(e => <NavItem href={e.url}>{e.title}</NavItem>)}
           </Navbar>
           <Tagline src={tagline} alt={'tagline'} />
-=======
-          <Tagline src={tagline} alt="tagline" />
->>>>>>> 6d91e3af502e88c5106dac534d4964746178d444
           <SubContent>
             <City src={city} />
             <Backdrop1 />
@@ -378,20 +384,25 @@ export default class Home extends React.Component {
               <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
-            <TimeWrapper>
-              {CLICKABLES.map(e => (
-                <Clickable
-                  key={e.title}
-                  onClick={() => this.changeFAQ(e.title)}
-                >
-                  {FAQ_STATE
-                    === e.title ? <b>{e.title}</b> : e.title}
-                </Clickable>
-              ))}
-            </TimeWrapper>
+            
             <FAQContainer>
-              {FAQ_PANELS[FAQ_STATE
-              ].content.map(e => (
+              <Pole />
+              <TimeWrapper>
+                <Clickable isFAQ rotation='-3'>
+                  FAQ
+                </Clickable>
+                {CLICKABLES.map(e => (
+                  <Clickable
+                    key={e.title}
+                    onClick={() => this.changeFAQ(e.title)}
+                    selected={FAQ_STATE === e.title}
+                    rotation={e.rotation}
+                  >
+                    {e.title}
+                  </Clickable>
+                ))}
+              </TimeWrapper>
+              {FAQ_PANELS[FAQ_STATE].content.map(e => (
                 <FAQTitle key={e[0].q}>
                   {e.map(f => (
                     <div key={f.q}>
@@ -403,7 +414,6 @@ export default class Home extends React.Component {
             </FAQContainer>
           </GroundContent>
         </Content>
-
       </Container>
     );
   }

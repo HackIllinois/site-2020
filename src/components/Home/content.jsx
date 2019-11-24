@@ -35,12 +35,15 @@ export const DESCRIPTIONS = [
 export const CLICKABLES = [
   {
     title: 'General',
+    rotation: '7',
   },
   {
     title: 'Before',
+    rotation: '2',
   },
   {
     title: 'During',
+    rotation: '-8',
   },
 ];
 
@@ -54,7 +57,7 @@ export const FAQ_PANELS = {
         },
         {
           q: 'Do I need to have a programming background to participate?',
-          a: 'No! People of all skill levels are welcomed.',
+          a: 'People of all skill levels are welcomed!',
         },
       ],
       [
@@ -62,17 +65,15 @@ export const FAQ_PANELS = {
           q: 'How do applications work?',
           a: 'You must apply in order to be considered for HackIllinois. Admissions will be based on a weighted lottery. Decisions will be released in early January in multiple waves, and it is to your advantage to apply as soon as possible. If you’re accepted, there will be a limited time to RSVP before we reallocate your spot to another student.',
         },
+        {
+          q: 'How can I make the most out of HackIllinois tools?',
+          a: 'The Hardware Hut is available to all at ECEB. More information on what will be available will be coming later.',
+        },
       ],
       [
         {
           q: 'What should I bring?',
           a: 'You should bring a student ID, a reusable water bottle, a change of clothing, personal items such as toiletries, and a laptop & charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.',
-        },
-      ],
-      [
-        {
-          q: 'How can I make the most out of HackIllinois tools?',
-          a: 'The Hardware Hut is available to all at ECEB. More information on what will be available will be coming later.',
         },
         {
           q: 'Have more questions?',
@@ -85,8 +86,8 @@ export const FAQ_PANELS = {
     content: [
       [
         {
-          q: 'What facilities, floors, and rooms are available to work in?',
-          a: 'Refer to maps that will be on the website which can be found [insert hyperlink].',
+          q: 'Is there anything to do other than code?',
+          a: 'ABSOLUTELY! There will be a variety of mini-events this year, including the customary Nerf battles as well as some new events. There will also be open-source keynotes and engaging workshops, so you should definitely check out the schedule to be posted here on the website.',
         },
         {
           q: 'Where do I sleep?',
@@ -95,11 +96,9 @@ export const FAQ_PANELS = {
       ],
       [
         {
-          q: 'Is there anything to do other than code?',
-          a: 'ABSOLUTELY! There will be a variety of mini-events this year, including the customary Nerf battles as well as some new events. There will also be open-source keynotes and engaging workshops, so you should definitely check out the schedule to be posted here on the website.',
+          q: 'What facilities, floors, and rooms are available to work in?',
+          a: 'Refer to maps that will be on the website which can be found [insert hyperlink].',
         },
-      ],
-      [
         {
           q: 'Do I have to go to the opening/ending ceremony?',
           a: 'Yes! Prize and food information will be covered at the opening ceremony. Prizes will be announced at the ending ceremony.',
@@ -124,8 +123,6 @@ export const FAQ_PANELS = {
           q: 'Do I have to stay in the north quad? (aka Siebel and ECEB)',
           a: 'Nope! Feel free to roam around Urbana-Champaign and explore what we have to offer.',
         },
-      ],
-      [
         {
           q: 'How can I stay updated with what is going on at the event?',
           a: 'Please download the app beforehand! Our website will also be continually updated with new information throughout the year.',
