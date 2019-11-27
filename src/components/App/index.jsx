@@ -7,6 +7,7 @@ import Error from 'components/Error';
 import Home from 'components/Home';
 import PDF from 'components/PDF';
 import Token from 'components/Token';
+import QR from 'components/QR';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/apply" component={Apply} />
         <Route path="/auth" component={Auth} />
         <Route path="/token" component={Token} />
+        <Route path="/qr" component={QR} />
 
         <Route
           exact
