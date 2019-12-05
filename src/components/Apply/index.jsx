@@ -229,10 +229,63 @@ export default class Apply extends React.Component {
 
       <div className="buttons">
         <button type="button" onClick={this.back}>Back</button>
-        <button type="submit">Submit</button>
+        <button type="button" onClick={this.next}>Next</button>
       </div>
+      
     </div>
   );
+
+  /* EXPERIENCE */
+  page4 = () => {
+    const range = n => Array.from(Array(n).keys());
+
+    return (
+      <div>
+
+        {/* TODO: add to application object */}
+        <p>Years of programming experience?</p>
+        <SelectField
+          styleHelper
+          name="years"
+          options={range(11).map(year => {
+            const label = (year == 10) ? "10+" : year.toString();
+            return { 'value': year, 'label': label};
+          })}
+        />
+
+        {/* TODO: add to application object */}
+        <p>How would you rate your programming ability?</p>
+        <ol>
+          <li value="1">What is code?</li>
+          <li value="4">I am comfortable with doing an independent project.</li>
+          <li value="7">I am comfortable writing and reviewing production level code in a professional setting.</li>
+          <li value="10">I <i>AM</i> code.</li>
+        </ol>
+        <SelectField
+          styleHelper
+          name="ability"
+          options={range(10).map(year => {
+            return { 'value': (year+1), 'label': (year+1)};
+          })}
+        />
+
+        {/* TODO: add to application object */}
+        <p>Have you contributed to open source before?</p>
+        <SelectField
+          styleHelper
+          name="contributed"
+          options={[
+            { label: 'Yes', value: 'YES' },
+            { label: 'No', value: 'NO' },
+          ]}
+        />
+
+        <div className="buttons">
+          <button type="button" onClick={this.back}>Back</button>
+          <button type="button" onClick={this.next}>Next</button>
+        </div>
+      </div>
+  )};
 
   render() {
     const { isLoading, application, page } = this.state;
@@ -240,7 +293,7 @@ export default class Apply extends React.Component {
       return <Loading />;
     }
 
-    const pages = [this.page1, this.page2, this.page3];
+    const pages = [this.page1, this.page2, this.page3, this.page4];
     const pageTitles = ["PERSONAL INFO", "EDUCATIONAL", "PROFESSIONAL INFO",
                         "EXPERIENCE", "INTERESTS", "HACKILLINOIS INFO"];
 
