@@ -73,6 +73,17 @@ form {
 }
 
 .formik-select {
+    [class*="-menu"] {
+        background-color: transparent;
+        box-shadow: unset;
+        color: yellow;
+        border-bottom: 1px solid red;
+
+        > {
+            color: yellow;
+        }
+    }
+
     div {
         padding: 0;
     }
