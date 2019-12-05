@@ -1,14 +1,19 @@
 html, body {
-    background-color: #c9e2ea;
     color: #0A093F;
+}
+
+html {
+  background: url(../../assets/background_app.svg);
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
 }
 
 .apply {
     display: flex;
 }
 
-.placeholder {
-    width: 225px;
+.nav {
+    width: 342px;
     flex-grow: 0;
 }
 
@@ -17,7 +22,7 @@ html, body {
 }
 
 h1 {
-    margin-top: 55px;
+    margin-top: 100px;
     text-align: center;
     font-weight: 600;
     font-size: 48px;
@@ -26,23 +31,25 @@ h1 {
 
 .progress {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 60px;
+    margin-left: 40px;
+    margin-top: 70px;
 
-    p {
-        text-align: center;
-        font-size: 16px;
+    .nav-row {
+      display: flex;
+      align-items: center;
     }
 
-    .selected {
-        font-weight: bold;
+    img {
+      margin: 30px 10px;
     }
 }
 
 form { 
     width: 535px;
     margin: 0 auto;
-    margin-top: 112px;
+    margin-top: 72px;
 
     p {
         margin-top: 60px;

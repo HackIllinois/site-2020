@@ -2,6 +2,10 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import './index.scss';
 
+import nav_back from 'assets/background_app_nav.svg';
+import pin_filled from 'assets/pin_filled.svg';
+import pin_empty from 'assets/pin_empty.svg';
+
 import {
   apply,
   authenticate,
@@ -229,21 +233,21 @@ export default class Apply extends React.Component {
     return (
       <div className="apply">
 
-        <div className="placeholder">
+        <div className="progress">
+          {(() =>
+            pageTitles.map((title) => (
+              <div className="nav-row">
+                <img className="pin" src={page == pageTitles.indexOf(title) ? pin_filled : pin_empty} />
+                <p>
+                  {title}
+                </p>
+              </div>
+            ))
+          )()}
         </div>
 
         <div className="application">
         <h1>Registration</h1>
-
-        <div className="progress">
-          {(() =>
-            pageTitles.map((title) => (
-              <p className={page == pageTitles.indexOf(title) ? "selected" : ""}>
-                {title}
-              </p>
-            ))
-          )()}
-        </div>
 
         <Formik
           initialValues={application}
