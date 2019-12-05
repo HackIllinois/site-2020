@@ -1,5 +1,5 @@
 import React from 'react';
-import Styled from 'styled-components';
+import Styled, {keyframes} from 'styled-components';
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
 import city from 'assets/home/city.svg';
@@ -18,6 +18,14 @@ const Container = Styled.div`
   background-size: cover;
 `;
 
+const fadeOut = keyframes`
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+`;
+const fadeIn = keyframes`
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+`;
 const Navbar = Styled.div`
   position: absolute;
   right: 0;
@@ -208,6 +216,12 @@ const GroundContent = Styled.div`
   @media(max-width: 380px){
     margin-top: -90px;
   }
+  .faqOut{
+    animation: ${fadeOut} 0.2s ease-in infinite;
+  }
+  .faqIn{
+    animation: ${fadeIn} 0.2s ease-out infinite;
+  }
 `;
 
 const BackgroundRoad = Styled.img`
@@ -272,6 +286,7 @@ const Clickable = Styled.div.attrs(props => {
   }
   return {
     style: {
+      transition: '0.2s',
       backgroundColor: props.selected ? '#E28B79': '#FBF4EA',
     },
   };
@@ -331,6 +346,7 @@ export default class Home extends React.Component {
     this.state = {
       FAQ_STATE: 'General',
       SCROLL_POS: 0,
+      FAQ_ANIMATION: '',
     };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -346,7 +362,10 @@ export default class Home extends React.Component {
   }
 
   changeFAQ(title) {
-    this.setState({ FAQ_STATE: title });
+    setTimeout(() => {this.setState({ FAQ_STATE: title })}, 200);
+    this.setState({ FAQ_ANIMATION: 'faqOut'})
+    setTimeout(() => {this.setState({ FAQ_ANIMATION: 'faqIn' })}, 200);
+    setTimeout(() => {this.setState({ FAQ_ANIMATION: '' })}, 400);
   }
 
   handleScroll() {
@@ -403,7 +422,7 @@ export default class Home extends React.Component {
                 ))}
               </TimeWrapper>
               {FAQ_PANELS[FAQ_STATE].content.map(e => (
-                <FAQTitle key={e[0].q}>
+                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
                   {e.map(f => (
                     <div key={f.q}>
                       <b>{f.q}</b><br />{f.a}<br /><br />
