@@ -1,10 +1,9 @@
-/*eslint-disable*/
 import React from 'react';
-import "./qr.scss"
+import './styles.scss';
 import {
   authenticate,
   isAuthenticated,
-  qr,
+  getQR,
 } from 'api';
 import Loading from 'components/Loading';
 
@@ -14,8 +13,8 @@ export default class QR extends React.Component {
 
     this.state = {
       authenticating: true,
-      receivedQRCode: false,
-      qrurl: '',
+      receivedQrCode: false,
+      qrUrl: '',
     };
   }
 
@@ -26,27 +25,28 @@ export default class QR extends React.Component {
     }
 
     this.setState({ authenticating: false });
-    
-    const size = "500";
-    const qrCode = qr();
-    qrCode.then(res => {
-      const qrstring= `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${encodeURIComponent(res.qrInfo)}&choe=UTF-8`;
-      this.setState({
-        receivedQRCode: true,
-        qrurl: qrstring,
-      });
-      
-    });
 
+    const size = '500';
+    const qrCode = getQR();
+    qrCode.then(res => {
+      const qrString = `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${encodeURIComponent(res.qrInfo)}&choe=UTF-8`;
+      this.setState({
+        receivedQrCode: true,
+        qrUrl: qrString,
+      });
+    });
   }
 
   render() {
-    const { authenticating, qrurl, receivedQRCode } = this.state;
+    const { authenticating, qrUrl, receivedQrCode } = this.state;
+
+    if (authenticating || !receivedQrCode) {
+      return <Loading />;
+    }
+
     return (
       <div className="qr-wrapper">
-        <h1 className = "qr-header">Your QR Code</h1>
-
-        <img id="qrimg" src={this.state.qrurl} alt="QR code"></img>
+        <img id="qr-img" src={qrUrl} alt="QR code" />
       </div>
     );
   }

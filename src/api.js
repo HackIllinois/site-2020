@@ -68,6 +68,6 @@ export function apply(isEditing, application) {
   return request(method, '/registration/attendee/', application);
 }
 
-export function qr() {
+export function getQR() {
   return request('GET', '/user/qr/');
 }
