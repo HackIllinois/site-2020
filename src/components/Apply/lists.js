@@ -5,6 +5,13 @@ export const graduationYears = [
   2023,
 ];
 
+export const degrees = [
+  'Associate',
+  'Bachelor',
+  'Master',
+  'PhD'
+]
+
 export const majors = [
   'Computer Science',
   'Computer Engineering',

@@ -19,6 +19,7 @@ import Loading from 'components/Loading';
 import SelectField from 'components/SelectField';
 import {
   graduationYears,
+  degrees,
   majors,
   schools,
 } from './lists';
@@ -124,6 +125,7 @@ export default class Apply extends React.Component {
     });
   }
 
+  /* PERSONAL */
   page1 = () => (
     <div>
       <p>First Name</p>
@@ -144,7 +146,7 @@ export default class Apply extends React.Component {
         name="gender"
         placeholder="What is your gender?"
         options={[
-          { label: 'Internship', value: 'INTERNSHIP' },
+          { label: 'Internship', value: 'INTERNSHIP'},
           { label: 'Full-time', value: 'FULLTIME' },
         ]}
       />
@@ -157,6 +159,7 @@ export default class Apply extends React.Component {
     </div>
   );
 
+  /* EDUCATIONAL */
   page2 = () => (
     <div>
       <p>School</p>
@@ -176,6 +179,16 @@ export default class Apply extends React.Component {
         options={majors.map(major => ({ value: major, label: major }))}
       />
 
+      {/* TODO: add to application object */}
+      <p>Degree Being Pursued</p>
+      <SelectField
+        styleHelper
+        name="degree"
+        placeholder="Bachelor"
+        options={degrees.map(degree => ({value: degree, label: degree}))}
+      />
+
+
       <p>Graduation Year</p>
       <SelectField
         styleHelper
@@ -191,6 +204,7 @@ export default class Apply extends React.Component {
     </div>
   );
 
+  /* PROFESSIONAL */
   page3 = () => (
     <div>
       <p>Career Interests</p>
