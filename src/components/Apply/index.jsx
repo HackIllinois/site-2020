@@ -2,9 +2,10 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import './index.scss';
 
-import nav_background from 'assets/background_app_nav.svg';
-import pin_filled from 'assets/pin_filled.svg';
-import pin_empty from 'assets/pin_empty.svg';
+import nav_background from 'assets/apply/nav_background.svg';
+import next from 'assets/apply/next.svg';
+import pin_filled from 'assets/apply/pin_filled.svg';
+import pin_empty from 'assets/apply/pin_empty.svg';
 
 import {
   apply,
@@ -28,6 +29,7 @@ import {
 const EMPTY_APP = {
   firstName: '',
   lastName: '',
+  gender: 'MALE',
 
   school: '',
   major: '',
@@ -44,7 +46,6 @@ const EMPTY_APP = {
   },
   extraInfo: '',
   diet: [],
-  gender: 'MALE',
   isBeginner: false,
   isOSContributor: true,
   linkedin: 'linkedin.com/in/brian-strauch',
@@ -111,6 +112,7 @@ export default class Apply extends React.Component {
     const { isEditing, resume } = this.state;
     const { history } = this.props;
 
+    // TODO Fix logic here; upload resume and application together
     apply(isEditing, app).then(() => {
       if (resume) {
         return uploadResume(resume).then(() => {
@@ -128,16 +130,16 @@ export default class Apply extends React.Component {
   /* PERSONAL */
   page1 = () => (
     <div>
-      <p>First Name</p>
+      <p>First Name *</p>
       <Field
         name="firstName"
-        placeholder="Brian"
+        placeholder="What is your first name?"
       />
 
-      <p>Last Name</p>
+      <p>Last Name *</p>
       <Field
         name="lastName"
-        placeholder="Strauch"
+        placeholder="What is your last name?"
       />
 
       <p>Gender</p>
@@ -146,15 +148,18 @@ export default class Apply extends React.Component {
         name="gender"
         placeholder="What is your gender?"
         options={[
-          { label: 'Internship', value: 'INTERNSHIP'},
-          { label: 'Full-time', value: 'FULLTIME' },
+          { label: 'Male', value: 'MALE'},
+          { label: 'Female', value: 'FEMALE' },
+          { label: 'Non-Binary', value: 'NONBINARY' },
         ]}
       />
 
       <br />
-      <div className="buttons">
-        <div></div>
-        <button type="button" onClick={this.next}>Next</button>
+      <div className="nav-buttons">
+        <div />
+        <button type="button" onClick={this.next}>
+          Next <img src={next} />
+        </button>
       </div>
     </div>
   );
@@ -197,7 +202,7 @@ export default class Apply extends React.Component {
         options={graduationYears.map(year => ({ value: year, label: year }))}
       />
 
-      <div className="buttons">
+      <div className="nav-buttons">
         <button type="button" onClick={this.back}>Back</button>
         <button type="button" onClick={this.next}>Next</button>
       </div>
@@ -227,7 +232,7 @@ export default class Apply extends React.Component {
 
       <br />
 
-      <div className="buttons">
+      <div className="nav-buttons">
         <button type="button" onClick={this.back}>Back</button>
         <button type="button" onClick={this.next}>Next</button>
       </div>
@@ -263,8 +268,8 @@ export default class Apply extends React.Component {
         <SelectField
           styleHelper
           name="ability"
-          options={range(10).map(year => {
-            return { 'value': (year+1), 'label': (year+1)};
+          options={range(1, 10).map(years => {
+            return { 'value': years, 'label': years };
           })}
         />
 
@@ -279,7 +284,7 @@ export default class Apply extends React.Component {
           ]}
         />
 
-        <div className="buttons">
+        <div className="nav-buttons">
           <button type="button" onClick={this.back}>Back</button>
           <button type="button" onClick={this.next}>Next</button>
         </div>
@@ -299,7 +304,7 @@ export default class Apply extends React.Component {
       <div className="apply">
         <div className="progress">
           {titles.map((title, idx) => (
-            <div className="nav-row">
+            <div className="row">
               <img className="pin" src={idx === page ? pin_filled : pin_empty} />
               <p>{title}</p>
             </div>
@@ -307,7 +312,7 @@ export default class Apply extends React.Component {
         </div>
 
         <div className="application">
-          <h1>Registration</h1>
+          <h3>Registration</h3>
           <Formik
             initialValues={application}
             enableReinitialize

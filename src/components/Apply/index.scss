@@ -1,65 +1,61 @@
-html, body {
-  color: #0A093F;
-}
-
-html {
+body {
   background: url(../../assets/background_app.svg);
   background-repeat: no-repeat;
-  background-size: 100vw auto;
+  background-size: cover;
+  color: #0A093F;
 }
 
 .apply {
   display: flex;
 }
 
-.nav {
-  width: 342px;
-  flex-grow: 0;
-}
-
 .application {
   flex-grow: 1;
 }
 
-h1 {
-  margin-top: 100px;
+.progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 40px 0 40px 40px;
+
+  .row {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 16px;
+      height: 48px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+h3 {
+  margin-top: 96px;
   text-align: center;
   font-weight: 600;
   font-size: 48px;
   color: #222B5C;
 }
 
-.progress {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-left: 40px;
-  margin-top: 70px;
-
-  .nav-row {
-    display: flex;
-    align-items: center;
-  }
-
-  img {
-    margin: 30px 10px;
-  }
-}
-
 form { 
-  width: 535px;
+  width: 50%;
   margin: 0 auto;
-  margin-top: 72px;
 
   p {
-    margin-top: 60px;
-    font-weight: 500;
+    margin-top: 32px;
+    font-weight: normal;
   }
 
   input {
     width: 100%;
     background: transparent;
-    padding-left: 7px;
+    padding-left: 8px;
     padding-bottom: 12px;
     color: rgba(10, 9, 63, 0.5);
 
@@ -69,6 +65,11 @@ form {
     margin-top: 18px;
 
     font-size: 16px;
+  }
+
+  input::placeholder {
+    color: #A43B5C;
+    font-weight: 600;
   }
 }
 
@@ -108,19 +109,19 @@ form {
   }
 }
 
-.buttons {
+.nav-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 90px;
-  margin-bottom: 30px;
+  margin-top: 32px;
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50ch;
+    display: flex;
+    font-size: 16px;
+    padding: 5px 4px 5px 10px;
+  }
 }
 
-button {
-  background-color: transparent;
-  border: 2px solid black;
-  border-radius: 50ch;
-  font-size: 16px;
-
-  margin: 5px;
-  padding: 5 10px;
-}
