@@ -1,5 +1,5 @@
 html, body {
-    color: #0A093F;
+  color: #0A093F;
 }
 
 html {
@@ -9,118 +9,118 @@ html {
 }
 
 .apply {
-    display: flex;
+  display: flex;
 }
 
 .nav {
-    width: 342px;
-    flex-grow: 0;
+  width: 342px;
+  flex-grow: 0;
 }
 
 .application {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 h1 {
-    margin-top: 100px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 48px;
-    color: #222B5C;
+  margin-top: 100px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 48px;
+  color: #222B5C;
 }
 
 .progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 40px;
+  margin-top: 70px;
+
+  .nav-row {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 40px;
-    margin-top: 70px;
+    align-items: center;
+  }
 
-    .nav-row {
-      display: flex;
-      align-items: center;
-    }
-
-    img {
-      margin: 30px 10px;
-    }
+  img {
+    margin: 30px 10px;
+  }
 }
 
 form { 
-    width: 535px;
-    margin: 0 auto;
-    margin-top: 72px;
+  width: 535px;
+  margin: 0 auto;
+  margin-top: 72px;
 
-    p {
-        margin-top: 60px;
-        font-weight: 500;
-    }
+  p {
+    margin-top: 60px;
+    font-weight: 500;
+  }
 
-    input {
-        width: 100%;
-        background: transparent;
-        padding-left: 7px;
-        padding-bottom: 12px;
-        color: rgba(10, 9, 63, 0.5);
+  input {
+    width: 100%;
+    background: transparent;
+    padding-left: 7px;
+    padding-bottom: 12px;
+    color: rgba(10, 9, 63, 0.5);
 
-        border: none;
-        border-radius: unset;
-        border-bottom: 1px solid black;
-        margin-top: 18px;
+    border: none;
+    border-radius: unset;
+    border-bottom: 1px solid black;
+    margin-top: 18px;
 
-        font-size: 16px;
-    }
+    font-size: 16px;
+  }
 }
 
 .formik-select {
-    [class*="-menu"] {
-        background-color: transparent;
-        box-shadow: unset;
-        color: yellow;
-        border-bottom: 1px solid red;
+  [class*="-menu"] {
+    background-color: transparent;
+    box-shadow: unset;
+    color: yellow;
+    border-bottom: 1px solid red;
 
-        > {
-            color: yellow;
-        }
+    > {
+      color: yellow;
     }
+  }
 
-    div {
-        padding: 0;
-    }
+  div {
+    padding: 0;
+  }
 
-    [class*="-control"] {
-        background-color: transparent;
-        border: none;
-        border-radius: unset;
-        border-bottom: 1px solid black;
+  [class*="-control"] {
+    background-color: transparent;
+    border: none;
+    border-radius: unset;
+    border-bottom: 1px solid black;
 
-        padding-left: 7px;
-        margin-top: 5px;
-    }
+    padding-left: 7px;
+    margin-top: 5px;
+  }
 
-    svg {
-        color: black;
-        padding-right: 15px;
-    }
+  svg {
+    color: black;
+    padding-right: 15px;
+  }
 
-    span {
-        display: none;
-    }
+  span {
+    display: none;
+  }
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 90px;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 90px;
+  margin-bottom: 30px;
 }
 
 button {
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 50ch;
-    font-size: 16px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50ch;
+  font-size: 16px;
 
-    margin: 5px;
-    padding: 5 10px;
+  margin: 5px;
+  padding: 5 10px;
 }
