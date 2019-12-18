@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import './index.scss';
 
-import nav_back from 'assets/background_app_nav.svg';
+import nav_background from 'assets/background_app_nav.svg';
 import pin_filled from 'assets/pin_filled.svg';
 import pin_empty from 'assets/pin_empty.svg';
 
@@ -241,7 +241,6 @@ export default class Apply extends React.Component {
 
     return (
       <div>
-
         {/* TODO: add to application object */}
         <p>Years of programming experience?</p>
         <SelectField
@@ -294,41 +293,32 @@ export default class Apply extends React.Component {
     }
 
     const pages = [this.page1, this.page2, this.page3, this.page4];
-    const pageTitles = ["PERSONAL INFO", "EDUCATIONAL", "PROFESSIONAL INFO",
-                        "EXPERIENCE", "INTERESTS", "HACKILLINOIS INFO"];
+    const titles = ["PERSONAL INFO", "EDUCATIONAL", "PROFESSIONAL INFO", "EXPERIENCE", "INTERESTS", "HACKILLINOIS INFO"];
 
     return (
       <div className="apply">
-
         <div className="progress">
-          {(() =>
-            pageTitles.map((title) => (
-              <div className="nav-row">
-                <img className="pin" src={page == pageTitles.indexOf(title) ? pin_filled : pin_empty} />
-                <p>
-                  {title}
-                </p>
-              </div>
-            ))
-          )()}
+          {titles.map((title, idx) => (
+            <div className="nav-row">
+              <img className="pin" src={idx === page ? pin_filled : pin_empty} />
+              <p>{title}</p>
+            </div>
+          ))}
         </div>
 
         <div className="application">
-        <h1>Registration</h1>
-
-        <Formik
-          initialValues={application}
-          enableReinitialize
-          onSubmit={this.submit}
-          render={() => (
-            <Form>
-              {pages[page]()}
-            </Form>
-          )}
-        />
-
+          <h1>Registration</h1>
+          <Formik
+            initialValues={application}
+            enableReinitialize
+            onSubmit={this.submit}
+            render={() => (
+              <Form>
+                {pages[page]()}
+              </Form>
+            )}
+          />
         </div>
-
       </div>
     );
   }
