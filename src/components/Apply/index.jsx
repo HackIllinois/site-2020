@@ -3,7 +3,6 @@ import './style.scss';
 
 import { Field, Form, Formik } from 'formik';
 
-import nav_background from 'assets/apply/nav_background.svg';
 import next from 'assets/apply/next.svg';
 import pin_filled from 'assets/apply/pin_filled.svg';
 import pin_empty from 'assets/apply/pin_empty.svg';
@@ -193,7 +192,7 @@ export default class Apply extends React.Component {
       <div className="nav-buttons">
         <div />
         <button type="button" onClick={this.next}>
-          Next <img src={next} />
+          Next <img src={next} alt="next" />
         </button>
       </div>
     </div>
@@ -340,7 +339,7 @@ export default class Apply extends React.Component {
         <div className="progress">
           {titles.map((title, idx) => (
             <div className="row">
-              <img className="pin" src={idx === page ? pin_filled : pin_empty} />
+              <img className="pin" src={idx === page ? pin_filled : pin_empty} alt="pin" />
               <p>{title}</p>
             </div>
           ))}

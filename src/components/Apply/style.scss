@@ -7,17 +7,19 @@
   height: 100%;
 
   .progress {
+    @media only screen and (max-device-width: 480px) {
+      display: none;
+    }
+
     background: url(../../assets/apply/nav_background.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 96px 40px;
 
     .row {
-      display: flex;
       align-items: center;
+      display: flex;
+      margin-bottom: 32px;
 
       img {
         margin-right: 16px;
@@ -49,7 +51,7 @@
       p {
         font-weight: normal;
         margin-top: 32px;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
       }
 
       input {
@@ -58,8 +60,7 @@
         border-bottom: 2px solid black;
         font-size: 16px;
         outline: none;
-        padding-left: 8px;
-        padding-bottom: 6px;
+        padding: 6px 8px;
         width: 100%;
       }
 
