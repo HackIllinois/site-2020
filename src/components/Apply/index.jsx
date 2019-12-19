@@ -1,6 +1,7 @@
-import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import './index.scss';
+import './style.scss';
+
+import { Field, Form, Formik } from 'formik';
 
 import nav_background from 'assets/apply/nav_background.svg';
 import next from 'assets/apply/next.svg';
@@ -29,7 +30,7 @@ import {
 const EMPTY_APP = {
   firstName: '',
   lastName: '',
-  gender: 'MALE',
+  gender: '',
 
   school: '',
   major: '',
@@ -56,6 +57,40 @@ const EMPTY_APP = {
   teamMembers: [],
   transportation: 'NONE',
 };
+
+const customStyles = {
+  control: () => ({
+    background: 'transparent',
+    borderBottom: '2px solid black',
+    display: 'flex',
+  }),
+  placeholder: (base, input) => ({
+    ...base,
+    color: '#A43B5C',
+    fontWeight: '600',
+  }),
+  clearSeparator: () => ({
+    color: 'black',
+  }),
+  indicatorSeparator: () => ({
+    visible: false,
+  }),
+  dropdownIndicator: () => ({
+    color: 'black',
+  }),
+  menu: () => ({
+    background: '#E4F4F6',
+    border: '2px solid black',
+    borderTop: '0',
+    padding: '8px 16px 16px 16px',
+  }),
+  option: () => ({
+    borderBottom: '1px solid black',
+    color: '#A43B5C',
+    fontWeight: '600',
+    padding: '8px',
+  }),
+}
 
 export default class Apply extends React.Component {
   constructor(props) {
@@ -144,7 +179,7 @@ export default class Apply extends React.Component {
 
       <p>Gender</p>
       <SelectField
-        styleHelper
+        styles={customStyles}
         name="gender"
         placeholder="What is your gender?"
         options={[
@@ -170,7 +205,7 @@ export default class Apply extends React.Component {
       <p>School</p>
       <SelectField
         isMulti
-        styleHelper
+        styles={customStyles}
         name="school"
         placeholder="University of Illinois"
         options={schools.map(school => ({ value: school, label: school }))}
@@ -178,7 +213,7 @@ export default class Apply extends React.Component {
 
       <p>Major</p>
       <SelectField
-        styleHelper
+        styles={customStyles}
         name="major"
         placeholder="Computer Science"
         options={majors.map(major => ({ value: major, label: major }))}
@@ -187,7 +222,7 @@ export default class Apply extends React.Component {
       {/* TODO: add to application object */}
       <p>Degree Being Pursued</p>
       <SelectField
-        styleHelper
+        styles={customStyles}
         name="degree"
         placeholder="Bachelor"
         options={degrees.map(degree => ({value: degree, label: degree}))}
@@ -196,7 +231,7 @@ export default class Apply extends React.Component {
 
       <p>Graduation Year</p>
       <SelectField
-        styleHelper
+        styles={customStyles}
         name="graduationYear"
         placeholder="2020"
         options={graduationYears.map(year => ({ value: year, label: year }))}
@@ -214,7 +249,7 @@ export default class Apply extends React.Component {
     <div>
       <p>Career Interests</p>
       <SelectField
-        styleHelper
+        styles={customStyles}
         name="interests"
         placeholder="Internship"
         options={[
@@ -249,10 +284,10 @@ export default class Apply extends React.Component {
         {/* TODO: add to application object */}
         <p>Years of programming experience?</p>
         <SelectField
-          styleHelper
+          styles={customStyles}
           name="years"
           options={range(11).map(year => {
-            const label = (year == 10) ? "10+" : year.toString();
+            const label = (year === 10) ? "10+" : year.toString();
             return { 'value': year, 'label': label};
           })}
         />
@@ -266,7 +301,7 @@ export default class Apply extends React.Component {
           <li value="10">I <i>AM</i> code.</li>
         </ol>
         <SelectField
-          styleHelper
+          styles={customStyles}
           name="ability"
           options={range(1, 10).map(years => {
             return { 'value': years, 'label': years };
@@ -276,7 +311,7 @@ export default class Apply extends React.Component {
         {/* TODO: add to application object */}
         <p>Have you contributed to open source before?</p>
         <SelectField
-          styleHelper
+          styles={customStyles}
           name="contributed"
           options={[
             { label: 'Yes', value: 'YES' },

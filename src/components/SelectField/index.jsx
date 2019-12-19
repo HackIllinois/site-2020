@@ -1,8 +1,9 @@
 // We disable the rule preventing the use of ...props because these are higher order components
 /* eslint react/jsx-props-no-spreading: 0 */
 
-import { Field } from 'formik';
 import React from 'react';
+
+import { Field } from 'formik';
 import Select from 'react-select';
 
 class FormikSelect extends React.Component {
@@ -28,12 +29,11 @@ class FormikSelect extends React.Component {
   }
 
   render() {
-    const { field, styleHelper } = this.props;
     return (
       <Select
-        className={styleHelper ? "formik-select" : ""}
+        name={this.props.field.name}
         hideSelectedOptions={false}
-        name={field.name}
+        isClearable={true}
         onChange={this.handleChange}
         value={this.getValue()}
         {...this.props}
@@ -42,8 +42,8 @@ class FormikSelect extends React.Component {
   }
 }
 
-const SelectField = ({ name, ...props }) => (
-  <Field name={name} component={FormikSelect} {...props} />
+const SelectField = (props) => (
+  <Field component={FormikSelect} {...props} />
 );
 
 export default SelectField;
