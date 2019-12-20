@@ -6,7 +6,7 @@ import next from 'assets/apply/next.svg';
 export default function NextButton(props) {
   return (
     <button className="next" onClick={props.onClick}>
-      Next <img src={next} alt="next" />
+      {props.text ? props.text : 'NEXT'} <img src={next} alt="next" />
     </button>
   );
 }

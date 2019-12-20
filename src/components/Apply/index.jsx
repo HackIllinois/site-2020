@@ -32,7 +32,7 @@ import {
 const customStyles = {
   control: () => ({
     background: 'transparent',
-    borderBottom: '2px solid black',
+    borderBottom: '2px solid #0A093F',
     display: 'flex',
   }),
   placeholder: (base, input) => ({
@@ -40,19 +40,20 @@ const customStyles = {
     color: '#A43B5C',
     fontWeight: 600,
   }),
-  clearSeparator: () => ({
-    color: 'black',
+  clearIndicator: () => ({
+    color: '#0A093F',
+    paddingRight: '2px',
   }),
   indicatorSeparator: () => ({
     visible: false,
   }),
   dropdownIndicator: () => ({
-    color: 'black',
+    color: '#0A093F',
   }),
-  menu: (base, input) => ({
+  menu: () => ({
     position: 'absolute',
     background: '#E4F4F6',
-    border: '2px solid black',
+    border: '2px solid #0A093F',
     borderTop: 0,
     boxSizing: 'border-box',
     padding: '8px 16px 16px 16px',
@@ -60,7 +61,7 @@ const customStyles = {
     zIndex: 1,
   }),
   option: () => ({
-    borderBottom: '1px solid black',
+    borderBottom: '1px solid #0A093F',
     color: '#A43B5C',
     fontWeight: 600,
     padding: '8px',
@@ -120,10 +121,13 @@ export default class Apply extends React.Component {
     this.setState({ isLoading: true });
 
     const { isEditing, resume } = this.state;
-    const { history } = this.props;
+    app['resumeFilename'] = resume.name;
+    console.log(app);
+    this.props.history.push('/');
 
     // TODO Fix logic here; upload resume and application together
-    apply(isEditing, app).then(() => {
+    /*
+    apply(isEditing, application).then(() => {
       if (resume) {
         return uploadResume(resume).then(() => {
           history.push('/');
@@ -135,6 +139,7 @@ export default class Apply extends React.Component {
     }).catch(() => {
       this.setState({ isLoading: false });
     });
+    */
   }
 
   personal = () => (
@@ -215,18 +220,23 @@ export default class Apply extends React.Component {
   professional = () => (
     <div>
       <p>Resume</p>
-      <input
-        type="file"
-        accept="application/pdf"
-        onChange={this.onResumeUpload}
-      />
+      <div className="resume-upload">
+        <label htmlFor="upload">CHOOSE FILE</label>
+        <span>{this.state.resume && this.state.resume.name}</span>
+        <input
+          id="upload"
+          type="file"
+          accept="application/pdf"
+          onChange={this.onResumeUpload}
+        />
+      </div>
 
       <p>Career Interests</p>
       <SelectField
         isMulti
         styles={customStyles}
         name="careerInterests"
-        placeholder="You may select more than one option"
+        placeholder="You may select multiple options"
         options={[
           { label: 'Internship', value: 'INTERNSHIP' },
           { label: 'Full-time', value: 'FULLTIME' },
@@ -248,7 +258,7 @@ export default class Apply extends React.Component {
       <SelectField
         styles={customStyles}
         name="programmingYears"
-        placeholder=""
+        placeholder="Select a number"
         options={[
           { 'value': 0, 'label': '0' },
           { 'value': 1, 'label': '1' },
@@ -267,22 +277,22 @@ export default class Apply extends React.Component {
       <SelectField
         styles={customStyles}
         name="programmingAbility"
-        placeholder=""
+        placeholder="Select a number"
         options={[
-          { 'value': 0, 'label': '0 (I have never written code before)' },
+          { 'value': 0, 'label': '0: I am a complete beginner' },
           { 'value': 1, 'label': '1' },
           { 'value': 2, 'label': '2' },
-          { 'value': 3, 'label': '3 (I am comfortable working on an independent project)' },
+          { 'value': 3, 'label': '3: I am comfortable working on an independent project' },
           { 'value': 4, 'label': '4' },
           { 'value': 5, 'label': '5' },
-          { 'value': 6, 'label': '6 (I am comfortable writing and reviewing production level code in a professional setting)' },
+          { 'value': 6, 'label': '6: I am comfortable writing and reviewing code in a professional setting' },
           { 'value': 7, 'label': '7' },
           { 'value': 8, 'label': '8' },
-          { 'value': 9, 'label': '9+ (I am code)' },
+          { 'value': 9, 'label': '9: I am Linus Torvalds' },
         ]}
       />
 
-      <p>Have you contributed to an Open Source project before?</p>
+      <p>Have you contributed to Open Source before?</p>
       <SelectField
         styles={customStyles}
         name="isOSContributor"
@@ -302,21 +312,21 @@ export default class Apply extends React.Component {
 
   interests = () => (
     <div>
-      <p>What kind of projects are you interested in working on? *</p>
+      <p>Which types of projects are you interested in? *</p>
       <SelectField
         isMulti
         styles={customStyles}
         name="categoryInterests"
-        placeholder="You may select more than one option"
+        placeholder="You may select multiple options"
         options={categories.map(category => ({ value: category, label: category }))}
       />
 
-      <p>What programming languages would you like to work with? *</p>
+      <p>Which languages would you like to work with? *</p>
       <SelectField
         isMulti
         styles={customStyles}
         name="languageInterests"
-        placeholder="You may select more than one option"
+        placeholder="You may select multiple options"
         options={languages.map(language => ({ value: language, label: language }))}
       />
 
@@ -356,9 +366,9 @@ export default class Apply extends React.Component {
         isMulti
         styles={customStyles}
         name="howDiscovered"
-        placeholder="You may select more than one option"
+        placeholder="You may select multiple options"
         options={[
-          { 'value': 'PEER', 'label': 'Friend' },
+          { 'value': 'PEER', 'label': 'Friend or Peer' },
           { 'value': 'SOCIALMEDIA', 'label': 'Social Media' },
           { 'value': 'OTHER', 'label': 'Other' },
         ]}
@@ -366,7 +376,7 @@ export default class Apply extends React.Component {
 
       <div className="nav-buttons">
         <BackButton onClick={this.back} />
-        <NextButton onClick={this.next} />
+        <NextButton text="SUBMIT" onClick={this.submit} />
       </div>
     </div>
   );
@@ -393,6 +403,7 @@ export default class Apply extends React.Component {
 
         <div className="application">
           <h3>Registration</h3>
+          <p>{JSON.stringify(application)}</p>
           <Formik
             initialValues={application}
             enableReinitialize

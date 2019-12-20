@@ -35,7 +35,7 @@ class FormikSelect extends React.Component {
     return (
       <Select
         name={this.props.field.name}
-        hideSelectedOptions={false}
+        closeMenuOnSelect={!this.props.isMulti}
         isClearable={true}
         onChange={this.handleChange}
         value={this.getValue()}

@@ -6,7 +6,7 @@ import back from 'assets/apply/back.svg';
 export default function BackButton(props) {
   return (
     <button className="back" onClick={props.onClick}>
-      <img src={back} alt="back" /> Back
+      <img src={back} alt="back" /> BACK
     </button>
   );
 }

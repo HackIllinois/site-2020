@@ -4,6 +4,7 @@
   background-size: cover;
   color: #0A093F;
   display: flex;
+  min-height: 100%;
 
   .progress {
     // Mobile
@@ -61,7 +62,7 @@
       input {
         background: transparent;
         border: none;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #0A093F;
         border-radius: 0;
         font-size: 16px;
         outline: none;
@@ -73,6 +74,22 @@
         color: #A43B5C;
         font-weight: 600;
       }
+
+      .resume-upload {
+        margin-top: 16px;
+
+        label {
+          border: 2px solid #0A093F;
+          border-radius: 50ch;
+          font-weight: 600;
+          margin-right: 8px;
+          padding: 5px 12px;
+        }
+
+        input {
+          display: none;
+        }
+      }
     }
 
     .nav-buttons {
@@ -83,10 +100,11 @@
       button {
         align-items: center;
         background-color: transparent;
-        border: 2px solid black;
+        border: 2px solid #0A093F;
         border-radius: 50ch;
         display: flex;
         font-size: 16px;
+        font-weight: 600;
         outline: none;
       }
     }
