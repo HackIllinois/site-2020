@@ -11,9 +11,12 @@ class FormikSelect extends React.Component {
     const { field, isMulti, options } = this.props;
 
     if (isMulti) {
+      if (!field.value) return [];
       return options.filter(option => field.value.includes(option.value));
-    }
+    } else {
+      if (!field.value) return '';
       return options.find(option => field.value === option.value);
+    }
   }
 
   handleChange = selected => {
@@ -23,7 +26,7 @@ class FormikSelect extends React.Component {
       const values = selected ? selected.map(opt => opt.value) : [];
       form.setFieldValue(field.name, values);
     } else {
-      const { value } = selected;
+      const value = selected ? selected.value : '';
       form.setFieldValue(field.name, value);
     }
   }
@@ -42,8 +45,8 @@ class FormikSelect extends React.Component {
   }
 }
 
-const SelectField = (props) => (
-  <Field component={FormikSelect} {...props} />
+const SelectField = props => (
+  <Field key={props.name} name={props.name} component={FormikSelect} {...props} />
 );
 
 export default SelectField;
