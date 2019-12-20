@@ -5,8 +5,8 @@ import { Field, Form, Formik } from 'formik';
 import Loading from 'components/Loading';
 import SelectField from 'components/SelectField';
 
-import Back from './Back';
-import Next from './Next';
+import BackButton from './BackButton';
+import NextButton from './NextButton';
 
 import pin_filled from 'assets/apply/pin_filled.svg';
 import pin_empty from 'assets/apply/pin_empty.svg';
@@ -38,7 +38,7 @@ const customStyles = {
   placeholder: (base, input) => ({
     ...base,
     color: '#A43B5C',
-    fontWeight: '600',
+    fontWeight: 600,
   }),
   clearSeparator: () => ({
     color: 'black',
@@ -49,16 +49,20 @@ const customStyles = {
   dropdownIndicator: () => ({
     color: 'black',
   }),
-  menu: () => ({
+  menu: (base, input) => ({
+    position: 'absolute',
     background: '#E4F4F6',
     border: '2px solid black',
-    borderTop: '0',
+    borderTop: 0,
+    boxSizing: 'border-box',
     padding: '8px 16px 16px 16px',
+    width: '100%',
+    zIndex: 1,
   }),
   option: () => ({
     borderBottom: '1px solid black',
     color: '#A43B5C',
-    fontWeight: '600',
+    fontWeight: 600,
     padding: '8px',
   }),
 }
@@ -162,7 +166,7 @@ export default class Apply extends React.Component {
       <br />
       <div className="nav-buttons">
         <div />
-        <Next onClick={this.next} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
@@ -202,8 +206,8 @@ export default class Apply extends React.Component {
       />
 
       <div className="nav-buttons">
-        <Back onClick={this.back} />
-        <Next onClick={this.next} />
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
@@ -232,8 +236,8 @@ export default class Apply extends React.Component {
       <br />
 
       <div className="nav-buttons">
-        <Back onClick={this.back} />
-        <Next onClick={this.next} />
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
@@ -290,8 +294,8 @@ export default class Apply extends React.Component {
       />
 
       <div className="nav-buttons">
-        <Back onClick={this.back} />
-        <Next onClick={this.next} />
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
@@ -317,8 +321,8 @@ export default class Apply extends React.Component {
       />
 
       <div className="nav-buttons">
-        <Back onClick={this.back} />
-        <Next onClick={this.next} />
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
@@ -361,8 +365,8 @@ export default class Apply extends React.Component {
       />
 
       <div className="nav-buttons">
-        <Back onClick={this.back} />
-        <Next onClick={this.next} />
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
     </div>
   );
