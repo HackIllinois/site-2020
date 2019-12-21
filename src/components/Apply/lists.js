@@ -213,7 +213,7 @@ export const degrees = [
   'Associate\'s',
   'Bachelor\'s',
   'Master\'s',
-  'PhD'
+  'PhD',
 ];
 
 export const graduationYears = [

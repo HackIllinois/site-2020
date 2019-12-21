@@ -5,13 +5,8 @@ import { Field, Form, Formik } from 'formik';
 import Loading from 'components/Loading';
 import SelectField from 'components/SelectField';
 
-import BackButton from './BackButton';
-import NextButton from './NextButton';
-import SubmitButton from './SubmitButton';
-
 import pinFilled from 'assets/apply/pin_filled.svg';
 import pinEmpty from 'assets/apply/pin_empty.svg';
-
 import {
   apply,
   authenticate,
@@ -20,6 +15,10 @@ import {
   isAuthenticated,
   uploadResume,
 } from 'api';
+import BackButton from './BackButton';
+import NextButton from './NextButton';
+import SubmitButton from './SubmitButton';
+
 
 import {
   categories,
@@ -36,7 +35,7 @@ const customStyles = {
     borderBottom: '2px solid #0A093F',
     display: 'flex',
   }),
-  placeholder: (base, input) => ({
+  placeholder: base => ({
     ...base,
     color: '#A43B5C',
     fontWeight: 600,
@@ -67,7 +66,7 @@ const customStyles = {
     fontWeight: 600,
     padding: '8px',
   }),
-}
+};
 
 export default class Apply extends React.Component {
   constructor(props) {
@@ -121,14 +120,15 @@ export default class Apply extends React.Component {
   submit = app => {
     this.setState({ isLoading: true });
 
+    const { history } = this.props;
     const { isEditing, resume } = this.state;
-    app['resumeFilename'] = resume && resume.name;
+    app.resumeFilename = resume && resume.name;
 
     // TODO Fix logic here; upload resume and application together
     apply(isEditing, app).then(() => {
       if (resume) {
         return uploadResume(resume).then(() => {
-          this.props.history.push('/');
+          history.push('/');
         }).catch(() => {
           this.setState({ isLoading: false });
         });
@@ -159,7 +159,7 @@ export default class Apply extends React.Component {
         name="gender"
         placeholder="What is your gender?"
         options={[
-          { label: 'Male', value: 'MALE'},
+          { label: 'Male', value: 'MALE' },
           { label: 'Female', value: 'FEMALE' },
           { label: 'Non-Binary', value: 'NONBINARY' },
         ]}
@@ -196,7 +196,7 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="degreePursued"
         placeholder="What degree are you pursuing?"
-        options={degrees.map(degree => ({value: degree, label: degree}))}
+        options={degrees.map(degree => ({ value: degree, label: degree }))}
       />
 
       <p>Graduation Year *</p>
@@ -214,40 +214,45 @@ export default class Apply extends React.Component {
     </div>
   );
 
-  professional = () => (
-    <div>
-      <p>Resume</p>
-      <div className="resume-upload">
-        <label htmlFor="upload">CHOOSE FILE</label>
-        <span>{this.state.resume && this.state.resume.name}</span>
-        <input
-          id="upload"
-          type="file"
-          accept="application/pdf"
-          onChange={this.onResumeUpload}
+  professional = () => {
+    const { resume } = this.state;
+    return (
+      <div>
+        <p>Resume</p>
+        <div className="resume-upload">
+          <label htmlFor="upload">
+            CHOOSE FILE
+            <input
+              id="upload"
+              type="file"
+              accept="application/pdf"
+              onChange={this.onResumeUpload}
+            />
+          </label>
+          <span>{resume && resume.name}</span>
+        </div>
+
+        <p>Career Interests</p>
+        <SelectField
+          isMulti
+          styles={customStyles}
+          name="careerInterests"
+          placeholder="You may select multiple options"
+          options={[
+            { label: 'Internship', value: 'INTERNSHIP' },
+            { label: 'Full-time', value: 'FULLTIME' },
+          ]}
         />
+
+        <br />
+
+        <div className="nav-buttons">
+          <BackButton onClick={this.back} />
+          <NextButton onClick={this.next} />
+        </div>
       </div>
-
-      <p>Career Interests</p>
-      <SelectField
-        isMulti
-        styles={customStyles}
-        name="careerInterests"
-        placeholder="You may select multiple options"
-        options={[
-          { label: 'Internship', value: 'INTERNSHIP' },
-          { label: 'Full-time', value: 'FULLTIME' },
-        ]}
-      />
-
-      <br />
-
-      <div className="nav-buttons">
-        <BackButton onClick={this.back} />
-        <NextButton onClick={this.next} />
-      </div>
-    </div>
-  );
+    );
+  }
 
   experience = () => (
     <div>
@@ -257,16 +262,16 @@ export default class Apply extends React.Component {
         name="programmingYears"
         placeholder="Select a number"
         options={[
-          { 'value': 0, 'label': '0' },
-          { 'value': 1, 'label': '1' },
-          { 'value': 2, 'label': '2' },
-          { 'value': 3, 'label': '3' },
-          { 'value': 4, 'label': '4' },
-          { 'value': 5, 'label': '5' },
-          { 'value': 6, 'label': '6' },
-          { 'value': 7, 'label': '7' },
-          { 'value': 8, 'label': '8' },
-          { 'value': 9, 'label': '9+' },
+          { value: 0, label: '0' },
+          { value: 1, label: '1' },
+          { value: 2, label: '2' },
+          { value: 3, label: '3' },
+          { value: 4, label: '4' },
+          { value: 5, label: '5' },
+          { value: 6, label: '6' },
+          { value: 7, label: '7' },
+          { value: 8, label: '8' },
+          { value: 9, label: '9+' },
         ]}
       />
 
@@ -276,16 +281,16 @@ export default class Apply extends React.Component {
         name="programmingAbility"
         placeholder="Select a number"
         options={[
-          { 'value': 0, 'label': '0: I am a complete beginner' },
-          { 'value': 1, 'label': '1' },
-          { 'value': 2, 'label': '2' },
-          { 'value': 3, 'label': '3: I am comfortable working on an independent project' },
-          { 'value': 4, 'label': '4' },
-          { 'value': 5, 'label': '5' },
-          { 'value': 6, 'label': '6: I am comfortable writing and reviewing code in a professional setting' },
-          { 'value': 7, 'label': '7' },
-          { 'value': 8, 'label': '8' },
-          { 'value': 9, 'label': '9: I am Linus Torvalds' },
+          { value: 0, label: '0: I am a complete beginner' },
+          { value: 1, label: '1' },
+          { value: 2, label: '2' },
+          { value: 3, label: '3: I am comfortable working on an independent project' },
+          { value: 4, label: '4' },
+          { value: 5, label: '5' },
+          { value: 6, label: '6: I am comfortable writing and reviewing code in a professional setting' },
+          { value: 7, label: '7' },
+          { value: 8, label: '8' },
+          { value: 9, label: '9: I am Linus Torvalds' },
         ]}
       />
 
@@ -342,8 +347,8 @@ export default class Apply extends React.Component {
         name="needsBus"
         placeholder="Yes/No"
         options={[
-          { 'value': 'YES', 'label': 'Yes' },
-          { 'value': 'NO', 'label': 'No' },
+          { value: 'YES', label: 'Yes' },
+          { value: 'NO', label: 'No' },
         ]}
       />
 
@@ -353,8 +358,8 @@ export default class Apply extends React.Component {
         name="priorAttendance"
         placeholder="Yes/No"
         options={[
-          { 'value': 'YES', 'label': 'Yes' },
-          { 'value': 'NO', 'label': 'No' },
+          { value: 'YES', label: 'Yes' },
+          { value: 'NO', label: 'No' },
         ]}
       />
 
@@ -365,9 +370,9 @@ export default class Apply extends React.Component {
         name="howDiscovered"
         placeholder="You may select multiple options"
         options={[
-          { 'value': 'PEER', 'label': 'Friend or Peer' },
-          { 'value': 'SOCIALMEDIA', 'label': 'Social Media' },
-          { 'value': 'OTHER', 'label': 'Other' },
+          { value: 'PEER', label: 'Friend or Peer' },
+          { value: 'SOCIALMEDIA', label: 'Social Media' },
+          { value: 'OTHER', label: 'Other' },
         ]}
       />
 
@@ -384,8 +389,22 @@ export default class Apply extends React.Component {
       return <Loading />;
     }
 
-    const pages = [this.personal, this.educational, this.professional, this.experience, this.interests, this.event];
-    const titles = ["PERSONAL", "EDUCATIONAL", "PROFESSIONAL", "EXPERIENCE", "INTERESTS", "EVENT"];
+    const pages = [
+      this.personal,
+      this.educational,
+      this.professional,
+      this.experience,
+      this.interests,
+      this.event,
+    ];
+    const titles = [
+      'PERSONAL',
+      'EDUCATIONAL',
+      'PROFESSIONAL',
+      'EXPERIENCE',
+      'INTERESTS',
+      'EVENT',
+    ];
 
     return (
       <div className="apply">

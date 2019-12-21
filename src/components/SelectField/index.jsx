@@ -13,10 +13,9 @@ class FormikSelect extends React.Component {
     if (isMulti) {
       if (!field.value) return [];
       return options.filter(option => field.value.includes(option.value));
-    } else {
+    }
       if (!field.value) return '';
       return options.find(option => field.value === option.value);
-    }
   }
 
   handleChange = selected => {
@@ -32,11 +31,12 @@ class FormikSelect extends React.Component {
   }
 
   render() {
+    const { field, isMulti } = this.props;
     return (
       <Select
-        name={this.props.field.name}
-        closeMenuOnSelect={!this.props.isMulti}
-        isClearable={true}
+        name={field.name}
+        closeMenuOnSelect={!isMulti}
+        isClearable
         onChange={this.handleChange}
         value={this.getValue()}
         {...this.props}
@@ -45,8 +45,8 @@ class FormikSelect extends React.Component {
   }
 }
 
-const SelectField = props => (
-  <Field key={props.name} name={props.name} component={FormikSelect} {...props} />
+const SelectField = ({ name, ...props }) => (
+  <Field key={name} name={name} component={FormikSelect} {...props} />
 );
 
 export default SelectField;
