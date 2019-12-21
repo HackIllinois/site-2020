@@ -135,7 +135,7 @@ export const schools = [
   'University of Arizona',
   'University of British Columbia',
   'University of Buffalo',
-  'University of Calfornia (Los Angeles)',
+  'University of California (Los Angeles)',
   'University of California (Berkeley)',
   'University of California (Davis)',
   'University of California (Irvine)',

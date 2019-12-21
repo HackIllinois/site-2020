@@ -7,9 +7,10 @@ import SelectField from 'components/SelectField';
 
 import BackButton from './BackButton';
 import NextButton from './NextButton';
+import SubmitButton from './SubmitButton';
 
-import pin_filled from 'assets/apply/pin_filled.svg';
-import pin_empty from 'assets/apply/pin_empty.svg';
+import pinFilled from 'assets/apply/pin_filled.svg';
+import pinEmpty from 'assets/apply/pin_empty.svg';
 
 import {
   apply,
@@ -121,16 +122,13 @@ export default class Apply extends React.Component {
     this.setState({ isLoading: true });
 
     const { isEditing, resume } = this.state;
-    app['resumeFilename'] = resume.name;
-    console.log(app);
-    this.props.history.push('/');
+    app['resumeFilename'] = resume && resume.name;
 
     // TODO Fix logic here; upload resume and application together
-    /*
-    apply(isEditing, application).then(() => {
+    apply(isEditing, app).then(() => {
       if (resume) {
         return uploadResume(resume).then(() => {
-          history.push('/');
+          this.props.history.push('/');
         }).catch(() => {
           this.setState({ isLoading: false });
         });
@@ -139,7 +137,6 @@ export default class Apply extends React.Component {
     }).catch(() => {
       this.setState({ isLoading: false });
     });
-    */
   }
 
   personal = () => (
@@ -376,7 +373,7 @@ export default class Apply extends React.Component {
 
       <div className="nav-buttons">
         <BackButton onClick={this.back} />
-        <NextButton text="SUBMIT" onClick={this.submit} />
+        <SubmitButton />
       </div>
     </div>
   );
@@ -395,7 +392,7 @@ export default class Apply extends React.Component {
         <div className="progress">
           {titles.map((title, idx) => (
             <div key={title} className="row">
-              <img className="pin" src={idx === page ? pin_filled : pin_empty} alt="pin" />
+              <img className="pin" src={idx === page ? pinFilled : pinEmpty} alt="pin" />
               <p>{title}</p>
             </div>
           ))}
@@ -403,7 +400,6 @@ export default class Apply extends React.Component {
 
         <div className="application">
           <h3>Registration</h3>
-          <p>{JSON.stringify(application)}</p>
           <Formik
             initialValues={application}
             enableReinitialize
