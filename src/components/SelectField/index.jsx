@@ -11,11 +11,12 @@ class FormikSelect extends React.Component {
     const { field, isMulti, options } = this.props;
 
     if (isMulti) {
-      if (!field.value) return [];
+      if (field.value === undefined) return [];
       return options.filter(option => field.value.includes(option.value));
     }
-      if (!field.value) return '';
-      return options.find(option => field.value === option.value);
+
+    if (field.value === undefined) return '';
+    return options.find(option => field.value === option.value);
   }
 
   handleChange = selected => {

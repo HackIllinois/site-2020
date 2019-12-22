@@ -223,16 +223,6 @@ export const graduationYears = [
   2023,
 ];
 
-export const categories = [
-  'App Development',
-  'Data Science',
-  'Developer Tools',
-  'Hardware',
-  'Programming Languages',
-  'Systems',
-  'Web Development',
-];
-
 export const languages = [
   'C',
   'C++',

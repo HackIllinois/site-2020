@@ -19,13 +19,9 @@ import BackButton from './BackButton';
 import NextButton from './NextButton';
 import SubmitButton from './SubmitButton';
 
-
 import {
-  categories,
-  degrees,
   graduationYears,
   languages,
-  majors,
   schools,
 } from './lists';
 
@@ -132,8 +128,9 @@ export default class Apply extends React.Component {
         }).catch(() => {
           this.setState({ isLoading: false });
         });
+      } else {
+        history.push('/');
       }
-      return {};
     }).catch(() => {
       this.setState({ isLoading: false });
     });
@@ -180,7 +177,7 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="school"
         placeholder="Where do you go to school?"
-        options={schools.map(school => ({ value: school, label: school }))}
+        options={schools.map(school => ({ label: school, value: school }))}
       />
 
       <p>Major *</p>
@@ -188,7 +185,15 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="major"
         placeholder="What is your major?"
-        options={majors.map(major => ({ value: major, label: major }))}
+        options={[
+          { label: 'Computer Science', value: 'CS' },
+          { label: 'Computer Engineering', value: 'CE' },
+          { label: 'Electrical Engineering', value: 'EE' },
+          { label: 'Other Engineering', value: 'ENG' },
+          { label: 'Business', value: 'BUS' },
+          { label: 'Liberal Arts and Sciences', value: 'LAS' },
+          { label: 'Other', value: 'OTHER' },
+        ]}
       />
 
       <p>Degree *</p>
@@ -196,7 +201,12 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="degreePursued"
         placeholder="What degree are you pursuing?"
-        options={degrees.map(degree => ({ value: degree, label: degree }))}
+        options={[
+          { label: 'Associate\'s', value: 'ASSOCIATES' },
+          { label: 'Bachelor\'s', value: 'BACHELORS' },
+          { label: 'Master\'s', value: 'MASTERS' },
+          { label: 'PhD', value: 'PHD' },
+        ]}
       />
 
       <p>Graduation Year *</p>
@@ -204,7 +214,7 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="graduationYear"
         placeholder="When do you graduate?"
-        options={graduationYears.map(year => ({ value: year, label: year }))}
+        options={graduationYears.map(year => ({ label: year, value: year }))}
       />
 
       <div className="nav-buttons">
@@ -215,7 +225,7 @@ export default class Apply extends React.Component {
   );
 
   professional = () => {
-    const { resume } = this.state;
+    const { application, resume } = this.state;
     return (
       <div>
         <p>Resume</p>
@@ -229,14 +239,16 @@ export default class Apply extends React.Component {
               onChange={this.onResumeUpload}
             />
           </label>
-          <span>{resume && resume.name}</span>
+          <span>
+            {(resume && resume.name) || (application && application.resumeFilename)}
+          </span>
         </div>
 
         <p>Career Interests</p>
         <SelectField
           isMulti
           styles={customStyles}
-          name="careerInterests"
+          name="careerInterest"
           placeholder="You may select multiple options"
           options={[
             { label: 'Internship', value: 'INTERNSHIP' },
@@ -262,16 +274,16 @@ export default class Apply extends React.Component {
         name="programmingYears"
         placeholder="Select a number"
         options={[
-          { value: 0, label: '0' },
-          { value: 1, label: '1' },
-          { value: 2, label: '2' },
-          { value: 3, label: '3' },
-          { value: 4, label: '4' },
-          { value: 5, label: '5' },
-          { value: 6, label: '6' },
-          { value: 7, label: '7' },
-          { value: 8, label: '8' },
-          { value: 9, label: '9+' },
+          { label: '1', value: 1 },
+          { label: '2', value: 2 },
+          { label: '3', value: 3 },
+          { label: '4', value: 4 },
+          { label: '5', value: 5 },
+          { label: '6', value: 6 },
+          { label: '7', value: 7 },
+          { label: '8', value: 8 },
+          { label: '9', value: 9 },
+          { label: '10+', value: 10 },
         ]}
       />
 
@@ -281,16 +293,16 @@ export default class Apply extends React.Component {
         name="programmingAbility"
         placeholder="Select a number"
         options={[
-          { value: 0, label: '0: I am a complete beginner' },
-          { value: 1, label: '1' },
-          { value: 2, label: '2' },
-          { value: 3, label: '3: I am comfortable working on an independent project' },
-          { value: 4, label: '4' },
-          { value: 5, label: '5' },
-          { value: 6, label: '6: I am comfortable writing and reviewing code in a professional setting' },
-          { value: 7, label: '7' },
-          { value: 8, label: '8' },
-          { value: 9, label: '9: I am Linus Torvalds' },
+          { label: '1: I am a complete beginner', value: 1 },
+          { label: '2', value: 2 },
+          { label: '3', value: 3 },
+          { label: '4: I am comfortable working on an independent project', value: 4 },
+          { label: '5', value: 5 },
+          { label: '6', value: 6 },
+          { label: '7: I am comfortable writing and reviewing code in a professional setting', value: 7 },
+          { label: '8', value: 8 },
+          { label: '9', value: 9 },
+          { label: '10: I am Linus Torvalds', value: 10 },
         ]}
       />
 
@@ -300,8 +312,8 @@ export default class Apply extends React.Component {
         name="isOSContributor"
         placeholder="Yes/No"
         options={[
-          { label: 'Yes', value: 'YES' },
-          { label: 'No', value: 'NO' },
+          { label: 'Yes', value: true },
+          { label: 'No', value: false },
         ]}
       />
 
@@ -320,7 +332,15 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="categoryInterests"
         placeholder="You may select multiple options"
-        options={categories.map(category => ({ value: category, label: category }))}
+        options={[
+          { label: 'App Development', value: 'APPDEV' },
+          { label: 'Programming Languages', value: 'LANGUAGES' },
+          { label: 'Data Science', value: 'DATASCIENCE' },
+          { label: 'Web Development', value: 'WEBDEV' },
+          { label: 'Systems', value: 'SYSTEMS' },
+          { label: 'Hardware', value: 'HARDWARE' },
+          { label: 'Developer Tools', value: 'DEVTOOLS' },
+        ]}
       />
 
       <p>Which languages would you like to work with? *</p>
@@ -329,7 +349,7 @@ export default class Apply extends React.Component {
         styles={customStyles}
         name="languageInterests"
         placeholder="You may select multiple options"
-        options={languages.map(language => ({ value: language, label: language }))}
+        options={languages.map(language => ({ label: language, value: language }))}
       />
 
       <div className="nav-buttons">
@@ -347,19 +367,19 @@ export default class Apply extends React.Component {
         name="needsBus"
         placeholder="Yes/No"
         options={[
-          { value: 'YES', label: 'Yes' },
-          { value: 'NO', label: 'No' },
+          { label: 'Yes', value: true },
+          { label: 'No', value: false },
         ]}
       />
 
       <p>Have you attended HackIllinois previously?</p>
       <SelectField
         styles={customStyles}
-        name="priorAttendance"
+        name="hasAttended"
         placeholder="Yes/No"
         options={[
-          { value: 'YES', label: 'Yes' },
-          { value: 'NO', label: 'No' },
+          { label: 'Yes', value: true },
+          { label: 'No', value: false },
         ]}
       />
 
@@ -370,9 +390,9 @@ export default class Apply extends React.Component {
         name="howDiscovered"
         placeholder="You may select multiple options"
         options={[
-          { value: 'PEER', label: 'Friend or Peer' },
-          { value: 'SOCIALMEDIA', label: 'Social Media' },
-          { value: 'OTHER', label: 'Other' },
+          { label: 'Friend or Peer', value: 'FRIEND' },
+          { label: 'Social Media', value: 'SOCIALMEDIA' },
+          { label: 'Other', value: 'OTHER' },
         ]}
       />
 
