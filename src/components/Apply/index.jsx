@@ -114,25 +114,23 @@ export default class Apply extends React.Component {
   }
 
   submit = app => {
-    this.setState({ isLoading: true });
-
     const { history } = this.props;
     const { isEditing, resume } = this.state;
-    app.resumeFilename = resume && resume.name;
 
-    // TODO Fix logic here; upload resume and application together
-    apply(isEditing, app).then(() => {
-      if (resume) {
-        return uploadResume(resume).then(() => {
-          history.push('/');
-        }).catch(() => {
-          this.setState({ isLoading: false });
-        });
-      } else {
-        history.push('/');
-      }
+    if (resume) {
+      app.resumeFilename = resume.name;
+    }
+
+    this.setState({ application: app, isLoading: true });
+
+    Promise.all([
+      apply(isEditing, app),
+      uploadResume(resume),
+    ]).then(() => {
+      history.push('/');
     }).catch(() => {
-      this.setState({ isLoading: false });
+      this.setState({ page: 0, isLoading: false });
+      alert('There is an error in your application. Please fill in all required fields!');
     });
   }
 
