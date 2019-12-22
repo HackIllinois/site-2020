@@ -18,6 +18,20 @@ const Container = Styled.div`
   background-size: cover;
 `;
 
+const Logo = Styled.img`
+  width: 10vw;
+  height: auto;
+  min-width: 120px;
+  top: 20px;
+  left: 35px;
+  position: absolute;
+  @media(max-width: 600px) {
+    top: 15px;
+    left: 15px;
+  }
+  z-index: 10;
+`;
+
 const Navbar = Styled.div`
   position: absolute;
   right: 0;
@@ -27,7 +41,7 @@ const Navbar = Styled.div`
 
 const NavItem = Styled.a`
   padding: 5px 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   text-decoration: none;
   color: #9C1641;
@@ -51,13 +65,19 @@ const SubContent = Styled.div`
   display: grid;
   margin-top: 100px;
   grid-template-columns: 100px 2.5fr 0.5fr 1fr 1fr 0.4fr;
-  grid-template-rows: 400px 200px 300px 300px 300px 500px;
+  grid-template-rows: 500px 200px 300px 300px 900px;
+  @media(max-width: 2200px) {
+    grid-template-rows: 500px 200px 300px 300px 700px;
+  }
   @media(max-width: 1800px) {
-    grid-template-rows: 500px 300px 400px 300px 500px;
+    grid-template-rows: 500px 200px 300px 300px 500px;
+  }
+  @media(max-width: 1600px) {
+    grid-template-rows: 500px 300px 850px;
   }
   @media(max-width: 1400px) {
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 0.3fr;
-    grid-template-rows: 600px 400px 300px 400px 300px;
+    grid-template-rows: 300px 400px 500px;
   }
   @media(max-width: 1100px) {
     grid-template-columns: 100px 0.8fr 1fr 1fr 0.3fr;
@@ -86,20 +106,37 @@ const SubContent = Styled.div`
 
 const Tagline = Styled.img`
   overflow: hidden;
-  width: auto;
-  max-width: 600px;
-  margin-top: 20vh;
+  width: 25vw;
+  margin-top: 100px;
   margin-left: 20px;
   margin-right: 20px;
+  
+  @media(max-width: 1200px) {
+    width: 40vw;
+  }
+  @media(max-width: 900px) {
+    width: 70vw;
+  }
+  @media(max-width: 600px) {
+    width: 85vw;
+  }
   @media(max-width: 375px) {
     margin-top: 100px;
+  }
+`;
+
+const TaglineText = Styled.div`
+  margin-top: 5vh;
+  font-size: 25px;
+  @media(min-width: 2000px) {
+    font-size: 2rem;
   }
 `;
 
 const City = Styled.img`
   height: 100%;
   z-index: 1;
-  grid-area: 1 / 1 / 5 / 4;
+  grid-area: 1 / 1 / 4 / 4;
   justify-self: start;
   @media(max-width: 1800px) {
     height: auto;
@@ -108,6 +145,8 @@ const City = Styled.img`
   }
   @media(max-width: 1400px) {
     grid-area: 1/1/3/4;
+    height: 100%;
+    width: auto;
   }
   @media(max-width: 1100px) {
     grid-area: 1/1/3/4;
@@ -161,7 +200,7 @@ const DescriptionContainer = Styled.div`
     grid-area: 2/4/6/6;
   }
   @media(max-width: 2400px) {
-    grid-area: 3/4/6/6;
+    grid-area: 2/4/6/6;
   }
   @media(max-width: 1800px) {
     grid-area: 2/4/6/6;
@@ -183,20 +222,6 @@ const DescriptionTitle = Styled.div`
 
 const Description = Styled.div`
   font-size: 1.5rem;
-`;
-
-const Logo = Styled.img`
-  width: 15vw;
-  height: auto;
-  min-width: 120px;
-  top: 20px;
-  left: 35px;
-  position: absolute;
-  @media(max-width: 600px) {
-    top: 15px;
-    left: 15px;
-  }
-  z-index: 10;
 `;
 
 const GroundContent = Styled.div`
@@ -303,10 +328,9 @@ const FAQContainer = Styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
-  
+  padding-top: 40px;
   
   @media(max-width: 3000px) {
-    padding-top: 40px;
     padding-bottom: 7vw;
   }
   @media(max-width: 2500px) {
@@ -366,6 +390,9 @@ export default class Home extends React.Component {
             {NAVITEMS.map(e => <NavItem href={e.url}>{e.title}</NavItem>)}
           </Navbar>
           <Tagline src={tagline} alt={'tagline'} />
+          <TaglineText>
+            FEBRUARY 28 – MARCH 1, 2020
+          </TaglineText>
           <SubContent>
             <City src={city} />
             <Backdrop1 />
@@ -391,6 +418,7 @@ export default class Home extends React.Component {
                 <Clickable isFAQ rotation='-3'>
                   FAQ
                 </Clickable>
+
                 {CLICKABLES.map(e => (
                   <Clickable
                     key={e.title}
@@ -402,6 +430,7 @@ export default class Home extends React.Component {
                   </Clickable>
                 ))}
               </TimeWrapper>
+
               {FAQ_PANELS[FAQ_STATE].content.map(e => (
                 <FAQTitle key={e[0].q}>
                   {e.map(f => (
