@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled, {keyframes} from 'styled-components';
+import { Link } from 'react-router-dom';
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
 import city from 'assets/home/city.svg';
@@ -8,7 +9,7 @@ import backdrop1 from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
-import { NAVITEMS, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
 
 const Container = Styled.div`
   position: relative;
@@ -36,28 +37,10 @@ const fadeOut = keyframes`
   0%   { opacity: 1; }
   100% { opacity: 0; }
 `;
+
 const fadeIn = keyframes`
   0%   { opacity: 0; }
   100% { opacity: 1; }
-`;
-const Navbar = Styled.div`
-  position: absolute;
-  right: 0;
-  top : 0;
-  margin: 40px 40px;
-`;
-
-const NavItem = Styled.a`
-  padding: 5px 10px;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #9C1641;
-  
-  &:hover {
-    cursor: pointer;
-    background: #86c2d1;
-  }
 `;
 
 const Content = Styled.div`
@@ -114,15 +97,14 @@ const SubContent = Styled.div`
 
 const Tagline = Styled.img`
   overflow: hidden;
-  width: 25vw;
-  margin-top: 100px;
+  height: 40vh;
+  margin-top: 15vh;
   margin-left: 20px;
   margin-right: 20px;
   
-  @media(max-width: 1200px) {
-    width: 40vw;
-  }
   @media(max-width: 900px) {
+    height: auto;
+    margin-top: 100px;
     width: 70vw;
   }
   @media(max-width: 600px) {
@@ -135,10 +117,23 @@ const Tagline = Styled.img`
 
 const TaglineText = Styled.div`
   margin-top: 5vh;
-  font-size: 25px;
+  font-size: 2rem;
   @media(min-width: 2000px) {
     font-size: 2rem;
   }
+`;
+
+const Sponsor = Styled.div`
+  height: 15vh;
+  margin: 5vh;
+`;
+
+const DayOf = Styled.button`
+  font-size: 2rem;
+  color: white;
+  background-color: #222B5C;
+  padding: 10px 20px;
+  border-radius: 30px;
 `;
 
 const City = Styled.img`
@@ -405,13 +400,16 @@ export default class Home extends React.Component {
       <Container>
         <Logo src={logo} />
         <Content>
-          <Navbar>
-            {NAVITEMS.map(e => <NavItem href={e.url}>{e.title}</NavItem>)}
-          </Navbar>
           <Tagline src={tagline} alt={'tagline'} />
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
+          <Sponsor />
+          <Link to={'#dayof'}>
+            <DayOf>
+              DAY OF
+            </DayOf>
+          </Link>
           <SubContent>
             <City src={city} />
             <Backdrop1 />
