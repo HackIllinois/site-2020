@@ -15,7 +15,7 @@
     background: url(../../assets/apply/nav_background.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 120px 40px;
+    padding: 96px 48px;
 
     .row {
       align-items: center;
@@ -64,14 +64,18 @@
         border: none;
         border-bottom: 2px solid #0A093F;
         border-radius: 0;
+        color: rgb(164, 59, 92);
         font-size: 16px;
+        font-weight: 600;
         outline: none;
         padding: 6px 8px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         width: 100%;
       }
 
       input::placeholder {
-        color: #A43B5C;
+        color: rgba(164, 59, 92, 0.5);
         font-weight: 600;
       }
 
@@ -102,6 +106,7 @@
         background-color: transparent;
         border: 2px solid #0A093F;
         border-radius: 50ch;
+        cursor: pointer;
         display: flex;
         font-size: 16px;
         font-weight: 600;

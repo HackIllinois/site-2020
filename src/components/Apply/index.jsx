@@ -33,18 +33,28 @@ const customStyles = {
   }),
   placeholder: base => ({
     ...base,
-    color: '#A43B5C',
+    color: 'rgba(164, 59, 92, 0.5)',
     fontWeight: 600,
   }),
-  clearIndicator: () => ({
+  input: base => ({
+    ...base,
+    color: 'rgb(164, 59, 92)',
+    fontWeight: 600,
+  }),
+  singleValue: () => ({
+    color: 'rgb(164, 59, 92)',
+    fontWeight: 600,
+  }),
+  clearIndicator: base => ({
     color: '#0A093F',
-    paddingRight: '2px',
+    cursor: 'pointer',
   }),
   indicatorSeparator: () => ({
     visible: false,
   }),
   dropdownIndicator: () => ({
     color: '#0A093F',
+    cursor: 'pointer',
   }),
   menu: () => ({
     position: 'absolute',
@@ -59,6 +69,7 @@ const customStyles = {
   option: () => ({
     borderBottom: '1px solid #0A093F',
     color: '#A43B5C',
+    cursor: 'pointer',
     fontWeight: 600,
     padding: '8px',
   }),
