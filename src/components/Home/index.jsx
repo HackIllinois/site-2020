@@ -415,6 +415,7 @@ const FAQContainer = Styled.div`
   }
   @media(max-width: 900px) {
     grid-template-columns: 1fr;
+    display: none;
   }
   @media(max-width: 650px) {
     padding: 40px 0;
