@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Apply from 'components/Apply';
 import Auth from 'components/Auth';
-import Error from 'components/Error';
 import Home from 'components/Home';
+import Message from 'components/Message';
 import PDF from 'components/PDF';
 import Token from 'components/Token';
 
@@ -34,7 +34,7 @@ export default function App() {
         />
 
         <Route component={
-          () => <Error message="404 Not Found" />
+          () => <Message title="404 Not Found" />
         }
         />
       </Switch>

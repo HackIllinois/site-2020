@@ -3,6 +3,7 @@ import './style.scss';
 
 import { Field, Form, Formik } from 'formik';
 import Loading from 'components/Loading';
+import Message from 'components/Message';
 import SelectField from 'components/SelectField';
 
 import pinFilled from 'assets/apply/pin_filled.svg';
@@ -71,6 +72,7 @@ export default class Apply extends React.Component {
     this.state = {
       isLoading: true,
       isEditing: false,
+      isSubmitted: false,
 
       application: {},
       resume: undefined,
@@ -123,11 +125,14 @@ export default class Apply extends React.Component {
 
     this.setState({ application: app, isLoading: true });
 
-    Promise.all([
-      apply(isEditing, app),
-      uploadResume(resume),
-    ]).then(() => {
-      history.push('/');
+    apply(isEditing, app).then(() => {
+      if (resume) {
+        uploadResume(resume).then(() => {
+          this.setState({ isSubmitted: true });
+        });
+      } else {
+        this.setState({ isSubmitted: true });
+      }
     }).catch(() => {
       this.setState({ page: 0, isLoading: false });
       alert('There is an error in your application. Please fill in all required fields!');
@@ -402,10 +407,21 @@ export default class Apply extends React.Component {
   );
 
   render() {
-    const { isLoading, application, page } = this.state;
+    const { isLoading, isSubmitted, application, page } = this.state;
+
     if (isLoading) {
       return <Loading />;
     }
+
+    if (isSubmitted) {
+      return (
+        <Message
+          title="Thank you for your application!"
+          text="You will receive a confirmation email shortly. Decisions will be made in late January."
+        />
+      );
+    }
+
 
     const pages = [
       this.personal,
