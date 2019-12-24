@@ -116,7 +116,6 @@ export default class Apply extends React.Component {
   }
 
   submit = app => {
-    const { history } = this.props;
     const { isEditing, resume } = this.state;
 
     if (resume) {
@@ -128,13 +127,13 @@ export default class Apply extends React.Component {
     apply(isEditing, app).then(() => {
       if (resume) {
         uploadResume(resume).then(() => {
-          this.setState({ isSubmitted: true });
+          this.setState({ isLoading: false, isSubmitted: true });
         });
       } else {
-        this.setState({ isSubmitted: true });
+        this.setState({ isLoading: false, isSubmitted: true });
       }
     }).catch(() => {
-      this.setState({ page: 0, isLoading: false });
+      this.setState({ isLoading: false, page: 0 });
       alert('There is an error in your application. Please fill in all required fields!');
     });
   }
@@ -407,7 +406,12 @@ export default class Apply extends React.Component {
   );
 
   render() {
-    const { isLoading, isSubmitted, application, page } = this.state;
+    const {
+      isLoading,
+      isSubmitted,
+      application,
+      page,
+    } = this.state;
 
     if (isLoading) {
       return <Loading />;
@@ -421,7 +425,6 @@ export default class Apply extends React.Component {
         />
       );
     }
-
 
     const pages = [
       this.personal,
