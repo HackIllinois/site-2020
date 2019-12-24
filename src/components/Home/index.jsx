@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled, {keyframes} from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
 import city from 'assets/home/city.svg';
@@ -9,7 +9,7 @@ import backdrop1 from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
-import { /*NAVITEMS, */BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+import { BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
 
 const Container = Styled.div`
   position: relative;
@@ -56,26 +56,6 @@ const sway2 = keyframes`
   50% { transform: translate(0, 3vh); }
   100% { transform: translate(0, 0); }
 `;
-
-// const Navbar = Styled.div`
-//   position: absolute;
-//   right: 0;
-//   top : 0;
-//   margin: 40px 40px;
-// `;
-
-// const NavItem = Styled.a`
-//   padding: 5px 10px;
-//   font-size: 1.2rem;
-//   border-radius: 5px;
-//   text-decoration: none;
-//   color: #9C1641;
-  
-//   &:hover {
-//     cursor: pointer;
-//     background: #86c2d1;
-//   }
-// `;
 
 const Content = Styled.div`
   position: relative;
@@ -192,14 +172,20 @@ const CenterLink = Styled(StyledCenterButton)`
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
-  width: 12vw;
-  animation: ${p => p.uid === 3 ? sway2 : sway1} 8s ease-in-out ${p => -(p.uid * 2).toString() + 's'} infinite;
+  width: ${p => p.src.includes('plane') ? 12 + p.clicks + 'vw' : '12vw'};
+  pointer-events: visiblePainted;
+  animation: ${p => p.src.includes('plane') ? sway2 : sway1} 8s ease-in-out ${p => -(p.uid * 2).toString() + 's'} infinite;
+  &:hover{
+    cursor: ${p => p.src.includes('plane') ? 'pointer' : 'default'};
+  }
 
   @media(max-width: 900px) {
     display: ${p => p.mobileStyle ? 'visible' : 'none'};
-    position: static;
-    width: 25vw;
     margin: ${p => p.mobileStyle ? p.mobileStyle.margin : null};
+    clip-path: ${p => p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null};
+    background: ${p => p.isMobile && p.mobileStyle ? p.mobileStyle.background : null};
+    position: static;
+    width: ${p => p.src.includes('plane') ? 25 + p.clicks * 2 + 'vw' : '12vw'};;
   }
 `;
 
@@ -434,10 +420,13 @@ export default class Home extends React.Component {
       FAQ_STATE: 'General',
       SCROLL_POS: 0,
       FAQ_ANIMATION: '',
+      CLICKS: 0,
+      IS_MOBILE: false,
     };
 
     this.handleScroll = this.handleScroll.bind(this);
     this.changeFAQ = this.changeFAQ.bind(this);
+    this.clickTracker = this.clickTracker.bind(this);
   }
 
   componentDidMount() {
@@ -455,6 +444,13 @@ export default class Home extends React.Component {
     setTimeout(() => {this.setState({ FAQ_ANIMATION: '' })}, 400);
   }
 
+  clickTracker(e) {
+    let clickedPlane = e.target.src.includes('plane');
+    let clicks = this.state.CLICKS;
+    if(clickedPlane) this.setState({CLICKS: ++clicks, IS_MOBILE: !clicks});
+    else this.setState({CLICKS: (clicks - 0.05).toPrecision(2)});
+  }
+
   handleScroll() {
     const h = document.body.clientHeight;
     const st = document.body.scrollTop;
@@ -463,14 +459,12 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { FAQ_STATE, SCROLL_POS } = this.state;
+    const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
+    if(CLICKS > 4) return <Redirect push to='/unfurl' />;
     return (
       <Container>
         <Logo src={logo} />
         <Content>
-          {/* <Navbar>
-            {NAVITEMS.map(e => <NavItem href={e.url}>{e.title}</NavItem>)}
-          </Navbar> */}
           <Tagline src={tagline} alt={'tagline'} />
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
@@ -478,7 +472,7 @@ export default class Home extends React.Component {
           <Sponsor />
           <CenterLink />
           {BACKGROUND_DECOR.map(e => 
-            <BackgroundDecor key={e.id} uid={e.id} src={e.img} style={e.style} mobileStyle={e.mobileStyle} />
+            <BackgroundDecor onClick={this.clickTracker} key={e.id} uid={e.id} isMobile={IS_MOBILE} clicks={Math.max(Math.floor(CLICKS), 0)} src={e.img} style={e.style} mobileStyle={e.mobileStyle}/>
           )}
           <SubContent>
             <City src={city} />
@@ -498,14 +492,12 @@ export default class Home extends React.Component {
               <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
-            
             <FAQContainer>
               <Pole />
               <TimeWrapper>
                 <Clickable isFAQ rotation='-3'>
                   FAQ
                 </Clickable>
-
                 {CLICKABLES.map(e => (
                   <Clickable
                     key={e.title}
@@ -517,7 +509,6 @@ export default class Home extends React.Component {
                   </Clickable>
                 ))}
               </TimeWrapper>
-
               {FAQ_PANELS[FAQ_STATE].content.map(e => (
                 <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
                   {e.map(f => (
