@@ -35,7 +35,8 @@ export function authenticate(to) {
 }
 
 export function getToken(code) {
-  return request('POST', '/auth/code/github/', { code });
+  return request('POST', '/auth/code/github/', { code })
+    .then(res => res.token);
 }
 
 export function getRoles() {
