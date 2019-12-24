@@ -283,6 +283,7 @@ export default class Apply extends React.Component {
         name="programmingYears"
         placeholder="Select a number"
         options={[
+          { label: '0', value: 0 },
           { label: '1', value: 1 },
           { label: '2', value: 2 },
           { label: '3', value: 3 },
@@ -291,8 +292,7 @@ export default class Apply extends React.Component {
           { label: '6', value: 6 },
           { label: '7', value: 7 },
           { label: '8', value: 8 },
-          { label: '9', value: 9 },
-          { label: '10+', value: 10 },
+          { label: '9+', value: 9 },
         ]}
       />
 
@@ -315,7 +315,7 @@ export default class Apply extends React.Component {
         ]}
       />
 
-      <p>Have you contributed to Open Source before?</p>
+      <p>Have you contributed to Open Source before? *</p>
       <SelectField
         styles={customStyles}
         name="isOSContributor"
@@ -335,7 +335,7 @@ export default class Apply extends React.Component {
 
   interests = () => (
     <div>
-      <p>Which types of projects are you interested in? *</p>
+      <p>Which types of projects are you interested in?</p>
       <SelectField
         isMulti
         styles={customStyles}
@@ -352,7 +352,7 @@ export default class Apply extends React.Component {
         ]}
       />
 
-      <p>Which languages would you like to work with? *</p>
+      <p>Which languages would you like to work with?</p>
       <SelectField
         isMulti
         styles={customStyles}
