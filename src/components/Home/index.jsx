@@ -9,7 +9,7 @@ import backdrop1 from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
-import { DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+import { /*NAVITEMS, */BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
 
 const Container = Styled.div`
   position: relative;
@@ -42,6 +42,40 @@ const fadeIn = keyframes`
   0%   { opacity: 0; }
   100% { opacity: 1; }
 `;
+
+const enlarge = keyframes`
+  100% { transform: scale(1.1)};
+`;
+
+const sway1 = keyframes`
+  50% { transform: translate(3vw); }
+  100% { transform: translate(0); }
+`;
+
+const sway2 = keyframes`
+  50% { transform: translate(0, 3vh); }
+  100% { transform: translate(0, 0); }
+`;
+
+// const Navbar = Styled.div`
+//   position: absolute;
+//   right: 0;
+//   top : 0;
+//   margin: 40px 40px;
+// `;
+
+// const NavItem = Styled.a`
+//   padding: 5px 10px;
+//   font-size: 1.2rem;
+//   border-radius: 5px;
+//   text-decoration: none;
+//   color: #9C1641;
+  
+//   &:hover {
+//     cursor: pointer;
+//     background: #86c2d1;
+//   }
+// `;
 
 const Content = Styled.div`
   position: relative;
@@ -96,6 +130,7 @@ const SubContent = Styled.div`
 `;
 
 const Tagline = Styled.img`
+  z-index: 20;
   overflow: hidden;
   height: 40vh;
   margin-top: 15vh;
@@ -116,6 +151,7 @@ const Tagline = Styled.img`
 `;
 
 const TaglineText = Styled.div`
+  z-index: 20;
   margin-top: 5vh;
   font-size: 2rem;
   @media(min-width: 2000px) {
@@ -128,12 +164,43 @@ const Sponsor = Styled.div`
   margin: 5vh;
 `;
 
-const DayOf = Styled.button`
-  font-size: 2rem;
+const CenterButton = Styled.button`
+  font-size: 1.5rem;
   color: white;
-  background-color: #222B5C;
-  padding: 10px 20px;
+  background-color: #A43B5C;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  margin-bottom: 10vh;
+
+  &:hover {
+    cursor: pointer;
+    animation: ${enlarge} 1s forwards;
+  }
+`;
+
+const StyledCenterButton = ({ style }) => (
+  <Link style={style} to={'/apply'}>
+    <CenterButton>
+      APPLY NOW &nbsp;&#10132;
+    </CenterButton>
+  </Link>
+);
+
+const CenterLink = Styled(StyledCenterButton)`
   border-radius: 30px;
+`;
+
+const BackgroundDecor = Styled.img.attrs(props => props.style)`
+  position: absolute;
+  width: 12vw;
+  animation: ${p => p.uid === 3 ? sway2 : sway1} 8s ease-in-out ${p => -(p.uid * 2).toString() + 's'} infinite;
+
+  @media(max-width: 900px) {
+    display: ${p => p.mobileStyle ? 'visible' : 'none'};
+    position: static;
+    width: 25vw;
+    margin: ${p => p.mobileStyle ? p.mobileStyle.margin : null};
+  }
 `;
 
 const City = Styled.img`
@@ -237,10 +304,10 @@ const GroundContent = Styled.div`
     margin-top: -90px;
   }
   .faqOut{
-    animation: ${fadeOut} 0.2s ease-in infinite;
+    animation: ${fadeOut} 0.2s ease-in forwards;
   }
   .faqIn{
-    animation: ${fadeIn} 0.2s ease-out infinite;
+    animation: ${fadeIn} 0.2s ease-out forwards;
   }
 `;
 
@@ -325,7 +392,7 @@ const Clickable = Styled.div.attrs(props => {
   color: #222B5C;
   transform: ${p => 'rotate(' + p.rotation + 'deg)'};
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -400,16 +467,18 @@ export default class Home extends React.Component {
       <Container>
         <Logo src={logo} />
         <Content>
+          {/* <Navbar>
+            {NAVITEMS.map(e => <NavItem href={e.url}>{e.title}</NavItem>)}
+          </Navbar> */}
           <Tagline src={tagline} alt={'tagline'} />
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
           <Sponsor />
-          <Link to={'#dayof'}>
-            <DayOf>
-              DAY OF
-            </DayOf>
-          </Link>
+          <CenterLink />
+          {BACKGROUND_DECOR.map(e => 
+            <BackgroundDecor key={e.id} uid={e.id} src={e.img} style={e.style} mobileStyle={e.mobileStyle} />
+          )}
           <SubContent>
             <City src={city} />
             <Backdrop1 />

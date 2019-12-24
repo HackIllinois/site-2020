@@ -1,3 +1,9 @@
+import cloud1 from 'assets/home/cloud1.svg';
+import cloud2 from 'assets/home/cloud2.svg';
+import cloud3 from 'assets/home/cloud3.svg';
+import cloud4 from 'assets/home/cloud4.svg';
+import plane from 'assets/home/plane.svg';
+
 export const NAVITEMS = [
   {
     title: "EVENTS",
@@ -15,6 +21,61 @@ export const NAVITEMS = [
     title: "SAMPLE TEXT",
     url: "#sample",
   }
+];
+
+export const BACKGROUND_DECOR = [
+  {
+    id: 0,
+    img: cloud1,
+    style: {
+      top: '20vh',
+      right: '15vw',
+    },
+  },
+  {
+    id: 1,
+    img: cloud2,
+    style: {
+      top: '35vh',
+      right: '10vw',
+    },
+  },
+  {
+    id: 2,
+    img: cloud3,
+    style: {
+      top: '50vh',
+      left: '10vw',
+    },
+  },
+  {
+    id: 3,
+    img: plane,
+    style: {
+      top: '60vh',
+      right: '15vw',
+    },
+    mobileStyle: {
+      margin: '0 25vw 0 75vw',
+      transform: 'translate()',
+    }
+  },
+  {
+    id: 4,
+    img: cloud2,
+    style: {
+      top: '70vh',
+      left: '20vw',
+    },
+  },
+  {
+    id: 5,
+    img: cloud4,
+    style: {
+      top: '85vh',
+      right: '20vw',
+    },
+  },
 ];
 
 export const DESCRIPTIONS = [
