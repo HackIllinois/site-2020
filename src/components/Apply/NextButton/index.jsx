@@ -7,7 +7,7 @@ export default function NextButton(props) {
   const { disabled, onClick } = props;
 
   return (
-    <button className="next" onClick={onClick} disabled={disabled}>
+    <button className="next" type="button" onClick={onClick} disabled={disabled}>
       NEXT <img src={next} alt="next" />
     </button>
   );

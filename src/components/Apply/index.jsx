@@ -1,6 +1,15 @@
 import React from 'react';
 import './style.scss';
 
+import {
+  apply,
+  authenticate,
+  getApplication,
+  getRoles,
+  isAuthenticated,
+  uploadResume,
+} from 'api';
+
 import { Field, Form, Formik } from 'formik';
 
 import Loading from 'components/Loading';
@@ -13,14 +22,6 @@ import BackButton from './BackButton';
 import NextButton from './NextButton';
 import SubmitButton from './SubmitButton';
 
-import {
-  apply,
-  authenticate,
-  getApplication,
-  getRoles,
-  isAuthenticated,
-  uploadResume,
-} from 'api';
 import {
   graduationYears,
   languages,
@@ -48,7 +49,7 @@ const customStyles = {
     color: 'rgb(164, 59, 92)',
     fontWeight: 600,
   }),
-  clearIndicator: base => ({
+  clearIndicator: () => ({
     color: '#0A093F',
     cursor: 'pointer',
   }),
@@ -151,7 +152,7 @@ export default class Apply extends React.Component {
   }
 
   personal = ({ values }) => {
-    let isValid = values.firstName && values.lastName;
+    const isValid = values.firstName && values.lastName;
 
     return (
       <div>
@@ -189,7 +190,7 @@ export default class Apply extends React.Component {
   }
 
   educational = ({ values }) => {
-    let isValid = values.school && values.major && values.degreePursued && values.graduationYear;
+    const isValid = values.school && values.major && values.degreePursued && values.graduationYear;
 
     return (
       <div>
@@ -290,7 +291,7 @@ export default class Apply extends React.Component {
   }
 
   experience = ({ values }) => {
-    let isValid = values.programmingYears && values.programmingAbility && values.isOSContributor !== '';
+    const isValid = values.programmingYears && values.programmingAbility && values.isOSContributor !== '';
 
     return (
       <div>
@@ -387,7 +388,7 @@ export default class Apply extends React.Component {
   );
 
   event = ({ values }) => {
-    let isValid = values.needsBus !== '';
+    const isValid = values.needsBus !== '';
 
     return (
       <div>
