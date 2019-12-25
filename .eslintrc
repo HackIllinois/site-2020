@@ -12,6 +12,7 @@
     "react/jsx-one-expression-per-line": "off",
     "template-curly-spacing" : "off",
     "indent": "off",
+    "linebreak-style" : "off"
   },
   "settings": {
     "import/resolver": {

@@ -68,3 +68,7 @@ export function apply(isEditing, application) {
   const method = isEditing ? 'PUT' : 'POST';
   return request(method, '/registration/attendee/', application);
 }
+
+export function getQR() {
+  return request('GET', '/user/qr/');
+}
