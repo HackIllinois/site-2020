@@ -40,6 +40,7 @@ class FormikSelect extends React.Component {
     return (
       <Select
         name={field.name}
+        blurInputOnSelect={false}
         closeMenuOnSelect={!isMulti}
         isClearable
         onChange={this.handleChange}

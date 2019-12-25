@@ -4,7 +4,7 @@
   background-size: cover;
   color: #0A093F;
   display: flex;
-  min-height: 100%;
+  min-height: 800px;
 
   .progress {
     // Mobile
@@ -85,6 +85,7 @@
         label {
           border: 2px solid #0A093F;
           border-radius: 50ch;
+          display: inline-block;
           font-weight: 600;
           margin-right: 8px;
           padding: 5px 12px;
@@ -106,7 +107,7 @@
         background-color: transparent;
         border: 2px solid #0A093F;
         border-radius: 50ch;
-        cursor: pointer;
+        color: #0A093F;
         display: flex;
         font-size: 16px;
         font-weight: 600;
