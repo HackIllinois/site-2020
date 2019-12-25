@@ -1,13 +1,6 @@
 import React from 'react';
 import './style.scss';
 
-import { Field, Form, Formik } from 'formik';
-import Loading from 'components/Loading';
-import Message from 'components/Message';
-import SelectField from 'components/SelectField';
-
-import pinFilled from 'assets/apply/pin_filled.svg';
-import pinEmpty from 'assets/apply/pin_empty.svg';
 import {
   apply,
   authenticate,
@@ -16,6 +9,15 @@ import {
   isAuthenticated,
   uploadResume,
 } from 'api';
+
+import { Field, Form, Formik } from 'formik';
+
+import Loading from 'components/Loading';
+import Message from 'components/Message';
+import SelectField from 'components/SelectField';
+
+import pinFilled from 'assets/apply/pin_filled.svg';
+import pinEmpty from 'assets/apply/pin_empty.svg';
 import BackButton from './BackButton';
 import NextButton from './NextButton';
 import SubmitButton from './SubmitButton';
@@ -34,18 +36,29 @@ const customStyles = {
   }),
   placeholder: base => ({
     ...base,
-    color: '#A43B5C',
+    color: 'rgba(164, 59, 92, 0.5)',
+    fontWeight: 600,
+  }),
+  input: base => ({
+    ...base,
+    color: 'rgb(164, 59, 92)',
+    fontWeight: 600,
+  }),
+  singleValue: base => ({
+    ...base,
+    color: 'rgb(164, 59, 92)',
     fontWeight: 600,
   }),
   clearIndicator: () => ({
     color: '#0A093F',
-    paddingRight: '2px',
+    cursor: 'pointer',
   }),
   indicatorSeparator: () => ({
     visible: false,
   }),
   dropdownIndicator: () => ({
     color: '#0A093F',
+    cursor: 'pointer',
   }),
   menu: () => ({
     position: 'absolute',
@@ -60,6 +73,7 @@ const customStyles = {
   option: () => ({
     borderBottom: '1px solid #0A093F',
     color: '#A43B5C',
+    cursor: 'pointer',
     fontWeight: 600,
     padding: '8px',
   }),
@@ -121,7 +135,6 @@ export default class Apply extends React.Component {
     if (resume) {
       app.resumeFilename = resume.name;
     }
-
     this.setState({ application: app, isLoading: true });
 
     apply(isEditing, app).then(() => {
@@ -134,100 +147,109 @@ export default class Apply extends React.Component {
       }
     }).catch(() => {
       this.setState({ isLoading: false, page: 0 });
-      alert('There is an error in your application. Please fill in all required fields!');
+      alert('There was an error while submitting your application. If this error persists, please email contact@hackillinois.org');
     });
   }
 
-  personal = () => (
-    <div>
-      <p>First Name *</p>
-      <Field
-        name="firstName"
-        placeholder="What is your first name?"
-      />
+  personal = ({ values }) => {
+    const isValid = values.firstName && values.lastName;
 
-      <p>Last Name *</p>
-      <Field
-        name="lastName"
-        placeholder="What is your last name?"
-      />
+    return (
+      <div>
+        <p>First Name *</p>
+        <Field
+          name="firstName"
+          placeholder="What is your first name?"
+        />
 
-      <p>Gender</p>
-      <SelectField
-        styles={customStyles}
-        name="gender"
-        placeholder="What is your gender?"
-        options={[
-          { label: 'Male', value: 'MALE' },
-          { label: 'Female', value: 'FEMALE' },
-          { label: 'Non-Binary', value: 'NONBINARY' },
-        ]}
-      />
+        <p>Last Name *</p>
+        <Field
+          name="lastName"
+          placeholder="What is your last name?"
+        />
 
-      <br />
-      <div className="nav-buttons">
-        <div />
-        <NextButton onClick={this.next} />
+        <p>Gender</p>
+        <SelectField
+          styles={customStyles}
+          name="gender"
+          placeholder="What is your gender?"
+          options={[
+            { label: 'Male', value: 'MALE' },
+            { label: 'Female', value: 'FEMALE' },
+            { label: 'Non-Binary', value: 'NONBINARY' },
+          ]}
+        />
+
+        <br />
+        <div className="nav-buttons">
+          <div />
+          <NextButton onClick={this.next} disabled={!isValid} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
-  educational = () => (
-    <div>
-      <p>School *</p>
-      <SelectField
-        styles={customStyles}
-        name="school"
-        placeholder="Where do you go to school?"
-        options={schools.map(school => ({ label: school, value: school }))}
-      />
+  educational = ({ values }) => {
+    const isValid = values.school && values.major && values.degreePursued && values.graduationYear;
 
-      <p>Major *</p>
-      <SelectField
-        styles={customStyles}
-        name="major"
-        placeholder="What is your major?"
-        options={[
-          { label: 'Computer Science', value: 'CS' },
-          { label: 'Computer Engineering', value: 'CE' },
-          { label: 'Electrical Engineering', value: 'EE' },
-          { label: 'Other Engineering', value: 'ENG' },
-          { label: 'Business', value: 'BUS' },
-          { label: 'Liberal Arts and Sciences', value: 'LAS' },
-          { label: 'Other', value: 'OTHER' },
-        ]}
-      />
+    return (
+      <div>
+        <p>School *</p>
+        <SelectField
+          styles={customStyles}
+          name="school"
+          placeholder="Where do you go to school?"
+          options={schools.map(school => ({ label: school, value: school }))}
+        />
 
-      <p>Degree *</p>
-      <SelectField
-        styles={customStyles}
-        name="degreePursued"
-        placeholder="What degree are you pursuing?"
-        options={[
-          { label: 'Associate\'s', value: 'ASSOCIATES' },
-          { label: 'Bachelor\'s', value: 'BACHELORS' },
-          { label: 'Master\'s', value: 'MASTERS' },
-          { label: 'PhD', value: 'PHD' },
-        ]}
-      />
+        <p>Major *</p>
+        <SelectField
+          styles={customStyles}
+          name="major"
+          placeholder="What is your major?"
+          options={[
+            { label: 'Computer Science', value: 'CS' },
+            { label: 'Computer Engineering', value: 'CE' },
+            { label: 'Electrical Engineering', value: 'EE' },
+            { label: 'Other Engineering', value: 'ENG' },
+            { label: 'Business', value: 'BUS' },
+            { label: 'Liberal Arts and Sciences', value: 'LAS' },
+            { label: 'Other', value: 'OTHER' },
+          ]}
+        />
 
-      <p>Graduation Year *</p>
-      <SelectField
-        styles={customStyles}
-        name="graduationYear"
-        placeholder="When do you graduate?"
-        options={graduationYears.map(year => ({ label: year, value: year }))}
-      />
+        <p>Degree *</p>
+        <SelectField
+          styles={customStyles}
+          name="degreePursued"
+          placeholder="What degree are you pursuing?"
+          options={[
+            { label: 'Associate\'s', value: 'ASSOCIATES' },
+            { label: 'Bachelor\'s', value: 'BACHELORS' },
+            { label: 'Master\'s', value: 'MASTERS' },
+            { label: 'PhD', value: 'PHD' },
+          ]}
+        />
 
-      <div className="nav-buttons">
-        <BackButton onClick={this.back} />
-        <NextButton onClick={this.next} />
+        <p>Graduation Year *</p>
+        <SelectField
+          styles={customStyles}
+          name="graduationYear"
+          placeholder="When do you graduate?"
+          options={graduationYears.map(year => ({ label: year, value: year }))}
+        />
+
+        <div className="nav-buttons">
+          <BackButton onClick={this.back} />
+          <NextButton onClick={this.next} disabled={!isValid} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   professional = () => {
     const { application, resume } = this.state;
+
     return (
       <div>
         <p>Resume</p>
@@ -268,67 +290,71 @@ export default class Apply extends React.Component {
     );
   }
 
-  experience = () => (
-    <div>
-      <p>How many years have you been programming? *</p>
-      <SelectField
-        styles={customStyles}
-        name="programmingYears"
-        placeholder="Select a number"
-        options={[
-          { label: '1', value: 1 },
-          { label: '2', value: 2 },
-          { label: '3', value: 3 },
-          { label: '4', value: 4 },
-          { label: '5', value: 5 },
-          { label: '6', value: 6 },
-          { label: '7', value: 7 },
-          { label: '8', value: 8 },
-          { label: '9', value: 9 },
-          { label: '10+', value: 10 },
-        ]}
-      />
+  experience = ({ values }) => {
+    const isValid = values.programmingYears && values.programmingAbility && values.isOSContributor !== '';
 
-      <p>How would you rate your programming ability? *</p>
-      <SelectField
-        styles={customStyles}
-        name="programmingAbility"
-        placeholder="Select a number"
-        options={[
-          { label: '1: I am a complete beginner', value: 1 },
-          { label: '2', value: 2 },
-          { label: '3', value: 3 },
-          { label: '4: I am comfortable working on an independent project', value: 4 },
-          { label: '5', value: 5 },
-          { label: '6', value: 6 },
-          { label: '7: I am comfortable writing and reviewing code in a professional setting', value: 7 },
-          { label: '8', value: 8 },
-          { label: '9', value: 9 },
-          { label: '10: I am Linus Torvalds', value: 10 },
-        ]}
-      />
+    return (
+      <div>
+        <p>How many years have you been programming? *</p>
+        <SelectField
+          styles={customStyles}
+          name="programmingYears"
+          placeholder="Select a number"
+          options={[
+            { label: '0', value: 0 },
+            { label: '1', value: 1 },
+            { label: '2', value: 2 },
+            { label: '3', value: 3 },
+            { label: '4', value: 4 },
+            { label: '5', value: 5 },
+            { label: '6', value: 6 },
+            { label: '7', value: 7 },
+            { label: '8', value: 8 },
+            { label: '9+', value: 9 },
+          ]}
+        />
 
-      <p>Have you contributed to Open Source before?</p>
-      <SelectField
-        styles={customStyles}
-        name="isOSContributor"
-        placeholder="Yes/No"
-        options={[
-          { label: 'Yes', value: true },
-          { label: 'No', value: false },
-        ]}
-      />
+        <p>How would you rate your programming ability? *</p>
+        <SelectField
+          styles={customStyles}
+          name="programmingAbility"
+          placeholder="Select a number"
+          options={[
+            { label: '1: I am a complete beginner', value: 1 },
+            { label: '2', value: 2 },
+            { label: '3', value: 3 },
+            { label: '4: I am comfortable working on an independent project', value: 4 },
+            { label: '5', value: 5 },
+            { label: '6', value: 6 },
+            { label: '7: I am comfortable writing and reviewing code in a professional setting', value: 7 },
+            { label: '8', value: 8 },
+            { label: '9', value: 9 },
+            { label: '10: I am Linus Torvalds', value: 10 },
+          ]}
+        />
 
-      <div className="nav-buttons">
-        <BackButton onClick={this.back} />
-        <NextButton onClick={this.next} />
+        <p>Have you contributed to Open Source before? *</p>
+        <SelectField
+          styles={customStyles}
+          name="isOSContributor"
+          placeholder="Yes/No"
+          options={[
+            { label: 'Yes', value: true },
+            { label: 'No', value: false },
+          ]}
+        />
+
+        <div className="nav-buttons">
+          <BackButton onClick={this.back} />
+          <NextButton onClick={this.next} disabled={!isValid} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   interests = () => (
     <div>
-      <p>Which types of projects are you interested in? *</p>
+      <p>Which types of projects are you interested in?</p>
       <SelectField
         isMulti
         styles={customStyles}
@@ -345,7 +371,7 @@ export default class Apply extends React.Component {
         ]}
       />
 
-      <p>Which languages would you like to work with? *</p>
+      <p>Which languages would you like to work with?</p>
       <SelectField
         isMulti
         styles={customStyles}
@@ -361,49 +387,53 @@ export default class Apply extends React.Component {
     </div>
   );
 
-  event = () => (
-    <div>
-      <p>Do you require bus transportation to the event? *</p>
-      <SelectField
-        styles={customStyles}
-        name="needsBus"
-        placeholder="Yes/No"
-        options={[
-          { label: 'Yes', value: true },
-          { label: 'No', value: false },
-        ]}
-      />
+  event = ({ values }) => {
+    const isValid = values.needsBus !== '';
 
-      <p>Have you attended HackIllinois previously?</p>
-      <SelectField
-        styles={customStyles}
-        name="hasAttended"
-        placeholder="Yes/No"
-        options={[
-          { label: 'Yes', value: true },
-          { label: 'No', value: false },
-        ]}
-      />
+    return (
+      <div>
+        <p>Do you require bus transportation to the event? *</p>
+        <SelectField
+          styles={customStyles}
+          name="needsBus"
+          placeholder="Yes/No"
+          options={[
+            { label: 'Yes', value: true },
+            { label: 'No', value: false },
+          ]}
+        />
 
-      <p>How did you discover HackIllinois?</p>
-      <SelectField
-        isMulti
-        styles={customStyles}
-        name="howDiscovered"
-        placeholder="You may select multiple options"
-        options={[
-          { label: 'Friend or Peer', value: 'FRIEND' },
-          { label: 'Social Media', value: 'SOCIALMEDIA' },
-          { label: 'Other', value: 'OTHER' },
-        ]}
-      />
+        <p>Have you attended HackIllinois previously?</p>
+        <SelectField
+          styles={customStyles}
+          name="hasAttended"
+          placeholder="Yes/No"
+          options={[
+            { label: 'Yes', value: true },
+            { label: 'No', value: false },
+          ]}
+        />
 
-      <div className="nav-buttons">
-        <BackButton onClick={this.back} />
-        <SubmitButton />
+        <p>How did you discover HackIllinois?</p>
+        <SelectField
+          isMulti
+          styles={customStyles}
+          name="howDiscovered"
+          placeholder="You may select multiple options"
+          options={[
+            { label: 'Friend or Peer', value: 'FRIEND' },
+            { label: 'Social Media', value: 'SOCIALMEDIA' },
+            { label: 'Other', value: 'OTHER' },
+          ]}
+        />
+
+        <div className="nav-buttons">
+          <BackButton onClick={this.back} />
+          <SubmitButton disabled={!isValid} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   render() {
     const {
@@ -426,6 +456,14 @@ export default class Apply extends React.Component {
       );
     }
 
+    const titles = [
+      'PERSONAL INFO',
+      'EDUCATION',
+      'PROFESSIONAL INFO',
+      'EXPERIENCE',
+      'INTERESTS',
+      'HACKILLINOIS INFO',
+    ];
     const pages = [
       this.personal,
       this.educational,
@@ -433,14 +471,6 @@ export default class Apply extends React.Component {
       this.experience,
       this.interests,
       this.event,
-    ];
-    const titles = [
-      'PERSONAL',
-      'EDUCATIONAL',
-      'PROFESSIONAL',
-      'EXPERIENCE',
-      'INTERESTS',
-      'EVENT',
     ];
 
     return (
@@ -460,7 +490,7 @@ export default class Apply extends React.Component {
             initialValues={application}
             enableReinitialize
             onSubmit={this.submit}
-            render={() => <Form>{pages[page]()}</Form>}
+            render={props => <Form>{pages[page](props)}</Form>}
           />
         </div>
       </div>

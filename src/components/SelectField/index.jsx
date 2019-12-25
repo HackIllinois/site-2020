@@ -11,13 +11,13 @@ class FormikSelect extends React.Component {
     const { field, isMulti, options } = this.props;
 
     if (isMulti) {
-      if (field.value === undefined) {
+      if (field.value === undefined || field.value === null) {
         return [];
       }
       return options.filter(option => field.value.includes(option.value));
     }
 
-    if (field.value === undefined) {
+    if (field.value === undefined || field.value === null) {
       return '';
     }
     return options.find(option => field.value === option.value);
@@ -40,6 +40,7 @@ class FormikSelect extends React.Component {
     return (
       <Select
         name={field.name}
+        blurInputOnSelect={false}
         closeMenuOnSelect={!isMulti}
         isClearable
         onChange={this.handleChange}
