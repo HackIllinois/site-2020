@@ -18,6 +18,7 @@ import SelectField from 'components/SelectField';
 
 import pinFilled from 'assets/apply/pin_filled.svg';
 import pinEmpty from 'assets/apply/pin_empty.svg';
+
 import BackButton from './BackButton';
 import NextButton from './NextButton';
 import SubmitButton from './SubmitButton';
@@ -48,6 +49,19 @@ const customStyles = {
     ...base,
     color: 'rgb(164, 59, 92)',
     fontWeight: 600,
+  }),
+  multiValue: base => ({
+    ...base,
+    border: '1px solid #A43B5C',
+    background: 'transparent',
+  }),
+  multiValueLabel: base => ({
+    ...base,
+    color: '#A43B5C',
+  }),
+  multiValueRemove: base => ({
+    ...base,
+    color: '#A43B5C',
   }),
   clearIndicator: () => ({
     color: '#0A093F',
@@ -174,8 +188,8 @@ export default class Apply extends React.Component {
           name="gender"
           placeholder="What is your gender?"
           options={[
-            { label: 'Male', value: 'MALE' },
             { label: 'Female', value: 'FEMALE' },
+            { label: 'Male', value: 'MALE' },
             { label: 'Non-Binary', value: 'NONBINARY' },
           ]}
         />
@@ -275,8 +289,8 @@ export default class Apply extends React.Component {
           name="careerInterest"
           placeholder="You may select multiple options"
           options={[
-            { label: 'Internship', value: 'INTERNSHIP' },
             { label: 'Full-time', value: 'FULLTIME' },
+            { label: 'Internship', value: 'INTERNSHIP' },
           ]}
         />
 
@@ -362,12 +376,12 @@ export default class Apply extends React.Component {
         placeholder="You may select multiple options"
         options={[
           { label: 'App Development', value: 'APPDEV' },
-          { label: 'Programming Languages', value: 'LANGUAGES' },
           { label: 'Data Science', value: 'DATASCIENCE' },
-          { label: 'Web Development', value: 'WEBDEV' },
-          { label: 'Systems', value: 'SYSTEMS' },
-          { label: 'Hardware', value: 'HARDWARE' },
           { label: 'Developer Tools', value: 'DEVTOOLS' },
+          { label: 'Hardware', value: 'HARDWARE' },
+          { label: 'Programming Languages', value: 'LANGUAGES' },
+          { label: 'Systems', value: 'SYSTEMS' },
+          { label: 'Web Development', value: 'WEBDEV' },
         ]}
       />
 
