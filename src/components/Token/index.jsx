@@ -1,42 +1,12 @@
 import React from 'react';
 
-import {
-  authenticate,
-  isAuthenticated,
-} from 'api';
-import Loading from 'components/Loading';
-
 import './style.scss';
 
-export default class Token extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: true,
-    };
-  }
-
-  componentDidMount() {
-    if (!isAuthenticated()) {
-      authenticate('/token');
-      return;
-    }
-
-    this.setState({ isLoading: false });
-  }
-
-  render() {
-    const { isLoading } = this.state;
-    if (isLoading) {
-      return <Loading />;
-    }
-
-    return (
-      <div className="Token">
-        <h1>Copy Me!</h1>
-        <p>{sessionStorage.token}</p>
-      </div>
-    );
-  }
+export default function Token() {
+  return (
+    <div className="Token">
+      <h1>Copy Me!</h1>
+      <p>{sessionStorage.token}</p>
+    </div>
+  );
 }

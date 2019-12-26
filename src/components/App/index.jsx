@@ -8,6 +8,7 @@ import Message from 'components/Message';
 import PDF from 'components/PDF';
 import Token from 'components/Token';
 import QR from 'components/QR';
+import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
 export default function App() {
   return (
@@ -15,9 +16,9 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
 
-        <Route path="/apply" component={Apply} />
         <Route path="/auth" component={Auth} />
-        <Route path="/token" component={Token} />
+        <AuthenticatedRoute path="/apply" component={Apply} />
+        <AuthenticatedRoute path="/token" component={Token} />
         <Route path="/qr" component={QR} />
 
         <Route

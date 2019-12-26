@@ -3,10 +3,8 @@ import './style.scss';
 
 import {
   apply,
-  authenticate,
   getApplication,
   getRoles,
-  isAuthenticated,
   uploadResume,
 } from 'api';
 
@@ -95,11 +93,6 @@ export default class Apply extends React.Component {
   }
 
   componentDidMount() {
-    if (!isAuthenticated()) {
-      authenticate('/apply');
-      return;
-    }
-
     getRoles().then(roles => {
       if (roles.includes('Applicant')) {
         this.setState({ isEditing: true });
