@@ -1,0 +1,17 @@
+.FileUpload {
+  margin-top: 16px;
+
+  label {
+    border: 2px solid #0A093F;
+    border-radius: 50ch;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 8px;
+    padding: 5px 12px;
+  }
+
+  input {
+    display: none;
+  }
+}

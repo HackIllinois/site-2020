@@ -2,94 +2,25 @@ import React from 'react';
 import './style.scss';
 
 import {
-  apply,
-  getApplication,
+  register,
+  getRegistration,
   getRoles,
-  uploadResume,
 } from 'api';
 
 import { Field, Form, Formik } from 'formik';
 
+import BackButton from 'components/BackButton';
+import FileUploadField from 'components/FileUploadField';
 import Loading from 'components/Loading';
 import Message from 'components/Message';
+import NextButton from 'components/NextButton';
 import SelectField from 'components/SelectField';
+import SubmitButton from 'components/SubmitButton';
 
-import pinFilled from 'assets/apply/pin_filled.svg';
-import pinEmpty from 'assets/apply/pin_empty.svg';
+import pinFilled from 'assets/icons/pin_filled.svg';
+import pinEmpty from 'assets/icons/pin_empty.svg';
 
-import BackButton from './BackButton';
-import NextButton from './NextButton';
-import SubmitButton from './SubmitButton';
-
-import {
-  graduationYears,
-  languages,
-  schools,
-} from './lists';
-
-const customStyles = {
-  control: () => ({
-    background: 'transparent',
-    borderBottom: '2px solid #0A093F',
-    display: 'flex',
-  }),
-  placeholder: base => ({
-    ...base,
-    color: 'rgba(164, 59, 92, 0.5)',
-    fontWeight: 600,
-  }),
-  input: base => ({
-    ...base,
-    color: 'rgb(164, 59, 92)',
-    fontWeight: 600,
-  }),
-  singleValue: base => ({
-    ...base,
-    color: 'rgb(164, 59, 92)',
-    fontWeight: 600,
-  }),
-  multiValue: base => ({
-    ...base,
-    border: '1px solid #A43B5C',
-    background: 'transparent',
-  }),
-  multiValueLabel: base => ({
-    ...base,
-    color: '#A43B5C',
-  }),
-  multiValueRemove: base => ({
-    ...base,
-    color: '#A43B5C',
-  }),
-  clearIndicator: () => ({
-    color: '#0A093F',
-    cursor: 'pointer',
-  }),
-  indicatorSeparator: () => ({
-    visible: false,
-  }),
-  dropdownIndicator: () => ({
-    color: '#0A093F',
-    cursor: 'pointer',
-  }),
-  menu: () => ({
-    position: 'absolute',
-    background: '#E4F4F6',
-    border: '2px solid #0A093F',
-    borderTop: 0,
-    boxSizing: 'border-box',
-    padding: '8px 16px 16px 16px',
-    width: '100%',
-    zIndex: 1,
-  }),
-  option: () => ({
-    borderBottom: '1px solid #0A093F',
-    color: '#A43B5C',
-    cursor: 'pointer',
-    fontWeight: 600,
-    padding: '8px',
-  }),
-};
+import { languages, schools } from './lists';
 
 export default class Apply extends React.Component {
   constructor(props) {
@@ -100,8 +31,7 @@ export default class Apply extends React.Component {
       isEditing: false,
       isSubmitted: false,
 
-      application: {},
-      resume: undefined,
+      registration: {},
       page: 0,
     };
   }
@@ -110,22 +40,14 @@ export default class Apply extends React.Component {
     getRoles().then(roles => {
       if (roles.includes('Applicant')) {
         this.setState({ isEditing: true });
-        return getApplication();
+        return getRegistration('attendee');
       }
       return {};
-    }).then(app => {
-      this.setState({
-        application: app,
-        isLoading: false,
-      });
-    }).catch(() => {
+    }).then(registration => {
+      this.setState({ registration });
+    }).finally(() => {
       this.setState({ isLoading: false });
     });
-  }
-
-  onResumeUpload = event => {
-    const file = event.target.files[0];
-    this.setState({ resume: file });
   }
 
   back = () => {
@@ -136,25 +58,19 @@ export default class Apply extends React.Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   }
 
-  submit = app => {
-    const { isEditing, resume } = this.state;
+  submit = registration => {
+    const { isEditing } = this.state;
+    const role = 'attendee';
 
-    if (resume) {
-      app.resumeFilename = resume.name;
-    }
-    this.setState({ application: app, isLoading: true });
+    this.setState({ registration, isLoading: true });
 
-    apply(isEditing, app).then(() => {
-      if (resume) {
-        uploadResume(resume).then(() => {
-          this.setState({ isLoading: false, isSubmitted: true });
-        });
-      } else {
-        this.setState({ isLoading: false, isSubmitted: true });
-      }
+    register(isEditing, role, registration).then(() => {
+      this.setState({ isSubmitted: true });
     }).catch(() => {
-      this.setState({ isLoading: false, page: 0 });
-      alert('There was an error while submitting your application. If this error persists, please email contact@hackillinois.org');
+      this.setState({ page: 0 });
+      alert('There was an error while submitting. If this error persists, please email contact@hackillinois.org');
+    }).finally(() => {
+      this.setState({ isLoading: false });
     });
   }
 
@@ -166,18 +82,19 @@ export default class Apply extends React.Component {
         <p>First Name *</p>
         <Field
           name="firstName"
+          key="firstName"
           placeholder="What is your first name?"
         />
 
         <p>Last Name *</p>
         <Field
           name="lastName"
+          key="lastName"
           placeholder="What is your last name?"
         />
 
         <p>Gender</p>
         <SelectField
-          styles={customStyles}
           name="gender"
           placeholder="What is your gender?"
           options={[
@@ -187,7 +104,6 @@ export default class Apply extends React.Component {
           ]}
         />
 
-        <br />
         <div className="nav-buttons">
           <div />
           <NextButton onClick={this.next} disabled={!isValid} />
@@ -203,7 +119,6 @@ export default class Apply extends React.Component {
       <div>
         <p>School *</p>
         <SelectField
-          styles={customStyles}
           name="school"
           placeholder="Where do you go to school?"
           options={schools.map(school => ({ label: school, value: school }))}
@@ -211,7 +126,6 @@ export default class Apply extends React.Component {
 
         <p>Major *</p>
         <SelectField
-          styles={customStyles}
           name="major"
           placeholder="What is your major?"
           options={[
@@ -227,7 +141,6 @@ export default class Apply extends React.Component {
 
         <p>Degree *</p>
         <SelectField
-          styles={customStyles}
           name="degreePursued"
           placeholder="What degree are you pursuing?"
           options={[
@@ -240,10 +153,14 @@ export default class Apply extends React.Component {
 
         <p>Graduation Year *</p>
         <SelectField
-          styles={customStyles}
           name="graduationYear"
           placeholder="When do you graduate?"
-          options={graduationYears.map(year => ({ label: year, value: year }))}
+          options={[
+            { label: '2020', value: 2020 },
+            { label: '2021', value: 2021 },
+            { label: '2022', value: 2022 },
+            { label: '2023', value: 2023 },
+          ]}
         />
 
         <div className="nav-buttons">
@@ -254,48 +171,32 @@ export default class Apply extends React.Component {
     );
   }
 
-  professional = () => {
-    const { application, resume } = this.state;
+  professional = () => (
+    <div>
+      <p>Resume</p>
+      <FileUploadField
+        name="resumeFilename"
+        type="resume"
+        accept="application/pdf"
+      />
 
-    return (
-      <div>
-        <p>Resume</p>
-        <div className="resume-upload">
-          <label htmlFor="upload">
-            CHOOSE FILE
-            <input
-              id="upload"
-              type="file"
-              accept="application/pdf"
-              onChange={this.onResumeUpload}
-            />
-          </label>
-          <span>
-            {(resume && resume.name) || (application && application.resumeFilename)}
-          </span>
-        </div>
+      <p>Career Interests</p>
+      <SelectField
+        isMulti
+        name="careerInterest"
+        placeholder="You may select multiple options"
+        options={[
+          { label: 'Full-time', value: 'FULLTIME' },
+          { label: 'Internship', value: 'INTERNSHIP' },
+        ]}
+      />
 
-        <p>Career Interests</p>
-        <SelectField
-          isMulti
-          styles={customStyles}
-          name="careerInterest"
-          placeholder="You may select multiple options"
-          options={[
-            { label: 'Full-time', value: 'FULLTIME' },
-            { label: 'Internship', value: 'INTERNSHIP' },
-          ]}
-        />
-
-        <br />
-
-        <div className="nav-buttons">
-          <BackButton onClick={this.back} />
-          <NextButton onClick={this.next} />
-        </div>
+      <div className="nav-buttons">
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
-    );
-  }
+    </div>
+  );
 
   experience = ({ values }) => {
     const isValid = values.programmingYears && values.programmingAbility && values.isOSContributor !== '';
@@ -304,7 +205,6 @@ export default class Apply extends React.Component {
       <div>
         <p>How many years have you been programming? *</p>
         <SelectField
-          styles={customStyles}
           name="programmingYears"
           placeholder="Select a number"
           options={[
@@ -323,7 +223,6 @@ export default class Apply extends React.Component {
 
         <p>How would you rate your programming ability? *</p>
         <SelectField
-          styles={customStyles}
           name="programmingAbility"
           placeholder="Select a number"
           options={[
@@ -342,7 +241,6 @@ export default class Apply extends React.Component {
 
         <p>Have you contributed to Open Source before? *</p>
         <SelectField
-          styles={customStyles}
           name="isOSContributor"
           placeholder="Yes/No"
           options={[
@@ -364,7 +262,6 @@ export default class Apply extends React.Component {
       <p>Which types of projects are you interested in?</p>
       <SelectField
         isMulti
-        styles={customStyles}
         name="categoryInterests"
         placeholder="You may select multiple options"
         options={[
@@ -381,7 +278,6 @@ export default class Apply extends React.Component {
       <p>Which languages would you like to work with?</p>
       <SelectField
         isMulti
-        styles={customStyles}
         name="languageInterests"
         placeholder="You may select multiple options"
         options={languages.map(language => ({ label: language, value: language }))}
@@ -401,7 +297,6 @@ export default class Apply extends React.Component {
       <div>
         <p>Do you require bus transportation to the event? *</p>
         <SelectField
-          styles={customStyles}
           name="needsBus"
           placeholder="Yes/No"
           options={[
@@ -412,7 +307,6 @@ export default class Apply extends React.Component {
 
         <p>Have you attended HackIllinois previously?</p>
         <SelectField
-          styles={customStyles}
           name="hasAttended"
           placeholder="Yes/No"
           options={[
@@ -424,7 +318,6 @@ export default class Apply extends React.Component {
         <p>How did you discover HackIllinois?</p>
         <SelectField
           isMulti
-          styles={customStyles}
           name="howDiscovered"
           placeholder="You may select multiple options"
           options={[
@@ -446,7 +339,7 @@ export default class Apply extends React.Component {
     const {
       isLoading,
       isSubmitted,
-      application,
+      registration,
       page,
     } = this.state;
 
@@ -481,7 +374,7 @@ export default class Apply extends React.Component {
     ];
 
     return (
-      <div className="apply">
+      <div className="Apply">
         <div className="progress">
           {titles.map((title, idx) => (
             <div key={title} className="row">
@@ -491,10 +384,10 @@ export default class Apply extends React.Component {
           ))}
         </div>
 
-        <div className="application">
+        <div className="form">
           <h3>Registration</h3>
           <Formik
-            initialValues={application}
+            initialValues={registration}
             enableReinitialize
             onSubmit={this.submit}
             render={props => <Form>{pages[page](props)}</Form>}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-import back from 'assets/apply/back.svg';
+import back from 'assets/icons/back.svg';
 
 export default function BackButton(props) {
   const { onClick } = props;
