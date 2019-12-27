@@ -1,16 +1,12 @@
 const API = 'https://api.hackillinois.org';
 
-function headers() {
-  return {
-    Authorization: sessionStorage.getItem('token'),
-    'Content-Type': 'application/json',
-  };
-}
-
 function request(method, endpoint, body) {
   return fetch(API + endpoint, {
     method,
-    headers: headers(),
+    headers: {
+      Authorization: sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body),
   }).then(res => {
     if (res.ok) {
@@ -53,7 +49,9 @@ export function uploadResume(resume) {
     .then(res => res.resume)
     .then(url => fetch(url, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/pdf' },
+      headers: {
+        'Content-Type': 'application/pdf'
+      },
       body: resume,
     }))
     .then(res => {
