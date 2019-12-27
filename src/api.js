@@ -50,7 +50,7 @@ export function uploadResume(resume) {
     .then(url => fetch(url, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/pdf'
+        'Content-Type': 'application/pdf',
       },
       body: resume,
     }))

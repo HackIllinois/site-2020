@@ -18,7 +18,7 @@ export default class QR extends React.Component {
     getQR().then(res => {
       const str = encodeURIComponent(res.qrInfo);
       this.setState({
-        url: `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${str}&choe=UTF-8`
+        url: `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${str}&choe=UTF-8`,
       });
     });
   }

@@ -22,15 +22,17 @@ const App = () => (
       <AuthenticatedRoute path="/qr" component={QR} />
 
       <Route
-        exact path="/mentor"
+        exact
+        path="/mentor"
         component={() => <PDF path="documents/mentorship.pdf" />}
       />
       <Route
-        exact path="/sponsor"
+        exact
+        path="/sponsor"
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
 
-      <Route component={() => <Message title="404 Not Found" />}/>
+      <Route component={() => <Message title="404 Not Found" />} />
     </Switch>
   </BrowserRouter>
 );
