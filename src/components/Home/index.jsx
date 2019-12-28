@@ -428,27 +428,35 @@ const FAQMobileWrapper = Styled.div`
 
 const FAQMobileContainer = Styled.div`
   width: 100vw;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 2.5rem 1fr;
   align-items: center;
   font-size: calc(20px + 2vw);
 `;
 
 const FAQMobileHeader = Styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  grid-area: 1/1/2/2;
+  text-align: center;
   width: 100%;
 `;
 
-const FAQMobileArrows = Styled.div`
+const FAQMobileTitleContainer = Styled.div`
+  grid-area: 2/1/3/2;
+`;
+
+const FAQMobileArrows = Styled.div.attrs(props => {
+  if(props.isLeft) return {style: { left: 20 }}
+  else return {style: { right: 20 }}
+})`
   font-size: calc(20px + 2vw);
+  position: absolute;
   visibility: ${p => p.invisible ? 'hidden': null};
 
   &:hover{
     cursor: pointer;
   }
 `;
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -505,6 +513,7 @@ export default class Home extends React.Component {
       this.setState({FAQ_STATE: 'During'});
     }
   }
+  
   scrollLeft() {
     if(this.state.FAQ_STATE === 'During'){
       this.setState({FAQ_STATE: 'Before'});
@@ -575,24 +584,26 @@ export default class Home extends React.Component {
               ))}
             </FAQContainer>
             <FAQMobileWrapper>
-              {CLICKABLES.map(e => (
-                <FAQMobileContainer>
+              {Object.keys(FAQ_PANELS).map(e => (
+                <FAQMobileContainer key={e}>
                   <FAQMobileHeader>
-                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
-                    {FAQ_STATE}
-                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
+                    {e}
                   </FAQMobileHeader>
-                  {FAQ_PANELS[FAQ_STATE].content.map(e => (
-                    <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
-                      {e.map(f => (
-                        <div key={f.q}>
-                          <b>{f.q}</b><br />{f.a}<br /><br />
+                  <FAQMobileTitleContainer>
+                  {FAQ_PANELS[e].content.map(f => (
+                    <FAQTitle key={f[0].q} className={this.state.FAQ_ANIMATION}>
+                      {f.map(g => (
+                        <div key={g.q}>
+                          <b>{g.q}</b><br />{g.a}<br /><br />
                         </div>
                       ))}
                     </FAQTitle>
                   ))}
+                  </FAQMobileTitleContainer>
                 </FAQMobileContainer>
               ))}
+              <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} isLeft onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
+              <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
             </FAQMobileWrapper>
           </GroundContent>
         </Content>
