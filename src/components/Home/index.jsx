@@ -422,7 +422,7 @@ const FAQMobileWrapper = Styled.div`
   overflow: hidden;
   background: #4B8655;
   padding-bottom: 9vw;
-  padding-top: 40px;
+  padding-top: 20px;
   color: white;
 `;
 
@@ -432,6 +432,17 @@ const FAQMobileContainer = Styled.div`
   flex-direction: column;
   align-items: center;
   font-size: calc(20px + 2vw);
+`;
+
+const FAQMobileHeader = Styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+`;
+
+const FAQMobileArrows = Styled.div`
+  font-size: calc(20px + 2vw)
 `;
 export default class Home extends React.Component {
   constructor(props) {
@@ -447,6 +458,8 @@ export default class Home extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.changeFAQ = this.changeFAQ.bind(this);
     this.clickTracker = this.clickTracker.bind(this);
+    this.scrollLeft = this.scrollLeft.bind(this);
+    this.scrollRight = this.scrollRight.bind(this);
   }
 
   componentDidMount() {
@@ -478,6 +491,23 @@ export default class Home extends React.Component {
     this.setState({ SCROLL_POS: (st / (sh - h)) * 100 });
   }
 
+  scrollRight() {
+    if(this.state.FAQ_STATE === 'General') {
+      this.setState({FAQ_STATE: 'Before'});
+    }
+    if(this.state.FAQ_STATE === 'Before'){
+      this.setState({FAQ_STATE: 'During'});
+    }
+  }
+  scrollLeft() {
+    if(this.state.FAQ_STATE === 'During'){
+      this.setState({FAQ_STATE: 'Before'});
+    }
+    if(this.state.FAQ_STATE === 'Before'){
+      this.setState({FAQ_STATE: 'General'});
+    }
+  }
+  
   render() {
     const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
     if(CLICKS > 4) return <Redirect push to="/unfurl" />;
@@ -542,7 +572,11 @@ export default class Home extends React.Component {
             <FAQMobileWrapper>
               {CLICKABLES.map(e => (
                 <FAQMobileContainer>
-                  {e.title}
+                  <FAQMobileHeader>
+                    <FAQMobileArrows onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
+                    {e.title}
+                    <FAQMobileArrows onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
+                  </FAQMobileHeader>
                   <FAQTitle>
                     {FAQ_PANELS[e.title].content[0].map(f => (
                       <div key={f.q}>
