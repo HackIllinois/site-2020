@@ -392,7 +392,6 @@ const FAQContainer = Styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
   padding-top: 40px;
-  
   @media(max-width: 3000px) {
     padding-bottom: 7vw;
   }
@@ -413,6 +412,27 @@ const FAQTitle = Styled.div`
   font-size: 16px;
 `;
 
+const FAQMobileWrapper = Styled.div`
+  @media(max-width: 900px){
+    display: flex;
+  }
+  flex-direction: row;
+  display: none;
+  width: 300vw;
+  overflow: hidden;
+  background: #4B8655;
+  padding-bottom: 9vw;
+  padding-top: 40px;
+  color: white;
+`;
+
+const FAQMobileContainer = Styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(20px + 2vw);
+`;
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -460,7 +480,7 @@ export default class Home extends React.Component {
 
   render() {
     const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
-    if(CLICKS > 4) return <Redirect push to='/unfurl' />;
+    if(CLICKS > 4) return <Redirect push to="/unfurl" />;
     return (
       <Container>
         <Logo src={logo} />
@@ -519,6 +539,20 @@ export default class Home extends React.Component {
                 </FAQTitle>
               ))}
             </FAQContainer>
+            <FAQMobileWrapper>
+              {CLICKABLES.map(e => (
+                <FAQMobileContainer>
+                  {e.title}
+                  <FAQTitle>
+                    {FAQ_PANELS[e.title].content[0].map(f => (
+                      <div key={f.q}>
+                        <b>{f.q}</b><br />{f.a}<br /><br />
+                      </div>
+                    ))}
+                  </FAQTitle>
+                </FAQMobileContainer>
+              ))}
+            </FAQMobileWrapper>
           </GroundContent>
         </Content>
       </Container>
