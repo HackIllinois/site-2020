@@ -310,10 +310,10 @@ const ForegroundBush = Styled.img`
 `;
 
 const Car = Styled.img.attrs(props => {
-  const p = props.position - 80;
+  const p = props.position - 50;
   return {
     style: {
-      transform: `translate(${ p > 0 ? p * 5 : 0 }vw)`,
+      transform: `translate(${ p > 0 ? p * 2 : 0 }vw)`,
     },
   };
 })`
@@ -409,7 +409,7 @@ const FAQContainer = Styled.div`
 
 const FAQTitle = Styled.div`
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const FAQMobileWrapper = Styled.div`
@@ -443,6 +443,8 @@ const FAQMobileHeader = Styled.div`
 
 const FAQMobileArrows = Styled.div`
   font-size: calc(20px + 2vw);
+  visibility: ${p => p.invisible ? 'hidden': null};
+
   &:hover{
     cursor: pointer;
   }
@@ -483,7 +485,8 @@ export default class Home extends React.Component {
   clickTracker(e) {
     let clickedPlane = e.target.src.includes('plane');
     let clicks = this.state.CLICKS;
-    if(clickedPlane) this.setState({CLICKS: ++clicks, IS_MOBILE: !clicks});
+    if(clicks > 3) window.open('https://unfurl.hackillinois.org', '_blank');
+    else if(clickedPlane) this.setState({CLICKS: ++clicks, IS_MOBILE: !clicks});
     else this.setState({CLICKS: (clicks - 0.05).toPrecision(2)});
   }
 
@@ -513,7 +516,6 @@ export default class Home extends React.Component {
   
   render() {
     const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
-    if(CLICKS > 4) return <Redirect push to="/unfurl" />;
     return (
       <Container>
         <Logo src={logo} />
@@ -576,17 +578,19 @@ export default class Home extends React.Component {
               {CLICKABLES.map(e => (
                 <FAQMobileContainer>
                   <FAQMobileHeader>
-                    <FAQMobileArrows onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
-                    {e.title}
-                    <FAQMobileArrows onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
+                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
+                    {FAQ_STATE}
+                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
                   </FAQMobileHeader>
-                  <FAQTitle>
-                    {FAQ_PANELS[e.title].content[0].map(f => (
-                      <div key={f.q}>
-                        <b>{f.q}</b><br />{f.a}<br /><br />
-                      </div>
-                    ))}
-                  </FAQTitle>
+                  {FAQ_PANELS[FAQ_STATE].content.map(e => (
+                    <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
+                      {e.map(f => (
+                        <div key={f.q}>
+                          <b>{f.q}</b><br />{f.a}<br /><br />
+                        </div>
+                      ))}
+                    </FAQTitle>
+                  ))}
                 </FAQMobileContainer>
               ))}
             </FAQMobileWrapper>

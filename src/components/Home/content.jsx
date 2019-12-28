@@ -6,20 +6,20 @@ import plane from 'assets/home/plane.svg';
 
 export const NAVITEMS = [
   {
-    title: "EVENTS",
-    url: "#events",
+    title: 'EVENTS',
+    url: '#events',
   },
   {
-    title: "MENTORS",
-    url: "/mentor",
+    title: 'MENTORS',
+    url: '/mentor',
   },
   {
-    title: "SPONSORS",
-    url: "/sponsor",
+    title: 'SPONSORS',
+    url: '/sponsor',
   },
   {
-    title: "SAMPLE TEXT",
-    url: "#sample",
+    title: 'SAMPLE TEXT',
+    url: '#sample',
   }
 ];
 
