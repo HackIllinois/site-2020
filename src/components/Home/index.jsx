@@ -442,7 +442,10 @@ const FAQMobileHeader = Styled.div`
 `;
 
 const FAQMobileArrows = Styled.div`
-  font-size: calc(20px + 2vw)
+  font-size: calc(20px + 2vw);
+  &:hover{
+    cursor: pointer;
+  }
 `;
 export default class Home extends React.Component {
   constructor(props) {
