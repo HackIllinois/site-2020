@@ -384,19 +384,33 @@ const Clickable = Styled.div.attrs(props => {
 `;
 
 const FAQHeightMaintainer = Styled.div`
-  display: flex;
-  width: 1000vw;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 100vw;
   overflow: hidden;
   padding-top: 40px;
   background: #4B8655;
+  @media(max-width: 900px) {
+    display: none;
+  }
 `;
 
+const FAQMaxHeight = Styled.div`
+  display: flex;
+  flex-direction: row;
+  grid-area: 1/1/2/2;
+  width: 210vw;
+  opacity: 0;
+`;
+
+const FAQPlaceholder = Styled.div`
+  width: 70vw;
+`;
 const FAQContainer = Styled.div`
-  z-index: 6;
+  z-index: 61;
   overflow: hidden;
   padding-bottom: 9vw;
   display: grid;
+  grid-area: 1/1/2/2;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
   width: 100vw;
@@ -452,16 +466,12 @@ const FAQMobileTitleContainer = Styled.div`
 `;
 
 const FAQMobileArrows = Styled.div.attrs(props => {
-  if(props.isLeft) return {style: { left: 20 }}
-  else return {style: { right: 20 }}
+  if (props.isLeft) return { style: { left: 20 } }
+  else return { style: { right: 20 } }
 })`
   font-size: calc(20px + 2vw);
-<<<<<<< HEAD
-  visibility: ${p => p.invisible ? 'hidden' : null};
-=======
   position: absolute;
-  visibility: ${p => p.invisible ? 'hidden': null};
->>>>>>> c888c3d415e6cd4069385d4bb557cbfd94f486b3
+  visibility: ${p => p.invisible ? 'hidden' : null};
 
   &:hover{
     cursor: pointer;
@@ -524,7 +534,7 @@ export default class Home extends React.Component {
       this.setState({ FAQ_STATE: 'During' });
     }
   }
-  
+
   scrollLeft() {
     if (this.state.FAQ_STATE === 'During') {
       this.setState({ FAQ_STATE: 'Before' });
@@ -568,6 +578,41 @@ export default class Home extends React.Component {
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQHeightMaintainer>
+              <FAQMaxHeight>
+                <FAQPlaceholder>
+                  {FAQ_PANELS["General"].content.map(e => (
+                    <FAQTitle key={e[0].q}>
+                      {e.map(f => (
+                        <div key={f.q}>
+                          <b>{f.q}</b><br />{f.a}<br /><br />
+                        </div>
+                      ))}
+                    </FAQTitle>
+                  ))}
+                </FAQPlaceholder>
+                <FAQPlaceholder>
+                  {FAQ_PANELS["Before"].content.map(e => (
+                    <FAQTitle key={e[0].q}>
+                      {e.map(f => (
+                        <div key={f.q}>
+                          <b>{f.q}</b><br />{f.a}<br /><br />
+                        </div>
+                      ))}
+                    </FAQTitle>
+                  ))}
+                </FAQPlaceholder>
+                <FAQPlaceholder>
+                  {FAQ_PANELS["During"].content.map(e => (
+                    <FAQTitle key={e[0].q}>
+                      {e.map(f => (
+                        <div key={f.q}>
+                          <b>{f.q}</b><br />{f.a}<br /><br />
+                        </div>
+                      ))}
+                    </FAQTitle>
+                  ))}
+                </FAQPlaceholder>
+              </FAQMaxHeight>
               <FAQContainer>
                 <Pole />
                 <TimeWrapper>
@@ -595,33 +640,6 @@ export default class Home extends React.Component {
                   </FAQTitle>
                 ))}
               </FAQContainer>
-              {FAQ_PANELS["General"].content.map(e => (
-                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
-                  {e.map(f => (
-                    <div key={f.q}>
-                      <b>{f.q}</b><br />{f.a}<br /><br />
-                    </div>
-                  ))}
-                </FAQTitle>
-              ))}
-              {FAQ_PANELS["Before"].content.map(e => (
-                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
-                  {e.map(f => (
-                    <div key={f.q}>
-                      <b>{f.q}</b><br />{f.a}<br /><br />
-                    </div>
-                  ))}
-                </FAQTitle>
-              ))}
-              {FAQ_PANELS["During"].content.map(e => (
-                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
-                  {e.map(f => (
-                    <div key={f.q}>
-                      <b>{f.q}</b><br />{f.a}<br /><br />
-                    </div>
-                  ))}
-                </FAQTitle>
-              ))}
             </FAQHeightMaintainer>
             <FAQMobileWrapper>
               {Object.keys(FAQ_PANELS).map(e => (
@@ -630,15 +648,15 @@ export default class Home extends React.Component {
                     {e}
                   </FAQMobileHeader>
                   <FAQMobileTitleContainer>
-                  {FAQ_PANELS[e].content.map(f => (
-                    <FAQTitle key={f[0].q} className={this.state.FAQ_ANIMATION}>
-                      {f.map(g => (
-                        <div key={g.q}>
-                          <b>{g.q}</b><br />{g.a}<br /><br />
-                        </div>
-                      ))}
-                    </FAQTitle>
-                  ))}
+                    {FAQ_PANELS[e].content.map(f => (
+                      <FAQTitle key={f[0].q} className={this.state.FAQ_ANIMATION}>
+                        {f.map(g => (
+                          <div key={g.q}>
+                            <b>{g.q}</b><br />{g.a}<br /><br />
+                          </div>
+                        ))}
+                      </FAQTitle>
+                    ))}
                   </FAQMobileTitleContainer>
                 </FAQMobileContainer>
               ))}
