@@ -543,7 +543,7 @@ export default class Home extends React.Component {
   clickTracker(e, c) {
     const clickedPlane = e.target.src.includes('plane');
     let clicks = c;
-    if (clicks > 3) window.open('https://unfurl.hackillinois.org', '_blank');
+    if (clicks > 3) window.open('http://unfurl.hackillinois.org', '_blank');
     else if (clickedPlane) this.setState({ CLICKS: ++clicks, IS_MOBILE: !clicks });
     else this.setState({ CLICKS: (clicks - 0.05).toPrecision(2) });
   }
