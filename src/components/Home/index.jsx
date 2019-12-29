@@ -1,5 +1,5 @@
 import React from 'react';
-import Styled, {keyframes} from 'styled-components';
+import Styled, { keyframes } from 'styled-components';
 import { Link, Redirect } from 'react-router-dom';
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
@@ -313,7 +313,7 @@ const Car = Styled.img.attrs(props => {
   const p = props.position - 50;
   return {
     style: {
-      transform: `translate(${ p > 0 ? p * 2 : 0 }vw)`,
+      transform: `translate(${p > 0 ? p * 2 : 0}vw)`,
     },
   };
 })`
@@ -348,7 +348,7 @@ const Pole = Styled.div`
 `;
 
 const Clickable = Styled.div.attrs(props => {
-  if(props.isFAQ) {
+  if (props.isFAQ) {
     return {
       style: {
         color: '#FFF',
@@ -360,7 +360,7 @@ const Clickable = Styled.div.attrs(props => {
   return {
     style: {
       transition: '0.2s',
-      backgroundColor: props.selected ? '#E28B79': '#FBF4EA',
+      backgroundColor: props.selected ? '#E28B79' : '#FBF4EA',
     },
   };
 })`
@@ -383,15 +383,23 @@ const Clickable = Styled.div.attrs(props => {
   }
 `;
 
+const FAQHeightMaintainer = Styled.div`
+  display: flex;
+  width: 1000vw;
+  flex-direction: row;
+  overflow: hidden;
+  padding-top: 40px;
+  background: #4B8655;
+`;
+
 const FAQContainer = Styled.div`
   z-index: 6;
   overflow: hidden;
-  background: #4B8655;
   padding-bottom: 9vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   color: white;
-  padding-top: 40px;
+  width: 100vw;
   @media(max-width: 3000px) {
     padding-bottom: 7vw;
   }
@@ -418,7 +426,6 @@ const FAQMobileWrapper = Styled.div`
   }
   flex-direction: row;
   display: none;
-  width: 300vw;
   overflow: hidden;
   background: #4B8655;
   padding-bottom: 9vw;
@@ -443,7 +450,7 @@ const FAQMobileHeader = Styled.div`
 
 const FAQMobileArrows = Styled.div`
   font-size: calc(20px + 2vw);
-  visibility: ${p => p.invisible ? 'hidden': null};
+  visibility: ${p => p.invisible ? 'hidden' : null};
 
   &:hover{
     cursor: pointer;
@@ -476,18 +483,18 @@ export default class Home extends React.Component {
   }
 
   changeFAQ(title) {
-    setTimeout(() => {this.setState({ FAQ_STATE: title })}, 200);
-    this.setState({ FAQ_ANIMATION: 'faqOut'})
-    setTimeout(() => {this.setState({ FAQ_ANIMATION: 'faqIn' })}, 200);
-    setTimeout(() => {this.setState({ FAQ_ANIMATION: '' })}, 400);
+    setTimeout(() => { this.setState({ FAQ_STATE: title }) }, 200);
+    this.setState({ FAQ_ANIMATION: 'faqOut' })
+    setTimeout(() => { this.setState({ FAQ_ANIMATION: 'faqIn' }) }, 200);
+    setTimeout(() => { this.setState({ FAQ_ANIMATION: '' }) }, 400);
   }
 
   clickTracker(e) {
     let clickedPlane = e.target.src.includes('plane');
     let clicks = this.state.CLICKS;
-    if(clicks > 3) window.open('https://unfurl.hackillinois.org', '_blank');
-    else if(clickedPlane) this.setState({CLICKS: ++clicks, IS_MOBILE: !clicks});
-    else this.setState({CLICKS: (clicks - 0.05).toPrecision(2)});
+    if (clicks > 3) window.open('https://unfurl.hackillinois.org', '_blank');
+    else if (clickedPlane) this.setState({ CLICKS: ++clicks, IS_MOBILE: !clicks });
+    else this.setState({ CLICKS: (clicks - 0.05).toPrecision(2) });
   }
 
   handleScroll() {
@@ -498,22 +505,22 @@ export default class Home extends React.Component {
   }
 
   scrollRight() {
-    if(this.state.FAQ_STATE === 'General') {
-      this.setState({FAQ_STATE: 'Before'});
+    if (this.state.FAQ_STATE === 'General') {
+      this.setState({ FAQ_STATE: 'Before' });
     }
-    if(this.state.FAQ_STATE === 'Before'){
-      this.setState({FAQ_STATE: 'During'});
+    if (this.state.FAQ_STATE === 'Before') {
+      this.setState({ FAQ_STATE: 'During' });
     }
   }
   scrollLeft() {
-    if(this.state.FAQ_STATE === 'During'){
-      this.setState({FAQ_STATE: 'Before'});
+    if (this.state.FAQ_STATE === 'During') {
+      this.setState({ FAQ_STATE: 'Before' });
     }
-    if(this.state.FAQ_STATE === 'Before'){
-      this.setState({FAQ_STATE: 'General'});
+    if (this.state.FAQ_STATE === 'Before') {
+      this.setState({ FAQ_STATE: 'General' });
     }
   }
-  
+
   render() {
     const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
     return (
@@ -526,8 +533,8 @@ export default class Home extends React.Component {
           </TaglineText>
           <Sponsor />
           <CenterLink />
-          {BACKGROUND_DECOR.map(e => 
-            <BackgroundDecor onClick={this.clickTracker} key={e.id} uid={e.id} isMobile={IS_MOBILE} clicks={Math.max(Math.floor(CLICKS), 0)} src={e.img} style={e.style} mobileStyle={e.mobileStyle}/>
+          {BACKGROUND_DECOR.map(e =>
+            <BackgroundDecor onClick={this.clickTracker} key={e.id} uid={e.id} isMobile={IS_MOBILE} clicks={Math.max(Math.floor(CLICKS), 0)} src={e.img} style={e.style} mobileStyle={e.mobileStyle} />
           )}
           <SubContent>
             <City src={city} />
@@ -547,24 +554,35 @@ export default class Home extends React.Component {
               <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
-            <FAQContainer>
-              <Pole />
-              <TimeWrapper>
-                <Clickable isFAQ rotation='-3'>
-                  FAQ
-                </Clickable>
-                {CLICKABLES.map(e => (
-                  <Clickable
-                    key={e.title}
-                    onClick={() => this.changeFAQ(e.title)}
-                    selected={FAQ_STATE === e.title}
-                    rotation={e.rotation}
-                  >
-                    {e.title}
+            <FAQHeightMaintainer>
+              <FAQContainer>
+                <Pole />
+                <TimeWrapper>
+                  <Clickable isFAQ rotation='-3'>
+                    FAQ
                   </Clickable>
+                  {CLICKABLES.map(e => (
+                    <Clickable
+                      key={e.title}
+                      onClick={() => this.changeFAQ(e.title)}
+                      selected={FAQ_STATE === e.title}
+                      rotation={e.rotation}
+                    >
+                      {e.title}
+                    </Clickable>
+                  ))}
+                </TimeWrapper>
+                {FAQ_PANELS[FAQ_STATE].content.map(e => (
+                  <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
+                    {e.map(f => (
+                      <div key={f.q}>
+                        <b>{f.q}</b><br />{f.a}<br /><br />
+                      </div>
+                    ))}
+                  </FAQTitle>
                 ))}
-              </TimeWrapper>
-              {FAQ_PANELS[FAQ_STATE].content.map(e => (
+              </FAQContainer>
+              {FAQ_PANELS["General"].content.map(e => (
                 <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
                   {e.map(f => (
                     <div key={f.q}>
@@ -573,7 +591,25 @@ export default class Home extends React.Component {
                   ))}
                 </FAQTitle>
               ))}
-            </FAQContainer>
+              {FAQ_PANELS["Before"].content.map(e => (
+                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
+                  {e.map(f => (
+                    <div key={f.q}>
+                      <b>{f.q}</b><br />{f.a}<br /><br />
+                    </div>
+                  ))}
+                </FAQTitle>
+              ))}
+              {FAQ_PANELS["During"].content.map(e => (
+                <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
+                  {e.map(f => (
+                    <div key={f.q}>
+                      <b>{f.q}</b><br />{f.a}<br /><br />
+                    </div>
+                  ))}
+                </FAQTitle>
+              ))}
+            </FAQHeightMaintainer>
             <FAQMobileWrapper>
               {CLICKABLES.map(e => (
                 <FAQMobileContainer>
