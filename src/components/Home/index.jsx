@@ -468,7 +468,7 @@ const FAQMobileWrapper = Styled.div`
   animation: ${p => p.transition.includes('General') ?
   (p.transition.includes('reverse') ? slide1 : slide3)
   :
-  (p.transition.includes('reverse') ? slide2 : slide4)} 1s ease-in-out forwards;
+  (p.transition.includes('reverse') ? slide2 : slide4)} 0.7s ease-in-out forwards;
 `;
 
 const FAQMobileContainer = Styled.div`
