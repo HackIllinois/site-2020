@@ -296,15 +296,15 @@ const GroundContent = Styled.div`
     animation: ${fadeIn} 0.2s ease-out forwards;
   }
   .General {
-    transition: 1s;
+    transition: 0.5s;
     left: 0vw;
   }
   .Before {
-    transition: 1s;
+    transition: 0.5s;
     left: -100vw;
   }
   .During {
-    transition: 1s;
+    transition: 0.5s;
     left: -200vw;
   }
 `;
