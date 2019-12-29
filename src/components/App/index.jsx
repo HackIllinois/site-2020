@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Apply from 'components/Apply';
 import Auth from 'components/Auth';
-import Error from 'components/Error';
 import Home from 'components/Home';
+import Message from 'components/Message';
 import PDF from 'components/PDF';
 import Token from 'components/Token';
+import QR from 'components/QR';
+import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
 export default function App() {
   return (
@@ -14,9 +16,10 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
 
-        <Route path="/apply" component={Apply} />
         <Route path="/auth" component={Auth} />
-        <Route path="/token" component={Token} />
+        <AuthenticatedRoute path="/apply" component={Apply} />
+        <AuthenticatedRoute path="/token" component={Token} />
+        <Route path="/qr" component={QR} />
 
         <Route
           exact
@@ -34,7 +37,7 @@ export default function App() {
         />
 
         <Route component={
-          () => <Error message="404 Not Found" />
+          () => <Message title="404 Not Found" />
         }
         />
       </Switch>

@@ -15,6 +15,7 @@
     "no-nested-ternary": "off",
     "react/destructuring-assignment": "off",
     "no-plusplus": "off"
+    "linebreak-style" : "off"
   },
   "settings": {
     "import/resolver": {

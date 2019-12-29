@@ -5,27 +5,30 @@ import { getToken } from 'api';
 import Loading from 'components/Loading';
 
 function mobileRedirect(os, code) {
-  return `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
+  const to = `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
+  window.location.replace(to);
 }
 
 export default class Auth extends React.Component {
   componentDidMount() {
     const { location } = this.props;
-    const queries = queryString.parse(location.search);
-    const { code, isAndroid, isiOS } = queries;
-    let { to } = queries;
+    const {
+      code,
+      isAndroid,
+      isIOS,
+      to,
+    } = queryString.parse(location.search);
 
     if (!code) {
       return;
     }
 
-    if (isAndroid || isiOS) {
+    if (isAndroid || isIOS) {
       const os = isAndroid ? 'android' : 'ios';
-      to = mobileRedirect(os, code);
-      window.location.replace(to);
+      mobileRedirect(os, code);
     } else {
       getToken(code).then(token => {
-        sessionStorage.setItem('token', token.token);
+        sessionStorage.setItem('token', token);
         window.location.replace(to);
       });
     }

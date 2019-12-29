@@ -1,0 +1,8 @@
+.next {
+  padding: 5px 3px 5px 12px;
+  cursor: pointer;
+}
+
+.next:disabled {
+  cursor: not-allowed;
+}

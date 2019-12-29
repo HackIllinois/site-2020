@@ -35,7 +35,8 @@ export function authenticate(to) {
 }
 
 export function getToken(code) {
-  return request('POST', '/auth/code/github/', { code });
+  return request('POST', '/auth/code/github/', { code })
+    .then(res => res.token);
 }
 
 export function getRoles() {
@@ -66,4 +67,8 @@ export function uploadResume(resume) {
 export function apply(isEditing, application) {
   const method = isEditing ? 'PUT' : 'POST';
   return request(method, '/registration/attendee/', application);
+}
+
+export function getQR() {
+  return request('GET', '/user/qr/');
 }
