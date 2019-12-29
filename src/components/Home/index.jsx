@@ -295,6 +295,18 @@ const GroundContent = Styled.div`
   .faqIn{
     animation: ${fadeIn} 0.2s ease-out forwards;
   }
+  .General {
+    transition: 1s;
+    left: 0vw;
+  }
+  .Before {
+    transition: 1s;
+    left: -100vw;
+  }
+  .During {
+    transition: 1s;
+    left: -200vw;
+  }
 `;
 
 const BackgroundRoad = Styled.img`
@@ -440,11 +452,12 @@ const FAQMobileWrapper = Styled.div`
   }
   flex-direction: row;
   display: none;
-  overflow: hidden;
   background: #4B8655;
   padding-bottom: 9vw;
   padding-top: 20px;
   color: white;
+  width: 300vw;
+  position: absolute;
 `;
 
 const FAQMobileContainer = Styled.div`
@@ -453,12 +466,17 @@ const FAQMobileContainer = Styled.div`
   grid-template-rows: 2.5rem 1fr;
   align-items: center;
   font-size: calc(20px + 2vw);
+
 `;
 
 const FAQMobileHeader = Styled.div`
   grid-area: 1/1/2/2;
   text-align: center;
-  width: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-self: center;
 `;
 
 const FAQMobileTitleContainer = Styled.div`
@@ -470,12 +488,11 @@ const FAQMobileArrows = Styled.div.attrs(props => {
   else return { style: { right: 20 } }
 })`
   font-size: calc(20px + 2vw);
-  position: absolute;
   visibility: ${p => p.invisible ? 'hidden' : null};
-
   &:hover{
     cursor: pointer;
   }
+  top: 10px;
 `;
 
 export default class Home extends React.Component {
@@ -641,15 +658,17 @@ export default class Home extends React.Component {
                 ))}
               </FAQContainer>
             </FAQHeightMaintainer>
-            <FAQMobileWrapper>
+            <FAQMobileWrapper className={this.state.FAQ_STATE}>
               {Object.keys(FAQ_PANELS).map(e => (
                 <FAQMobileContainer key={e}>
                   <FAQMobileHeader>
+                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
                     {e}
+                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
                   </FAQMobileHeader>
                   <FAQMobileTitleContainer>
                     {FAQ_PANELS[e].content.map(f => (
-                      <FAQTitle key={f[0].q} className={this.state.FAQ_ANIMATION}>
+                      <FAQTitle key={f[0].q}>
                         {f.map(g => (
                           <div key={g.q}>
                             <b>{g.q}</b><br />{g.a}<br /><br />
@@ -660,8 +679,7 @@ export default class Home extends React.Component {
                   </FAQMobileTitleContainer>
                 </FAQMobileContainer>
               ))}
-              <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} isLeft onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
-              <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
+
             </FAQMobileWrapper>
           </GroundContent>
         </Content>
