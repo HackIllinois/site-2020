@@ -12,6 +12,9 @@
     "react/jsx-one-expression-per-line": "off",
     "template-curly-spacing" : "off",
     "indent": "off",
+    "no-nested-ternary": "off",
+    "react/destructuring-assignment": "off",
+    "no-plusplus": "off"
   },
   "settings": {
     "import/resolver": {

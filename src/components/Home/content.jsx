@@ -20,7 +20,7 @@ export const NAVITEMS = [
   {
     title: 'SAMPLE TEXT',
     url: '#sample',
-  }
+  },
 ];
 
 export const BACKGROUND_DECOR = [
@@ -59,7 +59,7 @@ export const BACKGROUND_DECOR = [
       margin: '0 25vw 0 75vw',
       clipPath: 'polygon(0% 100%, 45% 0%, 55% 0%, 55% 42%, 88% 0%, 100% 0%, 62% 50%, 100% 100%, 88% 100%, 55% 58%, 55% 100%, 45% 100%, 45% 63%, 27% 63%, 30% 53%, 45% 53%, 46% 19%, 12% 100%)',
       background: '#fff',
-    }
+    },
   },
   {
     id: 4,

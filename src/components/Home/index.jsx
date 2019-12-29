@@ -9,7 +9,9 @@ import backdrop1 from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import car from 'assets/home/car.svg';
-import { BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS } from './content';
+import {
+  BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS,
+} from './content';
 
 const Container = Styled.div`
   position: relative;
@@ -179,7 +181,7 @@ const CenterButton = Styled.button`
 `;
 
 const StyledCenterButton = ({ style }) => (
-  <Link style={style} to={'/apply'}>
+  <Link style={style} to="/apply">
     <CenterButton>
       APPLY NOW &nbsp;&#10132;
     </CenterButton>
@@ -192,20 +194,20 @@ const CenterLink = Styled(StyledCenterButton)`
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
-  width: ${p => p.src.includes('plane') ? 12 + p.clicks + 'vw' : '12vw'};
+  width: ${p => (p.src.includes('plane') ? `${12 + p.clicks}vw` : '12vw')};
   pointer-events: visiblePainted;
-  animation: ${p => p.src.includes('plane') ? sway2 : sway1} 8s ease-in-out ${p => -(p.uid * 2).toString() + 's'} infinite;
+  animation: ${p => (p.src.includes('plane') ? sway2 : sway1)} 8s ease-in-out ${p => `${-(p.uid * 2).toString()}s`} infinite;
   &:hover{
-    cursor: ${p => p.src.includes('plane') ? 'pointer' : 'default'};
+    cursor: ${p => (p.src.includes('plane') ? 'pointer' : 'default')};
   }
 
   @media(max-width: 900px) {
-    display: ${p => p.mobileStyle ? 'visible' : 'none'};
-    margin: ${p => p.mobileStyle ? p.mobileStyle.margin : null};
-    clip-path: ${p => p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null};
-    background: ${p => p.isMobile && p.mobileStyle ? p.mobileStyle.background : null};
+    display: ${p => (p.mobileStyle ? 'visible' : 'none')};
+    margin: ${p => (p.mobileStyle ? p.mobileStyle.margin : null)};
+    clip-path: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null)};
+    background: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.background : null)};
     position: static;
-    width: ${p => p.src.includes('plane') ? 25 + p.clicks * 2 + 'vw' : '12vw'};;
+    width: ${p => (p.src.includes('plane') ? `${25 + p.clicks * 2}vw` : '12vw')};;
   }
 `;
 
@@ -375,7 +377,7 @@ const Clickable = Styled.div.attrs(props => {
         backgroundColor: '#285163',
         clipPath: 'polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%)',
       },
-    }
+    };
   }
   return {
     style: {
@@ -396,7 +398,7 @@ const Clickable = Styled.div.attrs(props => {
   height: 1.6em;
   border-radius: 2px;
   color: #222B5C;
-  transform: ${p => 'rotate(' + p.rotation + 'deg)'};
+  transform: ${p => `rotate(${p.rotation}deg)`};
 
   &:hover {
     cursor: pointer;
@@ -465,10 +467,9 @@ const FAQMobileWrapper = Styled.div`
   padding-top: 20px;
   color: white;
   width: 300vw;
-  animation: ${p => p.transition.includes('General') ?
-  (p.transition.includes('reverse') ? slide1 : slide3)
-  :
-  (p.transition.includes('reverse') ? slide2 : slide4)} 0.7s ease-in-out forwards;
+  animation: ${p => (p.transition.includes('General')
+    ? (p.transition.includes('reverse') ? slide1 : slide3)
+    : (p.transition.includes('reverse') ? slide2 : slide4))} 0.7s ease-in-out forwards;
 `;
 
 const FAQMobileContainer = Styled.div`
@@ -488,9 +489,7 @@ const FAQMobileTitleContainer = Styled.div`
   grid-area: 2/1/3/2;
 `;
 
-const FAQMobileArrows = Styled.div.attrs(props => {
-  return { style: { left: props.isLeft ? '5vw' : '95vw' } }
-})`
+const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft ? '5vw' : '95vw' } }))`
   @media(max-width: 900px) {
     display: block
   }
@@ -500,7 +499,7 @@ const FAQMobileArrows = Styled.div.attrs(props => {
   position: absolute;
   color: white;
   opacity: 70%;
-  visibility: ${p => p.invisible ? 'hidden' : null};
+  visibility: ${p => (p.invisible ? 'hidden' : null)};
 
   &:hover{
     cursor: pointer;
@@ -535,15 +534,15 @@ export default class Home extends React.Component {
   }
 
   changeFAQ(title) {
-    setTimeout(() => { this.setState({ FAQ_STATE: title }) }, 200);
-    this.setState({ FAQ_ANIMATION: 'faqOut' })
-    setTimeout(() => { this.setState({ FAQ_ANIMATION: 'faqIn' }) }, 200);
-    setTimeout(() => { this.setState({ FAQ_ANIMATION: '' }) }, 400);
+    setTimeout(() => { this.setState({ FAQ_STATE: title }); }, 200);
+    this.setState({ FAQ_ANIMATION: 'faqOut' });
+    setTimeout(() => { this.setState({ FAQ_ANIMATION: 'faqIn' }); }, 200);
+    setTimeout(() => { this.setState({ FAQ_ANIMATION: '' }); }, 400);
   }
 
-  clickTracker(e) {
-    let clickedPlane = e.target.src.includes('plane');
-    let clicks = this.state.CLICKS;
+  clickTracker(e, c) {
+    const clickedPlane = e.target.src.includes('plane');
+    let clicks = c;
     if (clicks > 3) window.open('https://unfurl.hackillinois.org', '_blank');
     else if (clickedPlane) this.setState({ CLICKS: ++clicks, IS_MOBILE: !clicks });
     else this.setState({ CLICKS: (clicks - 0.05).toPrecision(2) });
@@ -561,7 +560,7 @@ export default class Home extends React.Component {
       this.setState({ FAQ_STATE: 'Before', PREV_FAQ: 'General' });
     }
     if (this.state.FAQ_STATE === 'Before') {
-      this.setState({ FAQ_STATE: 'During', PREV_FAQ: 'Before'});
+      this.setState({ FAQ_STATE: 'During', PREV_FAQ: 'Before' });
     }
   }
 
@@ -575,20 +574,31 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
+    const {
+      FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, CLICKS, FAQ_ANIMATION,
+    } = this.state;
     return (
       <Container>
         <Logo src={logo} />
         <Content>
-          <Tagline src={tagline} alt={'tagline'} />
+          <Tagline src={tagline} alt="tagline" />
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
           <Sponsor />
           <CenterLink />
-          {BACKGROUND_DECOR.map(e =>
-            <BackgroundDecor onClick={this.clickTracker} key={e.id} uid={e.id} isMobile={IS_MOBILE} clicks={Math.max(Math.floor(CLICKS), 0)} src={e.img} style={e.style} mobileStyle={e.mobileStyle} />
-          )}
+          {BACKGROUND_DECOR.map(e => (
+            <BackgroundDecor
+              onClick={clicked => this.clickTracker(clicked, CLICKS)}
+              key={e.id}
+              uid={e.id}
+              isMobile={IS_MOBILE}
+              clicks={Math.max(Math.floor(CLICKS), 0)}
+              src={e.img}
+              style={e.style}
+              mobileStyle={e.mobileStyle}
+            />
+          ))}
           <SubContent>
             <City src={city} />
             <Backdrop1 />
@@ -607,12 +617,21 @@ export default class Home extends React.Component {
               <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
-            <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} isLeft onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
-            <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
+            <FAQMobileArrows
+              invisible={FAQ_STATE === CLICKABLES[0].title}
+              isLeft
+              onClick={this.scrollLeft}
+            >&#8249;
+            </FAQMobileArrows>
+            <FAQMobileArrows
+              invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title}
+              onClick={this.scrollRight}
+            >&#8250;
+            </FAQMobileArrows>
             <FAQHeightMaintainer>
               <FAQMaxHeight>
                 <FAQPlaceholder>
-                  {FAQ_PANELS["General"].content.map(e => (
+                  {FAQ_PANELS.General.content.map(e => (
                     <FAQTitle key={e[0].q}>
                       {e.map(f => (
                         <div key={f.q}>
@@ -623,7 +642,7 @@ export default class Home extends React.Component {
                   ))}
                 </FAQPlaceholder>
                 <FAQPlaceholder>
-                  {FAQ_PANELS["Before"].content.map(e => (
+                  {FAQ_PANELS.Before.content.map(e => (
                     <FAQTitle key={e[0].q}>
                       {e.map(f => (
                         <div key={f.q}>
@@ -634,7 +653,7 @@ export default class Home extends React.Component {
                   ))}
                 </FAQPlaceholder>
                 <FAQPlaceholder>
-                  {FAQ_PANELS["During"].content.map(e => (
+                  {FAQ_PANELS.During.content.map(e => (
                     <FAQTitle key={e[0].q}>
                       {e.map(f => (
                         <div key={f.q}>
@@ -648,7 +667,7 @@ export default class Home extends React.Component {
               <FAQContainer>
                 <Pole />
                 <TimeWrapper>
-                  <Clickable isFAQ rotation='-3'>
+                  <Clickable isFAQ rotation="-3">
                     FAQ
                   </Clickable>
                   {CLICKABLES.map(e => (
@@ -663,7 +682,7 @@ export default class Home extends React.Component {
                   ))}
                 </TimeWrapper>
                 {FAQ_PANELS[FAQ_STATE].content.map(e => (
-                  <FAQTitle key={e[0].q} className={this.state.FAQ_ANIMATION}>
+                  <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
                       <div key={f.q}>
                         <b>{f.q}</b><br />{f.a}<br /><br />
@@ -673,7 +692,7 @@ export default class Home extends React.Component {
                 ))}
               </FAQContainer>
             </FAQHeightMaintainer>
-            <FAQMobileWrapper transition={FAQ_STATE !== 'Before' ? FAQ_STATE : (PREV_FAQ + 'reverse')}>
+            <FAQMobileWrapper transition={FAQ_STATE !== 'Before' ? FAQ_STATE : (`${PREV_FAQ}reverse`)}>
               {Object.keys(FAQ_PANELS).map(e => (
                 <FAQMobileContainer key={e}>
                   <FAQMobileHeader>
