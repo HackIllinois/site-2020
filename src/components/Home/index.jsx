@@ -167,6 +167,7 @@ const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
   font-size: 2em;
+  text-align: center;
   @media(min-width: 2000px) {
     font-size: 2em;
   }
