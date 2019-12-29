@@ -1,16 +1,21 @@
 import React from 'react';
 import Styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import bg from 'assets/home/background.png';
-import tagline from 'assets/home/tagline.svg';
-import city from 'assets/home/city.svg';
-import logo from 'assets/home/logo.svg';
-import backdrop1 from 'assets/home/backdrop.svg';
+
+import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
-import foregroundBush from 'assets/home/foreground_bushes.svg';
+import bg from 'assets/home/background.png';
 import car from 'assets/home/car.svg';
+import city from 'assets/home/city.svg';
+import foregroundBush from 'assets/home/foreground_bushes.svg';
+import logo from 'assets/home/logo.svg';
+import tagline from 'assets/home/tagline.svg';
+
 import {
-  BACKGROUND_DECOR, DESCRIPTIONS, CLICKABLES, FAQ_PANELS,
+  BACKGROUND_DECOR,
+  DESCRIPTIONS,
+  CLICKABLES,
+  FAQ_PANELS,
 } from './content';
 
 const Container = Styled.div`
@@ -121,11 +126,9 @@ const SubContent = Styled.div`
   @media(max-width: 600px) {
     grid-template-rows: 90vw 200px 200px 1500px;
   }
-
   @media(max-width: 450px) {
     grid-template-rows: 90vw 400px 1800px;
   }
-
   @media(max-width: 380px) {
     grid-template-rows: 90vw 400px 2200px;
   }
@@ -194,7 +197,7 @@ const CenterLink = Styled(StyledCenterButton)`
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
-  width: ${p => (p.src.includes('plane') ? `${12 + p.clicks}vw` : '12vw')};
+  width: 12vw;
   pointer-events: visiblePainted;
   animation: ${p => (p.src.includes('plane') ? sway2 : sway1)} 8s ease-in-out ${p => `${-(p.uid * 2).toString()}s`} infinite;
   &:hover{
@@ -207,7 +210,7 @@ const BackgroundDecor = Styled.img.attrs(props => props.style)`
     clip-path: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null)};
     background: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.background : null)};
     position: static;
-    width: ${p => (p.src.includes('plane') ? `${25 + p.clicks * 2}vw` : '12vw')};;
+    width: 12vw;
   }
 `;
 
@@ -238,8 +241,8 @@ const City = Styled.img`
   }
 `;
 
-const Backdrop1 = Styled.div`
-  background-image: url(${backdrop1});
+const Backdrop = Styled.div`
+  background-image: url(${backdrop});
   background-size: cover;
   background-position: 25% 50%;
   width: 100%;
@@ -514,13 +517,11 @@ export default class Home extends React.Component {
       FAQ_STATE: 'General',
       SCROLL_POS: 0,
       FAQ_ANIMATION: '',
-      CLICKS: 0,
       IS_MOBILE: false,
     };
 
     this.handleScroll = this.handleScroll.bind(this);
     this.changeFAQ = this.changeFAQ.bind(this);
-    this.clickTracker = this.clickTracker.bind(this);
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
   }
@@ -538,14 +539,6 @@ export default class Home extends React.Component {
     this.setState({ FAQ_ANIMATION: 'faqOut' });
     setTimeout(() => { this.setState({ FAQ_ANIMATION: 'faqIn' }); }, 200);
     setTimeout(() => { this.setState({ FAQ_ANIMATION: '' }); }, 400);
-  }
-
-  clickTracker(e, c) {
-    const clickedPlane = e.target.src.includes('plane');
-    let clicks = c;
-    if (clicks > 3) window.open('http://unfurl.hackillinois.org', '_blank');
-    else if (clickedPlane) this.setState({ CLICKS: ++clicks, IS_MOBILE: !clicks });
-    else this.setState({ CLICKS: (clicks - 0.05).toPrecision(2) });
   }
 
   handleScroll() {
@@ -575,7 +568,7 @@ export default class Home extends React.Component {
 
   render() {
     const {
-      FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, CLICKS, FAQ_ANIMATION,
+      FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, FAQ_ANIMATION,
     } = this.state;
     return (
       <Container>
@@ -589,11 +582,9 @@ export default class Home extends React.Component {
           <CenterLink />
           {BACKGROUND_DECOR.map(e => (
             <BackgroundDecor
-              onClick={clicked => this.clickTracker(clicked, CLICKS)}
               key={e.id}
               uid={e.id}
               isMobile={IS_MOBILE}
-              clicks={Math.max(Math.floor(CLICKS), 0)}
               src={e.img}
               style={e.style}
               mobileStyle={e.mobileStyle}
@@ -601,7 +592,7 @@ export default class Home extends React.Component {
           ))}
           <SubContent>
             <City src={city} />
-            <Backdrop1 />
+            <Backdrop />
             <DescriptionContainer>
               {DESCRIPTIONS.map(e => (
                 <div key={e.title}>

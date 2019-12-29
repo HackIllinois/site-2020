@@ -114,32 +114,32 @@ export const FAQ_PANELS = {
     content: [
       [
         {
-          q: 'How do I get to the University of Illinois/Siebel/etc.?',
+          q: 'How do I get to the University of Illinois?',
           a: 'Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.',
         },
         {
           q: 'Do I need to have a programming background to participate?',
-          a: 'People of all skill levels are welcomed!',
+          a: 'No! People of all skill levels are welcomed.',
         },
       ],
       [
-        {
-          q: 'How do applications work?',
-          a: 'You must apply in order to be considered for HackIllinois. Admissions will be based on a weighted lottery. Decisions will be released in early January in multiple waves, and it is to your advantage to apply as soon as possible. If you’re accepted, there will be a limited time to RSVP before we reallocate your spot to another student.',
-        },
         {
           q: 'How can I make the most out of HackIllinois tools?',
           a: 'The Hardware Hut is available to all at ECEB. More information on what will be available will be coming later.',
         },
-      ],
-      [
         {
           q: 'What should I bring?',
           a: 'You should bring a student ID, a reusable water bottle, a change of clothing, personal items such as toiletries, and a laptop & charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.',
         },
+      ],
+      [
         {
           q: 'Have more questions?',
           a: 'Please don’t hesitate to reach out to us at contact@hackillinois.org if you have any other questions.',
+        },
+        {
+          q: 'How do applications work?',
+          a: 'You must apply in order to be considered for HackIllinois. Admissions will be based on a weighted lottery. Decisions will be released in late January in multiple waves, and it is to your advantage to apply as soon as possible. If you’re accepted, there will be a limited time to RSVP before we reallocate your spot to another student.',
         },
       ],
     ],
@@ -149,7 +149,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'Is there anything to do other than code?',
-          a: 'ABSOLUTELY! There will be a variety of mini-events this year, including the customary Nerf battles as well as some new events. There will also be open-source keynotes and engaging workshops, so you should definitely check out the schedule to be posted here on the website.',
+          a: 'Absolutely! There will be a variety of mini-events this year, including the customary Nerf battles as well as some new events. There will also be open-source keynotes and engaging workshops, so you should definitely check out the schedule to be posted here on the website.',
         },
         {
           q: 'Where do I sleep?',
@@ -182,7 +182,7 @@ export const FAQ_PANELS = {
     content: [
       [
         {
-          q: 'Do I have to stay in the north quad? (aka Siebel and ECEB)',
+          q: 'Do I have to stay in the North Quad? (Siebel and ECEB)',
           a: 'Nope! Feel free to roam around Urbana-Champaign and explore what we have to offer.',
         },
         {
