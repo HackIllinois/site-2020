@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled, { keyframes } from 'styled-components';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import bg from 'assets/home/background.png';
 import tagline from 'assets/home/tagline.svg';
 import city from 'assets/home/city.svg';
@@ -55,6 +55,26 @@ const sway1 = keyframes`
 const sway2 = keyframes`
   50% { transform: translate(0, 3vh); }
   100% { transform: translate(0, 0); }
+`;
+
+const slide1 = keyframes`
+  0% { transform: translate(0); }
+  100% { transform: translate(-100vw); }
+`;
+
+const slide2 = keyframes`
+  0% { transform: translate(-200vw); }
+  100% { transform: translate(-100vw); }
+`;
+
+const slide3 = keyframes`
+  0% { transform: translate(-100vw); }
+  100% { transform: translate(0); }
+`;
+
+const slide4 = keyframes`
+  0% { transform: translate(-100vw); }
+  100% { transform: translate(-200vw); }
 `;
 
 const Content = Styled.div`
@@ -295,18 +315,6 @@ const GroundContent = Styled.div`
   .faqIn{
     animation: ${fadeIn} 0.2s ease-out forwards;
   }
-  .General {
-    transition: 1s;
-    left: 0vw;
-  }
-  .Before {
-    transition: 1s;
-    left: -100vw;
-  }
-  .During {
-    transition: 1s;
-    left: -200vw;
-  }
 `;
 
 const BackgroundRoad = Styled.img`
@@ -447,7 +455,7 @@ const FAQTitle = Styled.div`
 `;
 
 const FAQMobileWrapper = Styled.div`
-  @media(max-width: 900px){
+  @media(max-width: 900px) {
     display: flex;
   }
   flex-direction: row;
@@ -457,48 +465,53 @@ const FAQMobileWrapper = Styled.div`
   padding-top: 20px;
   color: white;
   width: 300vw;
-  position: absolute;
+  animation: ${p => p.transition.includes('General') ?
+  (p.transition.includes('reverse') ? slide1 : slide3)
+  :
+  (p.transition.includes('reverse') ? slide2 : slide4)} 1s ease-in-out forwards;
 `;
 
 const FAQMobileContainer = Styled.div`
   width: 100vw;
   display: grid;
   grid-template-rows: 2.5rem 1fr;
-  align-items: center;
   font-size: calc(20px + 2vw);
-
 `;
 
 const FAQMobileHeader = Styled.div`
   grid-area: 1/1/2/2;
   text-align: center;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  justify-self: center;
 `;
 
 const FAQMobileTitleContainer = Styled.div`
+  padding-top: 20px;
   grid-area: 2/1/3/2;
 `;
 
 const FAQMobileArrows = Styled.div.attrs(props => {
-  if (props.isLeft) return { style: { left: 20 } }
-  else return { style: { right: 20 } }
+  return { style: { left: props.isLeft ? '5vw' : '95vw' } }
 })`
-  font-size: calc(20px + 2vw);
+  @media(max-width: 900px) {
+    display: block
+  }
+  display: none;
+  z-index: 10;
+  font-size: calc(20px + 5vw);
+  position: absolute;
+  color: white;
+  opacity: 70%;
   visibility: ${p => p.invisible ? 'hidden' : null};
+
   &:hover{
     cursor: pointer;
   }
-  top: 10px;
 `;
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      PREV_FAQ: '',
       FAQ_STATE: 'General',
       SCROLL_POS: 0,
       FAQ_ANIMATION: '',
@@ -545,24 +558,24 @@ export default class Home extends React.Component {
 
   scrollRight() {
     if (this.state.FAQ_STATE === 'General') {
-      this.setState({ FAQ_STATE: 'Before' });
+      this.setState({ FAQ_STATE: 'Before', PREV_FAQ: 'General' });
     }
     if (this.state.FAQ_STATE === 'Before') {
-      this.setState({ FAQ_STATE: 'During' });
+      this.setState({ FAQ_STATE: 'During', PREV_FAQ: 'Before'});
     }
   }
 
   scrollLeft() {
     if (this.state.FAQ_STATE === 'During') {
-      this.setState({ FAQ_STATE: 'Before' });
+      this.setState({ FAQ_STATE: 'Before', PREV_FAQ: 'During' });
     }
     if (this.state.FAQ_STATE === 'Before') {
-      this.setState({ FAQ_STATE: 'General' });
+      this.setState({ FAQ_STATE: 'General', PREV_FAQ: 'Before' });
     }
   }
 
   render() {
-    const { FAQ_STATE, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
+    const { FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, CLICKS } = this.state;
     return (
       <Container>
         <Logo src={logo} />
@@ -594,6 +607,8 @@ export default class Home extends React.Component {
               <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
+            <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} isLeft onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
+            <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
             <FAQHeightMaintainer>
               <FAQMaxHeight>
                 <FAQPlaceholder>
@@ -658,13 +673,11 @@ export default class Home extends React.Component {
                 ))}
               </FAQContainer>
             </FAQHeightMaintainer>
-            <FAQMobileWrapper className={this.state.FAQ_STATE}>
+            <FAQMobileWrapper transition={FAQ_STATE !== 'Before' ? FAQ_STATE : (PREV_FAQ + 'reverse')}>
               {Object.keys(FAQ_PANELS).map(e => (
                 <FAQMobileContainer key={e}>
                   <FAQMobileHeader>
-                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[0].title} onClick={this.scrollLeft}>&#8249;</FAQMobileArrows>
                     {e}
-                    <FAQMobileArrows invisible={FAQ_STATE === CLICKABLES[CLICKABLES.length - 1].title} onClick={this.scrollRight}>&#8250;</FAQMobileArrows>
                   </FAQMobileHeader>
                   <FAQMobileTitleContainer>
                     {FAQ_PANELS[e].content.map(f => (
@@ -679,7 +692,6 @@ export default class Home extends React.Component {
                   </FAQMobileTitleContainer>
                 </FAQMobileContainer>
               ))}
-
             </FAQMobileWrapper>
           </GroundContent>
         </Content>
