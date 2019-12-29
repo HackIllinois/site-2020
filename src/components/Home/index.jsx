@@ -24,6 +24,14 @@ const Container = Styled.div`
   background-image: url(${bg});
   background-position: left top;
   background-size: cover;
+  
+  @media(min-width: 1100px) {
+    font-size: 0.8vw;
+  }
+
+  @media(min-width: 2200px) {
+    font-size: 1em;
+  }
 `;
 
 const Logo = Styled.img`
@@ -158,9 +166,9 @@ const Tagline = Styled.img`
 const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
-  font-size: 2rem;
+  font-size: 2em;
   @media(min-width: 2000px) {
-    font-size: 2rem;
+    font-size: 2em;
   }
 `;
 
@@ -170,12 +178,11 @@ const Sponsor = Styled.div`
 `;
 
 const CenterButton = Styled.button`
-  font-size: 1.5rem;
+  font-size: 1.5em;
   color: white;
   background-color: #A43B5C;
-  padding: 1rem 2rem;
-  border-radius: 3rem;
-  margin-bottom: 10vh;
+  padding: 1rem 2em;
+  border-radius: 3em;
 
   &:hover {
     cursor: pointer;
@@ -201,7 +208,7 @@ const BackgroundDecor = Styled.img.attrs(props => props.style)`
   pointer-events: visiblePainted;
   animation: ${p => (p.src.includes('plane') ? sway2 : sway1)} 8s ease-in-out ${p => `${-(p.uid * 2).toString()}s`} infinite;
   &:hover{
-    cursor: ${p => (p.src.includes('plane') ? 'pointer' : 'default')};
+    cursor: 'default';
   }
 
   @media(max-width: 900px) {
@@ -296,13 +303,13 @@ const DescriptionContainer = Styled.div`
 `;
 
 const DescriptionTitle = Styled.div`
-  font-size: 3rem;
+  font-size: 3em;
   padding: 30px 0 10px 0;
   color: #9C1641;
 `;
 
 const Description = Styled.div`
-  font-size: 1.5rem;
+  font-size: 1.5em;
 `;
 
 const GroundContent = Styled.div`
