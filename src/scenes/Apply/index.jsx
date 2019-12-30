@@ -10,16 +10,15 @@ import {
 
 import { Field, Form, Formik } from 'formik';
 
+import BackButton from 'components/BackButton';
 import Loading from 'components/Loading';
 import Message from 'components/Message';
+import NextButton from 'components/NextButton';
 import SelectField from 'components/SelectField';
+import SubmitButton from 'components/SubmitButton';
 
 import pinFilled from 'assets/apply/pin_filled.svg';
 import pinEmpty from 'assets/apply/pin_empty.svg';
-
-import BackButton from './BackButton';
-import NextButton from './NextButton';
-import SubmitButton from './SubmitButton';
 
 import {
   graduationYears,
