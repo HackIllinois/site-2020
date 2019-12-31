@@ -17,10 +17,6 @@ export const NAVITEMS = [
     title: 'SPONSORS',
     url: '/sponsor',
   },
-  {
-    title: 'SAMPLE TEXT',
-    url: '#sample',
-  },
 ];
 
 export const BACKGROUND_DECOR = [
@@ -121,6 +117,12 @@ export const FAQ_PANELS = {
           q: 'Do I need to have a programming background to participate?',
           a: 'No! People of all skill levels are welcomed.',
         },
+      ],
+      [
+        {
+          q: 'How do applications work?',
+          a: 'You must apply in order to be considered for HackIllinois. Admissions will be based on a weighted lottery. Decisions will be released in late January in multiple waves, and it is to your advantage to apply as soon as possible. If you’re accepted, there will be a limited time to RSVP before we reallocate your spot to another student.',
+        },
         {
           q: 'Want guaranteed admission?',
           a: 'Try our ',
@@ -132,22 +134,12 @@ export const FAQ_PANELS = {
       ],
       [
         {
-          q: 'How can I make the most out of HackIllinois tools?',
-          a: 'The Hardware Hut is available to all at ECEB. More information on what will be available will be coming later.',
-        },
-        {
           q: 'What should I bring?',
           a: 'You should bring a student ID, reusable water bottle, change of clothing, personal items such as toiletries, laptop, and charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.',
         },
-      ],
-      [
         {
           q: 'Have more questions?',
           a: 'Please don’t hesitate to reach out to us at contact@hackillinois.org if you have any other questions.',
-        },
-        {
-          q: 'How do applications work?',
-          a: 'You must apply in order to be considered for HackIllinois. Admissions will be based on a weighted lottery. Decisions will be released in late January in multiple waves, and it is to your advantage to apply as soon as possible. If you’re accepted, there will be a limited time to RSVP before we reallocate your spot to another student.',
         },
       ],
     ],
