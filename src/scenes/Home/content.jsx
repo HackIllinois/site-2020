@@ -111,7 +111,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'How do I get to the University of Illinois?',
-          a: 'Hackillinois will be providing some bus routes to the event. If you are a University of Illinois student please walk or utilize the MTD bus system.',
+          a: 'Hackillinois will be providing some bus routes to the event. If you are a University of Illinois student, please walk or utilize the MTD bus system.',
         },
         {
           q: 'Do I need to have a programming background to participate?',
