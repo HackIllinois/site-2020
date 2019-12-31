@@ -6,7 +6,6 @@ import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
 import car from 'assets/home/car.svg';
-import bus from 'assets/home/bus.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import logo from 'assets/home/logo.svg';
@@ -335,19 +334,6 @@ const ForegroundBush = Styled.img`
   margin: -2.5% 5%;
 `;
 
-const Bus = Styled.img.attrs(props => {
-  const p = props.position - 50;
-  return {
-    style: {
-      transform: `translate(${p > 0 ? p * 2 : 0}vw)`,
-    },
-  };
-})`
-  z-index: 2
-  width: 10%;
-  margin: -3.8% 0;
-`;
-
 const Car = Styled.img.attrs(props => {
   const p = props.position - 50;
   return {
@@ -634,7 +620,6 @@ export default class Home extends React.Component {
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
               <Car src={car} alt="car" position={SCROLL_POS} />
-              <Bus src={bus} alt="bus" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
