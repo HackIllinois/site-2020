@@ -1,16 +1,12 @@
 const API = 'https://api.hackillinois.org';
 
-function headers() {
-  return {
-    Authorization: sessionStorage.getItem('token'),
-    'Content-Type': 'application/json',
-  };
-}
-
 function request(method, endpoint, body) {
   return fetch(API + endpoint, {
     method,
-    headers: headers(),
+    headers: {
+      Authorization: sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body),
   }).then(res => {
     if (res.ok) {
@@ -44,17 +40,28 @@ export function getRoles() {
     .then(res => res.roles);
 }
 
-export function getApplication() {
-  return request('GET', '/registration/attendee/');
+export function getRegistration(role) {
+  return request('GET', `/registration/${role}/`);
 }
 
-export function uploadResume(resume) {
-  return request('GET', '/upload/resume/upload/')
-    .then(res => res.resume)
-    .then(url => fetch(url, {
+export function register(isEditing, role, registration) {
+  const method = isEditing ? 'PUT' : 'POST';
+  return request(method, `/registration/${role}/`, registration);
+}
+
+export function rsvp(isEditing) {
+  const method = isEditing ? 'PUT' : 'POST';
+  return request(method, '/rsvp/', { isAttending: true });
+}
+
+export function uploadFile(file, type) {
+  // TODO Change to /upload/type/url/
+  return request('GET', `/upload/${type}/upload/`)
+    // TODO Change to res.url
+    .then(res => fetch(res.resume, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/pdf' },
-      body: resume,
+      headers: { 'Content-Type': file.type },
+      body: file,
     }))
     .then(res => {
       if (res.ok) {
@@ -62,11 +69,6 @@ export function uploadResume(resume) {
       }
       throw Error(res);
     });
-}
-
-export function apply(isEditing, application) {
-  const method = isEditing ? 'PUT' : 'POST';
-  return request(method, '/registration/attendee/', application);
 }
 
 export function getQR() {
