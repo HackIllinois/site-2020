@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from 'assets/hackillinois_logo.svg';
+import logo from 'assets/logos/hackillinois.svg';
 import './style.scss';
 
 export default function Message(props) {

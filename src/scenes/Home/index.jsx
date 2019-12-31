@@ -1,6 +1,7 @@
 import React from 'react';
-import Styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Styled, { keyframes } from 'styled-components';
+
 import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
@@ -8,8 +9,8 @@ import car from 'assets/home/car.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import logo from 'assets/home/logo.svg';
-import tagline from 'assets/home/tagline.svg';
 import signBush from 'assets/home/sign_bush.svg';
+import tagline from 'assets/home/tagline.svg';
 
 import {
   BACKGROUND_DECOR,
@@ -56,10 +57,6 @@ const fadeOut = keyframes`
 const fadeIn = keyframes`
   0%   { opacity: 0; }
   100% { opacity: 1; }
-`;
-
-const enlarge = keyframes`
-  100% { transform: scale(1.1)};
 `;
 
 const sway1 = keyframes`
@@ -183,12 +180,12 @@ const CenterButton = Styled.button`
   background-color: #A43B5C;
   padding: 1rem 2em;
   border-radius: 3em;
-  border-width: 0;
   outline: none;
+  transition: transform 1s;
 
   &:hover {
     cursor: pointer;
-    animation: ${enlarge} 0.4s forwards;
+    transform: scale(1.1);
   }
 `;
 
@@ -516,7 +513,7 @@ const FAQMobileTitleContainer = Styled.div`
   grid-area: 2/1/3/2;
 `;
 
-const FAQMobileArrows = Styled.div.attrs(props => ({ style: { [props.isLeft ? 'left' : 'right']: '5vw' } }))`
+const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft ? '5vw' : '95vw' } }))`
   @media(max-width: 900px) {
     display: block
   }

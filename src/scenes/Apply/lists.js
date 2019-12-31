@@ -200,29 +200,6 @@ export const schools = [
   'Other',
 ];
 
-export const majors = [
-  'Computer Science',
-  'Computer Engineering',
-  'Other Engineering',
-  'Business',
-  'Liberal Arts',
-  'Other',
-];
-
-export const degrees = [
-  'Associate\'s',
-  'Bachelor\'s',
-  'Master\'s',
-  'PhD',
-];
-
-export const graduationYears = [
-  2020,
-  2021,
-  2022,
-  2023,
-];
-
 export const languages = [
   'C',
   'C++',
