@@ -686,7 +686,7 @@ export default class Home extends React.Component {
                   <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
                       <div key={f.q}>
-                        <BoldDiv>{f.q}</BoldDiv>{f.a}<br /><br />
+                        <BoldDiv>{f.q}</BoldDiv>{f.a}{f.l && <a href={f.l.path}>{f.l.text}</a>}<br /><br />
                       </div>
                     ))}
                   </FAQTitle>
@@ -704,7 +704,7 @@ export default class Home extends React.Component {
                       {FAQ_PANELS[e].content.map(f => (
                         f.map(g => (
                           <div key={g.q}>
-                            <br /><BoldDiv>{g.q}</BoldDiv>{g.a}
+                            <br /><BoldDiv>{g.q}</BoldDiv>{g.a}{g.l && <a href={g.l.path}>{g.l.text}</a>}
                           </div>
                         ))
                       ))}

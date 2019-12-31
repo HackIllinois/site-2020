@@ -121,6 +121,14 @@ export const FAQ_PANELS = {
           q: 'Do I need to have a programming background to participate?',
           a: 'No! People of all skill levels are welcomed.',
         },
+        {
+          q: 'Want guaranteed admission?',
+          a: 'Try our Open Source Challenge at ',
+          l: {
+            text: 'go.hackillinois.org/challenge',
+            path: 'http://go.hackillinois.org/challenge',
+          },
+        },
       ],
       [
         {
