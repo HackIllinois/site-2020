@@ -1,6 +1,7 @@
 import React from 'react';
-import Styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Styled, { keyframes } from 'styled-components';
+
 import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
@@ -8,8 +9,8 @@ import car from 'assets/home/car.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import logo from 'assets/home/logo.svg';
-import tagline from 'assets/home/tagline.svg';
 import signBush from 'assets/home/sign_bush.svg';
+import tagline from 'assets/home/tagline.svg';
 
 import {
   BACKGROUND_DECOR,
