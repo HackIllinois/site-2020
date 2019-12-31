@@ -167,8 +167,6 @@ const CenterButton = Styled.button`
   background-color: #A43B5C;
   padding: 1rem 2em;
   border-radius: 3em;
-  margin-top: 5vh;
-  margin-bottom: 20vh;
   outline: none;
   transition: transform 1s;
 
@@ -178,18 +176,13 @@ const CenterButton = Styled.button`
   }
 `;
 
-const StyledCenterButton = ({ style }) => (
-  <Link style={style} to="/apply">
+const CenterLink = () => (
+  <Link style={{ marginTop: '5vh', marginBottom: '20vh' }} to="/apply">
     <CenterButton>
       APPLY NOW &nbsp;&#10132;
     </CenterButton>
   </Link>
 );
-
-const CenterLink = Styled(StyledCenterButton)`
-  border-radius: 30px;
-  outline: none;
-`;
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
