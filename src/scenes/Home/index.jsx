@@ -6,6 +6,7 @@ import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
 import car from 'assets/home/car.svg';
+import bus from 'assets/home/bus.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import logo from 'assets/home/logo.svg';
@@ -148,12 +149,7 @@ const Tagline = Styled.img`
   margin-right: 20px;
   
   @media(max-width: 1000px) {
-    margin-top: 100px;
-  }
-  @media(max-width: 600px) {
-    width: 85vw;
-  }
-  @media(max-width: 375px) {
+    width: 60vw;
     margin-top: 100px;
   }
 `;
@@ -339,6 +335,19 @@ const ForegroundBush = Styled.img`
   margin: -2.5% 5%;
 `;
 
+const Bus = Styled.img.attrs(props => {
+  const p = props.position - 50;
+  return {
+    style: {
+      transform: `translate(${p > 0 ? p * 2 : 0}vw)`,
+    },
+  };
+})`
+  z-index: 2
+  width: 10%;
+  margin: -3.8% 0;
+`;
+
 const Car = Styled.img.attrs(props => {
   const p = props.position - 50;
   return {
@@ -417,7 +426,7 @@ const Clickable = Styled.div.attrs(props => {
   transform: ${p => `rotate(${p.rotation}deg)`};
 
   &:hover {
-    cursor: ${p => p.isFAQ ? null : 'pointer'};
+    cursor: ${p => (p.isFAQ ? 'default' : 'pointer')};
   }
 `;
 
@@ -625,6 +634,7 @@ export default class Home extends React.Component {
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
               <Car src={car} alt="car" position={SCROLL_POS} />
+              <Bus src={bus} alt="bus" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
@@ -676,7 +686,8 @@ export default class Home extends React.Component {
                   <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
                       <div key={f.q}>
-                        <BoldDiv>{f.q}</BoldDiv>{f.a}{f.l && <a href={f.l.path}>{f.l.text}</a>}<br /><br />
+                        <BoldDiv>{f.q}</BoldDiv>{f.a}{f.l && <a href={f.l.path}>{f.l.text}</a>}
+                        <br /><br />
                       </div>
                     ))}
                   </FAQTitle>
@@ -694,7 +705,8 @@ export default class Home extends React.Component {
                       {FAQ_PANELS[e].content.map(f => (
                         f.map(g => (
                           <div key={g.q}>
-                            <br /><BoldDiv>{g.q}</BoldDiv>{g.a}{g.l && <a href={g.l.path}>{g.l.text}</a>}
+                            <br />
+                            <BoldDiv>{g.q}</BoldDiv>{g.a}{g.l && <a href={g.l.path}>{g.l.text}</a>}
                           </div>
                         ))
                       ))}
