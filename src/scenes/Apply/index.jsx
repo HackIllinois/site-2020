@@ -226,16 +226,11 @@ export default class Apply extends React.Component {
           name="programmingAbility"
           placeholder="Select a number"
           options={[
-            { label: '1: I am a complete beginner', value: 1 },
-            { label: '2', value: 2 },
-            { label: '3', value: 3 },
-            { label: '4: I am comfortable working on an independent project', value: 4 },
-            { label: '5', value: 5 },
-            { label: '6', value: 6 },
-            { label: '7: I am comfortable writing and reviewing code in a professional setting', value: 7 },
-            { label: '8', value: 8 },
-            { label: '9', value: 9 },
-            { label: '10: I am Linus Torvalds', value: 10 },
+            { label: '1: I have no experience', value: 1 },
+            { label: '2: I have introductory experience', value: 2 },
+            { label: '3: I am a self-sufficient programmer', value: 3 },
+            { label: '4: I am able to work in a professional setting with assistance', value: 4 },
+            { label: '5: I am comfortable working independently in a professional setting', value: 5 },
           ]}
         />
 
