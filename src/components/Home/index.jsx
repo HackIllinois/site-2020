@@ -516,7 +516,7 @@ const FAQMobileTitleContainer = Styled.div`
   grid-area: 2/1/3/2;
 `;
 
-const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft ? '5vw' : '95vw' } }))`
+const FAQMobileArrows = Styled.div.attrs(props => ({ style: { [props.isLeft ? 'left' : 'right']: '5vw' } }))`
   @media(max-width: 900px) {
     display: block
   }
