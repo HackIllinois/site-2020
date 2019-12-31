@@ -1,6 +1,6 @@
 import React from 'react';
-import Styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Styled, { keyframes } from 'styled-components';
 
 import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
@@ -9,6 +9,7 @@ import car from 'assets/home/car.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
 import logo from 'assets/home/logo.svg';
+import signBush from 'assets/home/sign_bush.svg';
 import tagline from 'assets/home/tagline.svg';
 
 import {
@@ -22,9 +23,9 @@ const Container = Styled.div`
   position: relative;
   overflow-x: hidden;
   background-image: url(${bg});
-  background-position: left top;
+  background-repeat: no-repeat;
   background-size: cover;
-  
+
   @media(min-width: 1100px) {
     font-size: 0.8vw;
   }
@@ -56,10 +57,6 @@ const fadeOut = keyframes`
 const fadeIn = keyframes`
   0%   { opacity: 0; }
   100% { opacity: 1; }
-`;
-
-const enlarge = keyframes`
-  100% { transform: scale(1.1)};
 `;
 
 const sway1 = keyframes`
@@ -125,40 +122,33 @@ const SubContent = Styled.div`
   }
   @media(max-width: 900px) {
     grid-template-columns: 100vw;
-    grid-template-rows: 90vw 400px 1100px;
+    grid-template-rows: 90vw 40vw 1100px;
     justify-items: center;
   }
   @media(max-width: 700px) {
-    grid-template-rows: 90vw 250px 150px 1200px;
+    grid-template-rows: 90vw 200px 150px 1200px;
   }
   @media(max-width: 600px) {
-    grid-template-rows: 90vw 200px 200px 1500px;
+    grid-template-rows: 90vw 100px 200px 1500px;
   }
   @media(max-width: 450px) {
-    grid-template-rows: 90vw 400px 1800px;
+    grid-template-rows: 90vw 100px 1800px;
   }
   @media(max-width: 380px) {
-    grid-template-rows: 90vw 400px 2200px;
+    grid-template-rows: 90vw 100px 2200px;
   }
 `;
 
 const Tagline = Styled.img`
   z-index: 20;
   overflow: hidden;
-  height: 40vh;
+  height: 35vh;
   margin-top: 15vh;
   margin-left: 20px;
   margin-right: 20px;
   
-  @media(max-width: 900px) {
-    height: auto;
-    margin-top: 100px;
-    width: 70vw;
-  }
-  @media(max-width: 600px) {
-    width: 85vw;
-  }
-  @media(max-width: 375px) {
+  @media(max-width: 1000px) {
+    width: 60vw;
     margin-top: 100px;
   }
 `;
@@ -166,42 +156,33 @@ const Tagline = Styled.img`
 const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
-  font-size: 2em;
+  font-size: 3vh;
   text-align: center;
-  @media(min-width: 2000px) {
-    font-size: 2em;
-  }
-`;
-
-const Sponsor = Styled.div`
-  height: 15vh;
-  margin: 5vh;
 `;
 
 const CenterButton = Styled.button`
-  font-size: 1.5em;
+  border: none;
   color: white;
+  font-size: 2vh;
   background-color: #A43B5C;
   padding: 1rem 2em;
   border-radius: 3em;
+  outline: none;
+  transition: transform 1s;
 
   &:hover {
     cursor: pointer;
-    animation: ${enlarge} 1s forwards;
+    transform: scale(1.1);
   }
 `;
 
-const StyledCenterButton = ({ style }) => (
-  <Link style={style} to="/apply">
+const CenterLink = () => (
+  <Link style={{ marginTop: '5vh', marginBottom: '20vh' }} to="/apply">
     <CenterButton>
       APPLY NOW &nbsp;&#10132;
     </CenterButton>
   </Link>
 );
-
-const CenterLink = Styled(StyledCenterButton)`
-  border-radius: 30px;
-`;
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
@@ -218,7 +199,11 @@ const BackgroundDecor = Styled.img.attrs(props => props.style)`
     clip-path: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null)};
     background: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.background : null)};
     position: static;
-    width: 12vw;
+    width: 20vw;
+  }
+
+  @media(max-width: 700px) {
+    width: 35vw;
   }
 `;
 
@@ -367,7 +352,7 @@ const TimeWrapper = Styled.div`
   grid-area: 1/1/1/1;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 5em 5em 5em 5em;
+  grid-template-rows: 8em 5em 5em 8em;
   margin: 2em auto;
   font-size: 16px;
 `;
@@ -376,8 +361,16 @@ const Pole = Styled.div`
   background-color: #222B5F;
   grid-area: 1/1/1/1;
   z-index: 0;
-  width: 1em;
+  width: 1vw;
   margin: 0 auto;
+`;
+
+const SignBush = Styled.img`
+  z-index: 10;
+  width: 12em;
+  transform: translate(0, 5px);
+  grid-area: 1/1/1/1;
+  margin: auto auto 0 auto;
 `;
 
 const Clickable = Styled.div.attrs(props => {
@@ -412,7 +405,7 @@ const Clickable = Styled.div.attrs(props => {
   transform: ${p => `rotate(${p.rotation}deg)`};
 
   &:hover {
-    cursor: pointer;
+    cursor: ${p => (p.isFAQ ? 'default' : 'pointer')};
   }
 `;
 
@@ -441,12 +434,13 @@ const FAQPlaceholder = Styled.div`
 const FAQContainer = Styled.div`
   z-index: 61;
   overflow: hidden;
-  padding-bottom: 9vw;
+  padding: 2vw 0 9vw 0;
   display: grid;
   grid-area: 1/1/2/2;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 4vw;
   color: white;
   width: 100vw;
+
   @media(max-width: 3000px) {
     padding-bottom: 7vw;
   }
@@ -486,6 +480,7 @@ const FAQMobileWrapper = Styled.div`
 const FAQMobileContainer = Styled.div`
   width: 100vw;
   display: grid;
+  padding: 0 3vw;
   grid-template-rows: 2.5rem 1fr;
   font-size: calc(20px + 2vw);
 `;
@@ -506,7 +501,8 @@ const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft
   }
   display: none;
   z-index: 10;
-  font-size: calc(20px + 5vw);
+  font-size: calc(20px + 2vw);
+  margin-top: 17px;
   position: absolute;
   color: white;
   opacity: 70%;
@@ -515,6 +511,10 @@ const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft
   &:hover{
     cursor: pointer;
   }
+`;
+
+const BoldDiv = Styled.div`
+  font-weight: 600;
 `;
 
 export default class Home extends React.Component {
@@ -586,7 +586,6 @@ export default class Home extends React.Component {
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
-          <Sponsor />
           <CenterLink />
           {BACKGROUND_DECOR.map(e => (
             <BackgroundDecor
@@ -629,39 +628,19 @@ export default class Home extends React.Component {
             </FAQMobileArrows>
             <FAQHeightMaintainer>
               <FAQMaxHeight>
-                <FAQPlaceholder>
-                  {FAQ_PANELS.General.content.map(e => (
-                    <FAQTitle key={e[0].q}>
-                      {e.map(f => (
-                        <div key={f.q}>
-                          <b>{f.q}</b><br />{f.a}<br /><br />
-                        </div>
-                      ))}
-                    </FAQTitle>
-                  ))}
-                </FAQPlaceholder>
-                <FAQPlaceholder>
-                  {FAQ_PANELS.Before.content.map(e => (
-                    <FAQTitle key={e[0].q}>
-                      {e.map(f => (
-                        <div key={f.q}>
-                          <b>{f.q}</b><br />{f.a}<br /><br />
-                        </div>
-                      ))}
-                    </FAQTitle>
-                  ))}
-                </FAQPlaceholder>
-                <FAQPlaceholder>
-                  {FAQ_PANELS.During.content.map(e => (
-                    <FAQTitle key={e[0].q}>
-                      {e.map(f => (
-                        <div key={f.q}>
-                          <b>{f.q}</b><br />{f.a}<br /><br />
-                        </div>
-                      ))}
-                    </FAQTitle>
-                  ))}
-                </FAQPlaceholder>
+                {Object.keys(FAQ_PANELS).map(k => (
+                  <FAQPlaceholder key={k}>
+                    {FAQ_PANELS[k].content.map(e => (
+                      <FAQTitle key={e[0].q}>
+                        {e.map(f => (
+                          <div key={f.q}>
+                            <BoldDiv>{f.q}</BoldDiv>{f.a}<br /><br />
+                          </div>
+                        ))}
+                      </FAQTitle>
+                    ))}
+                  </FAQPlaceholder>
+                ))}
               </FAQMaxHeight>
               <FAQContainer>
                 <Pole />
@@ -680,11 +659,13 @@ export default class Home extends React.Component {
                     </Clickable>
                   ))}
                 </TimeWrapper>
+                <SignBush src={signBush} alt="bush" />
                 {FAQ_PANELS[FAQ_STATE].content.map(e => (
                   <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
                       <div key={f.q}>
-                        <b>{f.q}</b><br />{f.a}<br /><br />
+                        <BoldDiv>{f.q}</BoldDiv>{f.a}{f.l && <a href={f.l.path}>{f.l.text}</a>}
+                        <br /><br />
                       </div>
                     ))}
                   </FAQTitle>
@@ -698,15 +679,16 @@ export default class Home extends React.Component {
                     {e}
                   </FAQMobileHeader>
                   <FAQMobileTitleContainer>
-                    {FAQ_PANELS[e].content.map(f => (
-                      <FAQTitle key={f[0].q}>
-                        {f.map(g => (
+                    <FAQTitle>
+                      {FAQ_PANELS[e].content.map(f => (
+                        f.map(g => (
                           <div key={g.q}>
-                            <b>{g.q}</b><br />{g.a}<br /><br />
+                            <br />
+                            <BoldDiv>{g.q}</BoldDiv>{g.a}{g.l && <a href={g.l.path}>{g.l.text}</a>}
                           </div>
-                        ))}
-                      </FAQTitle>
-                    ))}
+                        ))
+                      ))}
+                    </FAQTitle>
                   </FAQMobileTitleContainer>
                 </FAQMobileContainer>
               ))}
