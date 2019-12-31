@@ -385,7 +385,7 @@ export default class Apply extends React.Component {
         </div>
 
         <div className="form">
-          <h3>Registration</h3>
+          <h3>Application</h3>
           <Formik
             initialValues={registration}
             enableReinitialize
