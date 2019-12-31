@@ -522,7 +522,8 @@ const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft
   }
   display: none;
   z-index: 10;
-  font-size: calc(20px + 5vw);
+  font-size: calc(20px + 2vw);
+  margin-top: 17px;
   position: absolute;
   color: white;
   opacity: 70%;
