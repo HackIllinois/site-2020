@@ -1,0 +1,50 @@
+.message {
+  background: url(../../assets/gradient_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    margin-bottom: 48px;
+    width: 200px;
+
+    // Mobile
+    @media (max-device-width: 480px) {
+      width: 160px;
+    }
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+
+    // Mobile
+    @media (max-device-width: 480px) {
+      font-size: 24px;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    width: 600px;
+
+    // Mobile
+    @media (max-device-width: 480px) {
+      font-size: 16px;
+      width: 80%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

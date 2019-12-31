@@ -1,0 +1,22 @@
+#Loading {
+  background: url(../../assets/gradient_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  h1 {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 32px;
+    font-weight: 600;
+
+    // Mobile
+    @media (max-device-width: 480px) {
+      font-size: 16px;
+    }
+  }
+}

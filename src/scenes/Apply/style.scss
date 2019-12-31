@@ -1,0 +1,122 @@
+.Apply {
+  background: url(../../assets/gradient_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #0A093F;
+  display: flex;
+  min-height: 100vh;
+
+  .progress {
+    // Mobile
+    @media (max-device-width: 480px) {
+      display: none;
+    }
+
+    background: url(../../assets/form_sidebar.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 96px 48px;
+
+    .row {
+      align-items: center;
+      display: flex;
+      margin-bottom: 32px;
+
+      img {
+        margin-right: 16px;
+        height: 48px;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .form {
+    flex-grow: 1;
+    padding: 96px 0;
+    
+    h1 {
+      font-size: 48px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    form { 
+      // Mobile
+      @media (max-device-width: 480px) {
+        width: 80%;
+      }
+
+      margin: 0 auto;
+      width: 50%;
+
+      p {
+        margin-top: 32px;
+        margin-bottom: 8px;
+
+        span {
+          color: rgba(10, 9, 63, 0.5);
+          font-size: 12px;
+        }
+      }
+
+      input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #0A093F;
+        border-radius: 0;
+        color: rgb(164, 59, 92);
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        padding: 6px 8px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      input::placeholder {
+        color: rgba(164, 59, 92, 0.5);
+        font-weight: 600;
+      }
+
+      .resume-upload {
+        margin-top: 16px;
+
+        label {
+          border: 2px solid #0A093F;
+          border-radius: 50ch;
+          display: inline-block;
+          font-weight: 600;
+          margin-right: 8px;
+          padding: 5px 12px;
+        }
+
+        input {
+          display: none;
+        }
+      }
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+
+      button {
+        align-items: center;
+        background-color: transparent;
+        border: 2px solid #0A093F;
+        border-radius: 50ch;
+        color: #0A093F;
+        display: flex;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+      }
+    }
+  }
+}
