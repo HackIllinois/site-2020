@@ -290,7 +290,15 @@ export default class Apply extends React.Component {
 
     return (
       <div>
-        <p>Do you require bus transportation to the event? *</p>
+        <p>
+          Do you require bus transportation to the event? *<br />
+          <span>
+            Buses will be available for attendees along the following routes:<br />
+            Route 1: Northwestern, UIC, DePaul, Union Station<br />
+            Route 2: IU, IUPUI, Purdue<br />
+          </span>
+        </p>
+
         <SelectField
           name="needsBus"
           placeholder="Yes/No"
