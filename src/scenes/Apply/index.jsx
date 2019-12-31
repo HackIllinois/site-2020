@@ -234,7 +234,7 @@ export default class Apply extends React.Component {
           ]}
         />
 
-        <p>Have you contributed to Open Source before? *</p>
+        <p>Have you contributed to an open source project before? *</p>
         <SelectField
           name="isOSContributor"
           placeholder="Yes/No"
