@@ -1,4 +1,4 @@
-.Apply {
+.MentorRSVP {
   background: url(../../assets/gradient_background.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -77,23 +77,6 @@
       input::placeholder {
         color: rgba(164, 59, 92, 0.5);
         font-weight: 600;
-      }
-
-      .resume-upload {
-        margin-top: 16px;
-
-        label {
-          border: 2px solid #0A093F;
-          border-radius: 50ch;
-          display: inline-block;
-          font-weight: 600;
-          margin-right: 8px;
-          padding: 5px 12px;
-        }
-
-        input {
-          display: none;
-        }
       }
     }
 

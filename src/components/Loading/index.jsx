@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 
-import animationData from 'assets/car.json';
+import animationData from 'assets/animations/car.json';
 import './style.scss';
 
 export default function Loading() {

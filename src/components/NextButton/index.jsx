@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-import next from 'assets/apply/next.svg';
+import next from 'assets/icons/next.svg';
 
 export default function NextButton(props) {
   const { disabled, onClick } = props;
