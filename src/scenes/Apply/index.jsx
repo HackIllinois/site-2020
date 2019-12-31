@@ -342,11 +342,11 @@ export default class Apply extends React.Component {
       return <Loading />;
     }
 
-    if (isSubmitted) {
+    if (!isSubmitted) {
       return (
         <Message
           title="Thank you for your application!"
-          text="You will receive a confirmation email shortly. Decisions will be made in late January."
+          text={<p>Want guaranteed admission?<br />Try our <a href="http://go.hackillinois.org/challenge">Open Source Challenge</a></p>}
         />
       );
     }
