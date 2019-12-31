@@ -23,7 +23,7 @@ const Container = Styled.div`
   position: relative;
   overflow-x: hidden;
   background-image: url(${bg});
-  background-position: left top;
+  background-repeat: no-repeat;
   background-size: cover;
 
   @media(min-width: 1100px) {
@@ -161,25 +161,19 @@ const Tagline = Styled.img`
 const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
-  font-size: 2em;
+  font-size: 3vh;
   text-align: center;
-
-  @media(min-width: 2000px) {
-    font-size: 2em;
-  }
-`;
-
-const Sponsor = Styled.div`
-  height: 15vh;
-  margin: 5vh;
 `;
 
 const CenterButton = Styled.button`
-  font-size: 1.5em;
+  border: none;
   color: white;
+  font-size: 2vh;
   background-color: #A43B5C;
   padding: 1rem 2em;
   border-radius: 3em;
+  margin-top: 5vh;
+  margin-bottom: 20vh;
   outline: none;
   transition: transform 1s;
 
@@ -604,7 +598,6 @@ export default class Home extends React.Component {
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
-          <Sponsor />
           <CenterLink />
           {BACKGROUND_DECOR.map(e => (
             <BackgroundDecor
