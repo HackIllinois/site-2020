@@ -115,7 +115,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'How do I get to the University of Illinois?',
-          a: 'Hackillinois will be providing some bus routes to the event. More information on what routes the buses will take to follow. If you are a University of Illinois student please walk or utilize the MTD bus system.',
+          a: 'Hackillinois will be providing some bus routes to the event. If you are a University of Illinois student please walk or utilize the MTD bus system.',
         },
         {
           q: 'Do I need to have a programming background to participate?',
@@ -137,7 +137,7 @@ export const FAQ_PANELS = {
         },
         {
           q: 'What should I bring?',
-          a: 'You should bring a student ID, a reusable water bottle, a change of clothing, personal items such as toiletries, and a laptop & charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.',
+          a: 'You should bring a student ID, reusable water bottle, change of clothing, personal items such as toiletries, laptop, and charger. Due to safety considerations, please do not bring desktop computers, extra monitors, weapons, or alcoholic beverages.',
         },
       ],
       [
@@ -157,7 +157,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'Is there anything to do other than code?',
-          a: 'Absolutely! There will be a variety of mini-events this year, including the customary Nerf battles as well as some new events. There will also be open-source keynotes and engaging workshops, so you should definitely check out the schedule to be posted here on the website.',
+          a: 'Absolutely! There will be a variety of mini-events this year, including Nerf battles and other new events. There will also be open-source keynotes and workshops. Check out the full schedule when it is posted on our site!',
         },
         {
           q: 'Where do I sleep?',
@@ -166,22 +166,18 @@ export const FAQ_PANELS = {
       ],
       [
         {
-          q: 'What facilities, floors, and rooms are available to work in?',
-          a: 'Refer to maps that will be on the website which can be found [insert hyperlink].',
-        },
-        {
           q: 'Do I have to go to the opening/ending ceremony?',
           a: 'Yes! Prize and food information will be covered at the opening ceremony. Prizes will be announced at the ending ceremony.',
         },
         {
           q: 'How can I contact a mentor?',
-          a: 'Room locations for each mentor are up on the website and on our pamphlet. Otherwise, you can contact them on Slack.',
+          a: 'Room locations for each mentor will be posted on the website and mobile apps. Otherwise, you can contact them on Slack.',
         },
       ],
       [
         {
           q: 'Will there be food?',
-          a: 'Snacks, drinks, and all meals will be provided for the entire weekend. If you have a dietary restriction, please make sure to mention it on the application. We’ll have a wide variety of food available, including vegetarian and vegan options, throughout the weekend. All announcements for when the food arrives will be on the app, so please check there.',
+          a: 'Snacks, drinks, and all meals will be provided for the entire weekend. If you have a dietary restriction, please make sure to mention it when you RSVP. We’ll have a wide variety of food available throughout the weekend, including vegetarian and vegan options. We will use our mobile apps to make announcements when food arrives.',
         },
       ],
     ],
@@ -200,6 +196,10 @@ export const FAQ_PANELS = {
       ],
       [
         {
+          q: 'What facilities, floors, and rooms are available to work in?',
+          a: 'Working space will be available in Siebel and ECEB.',
+        },
+        {
           q: 'Can I work on my own projects?',
           a: 'Yes, feel free to work on your own project, people in past years have won creating projects from scratch! However, the benefit of working with a mentor or company is that you get guidance and the opportunity to communicate with experts in the field.',
         },
@@ -207,7 +207,7 @@ export const FAQ_PANELS = {
       [
         {
           q: 'Do I need a team? How do I find one?',
-          a: 'No, you are not required to have a team to participate. You are encouraged to work with mentors and other participants in order to get the full experience. You can make teams prior to the event or look for them through slack during the event. If you do have a team, please try to keep it below 8 people.',
+          a: 'No, you are not required to have a team to participate. You are encouraged to work with mentors and other participants in order to get the full experience. If you do have a team, please keep it below 8 people.',
         },
       ],
     ],
