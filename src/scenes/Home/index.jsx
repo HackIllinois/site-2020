@@ -58,10 +58,6 @@ const fadeIn = keyframes`
   100% { opacity: 1; }
 `;
 
-const enlarge = keyframes`
-  100% { transform: scale(1.1)};
-`;
-
 const sway1 = keyframes`
   50% { transform: translate(3vw); }
   100% { transform: translate(0); }
@@ -184,10 +180,11 @@ const CenterButton = Styled.button`
   background-color: #A43B5C;
   padding: 1rem 2em;
   border-radius: 3em;
+  transition: transform 1s;
 
   &:hover {
     cursor: pointer;
-    animation: ${enlarge} 1s forwards;
+    transform: scale(1.1);
   }
 `;
 
