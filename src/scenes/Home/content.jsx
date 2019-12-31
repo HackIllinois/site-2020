@@ -125,7 +125,7 @@ export const FAQ_PANELS = {
           q: 'Want guaranteed admission?',
           a: 'Try our ',
           l: {
-            text: 'Open Source Challenge.',
+            text: 'Open Source Challenge',
             path: 'http://go.hackillinois.org/challenge',
           },
         },
