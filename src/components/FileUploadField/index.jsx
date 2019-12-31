@@ -34,9 +34,10 @@ class FormikFileUpload extends React.Component {
 
     return (
       <div className="FileUpload">
-        <label>
+        <label htmlFor="upload">
           CHOOSE FILE
           <input
+            id="upload"
             type="file"
             accept={accept}
             onChange={this.onFileUpload}
