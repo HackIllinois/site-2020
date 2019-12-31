@@ -342,7 +342,7 @@ export default class Apply extends React.Component {
       return <Loading />;
     }
 
-    if (!isSubmitted) {
+    if (isSubmitted) {
       return (
         <Message
           title="Thank you for your application!"
