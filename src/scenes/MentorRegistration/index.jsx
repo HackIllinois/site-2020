@@ -72,7 +72,7 @@ export default class MentorRegistration extends React.Component {
   }
 
   personal = ({ values }) => {
-    const isValid = values.firstName && values.lastName && values.photoFilename && values.biography;
+    const isValid = values.firstName && values.lastName && values.biography;
 
     return (
       <div>
