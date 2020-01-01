@@ -459,6 +459,9 @@ const FAQContainer = Styled.div`
 const FAQTitle = Styled.div`
   padding: 10px;
   font-size: 18px;
+  a {
+    color: white;
+  }
 `;
 
 const FAQMobileWrapper = Styled.div`

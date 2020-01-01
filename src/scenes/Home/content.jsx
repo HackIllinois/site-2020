@@ -117,6 +117,10 @@ export const FAQ_PANELS = {
           q: 'Do I need to have a programming background to participate?',
           a: 'No! People of all skill levels are welcomed.',
         },
+        {
+          q: 'Interested in being a sponsor at our event?',
+          a: 'Email us at sponsor@hackillinois.org!',
+        },
       ],
       [
         {
