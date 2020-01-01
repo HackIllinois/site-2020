@@ -36,7 +36,6 @@ export default class MentorRegistration extends React.Component {
 
   componentDidMount() {
     getRoles().then(roles => {
-      console.log(roles);
       if (roles.includes('Mentor')) {
         this.setState({ isEditing: true });
         return getRegistration('mentor');
