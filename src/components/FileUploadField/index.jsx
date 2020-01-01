@@ -20,10 +20,10 @@ class FormikFileUpload extends React.Component {
     const { field, form, type } = this.props;
 
     const file = event.target.files[0];
-    this.setState({ filename: file.name });
-    form.setFieldValue(field.name, file.name);
-
-    uploadFile(file, type).catch(() => {
+    uploadFile(file, type).then(() => {
+      this.setState({ filename: file.name });
+      form.setFieldValue(field.name, file.name);
+    }).catch(() => {
       alert('Failed to upload file.');
     });
   }
