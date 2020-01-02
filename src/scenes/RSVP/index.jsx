@@ -47,12 +47,7 @@ export default class MentorRegistration extends React.Component {
     this.setState({ registration, isLoading: true });
 
     register(isEditing, 'attendee', registration).then(rsvp()).then(() => {
-      this.setState({ isSubmitted: true });
-    }).catch(() => {
-      alert('There was an error while submitting. If this error persists, please email contact@hackillinois.org');
-      this.setState({ page: 0 });
-    }).finally(() => {
-      this.setState({ isLoading: false });
+      this.setState({ isLoading: false, isSubmitted: true });
     });
   }
 
