@@ -5,7 +5,6 @@ import {
   getRegistration,
   getRoles,
   register,
-  rsvp,
 } from 'api';
 
 import { Field, Form, Formik } from 'formik';
@@ -21,7 +20,7 @@ import SubmitButton from 'components/SubmitButton';
 import pinFilled from 'assets/icons/pin_filled.svg';
 import pinEmpty from 'assets/icons/pin_empty.svg';
 
-export default class MentorRSVP extends React.Component {
+export default class MentorRegistration extends React.Component {
   constructor(props) {
     super(props);
 
@@ -37,7 +36,7 @@ export default class MentorRSVP extends React.Component {
 
   componentDidMount() {
     getRoles().then(roles => {
-      if (roles.includes('Mentor') && roles.includes('Applicant')) {
+      if (roles.includes('Mentor')) {
         this.setState({ isEditing: true });
         return getRegistration('mentor');
       }
@@ -61,7 +60,7 @@ export default class MentorRSVP extends React.Component {
     const { isEditing } = this.state;
     this.setState({ registration, isLoading: true });
 
-    Promise.all([register(isEditing, registration), rsvp(isEditing)]).then(() => {
+    register(isEditing, 'mentor', registration).then(() => {
       this.setState({ isSubmitted: true });
     }).catch(() => {
       alert('There was an error while submitting. If this error persists, please email contact@hackillinois.org');
@@ -72,7 +71,7 @@ export default class MentorRSVP extends React.Component {
   }
 
   personal = ({ values }) => {
-    const isValid = values.firstName && values.lastName && values.photoFilename && values.biography;
+    const isValid = values.firstName && values.lastName && values.biography;
 
     return (
       <div>
@@ -144,7 +143,7 @@ export default class MentorRSVP extends React.Component {
   }
 
   event = ({ values }) => {
-    const isValid = values.shirtSize && values.dietaryRestrictions && values.hasDisbility !== '';
+    const isValid = values.shirtSize && values.hasDisbility !== '';
 
     return (
       <div>
@@ -162,7 +161,7 @@ export default class MentorRSVP extends React.Component {
           ]}
         />
 
-        <p>Dietary Restrictions *</p>
+        <p>Dietary Restrictions</p>
         <SelectField
           isMulti
           name="dietaryRestrictions"
@@ -207,7 +206,7 @@ export default class MentorRSVP extends React.Component {
     }
 
     if (isSubmitted) {
-      return <Message title="Thank you for your RSVP!" />;
+      return <Message title="Thank you for registering!" />;
     }
 
     const titles = [
@@ -222,7 +221,7 @@ export default class MentorRSVP extends React.Component {
     ];
 
     return (
-      <div className="MentorRSVP">
+      <div className="MentorRegistration">
         <div className="progress">
           {titles.map((title, idx) => (
             <div key={title} className="row">
@@ -233,7 +232,7 @@ export default class MentorRSVP extends React.Component {
         </div>
 
         <div className="form">
-          <h1>RSVP</h1>
+          <h1>Registration</h1>
           <Formik
             initialValues={registration}
             enableReinitialize

@@ -9,7 +9,7 @@ import PDF from 'components/PDF';
 import Apply from 'scenes/Apply';
 import Auth from 'scenes/Auth';
 import Home from 'scenes/Home';
-import MentorRSVP from 'scenes/MentorRSVP';
+import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
 
 import 'index.css';
@@ -20,7 +20,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <AuthenticatedRoute path="/apply" component={Apply} />
       <Route path="/auth" component={Auth} />
-      <AuthenticatedRoute path="/mentor-rsvp" component={MentorRSVP} />
+      <AuthenticatedRoute path="/mentor-registration" component={MentorRegistration} />
       <AuthenticatedRoute path="/qr" component={QR} />
 
       <Route
