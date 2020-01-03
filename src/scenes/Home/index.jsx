@@ -666,7 +666,7 @@ export default class Home extends React.Component {
                     </Clickable>
                   ))}
                 </TimeWrapper>
-                <SignBush src={signBush} alt="bush"/>
+                <SignBush src={signBush} alt="bush" />
                 {FAQ_PANELS[FAQ_STATE].content.map(e => (
                   <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
