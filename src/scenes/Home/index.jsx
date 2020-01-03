@@ -114,7 +114,7 @@ const SubContent = Styled.div`
   }
   @media(max-width: 1400px) {
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 0.3fr;
-    grid-template-rows: 300px 400px 500px;
+    grid-template-rows: 400px 400px 50vw;
   }
   @media(max-width: 1100px) {
     grid-template-columns: 100px 0.8fr 1fr 1fr 0.3fr;
@@ -425,7 +425,7 @@ const FAQMaxHeight = Styled.div`
   flex-direction: row;
   grid-area: 1/1/2/2;
   width: 210vw;
-  opacity: 0;
+  visibility: hidden;
 `;
 
 const FAQPlaceholder = Styled.div`
