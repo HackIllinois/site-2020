@@ -52,7 +52,7 @@ export default class MentorRegistration extends React.Component {
   }
 
   page = ({ values }) => {
-    const isValid = values.shirtSize && values.hasDisbility !== '';
+    const isValid = values.shirtSize && values.hasDisability !== '';
 
     return (
       <div>
