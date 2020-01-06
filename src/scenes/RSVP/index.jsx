@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 
-import { getRSVP, rsvp } from 'api';
+import { getRoles, getRSVP, rsvp } from 'api';
 
 import Loading from 'components/Loading';
 import Message from 'components/Message';
@@ -16,16 +16,22 @@ export default class RSVP extends React.Component {
 
     this.state = {
       isLoading: true,
-      isEditing: false,
       isSubmitted: false,
 
+      isEditing: false,
       registration: {},
     };
   }
 
   componentDidMount() {
-    getRSVP().then(registration => {
-      this.setState({ isEditing: true, registration });
+    getRoles().then(roles => {
+      if (roles.includes('Attendee')) {
+        this.setState({ isEditing: true });
+        return getRSVP();
+      }
+      return {};
+    }).then(registration => {
+      this.setState({ registration });
     }).finally(() => {
       this.setState({ isLoading: false });
     });
@@ -40,7 +46,7 @@ export default class RSVP extends React.Component {
     rsvp(isEditing, registration).then(() => {
       this.setState({ isSubmitted: true });
     }).catch(() => {
-      alert('There was an error while submitting. Email contact@hackillinois.org if this problem persists.');
+      alert('There was an error while submitting. Your ability to RSVP may have expired.');
     }).finally(() => {
       this.setState({ isLoading: false });
     });
