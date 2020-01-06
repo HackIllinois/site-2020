@@ -1,0 +1,48 @@
+.RSVP {
+  background: url(../../assets/gradient_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: #222B5C;
+  min-height: 100%;
+  padding-top: 96px;
+  
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  form { 
+    // Mobile
+    @media (max-device-width: 480px) {
+      width: 80%;
+    }
+
+    margin: 0 auto;
+    width: 50%;
+
+    p {
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    button {
+      align-items: center;
+      background-color: transparent;
+      border: 2px solid #0A093F;
+      border-radius: 50ch;
+      color: #0A093F;
+      display: flex;
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+    }
+  }
+}

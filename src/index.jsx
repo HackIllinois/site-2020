@@ -11,6 +11,7 @@ import Auth from 'scenes/Auth';
 import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
+import RSVP from 'scenes/RSVP';
 
 import 'index.css';
 
@@ -22,6 +23,7 @@ const App = () => (
       <Route path="/auth" component={Auth} />
       <AuthenticatedRoute path="/mentor-registration" component={MentorRegistration} />
       <AuthenticatedRoute path="/qr" component={QR} />
+      <AuthenticatedRoute path="/rsvp" component={RSVP} />
 
       <Route
         exact
