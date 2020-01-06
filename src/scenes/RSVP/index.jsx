@@ -10,7 +10,7 @@ import SubmitButton from 'components/SubmitButton';
 
 import './style.scss';
 
-export default class MentorRegistration extends React.Component {
+export default class RSVP extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +34,7 @@ export default class MentorRegistration extends React.Component {
   submit = registration => {
     const { isEditing } = this.state;
 
+    registration['isAttending'] = true;
     this.setState({ registration, isLoading: true });
 
     rsvp(isEditing, registration).then(() => {
