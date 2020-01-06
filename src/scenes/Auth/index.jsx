@@ -15,7 +15,7 @@ export default class Auth extends React.Component {
     const {
       code,
       isAndroid,
-      isIOS,
+      isiOS,
       to,
     } = queryString.parse(location.search);
 
@@ -23,7 +23,7 @@ export default class Auth extends React.Component {
       return;
     }
 
-    if (isAndroid || isIOS) {
+    if (isAndroid || isiOS) {
       const os = isAndroid ? 'android' : 'ios';
       mobileRedirect(os, code);
     } else {
