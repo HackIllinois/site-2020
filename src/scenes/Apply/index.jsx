@@ -199,7 +199,7 @@ export default class Apply extends React.Component {
   );
 
   experience = ({ values }) => {
-    const isValid = values.programmingYears && values.programmingAbility && values.isOSContributor !== '';
+    const isValid = typeof values.programmingYears === 'number' && values.programmingAbility && typeof values.isOSContributor === 'boolean';
 
     return (
       <div>
@@ -286,7 +286,7 @@ export default class Apply extends React.Component {
   );
 
   event = ({ values }) => {
-    const isValid = values.needsBus !== '';
+    const isValid = typeof values.needsBus === 'boolean';
 
     return (
       <div>
