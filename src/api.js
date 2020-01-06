@@ -49,15 +49,17 @@ export function register(isEditing, role, registration) {
   return request(method, `/registration/${role}/`, registration);
 }
 
-export function rsvp(isEditing) {
+export function getRSVP() {
+  return request('GET', '/rsvp/');
+}
+
+export function rsvp(isEditing, registration) {
   const method = isEditing ? 'PUT' : 'POST';
-  return request(method, '/rsvp/', { isAttending: true });
+  return request(method, '/rsvp/', registration);
 }
 
 export function uploadFile(file, type) {
-  // TODO Change to /upload/type/url/
   return request('GET', `/upload/${type}/upload/`)
-    // TODO Change to res.url
     .then(res => fetch(res.resume, {
       method: 'PUT',
       headers: { 'Content-Type': file.type },

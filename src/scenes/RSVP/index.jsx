@@ -1,19 +1,14 @@
 import React from 'react';
-import './style.scss';
-
-import {
-  getRegistration,
-  getRoles,
-  register,
-  rsvp,
-} from 'api';
-
 import { Form, Formik } from 'formik';
+
+import { getRSVP, rsvp } from 'api';
 
 import Loading from 'components/Loading';
 import Message from 'components/Message';
 import SelectField from 'components/SelectField';
 import SubmitButton from 'components/SubmitButton';
+
+import './style.scss';
 
 export default class MentorRegistration extends React.Component {
   constructor(props) {
@@ -29,14 +24,8 @@ export default class MentorRegistration extends React.Component {
   }
 
   componentDidMount() {
-    getRoles().then(roles => {
-      if (roles.includes('Applicant')) {
-        this.setState({ isEditing: true });
-        return getRegistration('attendee');
-      }
-      return {};
-    }).then(registration => {
-      this.setState({ registration });
+    getRSVP().then(registration => {
+      this.setState({ isEditing: true, registration });
     }).finally(() => {
       this.setState({ isLoading: false });
     });
@@ -44,15 +33,20 @@ export default class MentorRegistration extends React.Component {
 
   submit = registration => {
     const { isEditing } = this.state;
+
     this.setState({ registration, isLoading: true });
 
-    register(isEditing, 'attendee', registration).then(rsvp()).then(() => {
-      this.setState({ isLoading: false, isSubmitted: true });
+    rsvp(isEditing, registration).then(() => {
+      this.setState({ isSubmitted: true });
+    }).catch(() => {
+      alert('There was an error while submitting. Email contact@hackillinois.org if this problem persists.');
+    }).finally(() => {
+      this.setState({ isLoading: false });
     });
   }
 
   page = ({ values }) => {
-    const isValid = values.shirtSize && values.hasDisability !== '';
+    const isValid = values.shirtSize && typeof values.hasDisability === 'boolean';
 
     return (
       <div>
