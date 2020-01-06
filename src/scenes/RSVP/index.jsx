@@ -34,7 +34,7 @@ export default class RSVP extends React.Component {
   submit = registration => {
     const { isEditing } = this.state;
 
-    registration['isAttending'] = true;
+    registration.isAttending = true;
     this.setState({ registration, isLoading: true });
 
     rsvp(isEditing, registration).then(() => {
