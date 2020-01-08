@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Styled, { keyframes } from 'styled-components';
 
+import NavBar from 'components/NavBar';
 import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
 import car from 'assets/home/car.svg';
 import city from 'assets/home/city.svg';
 import foregroundBush from 'assets/home/foreground_bushes.svg';
-import logo from 'assets/home/logo.svg';
 import signBush from 'assets/home/sign_bush.svg';
 import tagline from 'assets/home/tagline.svg';
 
@@ -33,20 +33,6 @@ const Container = Styled.div`
   @media(min-width: 2200px) {
     font-size: 1em;
   }
-`;
-
-const Logo = Styled.img`
-  width: 10vw;
-  height: auto;
-  min-width: 120px;
-  top: 20px;
-  left: 35px;
-  position: absolute;
-  @media(max-width: 600px) {
-    top: 15px;
-    left: 15px;
-  }
-  z-index: 10;
 `;
 
 const fadeOut = keyframes`
@@ -143,7 +129,7 @@ const Tagline = Styled.img`
   z-index: 20;
   overflow: hidden;
   height: 35vh;
-  margin-top: 15vh;
+  margin-top: 20vh;
   margin-left: 20px;
   margin-right: 20px;
   
@@ -583,7 +569,7 @@ export default class Home extends React.Component {
     } = this.state;
     return (
       <Container>
-        <Logo src={logo} />
+        <NavBar />
         <Content>
           <Tagline src={tagline} alt="tagline" />
           <TaglineText>
