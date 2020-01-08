@@ -29,6 +29,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #222B5C;
+    transition: color .2s;
     @media (max-width: 900px) {
       display: none;
     }
@@ -38,14 +39,14 @@
       width: 0px;
       margin: auto;
       background-color: #222B5C;
-      transition: width .2s;      
+      transition: width .2s, background-color .2s;
     }
 
     &:hover .line {
       width: 100%;
     }
     
-    &.active {
+    &.active, &:hover {
       color: #A43B5C;
       .line {
         background-color: #A43B5C;
