@@ -12,6 +12,7 @@ import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
 import RSVP from 'scenes/RSVP';
+import Dashboard from 'scenes/Dashboard';
 
 import 'index.css';
 
@@ -35,7 +36,7 @@ const App = () => (
         path="/sponsor"
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
-
+      <Route path="/dashboard" component={Dashboard} />
       <Route component={() => <Message title="404 Not Found" />} />
     </Switch>
   </BrowserRouter>

@@ -9,10 +9,12 @@
     "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-lottie": "^1.2.3",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.3.0",
     "react-select": "^3.0.4",
-    "react-twitter-embed": "^2.0.8"
+    "react-twitter-embed": "^2.0.8",
+    "styled-components": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
