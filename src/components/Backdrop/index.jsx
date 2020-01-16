@@ -7,18 +7,18 @@ import background from 'assets/common_backdrop/background.png';
 import topSign from 'assets/common_backdrop/top-sign.svg';
 import NavBar from 'components/NavBar';
 
-const signRotations = ['9.03deg', '0deg', '-8deg', '0deg'];
-
 export default function Backdrop(props) {
+  const signRotations = ['9deg', '0deg', '-8deg', '0deg'];
+  
   return (
-    <div className="backdrop">
+    <div className="Backdrop">
       <NavBar />
-      <img className="background" src={background} alt="" />
+      <img className="background" src={background} alt="Background" />
 
       <div className="sign-post">
         <div className="post" />
         <div className="top-sign">
-          <img src={topSign} alt="" />
+          <img src={topSign} alt={`${props.title} Sign`} />
           <span className="text">{props.title}</span>
         </div>
 
@@ -39,8 +39,8 @@ export default function Backdrop(props) {
         {props.children}
       </div>
 
-      <img className="scenery" src={scenery} alt="" />
-      <img className="scenery mobile" src={sceneryMobile} alt="" />
+      <img className="scenery" src={scenery} alt="Scenery" />
+      <img className="scenery mobile" src={sceneryMobile} alt="Scenery" />
     </div>
   );
 }
