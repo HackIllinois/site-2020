@@ -9,7 +9,7 @@ import NavBar from 'components/NavBar';
 
 export default function Backdrop(props) {
   const signRotations = ['9deg', '0deg', '-8deg', '0deg'];
-  
+
   return (
     <div className="Backdrop">
       <NavBar />
