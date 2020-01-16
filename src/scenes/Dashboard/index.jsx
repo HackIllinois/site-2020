@@ -2,34 +2,37 @@ import React from 'react';
 import './styles/dashboard.scss';
 import ThemeContext from './theme-context';
 
-// All the various cells I'm using have their own js files
+// All the various cells I'm using have their own jsx files
 import TwitterFeed from './cells/twitter';
 import CountDown from './cells/countdown';
 import Time from './cells/time';
 import Logo from './cells/logo';
 import SplitColumn from './cells/splitcolumn';
 
+// This function will retrieve the new theme that should be applied to the dashboard.
 function getTheme() {
   const currentTime = new Date();
   let currentHour = currentTime.getHours();
   const currentMinute = currentTime.getMinutes();
   currentHour += currentMinute / 60;
 
-  if (currentHour >= 5 && currentHour < 10) {
-    // 5Am to 10am
-    return 'early-morning';
-  }
-  if (currentHour >= 10 && currentHour < 18.5) {
-    // 10am to 6:30pm
-    return 'mid-day';
-  }
-  if (currentHour >= 18.5 && currentHour < 21) {
-    // 6:30pm to 9pm
-    return 'afternoon';
-  }
+  return 'night';
 
-    // 9pm to 5am
-    return 'night';
+  // if (currentHour >= 5 && currentHour < 10) {
+  //   // 5Am to 10am
+  //   return 'early-morning';
+  // }
+  // if (currentHour >= 10 && currentHour < 18.5) {
+  //   // 10am to 6:30pm
+  //   return 'mid-day';
+  // }
+  // if (currentHour >= 18.5 && currentHour < 21) {
+  //   // 6:30pm to 9pm
+  //   return 'afternoon';
+  // }
+
+  //   // 9pm to 5am
+  //   return 'night';
 }
 
 export default class Dashboard extends React.Component {
@@ -53,10 +56,10 @@ export default class Dashboard extends React.Component {
   }
 
   updateTheme() {
-    const { state } = this;
+    const { theme } = this.state;
     const newTheme = getTheme();
     // to avoid constantly setting the state of the dashboard, just check if it changed
-    if (newTheme.localeCompare(state.theme) !== 0) {
+    if (newTheme !== theme) {
       this.setState({
         theme: getTheme(),
       });
@@ -67,9 +70,13 @@ export default class Dashboard extends React.Component {
     const { theme } = this.state;
     return (
       <ThemeContext.Provider value={theme}>
-        <div className={`dashboard-wrapper ${ theme}`}>
-          <div className="dashboard">
-            <div className="row top-row">
+        <div className="dashboard-wrapper">
+          <div className={`dashboard ${theme}`}>
+            <Logo />
+            <Time />
+            <CountDown />
+            <TwitterFeed />
+            {/* <div className="row top-row">
               <Time />
               <CountDown />
               <Logo />
@@ -78,7 +85,7 @@ export default class Dashboard extends React.Component {
               <SplitColumn pos="left" />
               <SplitColumn pos="right" />
               <TwitterFeed />
-            </div>
+            </div> */}
           </div>
         </div>
       </ThemeContext.Provider>

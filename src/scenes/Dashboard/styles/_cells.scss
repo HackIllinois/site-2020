@@ -1,88 +1,50 @@
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+
+.cell {
+  grid-column: auto / span 1;
+  
+  transition-duration: $theme-transition-duration;
+  box-sizing: border-box;
   width: 100%;
+  height: 100%;
+  
+  padding: 2vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
 
-  .cell {
+  margin-left: 0vw;
+  margin-right: 0vw;
+
+  position: relative;
+  h1, h2, h3, h4, h5, h6, p{
     transition-duration: $theme-transition-duration;
-    width: 30%;
-    
-    padding: 2vw;
-    margin-top: 0px;
-    margin-bottom: 0px;
-
-    margin-left: 1vw;
-    margin-right: 1vw;
-    
-    box-sizing: border-box;
-
-    position: relative;
-    h1, h2, h3, h4, h5, h6, p{
-      transition-duration: $theme-transition-duration;
-      margin: 0px;
-      padding: 0px;
-    }
-  }
-
-  .early-morning{
-    background-color: $early-morning-cell-color;
-  }
-
-  .mid-day{
-    background-color: $mid-day-cell-color;
-  }
-
-  .afternoon{
-    background-color: $afternoon-cell-color;
-  }
-  
-  .night{
-    background-color: $night-cell-color;
-  }
-  
-
-  //everything in the top row has this
-  .short-cell {
-    box-sizing: border-box;
-    height: 80%;
-    
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  //the twitter cell has this
-  .long-cell {
-    box-sizing: border-box;
-    height: 90%;
-
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  
-  //the two that are split up in the bottom row have this
-  .vsplit {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+    margin: 0px;
     padding: 0px;
-    justify-content: space-between;
-
-    .split-cell {
-      background-color: green;
-      box-sizing: border-box;
-      height: 44.44%; //makes this small cell the same height as the top row
-    }
   }
-  
 }
 
+.short-cell {
+  grid-row: auto / span 1;
+}
+
+.long-cell {
+  grid-row: auto / span 2;
+}
 
 #logo-cell {
   display: flex;
   justify-content: space-between;
+  padding: 5vh 2vw;
   img {
-    height: 100%;
+    box-sizing: border-box;
+    width: 50%;
+  }
+  img:first-of-type {
+    border-right: 1px solid white;
+    padding-right: 1vw;
+  }
+  img:last-of-type {
+    border-left: 1px solid white;
+    padding-left: 1vw;
   }
   h1 {
     font-size: calc(1.5vw + 20px);
@@ -101,7 +63,8 @@
 
 #twitter-cell{
   background-color: rgba(0,0,0,0);
-  padding: 0px;
+  padding: 0;
+  height: calc(100% + 5px)
 }
 
 #countdown-cell {
@@ -119,7 +82,6 @@
       width: 100%;
       padding-left: 1vw;
       padding-right: 1vw;
-
 
       p{
         font-size: 2em;

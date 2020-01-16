@@ -1,11 +1,13 @@
 import React from 'react';
-import hackillinoislogo from 'assets/logo.svg';
+import hackillinoisLogoLightBg from 'assets/logo.svg';
+import hackillinoisLogoDarkBg from 'assets/logo_dark_bg.svg';
+import exploreConnectBuild from 'assets/home/tagline.svg';
 
-function Logo(props, context) {
+function Logo() {
   return (
-    <div className={`cell short-cell ${ context}`} id="logo-cell">
-      <img src={hackillinoislogo} id="logo" alt="HackIllinois Logo" />
-      <h1>Explore. <br /> Connect. <br /> Build. </h1>
+    <div className="cell short-cell" id="logo-cell">
+      <img src={exploreConnectBuild} id="explore-connect-build" alt="Explore. Connect. Build." />
+      <img src={hackillinoisLogoDarkBg} id="logo" alt="HackIllinois Logo" />
     </div>
   );
 }

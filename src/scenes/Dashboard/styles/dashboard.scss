@@ -13,13 +13,12 @@ html, body {
 .dashboard-wrapper{
   height: 100vh;
   width: 100vw;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-top: 0vh;
+  padding-bottom: 0vh;
   box-sizing: border-box;
   
   position: relative;
   overflow: hidden;
-
 
   transition-duration: $theme-transition-duration;
   .dashboard{
@@ -28,12 +27,9 @@ html, body {
     width: 100%;
     overflow: hidden;
 
-    .top-row{
-      height: 33.333333%;
-    }
-    .bottom-row {
-      height: 66.66666%;
-    }
+    display: grid;
+    grid-template-columns: 33.33333% 33.33333% 33.33333%;
+    grid-template-rows: 33.33333% 33.33333% 33.33333%;
   }
 }
 
@@ -44,12 +40,20 @@ html, body {
   h1, p{
     color: $early-morning-dash-text-color;
   }
+
+  .cell {
+    background-color: $early-morning-cell-color;
+  }
 }
 
 .mid-day {
   background-color: $mid-day-dash-bg-color;
   h1, p{
     color: $mid-day-dash-text-color;
+  }
+  
+  .cell {
+    background-color: $mid-day-cell-color;
   }
 }
 
@@ -58,12 +62,20 @@ html, body {
   h1, p{
     color: $afternoon-dash-text-color;
   }
+  
+  .cell {
+    background-color: $afternoon-cell-color;
+  }
 }
 
 .night {
   background-color: $night-dash-bg-color;
   h1, p {
     color: $night-dash-text-color;
+  }
+  
+  .cell {
+    background-color: $night-cell-color;
   }
 }
 
