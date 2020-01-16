@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
 import Message from 'components/Message';
 import PDF from 'components/PDF';
+import NavBar from 'components/NavBar';
 
 import Apply from 'scenes/Apply';
 import Auth from 'scenes/Auth';
@@ -36,7 +37,7 @@ const App = () => (
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
 
-      <Route component={() => <Message title="404 Not Found" />} />
+      <Route component={() => <><NavBar /><Message title="404 Not Found" /></>} />
     </Switch>
   </BrowserRouter>
 );
