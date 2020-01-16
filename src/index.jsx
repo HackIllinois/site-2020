@@ -13,6 +13,9 @@ import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
 import RSVP from 'scenes/RSVP';
+import Schedule from 'scenes/Schedule';
+import Maps from 'scenes/Maps';
+import Travel from 'scenes/Travel';
 
 import 'index.css';
 
@@ -36,6 +39,10 @@ const App = () => (
         path="/sponsor"
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
+
+      <Route path="/schedule" component={Schedule} />
+      <Route path="/maps" component={Maps} />
+      <Route path="/travel" component={Travel} />
 
       <Route component={() => <><NavBar /><Message title="404 Not Found" /></>} />
     </Switch>
