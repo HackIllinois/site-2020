@@ -1,0 +1,28 @@
+@media (max-width: 500px) {
+  .dashboard-wrapper{
+    .dashboard {
+      .top-row{
+        height: 100vh;
+      }
+      .bottom-row{
+        height: 0px;
+        display: none;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+
+
+
+    .cell {
+      width: 100%;
+      height: 25vh;
+    }
+
+  }
+}
