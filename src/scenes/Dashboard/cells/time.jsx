@@ -1,4 +1,5 @@
 import React from 'react';
+import { getEvents } from 'api';
 import ThemeContext from '../theme-context';
 
 function pad(num) {
@@ -35,7 +36,12 @@ function getTime() {
 class Time extends React.Component {
   constructor(props) {
     super(props);
-    this.state = getTime();
+
+    const initialState = getTime();
+    initialState.loadingEvents = true;
+    initialState.events = null;
+
+    this.state = initialState;
 
     this.interval = null;
 
@@ -44,6 +50,14 @@ class Time extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(this.setTime, 1000);
+
+    getEvents().then(res => {
+      this.setState({
+        loadingEvents: false,
+        events: res,
+      });
+      console.log(res);
+    });
   }
 
   componentWillUnmount() {
@@ -56,11 +70,22 @@ class Time extends React.Component {
   }
 
   render() {
-    const { state } = this;
+    const { hours, minutes, isAm, loadingEvents } = this.state;
     return (
-      <div className={`cell short-cell ${ this.context}`} id="time-cell">
-        <h1>CURRENT TIME</h1>
-        <p>{state.hours} : {state.minutes} {state.isAm ? 'AM' : 'PM'}</p>
+      <div className="cell long-cell" id="time-cell">
+        <h1>TIME</h1>
+        <p>{hours} : {minutes} {isAm ? 'AM' : 'PM'}</p>
+        <h1>Upcoming</h1>
+        { !loadingEvents ?
+          (
+            <div className="event-wrapper">
+              <div className="event">
+                <h3>Checkin</h3>
+                <h3>DCL</h3>
+              </div>
+            </div>
+          )
+          : ""}
       </div>
     );
   }

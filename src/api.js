@@ -76,3 +76,7 @@ export function uploadFile(file, type) {
 export function getQR() {
   return request('GET', '/user/qr/');
 }
+
+export function getEvents() {
+  return request('GET', '/event/');
+}

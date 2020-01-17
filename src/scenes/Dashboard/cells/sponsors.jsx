@@ -110,7 +110,7 @@ class Sponsors extends React.Component {
 
   render() {
     return (
-      <div className="split-cell" id="sponsors-cell">
+      <div className="cell short-cell" id="sponsors-cell">
         <div className="sponsor-grid-wrapper">
           <Lane myimage={this.getImage(0)} />
           <Lane myimage={this.getImage(1)} />

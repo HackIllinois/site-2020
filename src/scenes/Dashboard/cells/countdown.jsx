@@ -17,13 +17,13 @@ function initializeState() {
   const hackIllinoisStartDate = new Date('February 28, 2020 05:00:00 UTC'); // UTC is 5 hours ahead of CDT
   const hackIllinoisEndDate = new Date('March 2, 2020 4:59:59 UTC');
   const hackillinoisStartTime = hackIllinoisStartDate.getTime();
-  const hackIllinoisEndTime = hackIllinoisEndDate.getTime();
+  const hackillinoisEndTime = hackIllinoisEndDate.getTime();
 
   const currentTime = new Date();
   let difference = hackillinoisStartTime - currentTime.getTime();
   let hasStarted = false;
   if (difference < 0) { // passed the start time
-    difference = hackIllinoisEndTime - currentTime.getTime();
+    difference = hackillinoisEndTime - currentTime.getTime();
     hasStarted = true;
   }
   if (difference < 0) { // passed the end time
@@ -35,7 +35,7 @@ function initializeState() {
       completed: true,
       hasStarted,
       hackillinoisStartTime,
-      hackillinoisEndTime: hackIllinoisEndTime,
+      hackillinoisEndTime,
     };
   }
 
@@ -60,7 +60,7 @@ function initializeState() {
     completed: false,
     hasStarted,
     hackillinoisStartTime,
-    hackillinoisEndTime: hackIllinoisEndTime,
+    hackillinoisEndTime,
   };
 }
 
@@ -105,13 +105,10 @@ class CountDown extends React.Component {
     const minutes = Math.floor(difference / 60) % 60;
     difference -= minutes * 60;
 
-    const seconds = Math.floor(difference % 60);
-
     this.setState({
       days,
       hours,
       minutes,
-      seconds,
     });
   }
 
@@ -119,13 +116,12 @@ class CountDown extends React.Component {
   render() {
     const { state } = this;
     return (
-      <div className={`cell short-cell ${ this.context}`} id="countdown-cell">
+      <div className="cell short-cell" id="countdown-cell">
         <h1>COUNTDOWN</h1>
         <div className="clocks">
           {renderValue(state.days, 'D')}
           {renderValue(state.hours, 'H')}
           {renderValue(state.minutes, 'M')}
-          {renderValue(state.seconds, 'S')}
         </div>
         <h1>{state.hasStarted ? 'LEFT' : 'UNTIL HACKILLINOIS'}</h1>
       </div>

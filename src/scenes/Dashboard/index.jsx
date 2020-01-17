@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/dashboard.scss';
+import cityscape from 'assets/cityscape.svg';
 import ThemeContext from './theme-context';
 
 // All the various cells I'm using have their own jsx files
@@ -7,7 +8,8 @@ import TwitterFeed from './cells/twitter';
 import CountDown from './cells/countdown';
 import Time from './cells/time';
 import Logo from './cells/logo';
-import SplitColumn from './cells/splitcolumn';
+import Sponsors from './cells/sponsors';
+import Temp from './cells/tempcell';
 
 // This function will retrieve the new theme that should be applied to the dashboard.
 function getTheme() {
@@ -15,8 +17,6 @@ function getTheme() {
   let currentHour = currentTime.getHours();
   const currentMinute = currentTime.getMinutes();
   currentHour += currentMinute / 60;
-
-  return 'night';
 
   // if (currentHour >= 5 && currentHour < 10) {
   //   // 5Am to 10am
@@ -31,8 +31,8 @@ function getTheme() {
   //   return 'afternoon';
   // }
 
-  //   // 9pm to 5am
-  //   return 'night';
+    // 9pm to 5am
+    return 'night';
 }
 
 export default class Dashboard extends React.Component {
@@ -71,21 +71,15 @@ export default class Dashboard extends React.Component {
     return (
       <ThemeContext.Provider value={theme}>
         <div className="dashboard-wrapper">
+          <img src={cityscape} id="cityscape" alt="cityscape background" />
           <div className={`dashboard ${theme}`}>
             <Logo />
-            <Time />
             <CountDown />
+            <Sponsors />
             <TwitterFeed />
-            {/* <div className="row top-row">
-              <Time />
-              <CountDown />
-              <Logo />
-            </div>
-            <div className="row bottom-row">
-              <SplitColumn pos="left" />
-              <SplitColumn pos="right" />
-              <TwitterFeed />
-            </div> */}
+            <Time />
+            <Temp />
+            <Temp />
           </div>
         </div>
       </ThemeContext.Provider>

@@ -33,16 +33,18 @@ html, body {
   }
 }
 
+#cityscape {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50vw; // TO BE DECIDED
+}
 
 //alter text colors here to propagate to ALL cells
 .early-morning{
   background-color: $early-morning-dash-bg-color;
   h1, p{
     color: $early-morning-dash-text-color;
-  }
-
-  .cell {
-    background-color: $early-morning-cell-color;
   }
 }
 
@@ -51,10 +53,6 @@ html, body {
   h1, p{
     color: $mid-day-dash-text-color;
   }
-  
-  .cell {
-    background-color: $mid-day-cell-color;
-  }
 }
 
 .afternoon {
@@ -62,20 +60,12 @@ html, body {
   h1, p{
     color: $afternoon-dash-text-color;
   }
-  
-  .cell {
-    background-color: $afternoon-cell-color;
-  }
 }
 
 .night {
   background-color: $night-dash-bg-color;
   h1, p {
     color: $night-dash-text-color;
-  }
-  
-  .cell {
-    background-color: $night-cell-color;
   }
 }
 
