@@ -1,14 +1,53 @@
 import React from 'react';
 import ThemeContext from '../theme-context';
 
-function renderValue(value, type) {
+function renderValue(value, type, shouldAnimate) {
   const tensdigit = Math.floor(value / 10);
   const onesdigit = value % 10;
 
+  let nextonesdigit = onesdigit - 1;
+  let nexttensdigit = tensdigit;
+  if (nextonesdigit < 0) {
+    nextonesdigit = 9;
+    nexttensdigit = tensdigit - 1;
+    if (nexttensdigit < 0) {
+      nexttensdigit = 5;
+    }
+  }
+
+
+  if (!shouldAnimate) {
+    return (
+      <div className="counter">
+        <h4>{type}</h4>
+        <div className="number">
+          <div className="digit-wrapper digit-wrapper-top">
+            <p className="digit digit-top">{tensdigit}{onesdigit}</p>
+          </div>
+          <div className="digit-wrapper digit-wrapper-bottom">
+            <p className="digit digit-bottom">{tensdigit}{onesdigit}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="counters">
-      <p className="digit">{tensdigit}</p> <p className="digit">{onesdigit}</p>
-      <p className="type">{type}</p>
+    <div className="counter">
+      <h4>{type}</h4>
+      <div className="number">
+        <div className="digit-wrapper digit-wrapper-top digit-wrapper-top-new">
+          <p className="digit digit-top">{nexttensdigit}{nextonesdigit}</p>
+        </div>
+        <div className="digit-wrapper digit-wrapper-top digit-wrapper-top-old">
+          <p className="digit digit-top">{tensdigit}{onesdigit}</p>
+        </div>
+        <div className="digit-wrapper digit-wrapper-bottom">
+          <p className="digit digit-bottom">{tensdigit}{onesdigit}</p>
+        </div>
+        <div className="digit-wrapper digit-wrapper-bottom digit-wrapper-bottom-new">
+          <p className="digit digit-bottom">{nexttensdigit}{nextonesdigit}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -105,25 +144,43 @@ class CountDown extends React.Component {
     const minutes = Math.floor(difference / 60) % 60;
     difference -= minutes * 60;
 
+    const seconds = Math.floor(difference);
+
     this.setState({
       days,
       hours,
       minutes,
+      seconds,
     });
   }
 
 
   render() {
-    const { state } = this;
+    const {
+      days,
+      hours,
+      minutes,
+      seconds,
+      hasStarted,
+    } = this.state;
+    const shouldUpdateMinutes = seconds === 0;
+    let shouldUpdateHours = false;
+    let shouldUpdateDays = false;
+    if (shouldUpdateMinutes) {
+      shouldUpdateHours = minutes === 0;
+    }
+    if (shouldUpdateHours) {
+      shouldUpdateDays = hours === 0;
+    }
     return (
       <div className="cell short-cell" id="countdown-cell">
         <h1>COUNTDOWN</h1>
-        <div className="clocks">
-          {renderValue(state.days, 'D')}
-          {renderValue(state.hours, 'H')}
-          {renderValue(state.minutes, 'M')}
+        <div className="clock">
+          {renderValue(days, 'Days', shouldUpdateDays)}
+          {renderValue(hours, 'Hours', shouldUpdateHours)}
+          {renderValue(minutes, 'Minutes', shouldUpdateMinutes)}
         </div>
-        <h1>{state.hasStarted ? 'LEFT' : 'UNTIL HACKILLINOIS'}</h1>
+        <h1>{hasStarted ? 'LEFT' : 'UNTIL HACKILLINOIS'}</h1>
       </div>
     );
   }

@@ -55,13 +55,33 @@ html, body {
       text-shadow: 3px 3px $day-dash-text-shadow-color;
     }
   }
+
+  .digit {
+    color: $day-countdown-text-color;
+  }
+  .digit-top {
+    background-color: $day-countdown-top-color;
+  }
+  .digit-bottom {
+    background-color: $day-countdown-bottom-color;
+  }
 }
 
 
 .night {
   background-color: $night-dash-bg-color;
-  h1, p {
+  h1, h4, p {
     color: $night-dash-text-color;
+  }
+
+  .digit {
+    color: $night-countdown-text-color;
+  }
+  .digit-top {
+    background-color: $night-countdown-top-color;
+  }
+  .digit-bottom {
+    background-color: $night-countdown-bottom-color;
   }
 }
 
