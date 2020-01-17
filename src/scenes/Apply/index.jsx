@@ -155,6 +155,7 @@ export default class Apply extends React.Component {
         <SelectField
           name="graduationYear"
           placeholder="When do you graduate?"
+          menuPlacement="top"
           options={[
             { label: '2020', value: 2020 },
             { label: '2021', value: 2021 },

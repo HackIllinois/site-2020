@@ -201,6 +201,7 @@ export default class MentorRegistration extends React.Component {
         <SelectField
           name="hasDisability"
           placeholder="Do you have a disability we should be aware of?"
+          menuPlacement="top"
           options={[
             { label: 'Yes', value: true },
             { label: 'No', value: false },
