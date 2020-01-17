@@ -1,17 +1,10 @@
 //THEMING COLORS
 $theme-transition-duration: 0s;
 
-$early-morning-dash-bg-color: green;
-$early-morning-dash-text-color: yellowgreen;
-$early-morning-cell-color: blue;
-
-$mid-day-dash-bg-color: violet;
-$mid-day-dash-text-color: rgb(250, 141, 141);
-$mid-day-cell-color: white;
-
-$afternoon-dash-bg-color: orange;
-$afternoon-dash-text-color: rgb(206, 166, 92);
-$afternoon-cell-color: red;
+$day-dash-bg-color: url('../../../assets/gradient_background.png');
+$day-dash-text-color: #E35058;
+$day-dash-header-color: #222B5C;
+$day-dash-text-shadow-color: #A43B5C;
 
 $night-dash-bg-color: #222B5C;
 $night-dash-text-color: white;

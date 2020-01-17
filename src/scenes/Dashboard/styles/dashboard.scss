@@ -41,26 +41,22 @@ html, body {
 }
 
 //alter text colors here to propagate to ALL cells
-.early-morning{
-  background-color: $early-morning-dash-bg-color;
-  h1, p{
-    color: $early-morning-dash-text-color;
+.day {
+  background: $day-dash-bg-color;
+  p {
+    color: $day-dash-text-color;
+  }
+  h1 {
+    color: $day-dash-header-color;
+  }
+  
+  .clock {
+    p {
+      text-shadow: 3px 3px $day-dash-text-shadow-color;
+    }
   }
 }
 
-.mid-day {
-  background-color: $mid-day-dash-bg-color;
-  h1, p{
-    color: $mid-day-dash-text-color;
-  }
-}
-
-.afternoon {
-  background-color: $afternoon-dash-bg-color;
-  h1, p{
-    color: $afternoon-dash-text-color;
-  }
-}
 
 .night {
   background-color: $night-dash-bg-color;

@@ -18,21 +18,12 @@ function getTheme() {
   const currentMinute = currentTime.getMinutes();
   currentHour += currentMinute / 60;
 
-  if (currentHour >= 5 && currentHour < 10) {
-    // 5Am to 10am
-    return 'early-morning';
+  if (currentHour >= 8 && currentHour < 18) {
+    // 8Aam to 6pm
+    return 'day';
   }
-  if (currentHour >= 10 && currentHour < 18.5) {
-    // 10am to 6:30pm
-    return 'mid-day';
-  }
-  if (currentHour >= 18.5 && currentHour < 21) {
-    // 6:30pm to 9pm
-    return 'afternoon';
-  }
-
-    // 9pm to 5am
-    return 'night';
+  // 6pm to 8am
+  return 'night';
 }
 
 export default class Dashboard extends React.Component {
