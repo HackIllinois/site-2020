@@ -145,6 +145,7 @@ export default class MentorRegistration extends React.Component {
         isMulti
         name="categories"
         placeholder="You may select multiple options"
+        menuPlacement="top"
         options={[
           { label: 'App Development', value: 'APPDEV' },
           { label: 'Data Science', value: 'DATASCIENCE' },
