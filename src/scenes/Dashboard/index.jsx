@@ -6,7 +6,7 @@ import ThemeContext from './theme-context';
 // All the various cells I'm using have their own jsx files
 import TwitterFeed from './cells/twitter';
 import CountDown from './cells/countdown';
-import Time from './cells/time';
+import TimeAndEvent from './cells/timeAndEvent';
 import Logo from './cells/logo';
 import Sponsors from './cells/sponsors';
 import Temp from './cells/tempcell';
@@ -18,18 +18,18 @@ function getTheme() {
   const currentMinute = currentTime.getMinutes();
   currentHour += currentMinute / 60;
 
-  // if (currentHour >= 5 && currentHour < 10) {
-  //   // 5Am to 10am
-  //   return 'early-morning';
-  // }
-  // if (currentHour >= 10 && currentHour < 18.5) {
-  //   // 10am to 6:30pm
-  //   return 'mid-day';
-  // }
-  // if (currentHour >= 18.5 && currentHour < 21) {
-  //   // 6:30pm to 9pm
-  //   return 'afternoon';
-  // }
+  if (currentHour >= 5 && currentHour < 10) {
+    // 5Am to 10am
+    return 'early-morning';
+  }
+  if (currentHour >= 10 && currentHour < 18.5) {
+    // 10am to 6:30pm
+    return 'mid-day';
+  }
+  if (currentHour >= 18.5 && currentHour < 21) {
+    // 6:30pm to 9pm
+    return 'afternoon';
+  }
 
     // 9pm to 5am
     return 'night';
@@ -77,7 +77,7 @@ export default class Dashboard extends React.Component {
             <CountDown />
             <Sponsors />
             <TwitterFeed />
-            <Time />
+            <TimeAndEvent />
             <Temp />
             <Temp />
           </div>
