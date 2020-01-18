@@ -89,7 +89,14 @@ export default class MentorRegistration extends React.Component {
           placeholder="What is your last name?"
         />
 
-        <p>Photo *</p>
+        <p>
+          Photo *<br />
+          <span>
+            This will be posted on the &quot;mentors&quot; page of our website,
+            so attendees can easily find you at the event if they&apos;re
+            interested in working with you.
+          </span>
+        </p>
         <FileUploadField
           name="photoFilename"
           type="photo"
