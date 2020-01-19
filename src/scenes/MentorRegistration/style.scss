@@ -37,7 +37,7 @@
   .form {
     flex-grow: 1;
     padding: 96px 0;
-    
+
     h1 {
       text-align: center;
       font-weight: 600;
@@ -45,7 +45,7 @@
       color: #222B5C;
     }
 
-    form { 
+    form {
       // Mobile
       @media (max-device-width: 480px) {
         width: 80%;
@@ -57,6 +57,11 @@
       p {
         margin-top: 32px;
         margin-bottom: 8px;
+        
+        span {
+          color: rgba(10, 9, 63, 0.5);
+          font-size: 12px;
+        }
       }
 
       input {

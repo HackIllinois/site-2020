@@ -60,7 +60,7 @@ export function rsvp(isEditing, registration) {
 
 export function uploadFile(file, type) {
   return request('GET', `/upload/${type}/upload/`)
-    .then(res => fetch(res.resume, {
+    .then(res => fetch(res[type], {
       method: 'PUT',
       headers: { 'Content-Type': file.type },
       body: file,

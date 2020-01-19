@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
 import Message from 'components/Message';
 import PDF from 'components/PDF';
+import NavBar from 'components/NavBar';
 
 import Apply from 'scenes/Apply';
 import Auth from 'scenes/Auth';
@@ -12,6 +13,9 @@ import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
 import RSVP from 'scenes/RSVP';
+import Schedule from 'scenes/Schedule';
+import Maps from 'scenes/Maps';
+import Travel from 'scenes/Travel';
 
 import 'index.css';
 
@@ -36,7 +40,11 @@ const App = () => (
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
 
-      <Route component={() => <Message title="404 Not Found" />} />
+      <Route path="/schedule" component={Schedule} />
+      <Route path="/maps" component={Maps} />
+      <Route path="/travel" component={Travel} />
+
+      <Route component={() => <><NavBar /><Message title="404 Not Found" /></>} />
     </Switch>
   </BrowserRouter>
 );

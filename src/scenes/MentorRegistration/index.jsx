@@ -89,7 +89,14 @@ export default class MentorRegistration extends React.Component {
           placeholder="What is your last name?"
         />
 
-        <p>Photo *</p>
+        <p>
+          Photo *<br />
+          <span>
+            This will be posted on the &quot;mentors&quot; page of our website,
+            so attendees can easily find you at the event if they&apos;re
+            interested in working with you.
+          </span>
+        </p>
         <FileUploadField
           name="photoFilename"
           type="photo"
@@ -100,7 +107,7 @@ export default class MentorRegistration extends React.Component {
         <Field
           name="biography"
           key="biography"
-          placeholder="Tell us about yourself"
+          placeholder="Tell us about yourself."
         />
 
         <div className="nav-buttons">
@@ -111,36 +118,58 @@ export default class MentorRegistration extends React.Component {
     );
   }
 
-  project = ({ values }) => {
-    const isValid = values.projectName && values.projectDescription;
+  project = () => (
+    <div>
+      <p>Company or Organization</p>
+      <Field
+        name="organization"
+        key="organization"
+        placeholder="What company or organization do you represent?"
+      />
 
-    return (
-      <div>
-        <p>Project Name *</p>
-        <Field
-          name="projectName"
-          key="projectName"
-          placeholder="What is your project?"
-          options={[
-            { label: 'Full-time', value: 'FULLTIME' },
-            { label: 'Internship', value: 'INTERNSHIP' },
-          ]}
-        />
+      <p>Project (if applicable)</p>
+      <Field
+        name="project"
+        key="project"
+        placeholder="What open source project do you represent?"
+      />
 
-        <p>Project Description *</p>
-        <Field
-          name="projectDescription"
-          key="projectDescription"
-          placeholder="Tell us about your project"
-        />
+      <p>Project Description (if applicable)</p>
+      <Field
+        name="projectDescription"
+        key="projectDescription"
+        placeholder="Tell us about your open source project."
+      />
 
-        <div className="nav-buttons">
-          <BackButton onClick={this.back} />
-          <NextButton onClick={this.next} disabled={!isValid} />
-        </div>
+      <p>
+        Project Categories and Expertise<br />
+        <span>
+          Open Source Mentors: How would you classify your open source project?<br />
+          Corporate Mentors: Which categories would you be comfortable assisting attendees with?
+        </span>
+      </p>
+      <SelectField
+        isMulti
+        name="categories"
+        placeholder="You may select multiple options"
+        menuPlacement="top"
+        options={[
+          { label: 'App Development', value: 'APPDEV' },
+          { label: 'Data Science', value: 'DATASCIENCE' },
+          { label: 'Developer Tools', value: 'DEVTOOLS' },
+          { label: 'Hardware', value: 'HARDWARE' },
+          { label: 'Programming Languages', value: 'LANGUAGES' },
+          { label: 'Systems', value: 'SYSTEMS' },
+          { label: 'Web Development', value: 'WEBDEV' },
+        ]}
+      />
+
+      <div className="nav-buttons">
+        <BackButton onClick={this.back} />
+        <NextButton onClick={this.next} />
       </div>
-    );
-  }
+    </div>
+  );
 
   event = ({ values }) => {
     const isValid = values.shirtSize && typeof values.hasDisability === 'boolean';
@@ -179,6 +208,7 @@ export default class MentorRegistration extends React.Component {
         <SelectField
           name="hasDisability"
           placeholder="Do you have a disability we should be aware of?"
+          menuPlacement="top"
           options={[
             { label: 'Yes', value: true },
             { label: 'No', value: false },

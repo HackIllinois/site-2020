@@ -51,15 +51,14 @@ const customStyles = {
     color: '#0A093F',
     cursor: 'pointer',
   }),
-  menu: () => ({
-    position: 'absolute',
+  menu: base => ({
+    ...base,
     background: '#E4F4F6',
     border: '2px solid #0A093F',
-    borderTop: 0,
-    boxSizing: 'border-box',
-    padding: '8px 16px 16px 16px',
-    width: '100%',
-    zIndex: 1,
+    borderRadius: 0,
+    margin: '8px 0',
+    padding: '16px',
+    paddingTop: '8px',
   }),
   option: () => ({
     borderBottom: '1px solid #0A093F',
