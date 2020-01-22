@@ -1,6 +1,9 @@
 import React from 'react';
 import Backdrop from 'components/Backdrop';
 
+import topStructure from 'assets/maps/top_structure.svg';
+import './style.scss';
+
 export default class Maps extends React.Component {
   constructor(props) {
     super(props);
@@ -13,18 +16,27 @@ export default class Maps extends React.Component {
     const { currentSection } = this.state;
 
     return (
-      <div>
-        <Backdrop
-          title="Maps"
-          signs={['DCL', 'Siebel', 'ECEB', 'Kenney']}
-          selectedSign={currentSection}
-          onSignClick={signIndex => this.setState({ currentSection: signIndex })}
-        >
-          <div style={{ width: '100%', height: '100%', backgroundColor: '#E28B79' }}>
-            Placeholder to demonstrate available space for content
+      <Backdrop
+        title="Maps"
+        signs={['DCL', 'Siebel', 'ECEB', 'Kenney']}
+        selectedSign={currentSection}
+        onSignClick={signIndex => this.setState({ currentSection: signIndex })}
+      >
+        <div className="maps-page">
+          <div className="top-structure">
+            <img src={topStructure} alt="" />
           </div>
-        </Backdrop>
-      </div>
+
+          <div className="main-structure">
+            <div className="first connector" />
+            <div className="last connector" />
+
+            <div className="maps-container">
+              
+            </div>
+          </div>
+        </div>
+      </Backdrop>
     );
   }
 }

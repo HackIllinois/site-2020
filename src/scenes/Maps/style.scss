@@ -1,0 +1,49 @@
+.maps-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .top-structure {
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .main-structure {
+    flex: 1;
+    margin: 0 20px;
+    border-left: #E26856 35px solid;
+    border-right: #E26856 35px solid;
+    position: relative;
+
+    .maps-container {
+      background-color: #11252C;
+      position: absolute;
+      top: 20px;
+      bottom: 80px;
+      left: 15px;
+      right: 15px;
+      border: #E28B79 15px solid;
+    }
+
+    .connector {
+      position: absolute;
+      left: 0;
+      height: 25px;
+      width: 100%;
+      background-color: #A14234;
+
+      &.first {
+        top: 30px;
+      }
+
+      &.last {
+        bottom: 90px;
+      }
+    }
+  }
+}
