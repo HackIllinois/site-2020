@@ -19,15 +19,22 @@
     border-left: #E26856 35px solid;
     border-right: #E26856 35px solid;
     position: relative;
+    @media (max-width: 480px) {
+      margin: 0 10px;
+      border-width: 15px;
+    }
 
     .maps-container {
       background-color: #11252C;
       position: absolute;
       top: 20px;
-      bottom: 80px;
+      bottom: 70px;
       left: 15px;
       right: 15px;
       border: #E28B79 15px solid;
+      @media (max-width: 480px) {
+        border-width: 25px 10px;
+      }
     }
 
     .connector {
@@ -42,7 +49,7 @@
       }
 
       &.last {
-        bottom: 90px;
+        bottom: 80px;
       }
     }
   }
