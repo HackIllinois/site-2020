@@ -37,7 +37,7 @@
           position: absolute;
           box-sizing: border-box;
           width: 100%;
-          height: 50%;
+          height: 48%;
           overflow: hidden;
           
           .digit {
@@ -57,29 +57,37 @@
 
         .digit-wrapper-top {
           top: 0;
-          transform-origin: center bottom;
-          backface-visibility: hidden;
 
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
         }
+        
         .digit-wrapper-top-old {
+          transform-origin: center bottom;
+          backface-visibility: hidden;
+
+          
           animation: animatedflipdowntop;
-          animation-fill-mode: forwards;
-          animation-duration: .9s;
+          animation-fill-mode: both;
+          animation-duration: .3s;
+          animation-timing-function: cubic-bezier(.37,.01,.94,.35);
         }
+
         .digit-wrapper-bottom {
-          bottom: 0;
+          top: 52%;
           
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
         }
+
         .digit-wrapper-bottom-new {
           transform-origin: center top;
           backface-visibility: hidden;
+
           animation: animatedflipdownbottom;
-          animation-fill-mode: forwards;
-          animation-duration: .9s;
+          animation-fill-mode: both;
+          animation-duration: .6s;
+          animation-timing-function: cubic-bezier(.15,.45,.28,1);
         }
       }
     }
@@ -89,17 +97,29 @@
 @keyframes animatedflipdowntop {
   0% {
     transform: rotateX(0deg);
+    z-index: 2;
   }
-  50%, 100% {
-    transform: rotateX(-91deg);
+  0%, 99% {
+    opacity: 0.99;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
   }
 }
 
 @keyframes animatedflipdownbottom {
   0%, 50% {
-    transform: rotateX(92deg);
+    z-index: -1;
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0.99;
   }
   100% {
+    opacity: 0.99;
     transform: rotateX(0deg);
+    z-index: 5;
   }
 }

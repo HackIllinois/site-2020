@@ -115,13 +115,13 @@ class CountDown extends React.Component {
   }
 
   componentDidMount() {
-    const { state } = this;
-    if (!state.completed) this.interval = setInterval(this.setTime, 1000);
+    const { completed } = this.state;
+    if (!completed) this.interval = setInterval(this.setTime, 1000);
   }
 
   componentWillUnmount() {
-    const { state } = this;
-    if (!state.completed) clearInterval(this.interval);
+    const { completed } = this.state;
+    if (!completed) clearInterval(this.interval);
   }
 
   setTime() {
@@ -163,6 +163,7 @@ class CountDown extends React.Component {
       seconds,
       hasStarted,
     } = this.state;
+
     const shouldUpdateMinutes = seconds === 0;
     let shouldUpdateHours = false;
     let shouldUpdateDays = false;
