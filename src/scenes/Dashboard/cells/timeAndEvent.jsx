@@ -5,7 +5,7 @@ import ThemeContext from '../theme-context';
 
 function pad(num) {
   if (num < 10) {
-    return `0${ num}`;
+    return `0${num}`;
   }
   return num;
 }
@@ -23,7 +23,6 @@ function getTime(givenDate) {
     hours -= 12;
   }
 
-  hours = pad(hours);
   minutes = pad(minutes);
 
   return {
@@ -53,6 +52,8 @@ class Time extends React.Component {
     this.interval = setInterval(this.setTime, 1000);
 
       getEvents().then(res => {
+        const { events: theEvents } = res;
+        theEvents.sort((a, b) => { return a.startTime - b.startTime; });
         this.setState({
           loadingEvents: false,
           events: res.events,
@@ -94,8 +95,7 @@ class Time extends React.Component {
     }
 
 
-    // Only want to display the next 2 events!
-    // To be done: sort the events. Have not done so yet.
+    // Only want to display the next 2 events!\
     const eventsToDisplay = [];
     if (index < events.length) {
       eventsToDisplay.push(events[index]);
@@ -109,7 +109,7 @@ class Time extends React.Component {
         <div className="top-half">
           <div className="clock">
             <h1>TIME</h1>
-            <p>{hours} : {minutes} {isAm ? 'AM' : 'PM'}</p>
+            <p>{pad(hours)} : {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
             <h1>HAPPENING NOW</h1>
