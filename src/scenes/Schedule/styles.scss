@@ -1,0 +1,60 @@
+.whole-sign{
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar{
+  background: #E28B79;
+  height: 52px;
+  width: 100%;
+}
+
+.leg-supports{
+  display: flex;
+  flex-direction: row;
+  height: 16px;
+  width: 100%;
+  justify-content: space-between;
+  .left-leg{
+    background: #E28B79;
+    margin: 0 0 0 60px;
+    width: 60px;
+  }
+  .right-leg{
+    background: #E28B79;
+    margin: 0 60 0 0px;
+    width: 60px;
+  }
+  .shade{
+    background: #A14234;
+    width: 100%;
+    height: 50%;
+  }
+}
+
+.display-board{
+  background: #E28B79;
+  height: 50vh;
+  width: 100%;
+  z-index: 10;
+  .display-internal{
+    background: #A8CBB7;
+    margin: 24px;
+    width: calc(100% - 48px);
+    height: calc(100% - 48px);
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.25);
+    overflow: scroll;
+  }
+}
+
+.sign-leg{
+  background: #E28B79;
+  width: 100px;
+  height: 80px;
+  .shade{
+    background: #A14234;
+    width: 100%;
+    height: 35%;
+  }
+  align-self: center;
+}
