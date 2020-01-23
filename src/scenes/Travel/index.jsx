@@ -1,5 +1,7 @@
 import React from 'react';
 import Backdrop from 'components/Backdrop';
+import BillboardTop from 'assets/travel/travel_billboard_top.svg';
+import './style.scss';
 
 export default class Travel extends React.Component {
   constructor(props) {
@@ -20,8 +22,15 @@ export default class Travel extends React.Component {
           selectedSign={currentSection}
           onSignClick={signIndex => this.setState({ currentSection: signIndex })}
         >
-          <div style={{ width: '100%', height: '100%', backgroundColor: '#E28B79' }}>
-            Placeholder to demonstrate available space for content
+          <div className="structure" style={{ width: '100%', height: '100%' }}>
+            <img className="billboard-top" src={BillboardTop} alt="billboard-top" />
+            <div className="billboard-bottom">
+              <div className="leg" />
+              <div className="sign-container">
+                <div className="text-container" />
+                <div className="stando" />
+              </div>
+            </div>
           </div>
         </Backdrop>
       </div>

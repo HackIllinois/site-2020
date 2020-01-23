@@ -1,0 +1,53 @@
+.structure {
+  display: flex;
+  flex-direction: column;
+}
+
+.billboard-top {
+  z-index: 10;
+  width: 100%;
+  max-height: 100px;
+}
+
+.billboard-bottom {
+  display: flex;
+  flex-direction: row;
+  z-index: 0;
+  height: 100%;
+
+  .leg {
+    z-index: 0;
+    height: 100%;
+    border-top: 15px solid #152e39;
+    width: 3vw;
+    background: #285163;
+    margin-left: 7vw;
+    transform: translate(0, -5px);
+  }
+  
+  .sign-container {
+    z-index: 1;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+
+    .text-container {
+      z-index: 1;
+      height: 80%;
+      width: 100%;
+      margin: 15px auto 0 -1vw;
+      background: #285163;
+      border: calc(1vw) solid #6baec5;
+    }
+    
+    .stando {
+      z-index: 0;
+      height: 15%;
+      width: 70%;
+      align-self: center;
+      border-top: 15px solid #3E7081;
+      background: #6baec5;
+    }
+  }
+  
+}
