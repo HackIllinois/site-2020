@@ -1,3 +1,6 @@
+$breakpoint-tablet: 900px;
+$breakpoint-mobile: 600px;
+
 .structure {
   display: flex;
   flex-direction: column;
@@ -5,8 +8,12 @@
 
 .billboard-top {
   z-index: 10;
-  width: 100%;
+  width: 105%;
   max-height: 100px;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  }
 }
 
 .billboard-bottom {
@@ -23,26 +30,101 @@
     background: #285163;
     margin-left: 7vw;
     transform: translate(0, -5px);
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 30px;
+    }
   }
   
   .sign-container {
     z-index: 1;
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
+    
+    select::-ms-expand {
+      display: none;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* Add some styling */
+      
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      height: 50px;
+      float: right;
+      margin: 5px 0px;
+      padding: 0px 24px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+      background-color: #ffffff;
+      background-image: none;
+      border: 1px solid #cccccc;
+      -ms-word-break: normal;
+      word-break: normal;
+    }
 
     .text-container {
       z-index: 1;
+      display: flex;
+      flex-direction: column;
       height: 80%;
       width: 100%;
-      margin: 15px auto 0 -1vw;
+      overflow: scroll;
+      margin: 0 auto 0 -1vw;
+      padding: 15px;
       background: #285163;
-      border: calc(1vw) solid #6baec5;
+      border: 1vw solid #6baec5;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 300;
+      color: white;
+
+      @media (max-width: $breakpoint-tablet) {
+        border: 10px solid #6baec5;
+      }
+
+      hr {
+        margin-bottom: 1.5em;
+      }
+
+      h3 {
+        font-size: 2em;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      h4 {
+        font-weight: 600;
+      }
+
+      .sub-container {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .left-column {
+        width: 20%;
+      }
+
+      .item-container {
+        width: 80%;
+        margin-bottom: 1em;
+
+        .item {
+          margin-bottom: 0.8em;
+        }
+      }
     }
     
     .stando {
       z-index: 0;
-      height: 15%;
+      height: 20%;
       width: 70%;
       align-self: center;
       border-top: 15px solid #3E7081;
