@@ -1,5 +1,7 @@
 $breakpoint-tablet: 900px;
 $breakpoint-mobile: 600px;
+$light-blue: #6baec5;
+$dark-blue: #285163;
 
 .structure {
   display: flex;
@@ -7,68 +9,65 @@ $breakpoint-mobile: 600px;
 }
 
 .billboard-top {
-  z-index: 10;
   width: 105%;
-  max-height: 100px;
+  max-height: 6.5vw;
 
   @media (max-width: $breakpoint-tablet) {
     width: 100%;
+    max-height: 100px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 120vw;
+    margin-left: -15vw;
   }
 }
 
 .billboard-bottom {
   display: flex;
   flex-direction: row;
-  z-index: 0;
   height: 100%;
+  width: 100%;
 
   .leg {
-    z-index: 0;
     height: 100%;
     border-top: 15px solid #152e39;
-    width: 3vw;
-    background: #285163;
-    margin-left: 7vw;
-    transform: translate(0, -5px);
+    width: 4%;
+    background: $dark-blue;
+    margin-left: 10%;
+    // transform: translate(0, -5px);
 
     @media (max-width: $breakpoint-tablet) {
       width: 30px;
     }
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-left: -30px;
+      min-width: 5vw;
+    }
   }
   
   .sign-container {
-    z-index: 1;
+    z-index: 0;
     width: 80%;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: $breakpoint-mobile) {
+      min-width: 96vw;
+      margin-left: -3vw;
+    }
+
+    .location-select {
+      width: 60%;
+      margin: -15px 0 0 -1vw;
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
     
-    select::-ms-expand {
-      display: none;
-    }
-
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      /* Add some styling */
-      
-      display: block;
-      width: 100%;
-      max-width: 320px;
-      height: 50px;
-      float: right;
-      margin: 5px 0px;
-      padding: 0px 24px;
-      font-size: 16px;
-      line-height: 1.75;
-      color: #333;
-      background-color: #ffffff;
-      background-image: none;
-      border: 1px solid #cccccc;
-      -ms-word-break: normal;
-      word-break: normal;
-    }
-
     .text-container {
       z-index: 1;
       display: flex;
@@ -76,17 +75,31 @@ $breakpoint-mobile: 600px;
       height: 80%;
       width: 100%;
       overflow: scroll;
-      margin: 0 auto 0 -1vw;
-      padding: 15px;
-      background: #285163;
-      border: 1vw solid #6baec5;
+      margin: 15px auto 0 -1vw;
+      background: $dark-blue;
+      border: 1vw solid $light-blue;
       font-family: Montserrat;
       font-style: normal;
       font-weight: 300;
       color: white;
 
       @media (max-width: $breakpoint-tablet) {
-        border: 10px solid #6baec5;
+        border: 10px solid $light-blue;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+        border: none;
+        margin: 15px 0 0 0;
+      }
+
+      .inner-text-container {
+        padding: 15px;
+
+        @media (max-width: $breakpoint-mobile) {
+          overflow: scroll;
+          border: 10px solid $light-blue;
+        }
       }
 
       hr {
@@ -123,12 +136,12 @@ $breakpoint-mobile: 600px;
     }
     
     .stando {
-      z-index: 0;
+      z-index: -1;
       height: 20%;
       width: 70%;
       align-self: center;
       border-top: 15px solid #3E7081;
-      background: #6baec5;
+      background: $light-blue;
     }
   }
   
