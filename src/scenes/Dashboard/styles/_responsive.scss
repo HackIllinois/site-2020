@@ -1,10 +1,10 @@
 @media (max-width: 500px) {
-  .dashboard-wrapper{
+  .dashboard-wrapper {
     .dashboard {
-      .top-row{
+      .top-row {
         height: 100vh;
       }
-      .bottom-row{
+      .bottom-row {
         height: 0px;
         display: none;
       }
@@ -16,8 +16,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
-
-
 
     .cell {
       width: 100%;

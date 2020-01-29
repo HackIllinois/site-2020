@@ -17,11 +17,11 @@ function getTheme() {
   const currentMinute = currentTime.getMinutes();
   currentHour += currentMinute / 60;
 
-  if (currentHour >= 8 && currentHour < 18) {
-    // 8Aam to 6pm
+  if (currentHour >= 7 && currentHour < 18) {
+    // 7Aam to 6pm
     return 'day';
   }
-  // 6pm to 8am
+  // 6pm to 7am
   return 'night';
 }
 

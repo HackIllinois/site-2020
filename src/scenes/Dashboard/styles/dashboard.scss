@@ -10,7 +10,7 @@ html, body {
   overflow: hidden;
 }
 
-.dashboard-wrapper{
+.dashboard-wrapper {
   height: 100vh;
   width: 100vw;
   padding-top: 0vh;
@@ -21,7 +21,7 @@ html, body {
   overflow: hidden;
 
   transition-duration: $theme-transition-duration;
-  .dashboard{
+  .dashboard {
     background-size: cover;
     height: 100%;
     width: 100%;

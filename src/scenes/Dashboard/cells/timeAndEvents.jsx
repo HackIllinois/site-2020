@@ -73,9 +73,14 @@ class Time extends React.Component {
     this.interval = setInterval(this.setTime, 1000);
     getEvents().then(events => {
       events.sort((a, b) => (a.startTime - b.startTime));
+
+      // Filter out events that have already completed
+      const currentTime = Math.floor((new Date()).getTime() / 1000);
+      const notCompletedEvents = events.filter(event => currentTime < event.endTime);
+
       this.setState({
         loadingEvents: false,
-        events,
+        events: notCompletedEvents,
       });
     });
   }
@@ -103,7 +108,6 @@ class Time extends React.Component {
       return (
         <div className="cell long-cell" id="time-cell">
           <div className="clock">
-            <h1>TIME</h1>
             <p>{hours.toString().padStart(2, '0')} : {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
@@ -126,7 +130,7 @@ class Time extends React.Component {
       <div className="cell long-cell" id="time-cell">
         <div className="top-half">
           <div className="clock">
-            <p>{hours.toString().padStart(2, '0')} : {minutes} {isAm ? 'AM' : 'PM'}</p>
+            <p>{hours.toString().padStart(2, '0')} <span>:</span> {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
             <h1>HAPPENING NOW</h1>
