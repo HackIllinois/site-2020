@@ -73,6 +73,14 @@ export function uploadFile(file, type) {
     });
 }
 
+export function getTimes() {
+  return request('GET', '/upload/blobstore/times/').then(res => res.data);
+}
+
 export function getQR() {
   return request('GET', '/user/qr/');
+}
+
+export function getEvents() {
+  return request('GET', '/event/').then(res => res.events);
 }
