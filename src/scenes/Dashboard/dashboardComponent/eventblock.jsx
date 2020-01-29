@@ -7,7 +7,7 @@ function EventBlock(props) {
       <div className="details">
         <h2 className="title">{title}</h2>
         {
-          locations.map(val => <h3 key={`${val}`} className="location">{val}</h3>)
+          locations.map(val => <h3 key={val} className="location">{val}</h3>)
         }
       </div>
       <div className="time">

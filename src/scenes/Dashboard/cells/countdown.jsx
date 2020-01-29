@@ -1,20 +1,19 @@
 import React from 'react';
+import { getTimes } from 'api';
+import Loading from 'components/Loading';
 import ThemeContext from '../theme-context';
 
+function getOnesDigit(number) {
+  return number % 10;
+}
+
+function getTensDigit(number) {
+  return Math.floor(number / 10);
+}
+
 function renderValue(value, type, shouldAnimate) {
-  const tensdigit = Math.floor(value / 10);
-  const onesdigit = value % 10;
-
-  let nextonesdigit = onesdigit - 1;
-  let nexttensdigit = tensdigit;
-  if (nextonesdigit < 0) {
-    nextonesdigit = 9;
-    nexttensdigit = tensdigit - 1;
-    if (nexttensdigit < 0) {
-      nexttensdigit = 5;
-    }
-  }
-
+  const tensDigit = getTensDigit(value);
+  const onesDigit = getOnesDigit(value);
 
   if (!shouldAnimate) {
     return (
@@ -22,135 +21,135 @@ function renderValue(value, type, shouldAnimate) {
         <h4>{type}</h4>
         <div className="number">
           <div className="digit-wrapper digit-wrapper-top">
-            <p className="digit digit-top">{tensdigit}{onesdigit}</p>
+            <p className="digit digit-top">{tensDigit}{onesDigit}</p>
           </div>
           <div className="digit-wrapper digit-wrapper-bottom">
-            <p className="digit digit-bottom">{tensdigit}{onesdigit}</p>
+            <p className="digit digit-bottom">{tensDigit}{onesDigit}</p>
           </div>
         </div>
       </div>
     );
   }
+
+  // When value changes, the old value is seen before animation occurs
+  const oldValue = (value + 1) % 60;
+  const oldTensDigit = getTensDigit(oldValue);
+  const oldOnesDigit = getOnesDigit(oldValue);
   return (
     <div className="counter">
       <h4>{type}</h4>
       <div className="number">
         <div className="digit-wrapper digit-wrapper-top digit-wrapper-top-new">
-          <p className="digit digit-top">{nexttensdigit}{nextonesdigit}</p>
+          <p className="digit digit-top">{tensDigit}{onesDigit}</p>
         </div>
         <div className="digit-wrapper digit-wrapper-top digit-wrapper-top-old">
-          <p className="digit digit-top">{tensdigit}{onesdigit}</p>
+          <p className="digit digit-top">{oldTensDigit}{oldOnesDigit}</p>
         </div>
         <div className="digit-wrapper digit-wrapper-bottom">
-          <p className="digit digit-bottom">{tensdigit}{onesdigit}</p>
+          <p className="digit digit-bottom">{oldTensDigit}{oldOnesDigit}</p>
         </div>
         <div className="digit-wrapper digit-wrapper-bottom digit-wrapper-bottom-new">
-          <p className="digit digit-bottom">{nexttensdigit}{nextonesdigit}</p>
+          <p className="digit digit-bottom">{tensDigit}{onesDigit}</p>
         </div>
       </div>
     </div>
   );
 }
 
-function initializeState() {
-  const hackIllinoisStartDate = new Date('February 28, 2020 05:00:00 UTC'); // UTC is 5 hours ahead of CDT
-  const hackIllinoisEndDate = new Date('March 2, 2020 4:59:59 UTC');
-  const hackillinoisStartTime = hackIllinoisStartDate.getTime();
-  const hackillinoisEndTime = hackIllinoisEndDate.getTime();
-
-  const currentTime = new Date();
-  let difference = hackillinoisStartTime - currentTime.getTime();
-  let hasStarted = false;
-  if (difference < 0) { // passed the start time
-    difference = hackillinoisEndTime - currentTime.getTime();
-    hasStarted = true;
-  }
-  if (difference < 0) { // passed the end time
-    return {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-      completed: true,
-      hasStarted,
-      hackillinoisStartTime,
-      hackillinoisEndTime,
-    };
-  }
-
-  difference /= 1000; // remove the garbage
-
-  const days = Math.floor(difference / 86400);
-  difference -= days * 86400;
-
-  const hours = Math.floor(difference / 3600) % 24;
-  difference -= hours * 3600;
-
-  const minutes = Math.floor(difference / 60) % 60;
-  difference -= minutes * 60;
-
-  const seconds = Math.floor(difference % 60);
-
-  return {
-    days,
-    hours,
-    minutes,
-    seconds,
-    completed: false,
-    hasStarted,
-    hackillinoisStartTime,
-    hackillinoisEndTime,
-  };
-}
-
 // This component is in the top row, center
 class CountDown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = initializeState();
+    this.state = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: -1,
+      completed: false,
+      hasStarted: false,
+      startTime: -1, // negative value acts as sentinel value
+      endTime: -1, // to check if initalize state has finished
+    };
+
+    this.initializeState();
 
     this.interval = null;
 
     this.setTime = this.setTime.bind(this);
+    this.initializeState = this.initializeState.bind(this);
   }
 
   componentDidMount() {
     const { completed } = this.state;
-    if (!completed) this.interval = setInterval(this.setTime, 1000);
+    if (!completed) {
+      this.interval = setInterval(this.setTime, 1000);
+    }
   }
 
   componentWillUnmount() {
     const { completed } = this.state;
-    if (!completed) clearInterval(this.interval);
+    if (!completed) {
+      clearInterval(this.interval);
+    }
   }
 
+
   setTime() {
-    const { state } = this;
-    const currentTime = new Date();
-    let difference = state.hackillinoisStartTime - currentTime.getTime();
+    const { startTime, endTime } = this.state;
+    const currentTime = Math.floor(new Date().getTime() / 1000);
+    let difference = startTime - currentTime;
+
+    let hasStarted = false;
     if (difference < 0) { // passed the start time
-      difference = state.hackillinoisEndTime - currentTime.getTime();
+      difference = endTime - currentTime;
+      hasStarted = true;
+    }
+    if (difference < 0) { // passed the end time
+      this.setState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: -1,
+        completed: true,
+        hasStarted,
+        startTime,
+        endTime,
+      });
     }
 
+    const seconds = difference % 60;
 
-    difference /= 1000; // remove the garbage
+    // In order to make minutes add up, need to effectively add back in the seconds subtracted
+    // This is done with the ceil.
+    difference = Math.ceil(difference / 60);
 
-    const days = Math.floor(difference / 86400);
-    difference -= days * 86400;
+    const minutes = difference % 60;
+    difference = (difference - minutes) / 60;
 
-    const hours = Math.floor(difference / 3600) % 24;
-    difference -= hours * 3600;
+    const hours = difference % 24;
+    difference = (difference - hours) / 24;
 
-    const minutes = Math.floor(difference / 60) % 60;
-    difference -= minutes * 60;
-
-    const seconds = Math.floor(difference);
+    const days = difference;
 
     this.setState({
       days,
       hours,
       minutes,
       seconds,
+      completed: false,
+      hasStarted,
+      startTime,
+      endTime,
+    });
+  }
+
+  initializeState() {
+    getTimes().then(data => {
+      const { eventStart, eventEnd } = data;
+      this.setState({
+        startTime: eventStart,
+        endTime: eventEnd,
+      });
     });
   }
 
@@ -162,20 +161,25 @@ class CountDown extends React.Component {
       minutes,
       seconds,
       hasStarted,
+      startTime,
+      endTime,
     } = this.state;
+
+    if (startTime === -1 || endTime === -1) {
+      return <Loading />;
+    }
 
     const shouldUpdateMinutes = seconds === 0;
     let shouldUpdateHours = false;
     let shouldUpdateDays = false;
     if (shouldUpdateMinutes) {
       shouldUpdateHours = minutes === 0;
-    }
-    if (shouldUpdateHours) {
-      shouldUpdateDays = hours === 0;
+      if (shouldUpdateHours) {
+        shouldUpdateDays = hours === 0;
+      }
     }
     return (
       <div className="cell short-cell" id="countdown-cell">
-        <h1>COUNTDOWN</h1>
         <div className="clock">
           {renderValue(days, 'Days', shouldUpdateDays)}
           {renderValue(hours, 'Hours', shouldUpdateHours)}

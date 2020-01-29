@@ -4,13 +4,15 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-
   .top-half {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 1vh;
+    .clock {
+      padding: 0;
+      margin: 0;
+    }
   }
 
   .bottom-half {

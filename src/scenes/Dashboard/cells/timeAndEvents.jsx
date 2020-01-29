@@ -3,13 +3,6 @@ import { getEvents } from 'api';
 import EventBlock from 'scenes/Dashboard/dashboardComponent/eventblock';
 import ThemeContext from '../theme-context';
 
-function pad(num) {
-  if (num < 10) {
-    return `0${num}`;
-  }
-  return num;
-}
-
 function getTime(givenDate) {
   let hours = givenDate.getHours();
   let minutes = givenDate.getMinutes();
@@ -23,7 +16,7 @@ function getTime(givenDate) {
     hours -= 12;
   }
 
-  minutes = pad(minutes);
+  minutes = minutes.toString().padStart(2, '0');
 
   return {
     hours,
@@ -32,14 +25,42 @@ function getTime(givenDate) {
   };
 }
 
+function renderEvents(eventsToDisplay) {
+  return eventsToDisplay.map(val => {
+    const { name, locations, startTime } = val;
+
+    const locationsList = [];
+    locations.forEach(location => {
+      locationsList.push(location.description);
+    });
+
+    const {
+      hours: eventTimeHour,
+      minutes: eventTimeMinute,
+      isAm: eventTimeIsAm,
+    } = getTime(new Date(startTime * 1000));
+
+    const timeString = `${eventTimeHour} : ${eventTimeMinute} ${eventTimeIsAm ? 'AM' : 'PM'}`;
+
+    return (
+      <EventBlock
+        key={`${name}${startTime}`}
+        title={name}
+        locations={locationsList}
+        eventTime={timeString}
+      />
+    );
+  });
+}
+
 class Time extends React.Component {
   constructor(props) {
     super(props);
 
     const initialState = getTime(new Date());
     initialState.loadingEvents = true;
-    initialState.events = null;
-    initialState.index = 0; // Whihc event should be displayed
+    initialState.events = [];
+    initialState.leadingEventIndex = 0; // Which event should be displayed
 
     this.state = initialState;
 
@@ -50,15 +71,13 @@ class Time extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(this.setTime, 1000);
-
-      getEvents().then(res => {
-        const { events: theEvents } = res;
-        theEvents.sort((a, b) => { return a.startTime - b.startTime; });
-        this.setState({
-          loadingEvents: false,
-          events: res.events,
-        });
+    getEvents().then(events => {
+      events.sort((a, b) => (a.startTime - b.startTime));
+      this.setState({
+        loadingEvents: false,
+        events,
       });
+    });
   }
 
   componentWillUnmount() {
@@ -77,7 +96,7 @@ class Time extends React.Component {
       isAm,
       loadingEvents,
       events,
-      index,
+      leadingEventIndex,
     } = this.state;
 
     if (loadingEvents) {
@@ -85,7 +104,7 @@ class Time extends React.Component {
         <div className="cell long-cell" id="time-cell">
           <div className="clock">
             <h1>TIME</h1>
-            <p>{hours} : {minutes} {isAm ? 'AM' : 'PM'}</p>
+            <p>{hours.toString().padStart(2, '0')} : {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
             <h1>Upcoming</h1>
@@ -94,13 +113,12 @@ class Time extends React.Component {
       );
     }
 
-
-    // Only want to display the next 2 events!\
+    // Only want to display the next 2 events!
     const eventsToDisplay = [];
-    if (index < events.length) {
-      eventsToDisplay.push(events[index]);
-      if (index < events.length - 1) {
-        eventsToDisplay.push(events[index + 1]);
+    if (leadingEventIndex < events.length) {
+      eventsToDisplay.push(events[leadingEventIndex]);
+      if (leadingEventIndex < events.length - 1) {
+        eventsToDisplay.push(events[leadingEventIndex + 1]);
       }
     }
 
@@ -108,8 +126,7 @@ class Time extends React.Component {
       <div className="cell long-cell" id="time-cell">
         <div className="top-half">
           <div className="clock">
-            <h1>TIME</h1>
-            <p>{pad(hours)} : {minutes} {isAm ? 'AM' : 'PM'}</p>
+            <p>{hours.toString().padStart(2, '0')} : {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
             <h1>HAPPENING NOW</h1>
@@ -119,31 +136,7 @@ class Time extends React.Component {
         <div className="bottom-half">
           <h1>UPCOMING</h1>
           {
-            eventsToDisplay.map(val => {
-              const { name, locations, startTime } = val;
-
-              const locationsList = [];
-              locations.forEach(location => {
-                locationsList.push(location.description);
-              });
-
-              const {
-                hours: eventTimeHour,
-                minutes: eventTimeMinute,
-                isAm: eventTimeIsAm,
-              } = getTime(new Date(startTime * 1000));
-
-              const timeString = `${eventTimeHour} : ${eventTimeMinute} ${eventTimeIsAm ? 'AM' : 'PM'}`;
-
-              return (
-                <EventBlock
-                  key={`${name}${startTime}`}
-                  title={name}
-                  locations={locationsList}
-                  eventTime={timeString}
-                />
-              );
-            })
+            renderEvents(eventsToDisplay)
           }
         </div>
       </div>

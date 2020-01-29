@@ -13,7 +13,8 @@
   .clock {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    padding-top: 5vh;
+    height: 50%;
     width: 100%;
 
     .counter {
@@ -68,7 +69,7 @@
 
           
           animation: animatedflipdowntop;
-          animation-fill-mode: both;
+          animation-fill-mode: forwards;
           animation-duration: .3s;
           animation-timing-function: cubic-bezier(.37,.01,.94,.35);
         }
@@ -85,7 +86,7 @@
           backface-visibility: hidden;
 
           animation: animatedflipdownbottom;
-          animation-fill-mode: both;
+          animation-fill-mode: forwards;
           animation-duration: .6s;
           animation-timing-function: cubic-bezier(.15,.45,.28,1);
         }
