@@ -1,22 +1,12 @@
 @import './variables.scss';
 
-html, body {
-  height: 100%;
-  width: 100%;
-  font-family: 'Montserrat', sans-serif;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  overflow: hidden;
-}
-
 .dashboard-wrapper {
   height: 100vh;
   width: 100vw;
   padding-top: 0vh;
   padding-bottom: 0vh;
   box-sizing: border-box;
-  
+
   position: relative;
   overflow: hidden;
 
@@ -49,7 +39,7 @@ html, body {
   h1 {
     color: $day-dash-header-color;
   }
-  
+
   .clock {
     p {
       text-shadow: 3px 3px $day-dash-text-shadow-color;
