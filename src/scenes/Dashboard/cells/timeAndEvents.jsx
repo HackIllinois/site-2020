@@ -133,12 +133,10 @@ class Time extends React.Component {
             <p>{hours.toString().padStart(2, '0')} <span>:</span> {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
           <div className="upcoming-event">
-            <h1>HAPPENING NOW</h1>
             <EventBlock title="Check In" locations={['DCL', 'A second location!']} eventTime="NOW" />
           </div>
         </div>
         <div className="bottom-half">
-          <h1>UPCOMING</h1>
           {
             renderEvents(eventsToDisplay)
           }

@@ -24,7 +24,14 @@
       width: 33%;
       margin-right: 1vw;
       margin-left: 1vw;
+      box-sizing: border-box;
 
+      h1 {
+        font-size: 2.5vh;
+      }
+      h4 {
+        font-size: 2vh;
+      }
       .number {
         position: relative;
         box-sizing: border-box;
@@ -38,15 +45,16 @@
           position: absolute;
           box-sizing: border-box;
           width: 100%;
-          height: 48%;
+          height: 49%;
           overflow: hidden;
           
           .digit {
-            font-size: 5em;
+            font-size: 8vh;
             height: 200%;
             width: 100%;
             position: absolute;
             overflow: hidden;
+            padding: 1vh 0;
           }
           .digit-top {
             top: 0;
@@ -75,7 +83,7 @@
         }
 
         .digit-wrapper-bottom {
-          top: 52%;
+          top: 51%;
           
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
