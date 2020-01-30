@@ -21,7 +21,7 @@ export default class Travel extends React.Component {
 
   render() {
     const { currentSection } = this.state;
-    const LOCATIONS = ['Illinois', 'Michigan', 'Indiana'];
+    const LOCATIONS = ['Chicago', 'Indiana'];
     const customSelectStyles = {
       control: provided => ({
         ...provided,
