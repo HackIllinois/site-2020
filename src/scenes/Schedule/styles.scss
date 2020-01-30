@@ -11,15 +11,29 @@
   justify-content: center;
 }
 
-.thespotlight {
+.spotlight-wrapper {
+  height: 100%;
+  transform: translate(0, 50px);
   z-index: 11;
-  background-image: url("../../assets/home/billboard-light.svg");
-  background-position: center;
-  background-size: contain;
-  height: 300%;
-  width: 80%;
-  transform: translate(0, 48px);
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  @media(max-width: 600px) {
+    .sp-1 {
+      display: none;
+    }
+  }
+  @media(max-width: 400px) {
+    .sp-2 {
+      display: none;
+    }
+    justify-content: center;
+  }
+}
+
+.spotlight-itself {
+  height: 150px;
 }
 
 .leg-supports {

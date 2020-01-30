@@ -1,6 +1,7 @@
 import React from 'react';
 import Backdrop from 'components/Backdrop';
 import './styles.scss';
+import LIGHT from 'assets/home/billboard-light.svg';
 
 export default class Schedule extends React.Component {
   constructor(props) {
@@ -38,16 +39,6 @@ export default class Schedule extends React.Component {
     });
   }
 
-  /*
-  description
-  startTime
-  endTime
-  sponsor
-  description
-  eventType
-  name
-  locations.description
-  */
   render() {
     const { currentSection } = this.state;
     return (
@@ -60,7 +51,11 @@ export default class Schedule extends React.Component {
         >
           <div className="whole-sign">
             <div className="top-bar">
-              <div className="thespotlight" />
+              <div className="spotlight-wrapper">
+                <img src={LIGHT} className="spotlight-itself" alt="" />
+                <img src={LIGHT} className="spotlight-itself sp-1" alt="" />
+                <img src={LIGHT} className="spotlight-itself sp-2" alt="" />
+              </div>
             </div>
             <div className="leg-supports">
               <div className="left-leg">
