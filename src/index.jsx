@@ -9,7 +9,6 @@ import NavBar from 'components/NavBar';
 
 import Apply from 'scenes/Apply';
 import Auth from 'scenes/Auth';
-import Dashboard from 'scenes/Dashboard';
 import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
@@ -26,7 +25,6 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <AuthenticatedRoute path="/apply" component={Apply} />
       <Route path="/auth" component={Auth} />
-      <Route path="/dashboard" component={Dashboard} />
       <AuthenticatedRoute path="/mentor-registration" component={MentorRegistration} />
       <AuthenticatedRoute path="/qr" component={QR} />
       <AuthenticatedRoute path="/rsvp" component={RSVP} />
