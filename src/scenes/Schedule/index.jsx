@@ -15,6 +15,11 @@ export default class Schedule extends React.Component {
     this.getEvents();
   }
 
+  static getTime(d) {
+    const p = new Date(d);
+    return p.getHours();
+  }
+
   getEvents() {
     fetch('https://api.hackillinois.org/event/', {
       method: 'GET',
@@ -63,7 +68,7 @@ export default class Schedule extends React.Component {
             <div className="display-board">
               <div className="display-internal">
                 {this.state.events.map(e => (
-                  <div>{e.name}</div>
+                  <div>{e.name}{Schedule.getTime(e.startTime)}</div>
                 ))}
               </div>
             </div>
