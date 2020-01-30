@@ -16,8 +16,10 @@ export default class Schedule extends React.Component {
   }
 
   static getTime(d) {
-    const p = new Date(d);
-    return p.getHours();
+    const correctTime = d * 1000;
+    const p = new Date(correctTime);
+    const min = p.getMinutes();
+    return `${p.getHours()}:${min === 0 ? '00' : min}`;
   }
 
   getEvents() {
@@ -44,6 +46,7 @@ export default class Schedule extends React.Component {
   description
   eventType
   name
+  locations.description
   */
   render() {
     const { currentSection } = this.state;
@@ -56,7 +59,9 @@ export default class Schedule extends React.Component {
           onSignClick={signIndex => this.setState({ currentSection: signIndex })}
         >
           <div className="whole-sign">
-            <div className="top-bar" />
+            <div className="top-bar">
+              <div className="thespotlight" />
+            </div>
             <div className="leg-supports">
               <div className="left-leg">
                 <div className="shade" />
@@ -67,9 +72,31 @@ export default class Schedule extends React.Component {
             </div>
             <div className="display-board">
               <div className="display-internal">
-                {this.state.events.map(e => (
-                  <div>{e.name}{Schedule.getTime(e.startTime)}</div>
-                ))}
+                <div className="display-padding">
+                  {this.state.events.map((e, i) => {
+                    const len = this.state.events.length;
+                    return (
+                      <div className="event-wrapper" key={e.id}>
+                        <div className="event-box">
+                          <div className="event-box-time">
+                            {Schedule.getTime(e.startTime)}
+                          </div>
+                          <div>
+                            <div className="event-box-name">
+                              {e.name}
+                            </div>
+                            <div>
+                              {e.locations.map(l => (
+                                <div key={l.longitude}>{l.description}</div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className={i + 1 === len ? '' : 'event-line'} />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
             <div className="sign-leg">
