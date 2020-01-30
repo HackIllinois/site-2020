@@ -59,12 +59,26 @@ $dark-blue: #285163;
     }
 
     .location-select {
+      z-index: 2;
       width: 60%;
       margin: -15px 0 0 -1vw;
+      pointer-events: none;
 
+      @media (max-width: $breakpoint-tablet) {
+        pointer-events: all;
+      }
+      
       @media (max-width: $breakpoint-mobile) {
         width: 100%;
         margin-left: 0;
+      }
+
+      svg {
+        display: none;
+
+        @media (max-width: $breakpoint-tablet) {
+          display: block;
+        }
       }
     }
     

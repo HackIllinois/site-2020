@@ -43,18 +43,23 @@ export default class Travel extends React.Component {
       }),
       input: provided => ({
         ...provided,
-        color: 'white',
+        color: 'transparent',
       }),
-      menuList: provided => ({
+      option: provided => ({
         ...provided,
-        backgroundColor: '#6baec5',
-      }),
-      option: (provided, { isSelected }) => ({
-        ...provided,
-        backgroundColor: isSelected ? '#285163 !important' : '#6baec5 !important',
         color: 'white',
       }),
     };
+    const customSelectTheme = theme => ({
+      ...theme,
+      borderRadius: 0,
+      colors: {
+        ...theme.colors,
+        neutral0: '#6baec5', // neutral
+        primary25: '#4390ab', // hover
+        primary: '#285163', // selected
+      },
+    });
     return (
       <div>
         <Backdrop
@@ -74,12 +79,8 @@ export default class Travel extends React.Component {
                   onChange={selected => this.setState({ currentSection: selected.value })}
                   options={LOCATIONS.map((e, i) => ({ label: e, value: i }))}
                   styles={customSelectStyles}
+                  theme={customSelectTheme}
                 />
-                {/* <select onChange={this.handleLocation} value={currentSection} name="locations">
-                  {LOCATIONS.map((e, i) => (
-                    <option key={e} value={i}>{e}</option>
-                  ))}
-                </select> */}
                 <div className="text-container">
                   <div className="inner-text-container">
                     {CONTENT[currentSection].map((e, i) => (
