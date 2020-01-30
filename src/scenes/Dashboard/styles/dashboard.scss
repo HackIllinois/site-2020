@@ -10,7 +10,6 @@
   position: relative;
   overflow: hidden;
 
-  transition-duration: $theme-transition-duration;
   .dashboard {
     background-size: cover;
     height: 100%;
@@ -32,6 +31,7 @@
 
 //alter text colors here to propagate to ALL cells
 .day {
+  transition-duration: $theme-transition-duration;
   background: $day-dash-bg-color;
   p {
     color: $day-dash-text-color;
@@ -59,6 +59,7 @@
 
 
 .night {
+  transition-duration: $theme-transition-duration;
   background-color: $night-dash-bg-color;
   h1, h4, p {
     color: $night-dash-text-color;

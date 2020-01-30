@@ -50,11 +50,11 @@
           
           .digit {
             font-size: 8vh;
+            line-height: 11vh; //Centers text
             height: 200%;
             width: 100%;
             position: absolute;
             overflow: hidden;
-            padding: 1vh 0;
           }
           .digit-top {
             top: 0;

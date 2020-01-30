@@ -1,6 +1,7 @@
 import React from 'react';
 import { getEvents } from 'api';
 import EventBlock from 'scenes/Dashboard/dashboardComponent/eventblock';
+import Loading from 'components/Loading';
 import ThemeContext from '../theme-context';
 
 function getTime(givenDate) {
@@ -60,7 +61,8 @@ class Time extends React.Component {
     const initialState = getTime(new Date());
     initialState.loadingEvents = true;
     initialState.events = [];
-    initialState.leadingEventIndex = 0; // Which event should be displayed
+    initialState.leadingEventIndex = 0; // Which event is closest approaching/ocurring
+    initialState.eventsToRemove = []; //
 
     this.state = initialState;
 
@@ -110,9 +112,7 @@ class Time extends React.Component {
           <div className="clock">
             <p>{hours.toString().padStart(2, '0')} : {minutes} {isAm ? 'AM' : 'PM'}</p>
           </div>
-          <div className="upcoming-event">
-            <h1>Upcoming</h1>
-          </div>
+          <Loading />
         </div>
       );
     }
