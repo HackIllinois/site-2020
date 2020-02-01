@@ -19,6 +19,12 @@ export default class Maps extends React.Component {
     this.state = {
       currentSection: 0,
     };
+    this.mapsContainer = React.createRef();
+  }
+
+  setSection(section) {
+    this.mapsContainer.current.scrollTo(0, 0);
+    this.setState({ currentSection: section });
   }
 
   render() {
@@ -93,7 +99,7 @@ export default class Maps extends React.Component {
         title="Maps"
         signs={locations.map(location => location.name)}
         selectedSign={currentSection}
-        onSignClick={signIndex => this.setState({ currentSection: signIndex })}
+        onSignClick={signIndex => this.setSection(signIndex)}
       >
         <div className="maps-page">
           <div className="top-structure">
@@ -104,11 +110,14 @@ export default class Maps extends React.Component {
             <div className="first connector" />
             <div className="last connector" />
 
-            <div className="maps-container">
-              {locations[this.state.currentSection].maps.map(({ floor, image }) => (
-                <div className="map-container">
+            <div className="maps-container" ref={this.mapsContainer}>
+              {locations[currentSection].maps.map(({ floor, image }) => (
+                <div className="map-container" key={image}>
                   <div className="floor-name">{floor}</div>
-                  <div className="map-image" style={{ backgroundImage: `url(${image})` }} key={image} />
+                  <div className="map-image" style={{ backgroundImage: `url(${image})` }} />
+                  <div className="map-image mobile">
+                    <img src={image} alt="Map" />
+                  </div>
                 </div>
               ))}
             </div>
