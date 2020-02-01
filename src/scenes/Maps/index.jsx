@@ -5,6 +5,14 @@ import topStructure from 'assets/maps/top_structure.svg';
 import './style.scss';
 import Select from 'react-select';
 
+import dcl from 'assets/maps/dcl.png';
+import siebel0 from 'assets/maps/siebel0.png';
+import siebel1 from 'assets/maps/siebel1.png';
+import siebel2 from 'assets/maps/siebel2.png';
+import eceb1 from 'assets/maps/eceb1.png';
+import eceb2 from 'assets/maps/eceb2.png';
+import eceb3 from 'assets/maps/eceb3.png';
+
 export default class Maps extends React.Component {
   constructor(props) {
     super(props);
@@ -17,10 +25,26 @@ export default class Maps extends React.Component {
     const { currentSection } = this.state;
 
     const locations = [
-      { name: 'DCL', maps: [] },
-      { name: 'Siebel', maps: [] },
-      { name: 'ECEB', maps: [] },
-      { name: 'Kenney', maps: [] },
+      {
+        name: 'DCL',
+        maps: [{ floor: '1st Floor', image: dcl }],
+      },
+      {
+        name: 'Siebel',
+        maps: [
+          { floor: 'Basement', image: siebel0 },
+          { floor: '1st Floor', image: siebel1 },
+          { floor: '2nd Floor', image: siebel2 },
+        ],
+      },
+      {
+        name: 'ECEB',
+        maps: [
+          { floor: '1st Floor', image: eceb1 },
+          { floor: '2nd Floor', image: eceb2 },
+          { floor: '3rd Floor', image: eceb3 },
+        ],
+      },
     ];
 
     const customSelectStyles = {
@@ -44,18 +68,25 @@ export default class Maps extends React.Component {
       }),
       input: provided => ({
         ...provided,
-        color: 'white',
+        color: 'transparent',
       }),
-      menuList: provided => ({
+      option: provided => ({
         ...provided,
-        backgroundColor: '#E26856',
-      }),
-      option: (provided, { isSelected }) => ({
-        ...provided,
-        backgroundColor: isSelected ? '#A14234 !important' : '#E26856 !important',
         color: 'white',
       }),
     };
+
+    const customSelectTheme = theme => ({
+      ...theme,
+      borderRadius: 0,
+      colors: {
+        ...theme.colors,
+        neutral0: '#E26856', // neutral
+        primary25: '#E26856', // hover
+        primary50: '#A14234', // active
+        primary: '#A14234', // selected
+      },
+    });
 
     return (
       <Backdrop
@@ -73,7 +104,14 @@ export default class Maps extends React.Component {
             <div className="first connector" />
             <div className="last connector" />
 
-            <div className="maps-container"></div>
+            <div className="maps-container">
+              {locations[this.state.currentSection].maps.map(({ floor, image }) => (
+                <div className="map-container">
+                  <div className="floor-name">{floor}</div>
+                  <div className="map-image" style={{ backgroundImage: `url(${image})` }} key={image} />
+                </div>
+              ))}
+            </div>
 
             <Select
               className="location-select"
@@ -81,6 +119,7 @@ export default class Maps extends React.Component {
               onChange={selected => this.setState({ currentSection: selected.value })}
               options={locations.map((location, index) => ({ label: location.name, value: index }))}
               styles={customSelectStyles}
+              theme={customSelectTheme}
             />
           </div>
         </div>
