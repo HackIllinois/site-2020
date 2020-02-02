@@ -33,6 +33,7 @@
       right: 15px;
       overflow: auto;
       scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
       border: #E28B79 15px solid;
       @media (max-width: 480px) {
         border-width: 25px 10px;
@@ -42,6 +43,7 @@
 
       .map-container {
         scroll-snap-align: start;
+        scroll-snap-stop: always;
         width: 100%;
         height: 100%;
         display: flex;

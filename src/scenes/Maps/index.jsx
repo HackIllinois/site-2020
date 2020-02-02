@@ -129,6 +129,7 @@ export default class Maps extends React.Component {
               options={locations.map((location, index) => ({ label: location.name, value: index }))}
               styles={customSelectStyles}
               theme={customSelectTheme}
+              isSearchable={false}
             />
           </div>
         </div>
