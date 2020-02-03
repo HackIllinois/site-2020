@@ -130,6 +130,7 @@ export default class Maps extends React.Component {
               styles={customSelectStyles}
               theme={customSelectTheme}
               isSearchable={false}
+              classNamePrefix="react-select"
             />
           </div>
         </div>

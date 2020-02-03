@@ -91,13 +91,13 @@
       top: 10px;
       width: 200px;
       pointer-events: none;
-      svg { // overriding the dropdown arrow styles within react-select
+      .react-select__dropdown-indicator {
         display: none;
       }
 
       @media (max-width: 900px) {
         pointer-events: all;
-        svg {
+        .react-select__dropdown-indicator {
           display: initial;
         }
       }
