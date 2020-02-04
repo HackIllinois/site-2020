@@ -12,6 +12,8 @@ import shivam from 'assets/mentors/shivam.jpg';
 import sumant from 'assets/mentors/sumant.jpg';
 import yu from 'assets/mentors/yu.jpeg';
 
+export const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
+
 export const mentors = [
   {
     img: katharine,

@@ -3,26 +3,26 @@ import React from 'react';
 import Backdrop from 'components/Backdrop';
 import Select from 'react-select';
 
-import { mentors } from './mentors.js';
 import light from 'assets/mentors/billboard-light.svg';
+import { tags, mentors } from './content';
 import './style.scss';
 
-const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
-const mentorsByTag = groupByTag(mentors, tags);
-console.log(mentorsByTag);
-
-function groupByTag(mentors, tags) {
-  let groups = {};
-  for (const tag of tags) {
+function groupByTag(people) {
+  const groups = {};
+  for (let i = 0; i < tags.length; i++) {
+    const tag = tags[i];
     groups[tag] = [];
-    for (const mentor of mentors) {
-      if (mentor.tags.includes(tag)) {
-        groups[tag].push(mentor);
+    for (let j = 0; j < people.length; j++) {
+      const person = people[j];
+      if (person.tags.includes(tag)) {
+        groups[tag].push(person);
       }
     }
   }
   return groups;
 }
+
+const mentorsByTag = groupByTag(mentors);
 
 export default class Mentors extends React.Component {
   constructor(props) {
@@ -101,7 +101,7 @@ export default class Mentors extends React.Component {
               id="header"
               value={{ label: tags[idx], value: idx }}
               onChange={selected => this.onChange(selected.value)}
-              options={tags.map((tag, idx) => ({ label: tag, value: idx }))}
+              options={tags.map((t, i) => ({ label: t, value: i }))}
               styles={customSelectStyles}
               theme={customSelectTheme}
               isSearchable={false}
@@ -116,8 +116,7 @@ export default class Mentors extends React.Component {
             </div>
             <div id="border">
               <div id="canvas">
-                {mentorsByTag[tag].map(mentor => {
-                  return (
+                {mentorsByTag[tag].map(mentor => (
                   <div key={mentor.name} className="mentor">
                     <img src={mentor.img} alt="profile" />
                     <div className="info">
@@ -125,8 +124,7 @@ export default class Mentors extends React.Component {
                       <p>{mentor.bio}</p>
                     </div>
                   </div>
-                );
-              })}
+                ))}
               </div>
               <div id="lights">
                 <img src={light} className="left" alt="light" />
