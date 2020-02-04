@@ -1,110 +1,126 @@
 #billboard {
-   #header {
-     background: #A43B5C;
-     height: 52px;
-     position: relative;
+  #header {
+    @media (min-width: 900px) {
+      .react-select__control {
+        pointer-events: none;
+        disabled: yes;
+      }
+      .react-select__dropdown-indicator {
+        display: none;
+      }
+    }
+  }
 
-     h1 {
-       position: absolute;
-       top: 50%;
-       left: 64px;
-       transform: translateY(-50%);
+  .left {
+    left: 64px;
+  }
 
-       color: white;
-       font-size: 16px;
-       font-weight: 600;
-     }
-   }
+  .right {
+    right: 64px;
+  }
 
-   .left {
-     left: 64px;
-   }
+  .connector {
+    background: #E35058;
 
-   .right {
-     right: 64px;
-   }
+    position: absolute;
+    top: 52px;
+    height: 16px;
+    width: 64px;
 
-   .connector {
-     background: #E35058;
-
-     position: absolute;
-     top: 52px;
-     height: 16px;
-     width: 64px;
-
-     .shadow {
+    .shadow {
        background: rgba(0, 0, 0, 0.5);
        height: 8px;
-     }
-   }
+    }
+  }
 
-   #border {
-     background: #A43B5C;
+  #border {
+  background: #A43B5C;
 
-     position: absolute;
-     top: 68px;
-     bottom: 80px;
-     height: auto;
-     left: 0;
-     width: 100%;
+  position: absolute;
+  top: 68px;
+  bottom: 80px;
+  height: auto;
+  left: 0;
+  width: 100%;
 
-     #canvas {
-       background: #222B5C;
-       height: calc(100% - 64px);
-       margin: 24px;
-       padding-top: 16px;
-       overflow-y: scroll;
+  #canvas {
+    background: #222B5C;
+    height: calc(100% - 64px);
+    margin: 24px;
+    padding-top: 16px;
+    overflow-y: scroll;
 
-       .mentor {
-         border: 1px solid white;
-         border-radius: 8px;
+    .mentor {
+      border: 1px solid white;
+      border-radius: 8px;
 
-         margin: 24px 32px;
-         padding: 24px;
+      margin: 24px 32px;
+      padding: 24px;
 
-         img {
-           border-radius: 50%;
-           color: red;
-           width: 64px;
-           height: 64px;
+      img {
+        border-radius: 50%;
+        color: red;
+        width: 64px;
+        height: 64px;
 
-           float: left;
-           margin-right: 16px;
-         }
+        float: left;
+        margin-right: 16px;
+      }
 
-         .info {
-           overflow-x: hidden;
-           color: white;
+      .info {
+        overflow-x: hidden;
+        color: white;
 
-           h1 {
-             font-size: 16px;
-             font-weight: 600;
-             margin-bottom: 16px;
-           }
+        h1 {
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 16px;
+        }
 
-           p {
-             font-size: 14px;
-           }
-         }
-       }
-     }
-   }
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 
-   #bottom {
-     background: #E35058;
+#lights {
+ position: absolute;
+ top: -8px;
+ width: 100%;
 
-     position: absolute;
-     margin: auto;
+ .left {
+   position: absolute;
+   left: -4px;
+ }
 
-     width: 100px;
-     left: 0;
-     right: 0;
-     height: 80px;
-     bottom: 0;
+ .middle {
+   position: absolute;
+   left: calc(50% - 96px);
+ }
 
-     .shadow {
-       background: rgba(0, 0, 0, 0.5);
-       height: 28px;
-     }
-   }
+ .right {
+   position: absolute;
+   right: -4px;
+ }
+}
+
+#bottom {
+ background: #E35058;
+
+ position: absolute;
+ margin: auto;
+
+ width: 100px;
+ left: 0;
+ right: 0;
+ height: 80px;
+ bottom: 0;
+
+ .shadow {
+   background: rgba(0, 0, 0, 0.5);
+   height: 28px;
+ }
+}
 }

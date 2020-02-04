@@ -1,24 +1,18 @@
-import amber from 'assets/mentors/amber.jpeg';
-import edward from 'assets/mentors/edward.jpeg';
-import jonathan from 'assets/mentors/jonathan.jpeg';
+import amber from 'assets/mentors/amber.jpg';
+import edward from 'assets/mentors/edward.jpg';
+import jonathan from 'assets/mentors/jonathan.jpg';
 import joshua from 'assets/mentors/joshua.png';
 import katharine from 'assets/mentors/katharine.jpeg';
 import maxim from 'assets/mentors/maxim.jpeg';
-import michael from 'assets/mentors/michael.jpeg';
+import michael from 'assets/mentors/michael.jpg';
 import nick from 'assets/mentors/nick.jpeg';
 import seth from 'assets/mentors/seth.png';
-import shahzad from 'assets/mentors/shahzad.jpeg';
-import shivam from 'assets/mentors/shivam.jpeg';
-import sumant from 'assets/mentors/sumant.jpeg';
+import shahzad from 'assets/mentors/shahzad.jpg';
+import shivam from 'assets/mentors/shivam.jpg';
+import sumant from 'assets/mentors/sumant.jpg';
 import yu from 'assets/mentors/yu.jpeg';
 
 export const mentors = [
-  {
-    img: seth,
-    name: 'Seth Bromberger',
-    bio: 'I have been involved in network and systems security for over twenty years. My work history spans multiple industries and sectors including government, finance, and energy.',
-    tags: ['DATA SCI'],
-  },
   {
     img: katharine,
     name: 'Katharine Hyatt',
@@ -64,8 +58,14 @@ export const mentors = [
   {
     img: jonathan,
     name: 'Jonathan Reynolds',
-    bio: 'I\'m Jonathan Reynolds, a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Specifically, I contribute to visualization and interpretability tools for PyTorch models such as TensorBoard and Captum. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
+    bio: 'I\'m Jonathan Reynolds, a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
     tags: ['SYSTEMS', 'DATA SCI'],
+  },
+  {
+    img: seth,
+    name: 'Seth Bromberger',
+    bio: 'I have been involved in network and systems security for over twenty years. My work history spans multiple industries and sectors including government, finance, and energy.',
+    tags: ['DATA SCI'],
   },
   {
     img: amber,
