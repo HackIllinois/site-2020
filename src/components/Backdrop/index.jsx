@@ -8,7 +8,7 @@ import topSign from 'assets/common_backdrop/top-sign.svg';
 import NavBar from 'components/NavBar';
 
 export default function Backdrop(props) {
-  const signRotations = ['9deg', '0deg', '-8deg', '0deg'];
+  const signRotations = ['9deg', '0deg', '-8deg', '9deg'];
 
   return (
     <div className="Backdrop">
