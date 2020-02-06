@@ -11,7 +11,6 @@ const links = [
   { text: 'Maps', to: '/maps' },
   // { text: 'Prizes', to: '/prizes' },
   { text: 'Travel', to: '/travel' },
-  { text: 'Projects', to: '/projects' },
   { text: 'Mentors', to: '/mentors' },
 ];
 
