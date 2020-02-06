@@ -82,7 +82,7 @@ export default class Mentors extends React.Component {
       colors: {
         ...theme.colors,
         neutral0: '#A43B5C', // neutral
-        primary25: '#E35058', // hover
+        primary25: '#A43B5C', // hover
         primary50: '#E35058', // active
         primary: '#E35058', // selected
       },

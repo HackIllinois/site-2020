@@ -91,6 +91,9 @@
  width: 100%;
 
  .left {
+   @media (max-width: 500px) {
+     visibility: hidden;
+   }
    position: absolute;
    left: -4px;
  }
@@ -101,6 +104,9 @@
  }
 
  .right {
+   @media (max-width: 500px) {
+     visibility: hidden;
+   }
    position: absolute;
    right: -4px;
  }
