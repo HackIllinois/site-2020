@@ -1,7 +1,8 @@
 import React from 'react';
 import Select from 'react-select';
+
 import Backdrop from 'components/Backdrop';
-import BillboardTop from 'assets/travel/travel_billboard_top.svg';
+import BillboardTop from 'assets/travel/billboard_top.svg';
 import CONTENT from './content';
 import './style.scss';
 
