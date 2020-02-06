@@ -110,6 +110,7 @@
     position: absolute;
     bottom: 0;
     min-width: 100%;
+    pointer-events: none; // allows clicks, scrolls, etc. to pass through
 
     &.mobile {
       display: none;
