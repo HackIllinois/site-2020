@@ -9,7 +9,7 @@ import menu from 'assets/icons/menu.svg';
 const links = [
   // { text: 'Schedule', to: '/schedule' },
   // { text: 'Maps', to: '/maps' },
-  // { text: 'Prizes', to: '/prizes' },
+  { text: 'Prizes', to: '/prizes' },
   // { text: 'Travel', to: '/travel' },
   // { text: 'Projects', to: '/projects' },
 ];
