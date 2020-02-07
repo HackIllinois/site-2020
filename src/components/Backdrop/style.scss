@@ -86,6 +86,9 @@
   .content-container {
     position: absolute;
     bottom: 71px;
+    @media (max-width: 600px) {
+      bottom: 0px;
+    }
     left: 400px;
     top: 80px;
     right: 100px;
@@ -111,6 +114,7 @@
 
     &.mobile {
       display: none;
+      bottom: -40px;
       left: 50%;
       transform: translateX(-50%);
     }

@@ -1,10 +1,12 @@
 import React from 'react';
 
 import './style.scss';
+
 import scenery from 'assets/common_backdrop/scenery.svg';
-import sceneryMobile from 'assets/common_backdrop/scenery_mobile.svg';
+import sceneryMobile from 'assets/common_backdrop/scenery-mobile.svg';
 import background from 'assets/common_backdrop/background.png';
 import topSign from 'assets/common_backdrop/top-sign.svg';
+
 import NavBar from 'components/NavBar';
 
 export default function Backdrop(props) {
