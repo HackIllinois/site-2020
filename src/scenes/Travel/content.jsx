@@ -6,12 +6,20 @@ const Chicago = [
         title: 'PICKUP',
         body: [
           {
-            title: 'LAMO - 2/22/2019 at 9:00AM EST',
-            body: 'Electrical Engineering and Computer Chads Building\n1301 Beal Ave, Ann Arbor, MI 48109',
+            title: 'Northwestern University - 2/29/2020 at 12:00PM CST',
+            body: 'Weinberg College of Arts and Science, 1918 Sheridan Rd, Evanston, IL',
           },
           {
-            title: 'LAMOOOOO - 2/22/2019 at 10:30AM EST',
-            body: 'Engineering Building\n428 S Shaw Ln #3115, East Lansing, MI 48824',
+            title: 'UIC - 2/29/2019 at 1:00PM CST',
+            body: 'Richard Daley Library, 801 South Morgan Street, Chicago, IL',
+          },
+          {
+            title: 'DePaul University - 2/29/2019 at 1:30PM CST',
+            body: 'CDM Center, 243 S Wabash Ave, Chicago, IL',
+          },
+          {
+            title: 'Union Station - 2/29/2019 at 2:00PM CST',
+            body: 'Chicago, IL',
           },
         ],
       },
@@ -19,22 +27,8 @@ const Chicago = [
         title: 'ARRIVAL',
         body: [
           {
-            title: 'YEEE - 4:15PM CST',
-            body: 'Siebel Center for sad cs bois\n201 N Goodwin Ave, Urbana, IL 61801',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'FROM UIUC',
-    body: [
-      {
-        title: 'PICKUP',
-        body: [
-          {
-            title: '2/24/2019 at 5:15PM CST',
-            body: 'ALBERT WAS HERE',
+            title: 'UIUC - 2/29/2019 at 4:30PM CST',
+            body: 'Thomas M. Siebel Center for Computer Science, 201 N. Goodwin Ave, Urbana, IL',
           },
         ],
       },
@@ -50,12 +44,16 @@ const Indiana = [
         title: 'PICKUP',
         body: [
           {
-            title: 'Yeet University, Yeetville - 2/22/2019 at 11:00AM EST',
-            body: 'Electrical Engineering and Computer Science Building1301 Beal Ave, Ann Arbor, MI 48109',
+            title: 'Arrive at IUPUI - 2/29/2020 at 12:30PM EST',
+            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
           {
-            title: 'BEGONE THOUGHT UNI - 2/22/2019 at 99:99AM EST',
-            body: 'Engineering Building\n428 S Shaw Ln #3115, East Lansing, MI 48824',
+            title: 'Depart IUPUI - 2/22/2019 at 1:00PM EST',
+            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
+          },
+          {
+            title: 'Depart Purdue - 2/22/2019 at 3:00PM EST',
+            body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West LaFayette, IN',
           },
         ],
       },
@@ -63,22 +61,8 @@ const Indiana = [
         title: 'ARRIVAL',
         body: [
           {
-            title: 'YA YEET 4:15PM CST',
-            body: 'Siebel Center for Computer Science\n201 N Goodwin Ave, Urbana, IL 61801',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'FROM UIUC',
-    body: [
-      {
-        title: 'PICKUP',
-        body: [
-          {
-            title: '2/24/2019 at 5:15PM CST',
-            body: 'SANJII IS DA BEST',
+            title: 'Arrive at Siebel Center for Computer Science - 4:30PM CST',
+            body: 'Siebel Center\n201 N Goodwin Ave, Urbana, IL 61801',
           },
         ],
       },
