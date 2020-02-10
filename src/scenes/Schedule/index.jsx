@@ -86,7 +86,7 @@ export default class Schedule extends React.Component {
               <img src={LIGHT} className="spotlight-itself sp-1" alt="" />
               <img src={LIGHT} className="spotlight-itself sp-2" alt="" />
             </div>
-            <div className="top-bar"/>
+            <div className="top-bar" />
             <div className="leg-supports">
               <div className="left-leg">
                 <div className="shade" />
