@@ -41,7 +41,7 @@ export default class RSVP extends React.Component {
     const { isEditing } = this.state;
 
     // Hotfix
-    if (registration.dietaryRestrictions == undefined) {
+    if (registration.dietaryRestrictions === undefined) {
       registration.dietaryRestrictions = [];
     }
 
