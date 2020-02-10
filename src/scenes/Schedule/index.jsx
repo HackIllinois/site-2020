@@ -23,7 +23,7 @@ export default class Schedule extends React.Component {
     const p = new Date(correctTime);
     const min = p.getMinutes();
     const h = p.getHours();
-    return `${h === 0 ? '12' : p.getHours() % 12}:${min < 10 ? '0' : ''}${min}${h >= 12 ? 'pm' : 'am'}`;
+    return `${h % 12 === 0 ? '12' : p.getHours() % 12}:${min < 10 ? '0' : ''}${min}${h >= 12 ? 'pm' : 'am'}`;
   }
 
   static getDayofWeek(d) {
@@ -54,6 +54,8 @@ export default class Schedule extends React.Component {
   render() {
     const { currentSection, events, expanded } = this.state;
     const signs = ['Friday', 'Saturday', 'Sunday'];
+    const eventStart = 1582869600;
+    const eventEnd = 1583128799;
     return (
       <div>
         <Backdrop
@@ -74,18 +76,17 @@ export default class Schedule extends React.Component {
             >
               <img src={ARROW} alt="" className={`arr ${expanded ? 'turned-over' : 'turned-over-not'}`} />
             </button>
-            <div className="top-bar">
-              <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
-                <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 0, expanded: false }); }}>Friday</button>
-                <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 1, expanded: false }); }}>Saturday</button>
-                <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 2, expanded: false }); }}>Sunday</button>
-              </div>
-              <div className="spotlight-wrapper">
-                <img src={LIGHT} className="spotlight-itself" alt="" />
-                <img src={LIGHT} className="spotlight-itself sp-1" alt="" />
-                <img src={LIGHT} className="spotlight-itself sp-2" alt="" />
-              </div>
+            <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
+              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 0, expanded: false }); }}>Friday</button>
+              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 1, expanded: false }); }}>Saturday</button>
+              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 2, expanded: false }); }}>Sunday</button>
             </div>
+            <div className="spotlight-wrapper">
+              <img src={LIGHT} className="spotlight-itself" alt="" />
+              <img src={LIGHT} className="spotlight-itself sp-1" alt="" />
+              <img src={LIGHT} className="spotlight-itself sp-2" alt="" />
+            </div>
+            <div className="top-bar"/>
             <div className="leg-supports">
               <div className="left-leg">
                 <div className="shade" />
@@ -101,7 +102,8 @@ export default class Schedule extends React.Component {
                     events.map((e, i) => {
                       const len = events.length;
                       const dayOfWeek = Schedule.getDayofWeek(e.startTime);
-                      if (dayOfWeek === currentSection) {
+                      if (dayOfWeek === currentSection
+                        && e.startTime > eventStart && e.startTime < eventEnd) {
                         return (
                           <div className="event-wrapper" key={e.id}>
                             <div className="event-box">
