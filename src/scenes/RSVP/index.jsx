@@ -40,6 +40,11 @@ export default class RSVP extends React.Component {
   submit = registration => {
     const { isEditing } = this.state;
 
+    // Hotfix
+    if (registration.dietaryRestrictions === undefined) {
+      registration.dietaryRestrictions = [];
+    }
+
     registration.isAttending = true;
     this.setState({ registration, isLoading: true });
 
