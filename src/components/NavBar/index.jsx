@@ -7,7 +7,7 @@ import logoWhite from 'assets/logo_white.svg';
 import menu from 'assets/icons/menu.svg';
 
 const links = [
-  // { text: 'Schedule', to: '/schedule' },
+  { text: 'Schedule', to: '/schedule' },
   { text: 'Maps', to: '/maps' },
   // { text: 'Prizes', to: '/prizes' },
   { text: 'Travel', to: '/travel' },
