@@ -182,12 +182,8 @@ export const FAQ_PANELS = {
     content: [
       [
         {
-          q: 'Do I have to stay in the North Quad? (Siebel and ECEB)',
-          a: 'Nope! Feel free to roam around Urbana-Champaign and explore what we have to offer.',
-        },
-        {
-          q: 'How can I stay updated with what is going on at the event?',
-          a: 'Please download the app beforehand! Our website will also be continually updated with new information throughout the year.',
+          q: 'Can I work on my own projects?',
+          a: 'Yes, feel free to work on your own project, people in past years have won creating projects from scratch! However, the benefit of working with a mentor or company is that you get guidance and the opportunity to communicate with experts in the field.',
         },
       ],
       [
@@ -196,8 +192,8 @@ export const FAQ_PANELS = {
           a: 'Working space will be available in Siebel and ECEB.',
         },
         {
-          q: 'Can I work on my own projects?',
-          a: 'Yes, feel free to work on your own project, people in past years have won creating projects from scratch! However, the benefit of working with a mentor or company is that you get guidance and the opportunity to communicate with experts in the field.',
+          q: 'How can I stay updated with what is going on at the event?',
+          a: 'Please download the app beforehand! Our website will also be continually updated with new information throughout the year.',
         },
       ],
       [

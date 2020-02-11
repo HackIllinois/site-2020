@@ -1,0 +1,127 @@
+.maps-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .top-structure {
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .main-structure {
+    flex: 1;
+    margin: 0 20px;
+    border-left: #E26856 35px solid;
+    border-right: #E26856 35px solid;
+    position: relative;
+    @media (max-width: 480px) {
+      margin: 0 10px;
+      border-width: 15px;
+    }
+
+    .maps-container {
+      background-color: #11252C;
+      position: absolute;
+      top: 20px;
+      bottom: 70px;
+      left: 15px;
+      right: 15px;
+      overflow: auto;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      border: #E28B79 15px solid;
+      @media (max-width: 480px) {
+        border-width: 25px 10px;
+        left: 10px;
+        right: 10px;
+      }
+
+      .map-container {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .floor-name {
+          color: white;
+          text-align: center;
+          font-size: 1.6em;
+          margin-top: 20px;
+          margin-bottom: -5px;
+          @media (max-width: 480px) {
+            margin-top: 10px;
+          }
+        }
+
+        .map-image {
+          flex: 1;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+
+          &.mobile {
+            display: none;
+            overflow: auto;
+
+            img {
+              height: 100%;
+            }
+          }
+
+          @media (max-width: 600px) {
+            display: none;
+            &.mobile {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .location-select {
+      position: absolute;
+      left: 50px;
+      top: 10px;
+      width: 200px;
+      pointer-events: none;
+      .react-select__dropdown-indicator {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        pointer-events: all;
+        .react-select__dropdown-indicator {
+          display: initial;
+        }
+      }
+
+      @media (max-width: 600px) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .connector {
+      position: absolute;
+      left: 0;
+      height: 25px;
+      width: 100%;
+      background-color: #A14234;
+
+      &.first {
+        top: 30px;
+      }
+
+      &.last {
+        bottom: 80px;
+      }
+    }
+  }
+}
