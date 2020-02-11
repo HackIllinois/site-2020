@@ -1,0 +1,161 @@
+$breakpoint-tablet: 900px;
+$breakpoint-mobile: 600px;
+$light-blue: #6baec5;
+$dark-blue: #285163;
+
+.structure {
+  display: flex;
+  flex-direction: column;
+}
+
+.billboard-top {
+  width: 105%;
+  max-height: 6.5vw;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+    max-height: 100px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 120vw;
+    margin-left: -15vw;
+  }
+}
+
+.billboard-bottom {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+
+  .leg {
+    height: 100%;
+    border-top: 15px solid #152e39;
+    width: 4%;
+    background: $dark-blue;
+    margin-left: 10%;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 30px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-left: -30px;
+      min-width: 5vw;
+    }
+  }
+  
+  .sign-container {
+    z-index: 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $breakpoint-mobile) {
+      min-width: 96vw;
+      margin-left: -3vw;
+    }
+
+    .location-select {
+      z-index: 2;
+      width: 60%;
+      margin: -15px 0 0 -1vw;
+      pointer-events: none;
+
+      @media (max-width: $breakpoint-tablet) {
+        pointer-events: all;
+      }
+      
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      svg {
+        display: none;
+
+        @media (max-width: $breakpoint-tablet) {
+          display: block;
+        }
+      }
+    }
+    
+    .text-container {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 80%;
+      width: 100%;
+      overflow: scroll;
+      margin: 15px auto 0 -1vw;
+      background: $dark-blue;
+      border: 1vw solid $light-blue;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 300;
+      color: white;
+
+      @media (max-width: $breakpoint-tablet) {
+        border: 10px solid $light-blue;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+        border: none;
+        margin: 15px 0 0 0;
+      }
+
+      .inner-text-container {
+        padding: 15px;
+
+        @media (max-width: $breakpoint-mobile) {
+          overflow: scroll;
+          border: 10px solid $light-blue;
+        }
+      }
+
+      hr {
+        margin-bottom: 1.5em;
+      }
+
+      h3 {
+        font-size: 2em;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      h4 {
+        font-weight: 600;
+      }
+
+      .sub-container {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .left-column {
+        width: 20%;
+      }
+
+      .item-container {
+        width: 80%;
+        margin-bottom: 1em;
+
+        .item {
+          margin-bottom: 0.8em;
+        }
+      }
+    }
+    
+    .stando {
+      z-index: -1;
+      height: 20%;
+      width: 70%;
+      align-self: center;
+      border-top: 15px solid #3E7081;
+      background: $light-blue;
+    }
+  }
+  
+}

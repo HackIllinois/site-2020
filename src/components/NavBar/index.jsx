@@ -10,7 +10,7 @@ const links = [
   // { text: 'Schedule', to: '/schedule' },
   { text: 'Maps', to: '/maps' },
   // { text: 'Prizes', to: '/prizes' },
-  // { text: 'Travel', to: '/travel' },
+  { text: 'Travel', to: '/travel' },
   { text: 'Mentors', to: '/mentors' },
 ];
 
