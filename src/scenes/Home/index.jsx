@@ -15,6 +15,13 @@ import tagline from 'assets/home/tagline.svg';
 import sCar from 'assets/sponsors/car.svg';
 import sBike from 'assets/sponsors/bike.svg';
 import sBus from 'assets/sponsors/bus.svg';
+
+import {
+  BusSponsors,
+  CarSponsors,
+  BikeSponsors,
+} from './sponsors';
+
 import {
   BACKGROUND_DECOR,
   DESCRIPTIONS,
@@ -531,20 +538,57 @@ const Sponsors = Styled.div`
 
 const SponsorWrapper = Styled.div`
   background: #EEE8E0;
-  width: 60vw;
-  height: 500px;
-  display: flex;
-  margin: 175px 0 25px 0;
+  width: 80vw;
+  display: grid;
+  margin: 250px 30px 25px 30px;
   overflow: visible;
-  justify-content: center;
   position: relative;
+  padding: 100px 20px 60px 20px;
+  grid-template-columns: ${props => props.cols};
+  grid-row-gap: 20px;
+  grid-column-gap: 40px;
+  justify-items: center;
+  max-width: 1000px;
+  @media(max-width: 800px) {
+    margin: 150px 30px 25px 30px;
+    padding: 75px 20px 40px 20px;
+  }
+  @media(max-width: 475px) {
+    margin: 100px 30px 25px 30px;
+    padding: 50px 20px 20px 20px;
+    grid-row-gap: 10px;
+    grid-column-gap: 20px;
+  }
+  @media(max-width: 325px) {
+    margin: 50px 30px 25px 30px;
+    grid-row-gap: 5px;
+    grid-column-gap: 10px;
+  }
 `;
 
 const SponsorMascot = Styled.img`
-  width: 30%;
-  top: -20%;
+  width: ${props => props.width};
+  top: ${props => `${props.top}%`};
   position: absolute;
+  min-width: ${props => props.minwidth};
+  left: 50%;
+  transform: translate(-50%);
+  @media(max-width: 800px) {
+    top: ${props => `${props.top + 10}%`};
+  }
+  @media(max-width: 475px) {
+    top: ${props => `${props.top + 15}%`};
+  }
+  @media(max-width: 325px) {
+    top: ${props => `${props.top + 20}%`};
+  }
 `;
+
+const SponsorLogo = Styled.img`
+  width: 90%;
+  padding: 10px;
+`;
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -724,14 +768,23 @@ export default class Home extends React.Component {
           </GroundContent>
         </Content>
         <Sponsors>
-          <SponsorWrapper>
-            <SponsorMascot src={sBus} />
+          <SponsorWrapper cols="1fr 1fr">
+            <SponsorMascot top={-35} width="27%" src={sBus} />
+            {BusSponsors.map(s => (
+              <SponsorLogo src={s} />
+            ))}
           </SponsorWrapper>
-          <SponsorWrapper>
-            <SponsorMascot src={sCar} />
+          <SponsorWrapper cols="1fr 1fr 1fr">
+            <SponsorMascot top={-35} width="25%" src={sCar} />
+            {CarSponsors.map(s => (
+              <SponsorLogo src={s} />
+            ))}
           </SponsorWrapper>
-          <SponsorWrapper>
-            <SponsorMascot src={sBike} />
+          <SponsorWrapper cols="1fr 1fr 1fr 1fr">
+            <SponsorMascot top={-30} width="15%" src={sBike} />
+            {BikeSponsors.map(s => (
+              <SponsorLogo src={s} />
+            ))}
           </SponsorWrapper>
         </Sponsors>
       </Container>
