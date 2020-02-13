@@ -120,7 +120,7 @@ export default class Schedule extends React.Component {
                               </div>
                               <div>
                                 <div className="event-box-name">
-                                  {e.name}
+                                  {e.name.toUpperCase()}
                                 </div>
                                 <div>
                                   {e.locations.map(l => (

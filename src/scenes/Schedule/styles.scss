@@ -123,6 +123,7 @@
   flex-direction: row;
   color: #222B5C;
   font-size: 16px;
+  line-height: 20px;
   .event-box-time {
     font-weight: 600;
     margin: 0 60px 0 0;
@@ -135,6 +136,7 @@
   .event-box-name {
     font-weight: 600;
     line-height: 20px;
+    margin-bottom: 2px;
   }
   .event-box-hidden {
     opacity: 0;
