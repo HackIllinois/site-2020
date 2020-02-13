@@ -6,19 +6,19 @@ const Chicago = [
         title: 'PICKUP',
         body: [
           {
-            title: 'Northwestern University - 2/29/2020 at 12:00PM CST',
+            title: 'Northwestern University - 2/28/2020 at 12:00PM CST',
             body: 'Weinberg College of Arts and Science, 1918 Sheridan Rd, Evanston, IL',
           },
           {
-            title: 'UIC - 2/29/2019 at 1:00PM CST',
+            title: 'UIC - 2/28/2019 at 1:00PM CST',
             body: 'Richard Daley Library, 801 South Morgan Street, Chicago, IL',
           },
           {
-            title: 'DePaul University - 2/29/2019 at 1:30PM CST',
+            title: 'DePaul University - 2/28/2019 at 1:30PM CST',
             body: 'CDM Center, 243 S Wabash Ave, Chicago, IL',
           },
           {
-            title: 'Union Station - 2/29/2019 at 2:00PM CST',
+            title: 'Union Station - 2/28/2019 at 2:00PM CST',
             body: 'Chicago, IL',
           },
         ],
@@ -27,8 +27,22 @@ const Chicago = [
         title: 'ARRIVAL',
         body: [
           {
-            title: 'UIUC - 2/29/2019 at 4:30PM CST',
+            title: 'UIUC - 2/28/2019 at 4:30PM CST',
             body: 'Thomas M. Siebel Center for Computer Science, 201 N. Goodwin Ave, Urbana, IL',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'FROM UIUC',
+    body: [
+      {
+        title: 'PICKUP',
+        body: [
+          {
+            title: 'Depart UIUC - 3/1/2020 at 4:30PM CST',
+            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
         ],
       },
@@ -44,15 +58,15 @@ const Indiana = [
         title: 'PICKUP',
         body: [
           {
-            title: 'Arrive at IUPUI - 2/29/2020 at 12:30PM EST',
+            title: 'Arrive at IUPUI - 2/28/2020 at 12:30PM EST',
             body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
           {
-            title: 'Depart IUPUI - 2/22/2019 at 1:00PM EST',
+            title: 'Depart IUPUI - 2/28/2019 at 1:00PM EST',
             body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
           {
-            title: 'Depart Purdue - 2/22/2019 at 3:00PM EST',
+            title: 'Depart Purdue - 2/28/2019 at 3:00PM EST',
             body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West LaFayette, IN',
           },
         ],
@@ -61,8 +75,22 @@ const Indiana = [
         title: 'ARRIVAL',
         body: [
           {
-            title: 'Arrive at Siebel Center for Computer Science - 4:30PM CST',
-            body: 'Siebel Center\n201 N Goodwin Ave, Urbana, IL 61801',
+            title: 'Arrive at UIUC - 2/28/2020 at 4:30PM CST',
+            body: 'Thomas M. Siebel Center for Computer Science, 201 N Goodwin Ave, Urbana, IL',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'FROM UIUC',
+    body: [
+      {
+        title: 'PICKUP',
+        body: [
+          {
+            title: 'Depart UIUC - 3/1/2020 at 4:30PM CST',
+            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
         ],
       },

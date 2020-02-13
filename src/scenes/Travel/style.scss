@@ -27,7 +27,7 @@ $dark-blue: #285163;
 .billboard-bottom {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 80vh;
   width: 100%;
 
   .leg {
@@ -50,6 +50,7 @@ $dark-blue: #285163;
   .sign-container {
     z-index: 0;
     width: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 
@@ -96,7 +97,7 @@ $dark-blue: #285163;
       z-index: 1;
       display: flex;
       flex-direction: column;
-      height: 80%;
+      height: 70%;
       width: 100%;
       overflow: scroll;
       margin: 15px auto 0 -1vw;
