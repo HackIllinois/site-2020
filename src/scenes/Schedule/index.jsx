@@ -56,6 +56,7 @@ export default class Schedule extends React.Component {
     const signs = ['Friday', 'Saturday', 'Sunday'];
     const eventStart = 1582869600;
     const eventEnd = 1583128799;
+    const keyDownButton = 70; // Key down for accessibility 70 is for F
     return (
       <div>
         <Backdrop
@@ -72,14 +73,14 @@ export default class Schedule extends React.Component {
               type="button"
               className="top-arrow"
               onClick={() => this.setState({ expanded: !expanded })}
-              onKeyDown={ev => { if (ev.keyCode === 70) this.setState({ expanded: !expanded }); }}
+              onKeyDown={ev => {
+                if (ev.keyCode === keyDownButton) this.setState({ expanded: !expanded });
+              }}
             >
               <img src={ARROW} alt="" className={`arr ${expanded ? 'turned-over' : 'turned-over-not'}`} />
             </button>
             <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
-              <button type="button" className={`day-button-style ${currentSection === 0 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 0, expanded: false }); }}>Friday</button>
-              <button type="button" className={`day-button-style ${currentSection === 1 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 1, expanded: false }); }}>Saturday</button>
-              <button type="button" className={`day-button-style ${currentSection === 2 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 2, expanded: false }); }}>Sunday</button>
+              {[0, 1, 2].map(e => <button type="button" className={`day-button-style ${currentSection === e ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: e, expanded: false }); }}>{signs[e]}</button>)}
             </div>
             <div className="spotlight-wrapper">
               <img src={LIGHT} className="spotlight-itself" alt="" />
@@ -90,7 +91,9 @@ export default class Schedule extends React.Component {
               type="button"
               className="top-bar"
               onClick={() => this.setState({ expanded: !expanded })}
-              onKeyDown={ev => { if (ev.keyCode === 70) this.setState({ expanded: !expanded }); }}
+              onKeyDown={ev => {
+                if (ev.keyCode === keyDownButton) this.setState({ expanded: !expanded });
+              }}
             >{' '}
             </button>
             <div className="leg-supports">
