@@ -86,7 +86,13 @@ export default class Schedule extends React.Component {
               <img src={LIGHT} className="spotlight-itself sp-1" alt="" />
               <img src={LIGHT} className="spotlight-itself sp-2" alt="" />
             </div>
-            <div className="top-bar" />
+            <button
+              type="button"
+              className="top-bar"
+              onClick={() => this.setState({ expanded: !expanded })}
+              onKeyDown={ev => { if (ev.keyCode === 70) this.setState({ expanded: !expanded }); }}
+            >{' '}
+            </button>
             <div className="leg-supports">
               <div className="left-leg">
                 <div className="shade" />
