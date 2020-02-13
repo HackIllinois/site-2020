@@ -12,6 +12,9 @@ import foregroundBush from 'assets/home/foreground_bushes.svg';
 import signBush from 'assets/home/sign_bush.svg';
 import tagline from 'assets/home/tagline.svg';
 
+import sCar from 'assets/sponsors/car.svg';
+import sBike from 'assets/sponsors/bike.svg';
+import sBus from 'assets/sponsors/bus.svg';
 import {
   BACKGROUND_DECOR,
   DESCRIPTIONS,
@@ -516,6 +519,32 @@ const BoldDiv = Styled.div`
   margin-bottom: 4px;
 `;
 
+const Sponsors = Styled.div`
+  background: #4B8655;
+  width: 100vw;
+  margin: -10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+`;
+
+const SponsorWrapper = Styled.div`
+  background: #EEE8E0;
+  width: 60vw;
+  height: 500px;
+  display: flex;
+  margin: 175px 0 25px 0;
+  overflow: visible;
+  justify-content: center;
+  position: relative;
+`;
+
+const SponsorMascot = Styled.img`
+  width: 30%;
+  top: -20%;
+  position: absolute;
+`;
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -694,6 +723,17 @@ export default class Home extends React.Component {
             </FAQMobileWrapper>
           </GroundContent>
         </Content>
+        <Sponsors>
+          <SponsorWrapper>
+            <SponsorMascot src={sBus} />
+          </SponsorWrapper>
+          <SponsorWrapper>
+            <SponsorMascot src={sCar} />
+          </SponsorWrapper>
+          <SponsorWrapper>
+            <SponsorMascot src={sBike} />
+          </SponsorWrapper>
+        </Sponsors>
       </Container>
     );
   }
