@@ -34,20 +34,6 @@ const Chicago = [
       },
     ],
   },
-  {
-    title: 'FROM UIUC',
-    body: [
-      {
-        title: 'PICKUP',
-        body: [
-          {
-            title: 'Depart UIUC - 3/1/2020 at 4:30PM CST',
-            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
-          },
-        ],
-      },
-    ],
-  },
 ];
 
 const Indiana = [
@@ -77,20 +63,6 @@ const Indiana = [
           {
             title: 'Arrive at UIUC - 2/28/2020 at 4:30PM CST',
             body: 'Thomas M. Siebel Center for Computer Science, 201 N Goodwin Ave, Urbana, IL',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'FROM UIUC',
-    body: [
-      {
-        title: 'PICKUP',
-        body: [
-          {
-            title: 'Depart UIUC - 3/1/2020 at 4:30PM CST',
-            body: 'Computer and Information Science Department, 732 W Michigan St, Indianapolis, IN',
           },
         ],
       },
