@@ -77,9 +77,9 @@ export default class Schedule extends React.Component {
               <img src={ARROW} alt="" className={`arr ${expanded ? 'turned-over' : 'turned-over-not'}`} />
             </button>
             <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
-              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 0, expanded: false }); }}>Friday</button>
-              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 1, expanded: false }); }}>Saturday</button>
-              <button type="button" className="day-button-style" onClick={() => { this.setState({ currentSection: 2, expanded: false }); }}>Sunday</button>
+              <button type="button" className={`day-button-style ${currentSection === 0 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 0, expanded: false }); }}>Friday</button>
+              <button type="button" className={`day-button-style ${currentSection === 1 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 1, expanded: false }); }}>Saturday</button>
+              <button type="button" className={`day-button-style ${currentSection === 2 ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: 2, expanded: false }); }}>Sunday</button>
             </div>
             <div className="spotlight-wrapper">
               <img src={LIGHT} className="spotlight-itself" alt="" />
