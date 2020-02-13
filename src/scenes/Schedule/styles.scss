@@ -13,6 +13,10 @@
   display: flex;
   justify-content: center;
   z-index: 29;
+  border: none;
+  &:focus{
+    outline: none;
+  }
 }
 
 .spotlight-wrapper {
@@ -119,6 +123,7 @@
   flex-direction: row;
   color: #222B5C;
   font-size: 16px;
+  line-height: 20px;
   .event-box-time {
     font-weight: 600;
     margin: 0 60px 0 0;
@@ -131,6 +136,7 @@
   .event-box-name {
     font-weight: 600;
     line-height: 20px;
+    margin-bottom: 2px;
   }
   .event-box-hidden {
     opacity: 0;
@@ -193,8 +199,7 @@
 .day-holder {
   width: 100%;
   position: absolute;
-  height: 200px;
-  padding: 10px 0 0 0;
+  height: 120px;
   @media(min-width: 900px){
     display: none;
   }
@@ -204,14 +209,17 @@
   display: flex;
   flex-direction: column;
   color: white;
-  border-top: 1px white solid;
+  align-items: flex-start;
+  .selected{
+    background: #A14234;
+  }
 }
 .hide-day-holder{
   transform: translateY(-200px);
 }
 
 .display-day-holder{
-  transform: translateY(52px);
+  transform: translateY(60px);
 }
 
 .day-button-style {
@@ -219,7 +227,9 @@
   font-size: 16px;
   line-height: 20px;
   height: 60px;
-  border-radius: 10px;
   background: #E28B79;
   border: none;
+  width: 100%;
+  padding-left: 30px;
+  text-align: start;
 }
