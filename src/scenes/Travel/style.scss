@@ -1,5 +1,6 @@
 $breakpoint-tablet: 900px;
 $breakpoint-mobile: 600px;
+$breakpoint-mini: 480px;
 $light-blue: #6baec5;
 $dark-blue: #285163;
 
@@ -53,8 +54,13 @@ $dark-blue: #285163;
     flex-direction: column;
 
     @media (max-width: $breakpoint-mobile) {
-      min-width: 96vw;
-      margin-left: -3vw;
+      min-width: 92vw;
+      margin-left: -1vw;
+    }
+
+    @media (max-width: $breakpoint-mini) {
+      min-width: 92vw;
+      margin-left: 0;
     }
 
     .location-select {
@@ -68,6 +74,11 @@ $dark-blue: #285163;
       }
       
       @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      @media (max-width: $breakpoint-mini) {
         width: 100%;
         margin-left: 0;
       }
@@ -101,9 +112,9 @@ $dark-blue: #285163;
       }
 
       @media (max-width: $breakpoint-mobile) {
-        width: 100%;
-        border: none;
+        width: calc(100% - 20px);
         margin: 15px 0 0 0;
+        border: 10px solid $light-blue;
       }
 
       .inner-text-container {
@@ -111,7 +122,6 @@ $dark-blue: #285163;
 
         @media (max-width: $breakpoint-mobile) {
           overflow: scroll;
-          border: 10px solid $light-blue;
         }
       }
 
@@ -132,14 +142,23 @@ $dark-blue: #285163;
       .sub-container {
         display: flex;
         flex-direction: row;
+
+        @media (max-width: $breakpoint-mobile) {
+          flex-direction: column;
+        }
       }
 
       .left-column {
         width: 20%;
+
+        @media (max-width: $breakpoint-mobile) {
+          margin-bottom: 10px;
+        }
       }
 
       .item-container {
         width: 80%;
+        margin-left: 20px;
         margin-bottom: 1em;
 
         .item {
