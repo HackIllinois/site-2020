@@ -18,12 +18,15 @@ import kelly from 'assets/mentors/kelly.jpg';
 import maxim from 'assets/mentors/maxim.jpeg';
 import michael from 'assets/mentors/michael.jpg';
 import mjumbe from 'assets/mentors/mjumbe.jpg';
+import mustafa from 'assets/mentors/mustafa.jpeg';
+import nate from 'assets/mentors/nate.png';
 import nathan from 'assets/mentors/nathan.png';
 import nick from 'assets/mentors/nick.jpeg';
 import nicolas from 'assets/mentors/nicolas.jpeg';
 import pablo from 'assets/mentors/pablo.jpeg';
 import richard from 'assets/mentors/richard.jpg';
 import robert from 'assets/mentors/robert.jpeg';
+import sam from 'assets/mentors/sam.jpg';
 import seth from 'assets/mentors/seth.png';
 import shaan from 'assets/mentors/shaan.jpeg';
 import shahzad from 'assets/mentors/shahzad.jpg';
@@ -32,6 +35,7 @@ import sumant from 'assets/mentors/sumant.jpg';
 import thomas from 'assets/mentors/thomas.jpg';
 import trenton from 'assets/mentors/trenton.png';
 import yu from 'assets/mentors/yu.jpeg';
+import zach from 'assets/mentors/zach.jpg';
 
 export const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
 
@@ -239,5 +243,29 @@ export const mentors = [
     name: 'Amber Sahdev',
     bio: 'I received my Bachelors and Masters in Computer Engineering at UIUC.',
     tags: ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'],
+  },
+  {
+    img: nate,
+    name: 'Nate Graham',
+    bio: 'I grew up in Champaign-Urbana, worked at Apple, and now find myself a software developer and project manager with KDE.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: zach,
+    name: 'Zach Auten',
+    bio: 'I live in North Carolina and I\'m a Homebrew maintainer.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: mustafa,
+    name: 'Mustafa Abdul-Kader',
+    bio: 'I am a tech enthusiast, urban dweller, and full-time dad to two cats.',
+    tags: ['DATA SCI', 'WEB DEV', 'SYSTEMS'],
+  },
+  {
+    img: sam,
+    name: 'Sam Moore',
+    bio: 'I am a full-stack developer with years of experience building mobile, web, and back-end applications for a variety of projects. These days, I typically work in JavaScript due to its versatility, but also have professional experience in Swift, Objective-C, Ruby, PHP, and Kotlin.',
+    tags: ['WEB DEV'],
   },
 ];
