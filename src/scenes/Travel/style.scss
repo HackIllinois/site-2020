@@ -42,8 +42,12 @@ $dark-blue: #285163;
     }
 
     @media (max-width: $breakpoint-mobile) {
-      margin-left: -30px;
-      min-width: 5vw;
+      margin-left: -10vw;
+      width: 10vw;
+    }
+
+    @media (max-width: $breakpoint-mini) {
+      margin-left: -8vw;
     }
   }
   
@@ -55,13 +59,8 @@ $dark-blue: #285163;
     flex-direction: column;
 
     @media (max-width: $breakpoint-mobile) {
-      min-width: 92vw;
-      margin-left: -1vw;
-    }
-
-    @media (max-width: $breakpoint-mini) {
-      min-width: 92vw;
-      margin-left: 0;
+      min-width: 84vw;
+      margin-left: 3vw;
     }
 
     .location-select {
