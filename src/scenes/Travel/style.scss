@@ -19,15 +19,19 @@ $dark-blue: #285163;
   }
 
   @media (max-width: $breakpoint-mobile) {
-    width: 120vw;
-    margin-left: -15vw;
+    width: calc(100vw - 32px);
+    margin-left: -3vw;
+  }
+
+  @media (max-width: $breakpoint-mini) {
+    margin-left: 0;
   }
 }
 
 .billboard-bottom {
   display: flex;
   flex-direction: row;
-  height: 80vh;
+  height: 100%;
   width: 100%;
 
   .leg {
@@ -42,12 +46,12 @@ $dark-blue: #285163;
     }
 
     @media (max-width: $breakpoint-mobile) {
-      margin-left: -10vw;
-      width: 10vw;
+      margin-left: 0vw;
+      min-width: 40px;
     }
 
     @media (max-width: $breakpoint-mini) {
-      margin-left: -8vw;
+      margin-left: 10px;
     }
   }
   
@@ -60,7 +64,14 @@ $dark-blue: #285163;
 
     @media (max-width: $breakpoint-mobile) {
       min-width: 84vw;
-      margin-left: 3vw;
+      margin-left: -4.5vw;
+      margin-top: 10px;
+    }
+
+    @media (max-width: $breakpoint-mini) {
+      min-width: 84vw;
+      margin-left: -6vw;
+      margin-top: 10px;
     }
 
     .location-select {
@@ -169,7 +180,7 @@ $dark-blue: #285163;
     
     .stando {
       z-index: -1;
-      height: 20%;
+      height: 30%;
       width: 70%;
       align-self: center;
       border-top: 15px solid #3E7081;
