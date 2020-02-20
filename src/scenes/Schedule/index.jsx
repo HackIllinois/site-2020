@@ -1,6 +1,6 @@
 import React from 'react';
 import Backdrop from 'components/Backdrop';
-import './styles.scss';
+import './style.scss';
 import LIGHT from 'assets/home/billboard-light.svg';
 import ARROW from 'assets/home/expand_more.svg';
 
@@ -80,7 +80,16 @@ export default class Schedule extends React.Component {
               <img src={ARROW} alt="" className={`arr ${expanded ? 'turned-over' : 'turned-over-not'}`} />
             </button>
             <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
-              {[0, 1, 2].map(e => <button type="button" className={`day-button-style ${currentSection === e ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: e, expanded: false }); }}>{signs[e]}</button>)}
+              {[0, 1, 2].map(e => (
+                <button
+                  type="button"
+                  className={`day-button-style ${currentSection === e ? 'selected' : '' }`}
+                  onClick={() => this.setState({ currentSection: e, expanded: false })}
+                  key={e}
+                >
+                  {signs[e]}
+                </button>
+              ))}
             </div>
             <div className="spotlight-wrapper">
               <img src={LIGHT} className="spotlight-itself" alt="" />

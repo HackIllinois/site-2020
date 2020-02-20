@@ -85,15 +85,15 @@ export default class Travel extends React.Component {
                 <div className="text-container">
                   <div className="inner-text-container">
                     {CONTENT[currentSection].map((e, i) => (
-                      <div key={e} className="section-container">
+                      <div key={e.title} className="section-container">
                         {i !== 0 && <hr />}
                         <h3>{e.title}</h3>
                         {e.body.map(f => (
-                          <div key={f} className="sub-container">
+                          <div key={f.title} className="sub-container">
                             <div className="left-column">{f.title}</div>
                             <div className="item-container">
                               {f.body.map(g => (
-                                <div key={g} className="item">
+                                <div key={g.title} className="item">
                                   <h4>{g.title}</h4>
                                   <p>{g.body}</p>
                                 </div>
