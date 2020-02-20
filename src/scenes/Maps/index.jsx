@@ -1,10 +1,10 @@
 import React from 'react';
-import Backdrop from 'components/Backdrop';
-
-import topStructure from 'assets/maps/top_structure.svg';
-import './style.scss';
 import Select from 'react-select';
 
+import Backdrop from 'components/Backdrop';
+
+import './style.scss';
+import topStructure from 'assets/maps/top-structure.svg';
 import dcl from 'assets/maps/dcl.png';
 import siebel0 from 'assets/maps/siebel0.png';
 import siebel1 from 'assets/maps/siebel1.png';
@@ -115,9 +115,6 @@ export default class Maps extends React.Component {
                 <div className="map-container" key={image}>
                   <div className="floor-name">{floor}</div>
                   <div className="map-image" style={{ backgroundImage: `url(${image})` }} />
-                  <div className="map-image mobile">
-                    <img src={image} alt="Map" />
-                  </div>
                 </div>
               ))}
             </div>
