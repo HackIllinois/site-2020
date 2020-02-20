@@ -105,14 +105,14 @@ export default class Schedule extends React.Component {
               }}
             >{' '}
             </button>
-            <div className="leg-supports">
-              <div className="left-leg">
-                <div className="shade" />
-              </div>
-              <div className="right-leg">
-                <div className="shade" />
-              </div>
+
+            <div className="leg-supports left-leg">
+              <div className="shade" />
             </div>
+            <div className="leg-supports right-leg">
+              <div className="shade" />
+            </div>
+
             <div className="display-board">
               <div className="display-internal">
                 <div className="display-padding">
