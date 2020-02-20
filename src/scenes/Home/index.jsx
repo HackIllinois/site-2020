@@ -333,10 +333,10 @@ const ForegroundBush = Styled.img`
 `;
 
 const Car = Styled.img.attrs(props => {
-  const p = props.position - 50;
+  const p = props.position - 40;
   return {
     style: {
-      transform: `translate(${p > 0 ? p * 2 : 0}vw)`,
+      transform: `translate(${p > 0 ? 20 + p * 3 : 20}vw)`,
     },
   };
 })`
@@ -548,6 +548,7 @@ const SponsorWrapper = Styled.div`
   grid-row-gap: 20px;
   grid-column-gap: 40px;
   justify-items: center;
+  align-items: center;
   max-width: 1000px;
   @media(max-width: 800px) {
     margin: 150px 30px 25px 30px;
@@ -585,7 +586,7 @@ const SponsorMascot = Styled.img`
 `;
 
 const SponsorLogo = Styled.img`
-  width: 90%;
+  width: 80%;
   padding: 10px;
 `;
 
@@ -684,7 +685,7 @@ export default class Home extends React.Component {
           <GroundContent>
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
-              <Car src={car} alt="car" position={SCROLL_POS * 1.8} />
+              <Car src={car} alt="car" position={SCROLL_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
