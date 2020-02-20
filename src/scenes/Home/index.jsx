@@ -12,9 +12,9 @@ import foregroundBush from 'assets/home/foreground_bushes.svg';
 import signBush from 'assets/home/sign_bush.svg';
 import tagline from 'assets/home/tagline.svg';
 
-import sCar from 'assets/sponsors/car.svg';
-import sBike from 'assets/sponsors/bike.svg';
-import sBus from 'assets/sponsors/bus.svg';
+import sponsorCar from 'assets/sponsors/car.svg';
+import sponsorBike from 'assets/sponsors/bike.svg';
+import sponsorBus from 'assets/sponsors/bus.svg';
 
 import {
   BusSponsors,
@@ -684,7 +684,7 @@ export default class Home extends React.Component {
           <GroundContent>
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
-              <Car src={car} alt="car" position={SCROLL_POS} />
+              <Car src={car} alt="car" position={SCROLL_POS * 1.8} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
@@ -769,19 +769,19 @@ export default class Home extends React.Component {
         </Content>
         <Sponsors>
           <SponsorWrapper cols="1fr 1fr">
-            <SponsorMascot top={-35} width="27%" src={sBus} />
+            <SponsorMascot top={-35} width="27%" src={sponsorBus} />
             {BusSponsors.map(s => (
               <SponsorLogo src={s} />
             ))}
           </SponsorWrapper>
           <SponsorWrapper cols="1fr 1fr 1fr">
-            <SponsorMascot top={-35} width="25%" src={sCar} />
+            <SponsorMascot top={-35} width="25%" src={sponsorCar} />
             {CarSponsors.map(s => (
               <SponsorLogo src={s} />
             ))}
           </SponsorWrapper>
           <SponsorWrapper cols="1fr 1fr 1fr 1fr">
-            <SponsorMascot top={-30} width="15%" src={sBike} />
+            <SponsorMascot top={-30} width="15%" src={sponsorBike} />
             {BikeSponsors.map(s => (
               <SponsorLogo src={s} />
             ))}
