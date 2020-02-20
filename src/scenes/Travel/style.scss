@@ -109,7 +109,7 @@ $dark-blue: #285163;
       flex-direction: column;
       height: 70%;
       width: 100%;
-      overflow: scroll;
+      overflow-y: scroll;
       margin: 15px auto 0 -1vw;
       background: $dark-blue;
       border: 1vw solid $light-blue;
