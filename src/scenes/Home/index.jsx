@@ -81,6 +81,7 @@ const Content = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  line-height: 1.5;
 `;
 
 const SubContent = Styled.div`
@@ -104,11 +105,11 @@ const SubContent = Styled.div`
   }
   @media(max-width: 1100px) {
     grid-template-columns: 100px 0.8fr 1fr 1fr 0.3fr;
-    grid-template-rows: 400px 400px 300px 400px 600px;
+    grid-template-rows: 400px 400px 400px 400px 700px;
   }
   @media(max-width: 900px) {
     grid-template-columns: 100vw;
-    grid-template-rows: 90vw 40vw 1100px;
+    grid-template-rows: 90vw 40vw 1200px;
     justify-items: center;
   }
   @media(max-width: 700px) {
@@ -118,10 +119,7 @@ const SubContent = Styled.div`
     grid-template-rows: 90vw 100px 200px 1500px;
   }
   @media(max-width: 450px) {
-    grid-template-rows: 90vw 100px 1800px;
-  }
-  @media(max-width: 380px) {
-    grid-template-rows: 90vw 100px 2200px;
+    grid-template-rows: 90vw 100px 1300px;
   }
 `;
 
@@ -132,7 +130,7 @@ const Tagline = Styled.img`
   margin-top: 20vh;
   margin-left: 20px;
   margin-right: 20px;
-  
+
   @media(max-width: 1000px) {
     width: 60vw;
     margin-top: 100px;
@@ -143,6 +141,11 @@ const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
   font-size: 3vh;
+  @media(max-width: 400px) {
+      margin-top: 0;
+      font-size: 2.5vh;
+  }
+
   text-align: center;
 `;
 
@@ -276,12 +279,18 @@ const DescriptionContainer = Styled.div`
 
 const DescriptionTitle = Styled.div`
   font-size: 3em;
+  @media(max-width: 900px) {
+    font-size: 1.5em;
+  }
   padding: 30px 0 10px 0;
   color: #9C1641;
 `;
 
 const Description = Styled.div`
   font-size: 1.5em;
+  @media(max-width: 900px) {
+    font-size: 1em;
+  }
 `;
 
 const GroundContent = Styled.div`
@@ -443,7 +452,7 @@ const FAQContainer = Styled.div`
 `;
 
 const FAQTitle = Styled.div`
-  padding: 10px;
+  padding: 16px;
   font-size: 18px;
   a {
     color: white;
@@ -504,6 +513,7 @@ const FAQMobileArrows = Styled.div.attrs(props => ({ style: { left: props.isLeft
 
 const BoldDiv = Styled.div`
   font-weight: 600;
+  margin-bottom: 4px;
 `;
 
 export default class Home extends React.Component {
