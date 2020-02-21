@@ -54,7 +54,7 @@ $dark-blue: #285163;
       margin-left: 10px;
     }
   }
-  
+
   .sign-container {
     z-index: 0;
     width: 80%;
@@ -83,7 +83,7 @@ $dark-blue: #285163;
       @media (max-width: $breakpoint-tablet) {
         pointer-events: all;
       }
-      
+
       @media (max-width: $breakpoint-mobile) {
         width: 100%;
         margin-left: 0;
@@ -102,7 +102,7 @@ $dark-blue: #285163;
         }
       }
     }
-    
+
     .text-container {
       z-index: 1;
       display: flex;
@@ -110,9 +110,9 @@ $dark-blue: #285163;
       height: 70%;
       width: 100%;
       overflow-y: scroll;
-      margin: 15px auto 0 -1vw;
+      margin: 15px auto 0 -8px;
       background: $dark-blue;
-      border: 1vw solid $light-blue;
+      border: 8px solid $light-blue;
       font-family: Montserrat;
       font-style: normal;
       font-weight: 300;
@@ -124,7 +124,7 @@ $dark-blue: #285163;
 
       @media (max-width: $breakpoint-mobile) {
         width: calc(100% - 20px);
-        margin: 15px 0 0 0;
+        margin-top: 15px;
         border: 10px solid $light-blue;
       }
 
@@ -177,7 +177,7 @@ $dark-blue: #285163;
         }
       }
     }
-    
+
     .stando {
       z-index: -1;
       height: 30%;
@@ -187,5 +187,5 @@ $dark-blue: #285163;
       background: $light-blue;
     }
   }
-  
+
 }
