@@ -63,8 +63,10 @@
           width: 64px;
           height: 64px;
 
-          float: left;
-          margin-right: 16px;
+          margin: 0 16px 16px 0;
+          @media (min-width: 480px) {
+            float: left;
+          }
         }
 
         .info {
