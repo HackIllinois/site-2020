@@ -1,10 +1,12 @@
 import abdulrahman from 'assets/mentors/abdulrahman.jpg';
 import adar from 'assets/mentors/adar.jpg';
 import amber from 'assets/mentors/amber.jpg';
+import apoorva from 'assets/mentors/apoorva.jpg';
 import brandon from 'assets/mentors/brandon.jpg';
 import christian from 'assets/mentors/christian.jpg';
 import clay from 'assets/mentors/clay.jpg';
 import cody from 'assets/mentors/cody.jpg';
+import corly from 'assets/mentors/corly.jpg';
 import dave from 'assets/mentors/dave.jpg';
 import edward from 'assets/mentors/edward.jpg';
 import james from 'assets/mentors/james.jpg';
@@ -12,9 +14,11 @@ import jason from 'assets/mentors/jason.jpg';
 import jeff from 'assets/mentors/jeff.jpg';
 import johnmark from 'assets/mentors/johnmark.jpg';
 import jonathan from 'assets/mentors/jonathan.jpg';
+import jonathan2 from 'assets/mentors/jonathan2.png';
 import joshua from 'assets/mentors/joshua.png';
 import katharine from 'assets/mentors/katharine.jpeg';
 import kelly from 'assets/mentors/kelly.jpg';
+import matt from 'assets/mentors/matt.jpg';
 import maxim from 'assets/mentors/maxim.jpeg';
 import michael from 'assets/mentors/michael.jpg';
 import mjumbe from 'assets/mentors/mjumbe.jpg';
@@ -169,7 +173,7 @@ export const mentors = [
   {
     img: jonathan,
     name: 'Jonathan Reynolds',
-    bio: 'I\'m Jonathan Reynolds, a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
+    bio: 'I\'m a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
     tags: ['SYSTEMS', 'DATA SCI'],
   },
   {
@@ -266,6 +270,30 @@ export const mentors = [
     img: sam,
     name: 'Sam Moore',
     bio: 'I am a full-stack developer with years of experience building mobile, web, and back-end applications for a variety of projects. These days, I typically work in JavaScript due to its versatility, but also have professional experience in Swift, Objective-C, Ruby, PHP, and Kotlin.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: apoorva,
+    name: 'Apoorva Dixit',
+    bio: 'I graduated from UIUC in May 2019, and now work in Display Ads at Google! I was an intern at Google in 2018 and would love to talk about life at Google and answer any of your career related questions!',
+    tags: ['DATA SCI', 'SYSTEMS', 'LANGUAGES', 'WEB DEV'],
+  },
+  {
+    img: corly,
+    name: 'Corly Leung',
+    bio: 'I\'m a Software Engineer working on image understanding and AR in Google Lens!',
+    tags: ['DATA SCI'],
+  },
+  {
+    img: jonathan2,
+    name: 'Jonathan Wexler',
+    bio: 'I\'m a recent grad from UIUC from Chicago who\'s working in prop trading in NYC.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: matt,
+    name: 'Matt Sicker',
+    bio: 'I\'m a software engineer and a free/open source software evangelist with a bit of a functional programming background. Outside programming, I\'m interested in coffee, cooking, beer, reading, and many other topics.',
     tags: ['WEB DEV'],
   },
 ];
