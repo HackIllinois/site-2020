@@ -12,7 +12,7 @@ const Chicago = [
           },
           {
             title: 'UIC - 1PM',
-            body: 'Richard Daley Library, 801 South Morgan Street, Chicago, IL',
+            body: 'Richard J. Daley Library, 801 South Morgan Street, Chicago, IL',
           },
           {
             title: 'DePaul - 1:30PM',
@@ -60,7 +60,7 @@ const Chicago = [
           },
           {
             title: 'UIC - 8PM',
-            body: 'Richard Daley Library, 801 South Morgan Street, Chicago, IL',
+            body: 'Richard J. Daley Library, 801 South Morgan Street, Chicago, IL',
           },
           {
             title: 'Northwestern - 9PM',
@@ -94,7 +94,7 @@ const Indiana = [
           },
           {
             title: 'Purdue - 3PM EST',
-            body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West LaFayette, IN',
+            body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West Lafayette, IN',
           },
         ],
       },
@@ -126,7 +126,7 @@ const Indiana = [
         body: [
           {
             title: 'Purdue - 7PM EST',
-            body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West LaFayette, IN',
+            body: 'Richard and Patricia Lawson Computer Science Building, 305 N University St, West Lafayette, IN',
           },
           {
             title: 'IUPUI - 9PM EST',
