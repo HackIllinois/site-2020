@@ -33,6 +33,7 @@ $dark-blue: #285163;
   flex-direction: row;
   height: 100%;
   width: 100%;
+  min-height: 0;
 
   .leg {
     height: 100%;
@@ -104,10 +105,10 @@ $dark-blue: #285163;
     }
 
     .text-container {
+      flex: 1;
       z-index: 1;
       display: flex;
       flex-direction: column;
-      height: 70%;
       width: 100%;
       overflow-y: scroll;
       margin: 15px auto 0 -8px;
@@ -180,11 +181,12 @@ $dark-blue: #285163;
 
     .stando {
       z-index: -1;
-      height: 30%;
+      height: 80px;
       width: 70%;
       align-self: center;
       border-top: 15px solid #3E7081;
       background: $light-blue;
+      box-sizing: border-box;
     }
   }
 
