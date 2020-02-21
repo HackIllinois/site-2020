@@ -145,6 +145,14 @@ export const FAQ_PANELS = {
           q: 'Have more questions?',
           a: 'Please don’t hesitate to reach out to us at contact@hackillinois.org if you have any other questions.',
         },
+        {
+          q: 'Is there a Code of Conduct?',
+          a: 'Yes! By attending the event in any way, you agree to the ',
+          l: {
+            text: 'HackIllinois 2020 Code of Conduct',
+            path: 'http://go.hackillinois.org/code-of-conduct',
+          },
+        },
       ],
     ],
   },
