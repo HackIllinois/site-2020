@@ -131,9 +131,15 @@
     left: 50%;
     transform: translateX(-50%);
 
+    // prevent scenery from covering signpost
+    @media (max-width: 1250px) {
+      transform: translateX(-43%);
+    }
+
     &.mobile {
       display: none;
       bottom: -40px;
+      transform: translateX(-50%);
     }
 
     @media (max-width: 600px) {
