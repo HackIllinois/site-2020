@@ -1,5 +1,6 @@
 import React from 'react';
 import Backdrop from 'components/Backdrop';
+
 import './style.scss';
 import LIGHT from 'assets/home/billboard-light.svg';
 import ARROW from 'assets/home/expand_more.svg';
@@ -133,6 +134,9 @@ export default class Schedule extends React.Component {
                               <div>
                                 <div className="event-box-name">
                                   {e.name.toUpperCase()}
+                                </div>
+                                <div className="event-sponsor">
+                                  {e.sponsor && `Sponsored by ${e.sponsor}`}
                                 </div>
                                 <div>
                                   {e.locations.map(l => (
