@@ -147,7 +147,7 @@ export const FAQ_PANELS = {
         },
         {
           q: 'Is there a Code of Conduct?',
-          a: 'Yes! By attending the event in any way, you agree to the ',
+          a: 'Yes! All attendees of the event (sponsors, mentors, etc. included) agree to the ',
           l: {
             text: 'HackIllinois 2020 Code of Conduct',
             path: 'http://go.hackillinois.org/code-of-conduct',
