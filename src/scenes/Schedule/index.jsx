@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import 'moment-timezone';
 import Backdrop from 'components/Backdrop';
 import './style.scss';
 import LIGHT from 'assets/home/billboard-light.svg';
@@ -19,18 +21,12 @@ export default class Schedule extends React.Component {
   }
 
   static getTime(d) {
-    const correctTime = d * 1000;
-    const p = new Date(correctTime);
-    const min = p.getMinutes();
-    const h = p.getHours();
-    return `${h % 12 === 0 ? '12' : p.getHours() % 12}:${min < 10 ? '0' : ''}${min}${h >= 12 ? 'pm' : 'am'}`;
+    return moment.unix(d).tz('America/Chicago').format('h:mm a');
   }
 
   static getDayofWeek(d) {
-    const p = new Date(d * 1000);
-    const dd = p.getDay();
-    if (dd === 0) return 2;
-    return dd - 5;
+    const dd = moment.unix(d).tz('America/Chicago').day();
+    return (dd + 2) % 7;
   }
 
   getEvents() {
@@ -121,7 +117,7 @@ export default class Schedule extends React.Component {
                       const len = events.length;
                       const dayOfWeek = Schedule.getDayofWeek(e.startTime);
                       if (dayOfWeek === currentSection
-                        && e.startTime > eventStart && e.startTime < eventEnd) {
+                        && e.startTime >= eventStart && e.startTime <= eventEnd) {
                         return (
                           <div className="event-wrapper" key={e.id}>
                             <div className="event-box">
