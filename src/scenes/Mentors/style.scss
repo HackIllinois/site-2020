@@ -1,0 +1,135 @@
+#billboard {
+  #header {
+    @media (min-width: 900px) {
+      .react-select__control {
+        pointer-events: none;
+      }
+      .react-select__dropdown-indicator {
+        display: none;
+      }
+    }
+  }
+
+  .left {
+    left: 64px;
+  }
+
+  .right {
+    right: 64px;
+  }
+
+  .connector {
+    background: #E35058;
+
+    position: absolute;
+    top: 52px;
+    height: 16px;
+    width: 64px;
+
+    .shadow {
+       background: rgba(0, 0, 0, 0.5);
+       height: 8px;
+    }
+  }
+
+  #border {
+    background: #A43B5C;
+
+    position: absolute;
+    top: 68px;
+    bottom: 80px;
+    height: auto;
+    left: 0;
+    width: 100%;
+
+    #canvas {
+      background: #222B5C;
+      height: calc(100% - 64px);
+      margin: 24px;
+      padding-top: 16px;
+      overflow-y: scroll;
+
+      .mentor {
+        border: 1px solid white;
+        border-radius: 8px;
+
+        margin: 24px 32px;
+        padding: 24px;
+
+        img {
+          border: 1px solid white;
+          border-radius: 50%;
+          color: red;
+          width: 64px;
+          height: 64px;
+
+          margin: 0 16px 16px 0;
+          @media (min-width: 480px) {
+            float: left;
+          }
+        }
+
+        .info {
+          overflow-x: hidden;
+          color: white;
+
+          h1 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+          }
+
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  #lights {
+    position: absolute;
+    top: -8px;
+    width: 100%;
+    pointer-events: none;
+
+    .left {
+      @media (max-width: 500px) {
+        visibility: hidden;
+      }
+      position: absolute;
+      left: -4px;
+    }
+
+    .middle {
+      position: absolute;
+      left: calc(50% - 96px);
+    }
+
+    .right {
+      @media (max-width: 500px) {
+        visibility: hidden;
+      }
+      position: absolute;
+      right: -4px;
+    }
+  }
+
+  #bottom {
+    background: #E35058;
+
+    position: absolute;
+    margin: auto;
+
+    width: 100px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    bottom: 0;
+
+    .shadow {
+      background: rgba(0, 0, 0, 0.5);
+      height: 28px;
+    }
+  }
+}

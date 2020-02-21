@@ -6,7 +6,7 @@ import './style.scss';
 
 export default function Loading() {
   const options = { animationData, autoplay: true, loop: true };
-  const style = { marginRight: '15vw', width: '80vw', height: '80vh' };
+  const style = { marginRight: '32vw', width: '40vw', height: '40vh' };
 
   return (
     <div id="Loading">
