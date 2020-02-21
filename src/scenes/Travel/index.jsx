@@ -81,6 +81,7 @@ export default class Travel extends React.Component {
                   options={LOCATIONS.map((e, i) => ({ label: e, value: i }))}
                   styles={customSelectStyles}
                   theme={customSelectTheme}
+                  isSearchable={false}
                 />
                 <div className="text-container">
                   <div className="inner-text-container">
