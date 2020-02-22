@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Styled, { keyframes } from 'styled-components';
 
 import NavBar from 'components/NavBar';
