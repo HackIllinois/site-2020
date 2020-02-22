@@ -48,7 +48,7 @@ export const BACKGROUND_DECOR = [
     id: 3,
     img: plane,
     style: {
-      top: '64vh',
+      top: '60vh',
       right: '15vw',
     },
     mobileStyle: {
