@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Styled, { keyframes } from 'styled-components';
 
 import NavBar from 'components/NavBar';
+
 import backdrop from 'assets/home/backdrop.svg';
 import backgroundRoad from 'assets/home/background_road.svg';
 import bg from 'assets/home/background.png';
@@ -127,9 +128,7 @@ const Tagline = Styled.img`
   z-index: 20;
   overflow: hidden;
   height: 35vh;
-  margin-top: 20vh;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 20vh 20px 0 20px;
 
   @media(max-width: 1000px) {
     width: 60vw;
@@ -140,6 +139,7 @@ const Tagline = Styled.img`
 const TaglineText = Styled.div`
   z-index: 20;
   margin-top: 5vh;
+  margin-bottom: 36vh;
   font-size: 3vh;
   @media(max-width: 400px) {
       margin-top: 0;
@@ -148,30 +148,6 @@ const TaglineText = Styled.div`
 
   text-align: center;
 `;
-
-const CenterButton = Styled.button`
-  border: none;
-  color: white;
-  font-size: 2vh;
-  background-color: #A43B5C;
-  padding: 1rem 2em;
-  border-radius: 3em;
-  outline: none;
-  transition: transform 1s;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
-
-const CenterLink = () => (
-  <Link style={{ marginTop: '5vh', marginBottom: '20vh' }} to="/apply">
-    <CenterButton>
-      APPLY NOW &nbsp;&#10132;
-    </CenterButton>
-  </Link>
-);
 
 const BackgroundDecor = Styled.img.attrs(props => props.style)`
   position: absolute;
@@ -187,7 +163,7 @@ const BackgroundDecor = Styled.img.attrs(props => props.style)`
     margin: ${p => (p.mobileStyle ? p.mobileStyle.margin : null)};
     clip-path: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.clipPath : null)};
     background: ${p => (p.isMobile && p.mobileStyle ? p.mobileStyle.background : null)};
-    position: static;
+    /* position: static; */
     width: 20vw;
   }
 
@@ -585,7 +561,6 @@ export default class Home extends React.Component {
           <TaglineText>
             FEBRUARY 28 – MARCH 1, 2020
           </TaglineText>
-          <CenterLink />
           {BACKGROUND_DECOR.map(e => (
             <BackgroundDecor
               key={e.id}
