@@ -16,6 +16,8 @@ import sponsorCar from 'assets/sponsors/car.svg';
 import sponsorBike from 'assets/sponsors/bike.svg';
 import sponsorBus from 'assets/sponsors/bus.svg';
 
+import logo from 'assets/home/logo.svg';
+
 import {
   BusSponsors,
   CarSponsors,
@@ -336,7 +338,7 @@ const Car = Styled.img.attrs(props => {
   const p = props.position - 40;
   return {
     style: {
-      transform: `translate(${p > 0 ? 20 + p * 3 : 20}vw)`,
+      transform: `translate(${p * 8}vw)`,
     },
   };
 })`
@@ -545,7 +547,7 @@ const SponsorWrapper = Styled.div`
   position: relative;
   padding: 100px 20px 60px 20px;
   grid-template-columns: ${props => props.cols};
-  grid-row-gap: 20px;
+  grid-row-gap: 30px;
   grid-column-gap: 40px;
   justify-items: center;
   align-items: center;
@@ -557,12 +559,12 @@ const SponsorWrapper = Styled.div`
   @media(max-width: 475px) {
     margin: 100px 30px 25px 30px;
     padding: 50px 20px 20px 20px;
-    grid-row-gap: 10px;
+    grid-row-gap: 20px;
     grid-column-gap: 20px;
   }
   @media(max-width: 325px) {
     margin: 50px 30px 25px 30px;
-    grid-row-gap: 5px;
+    grid-row-gap: 10px;
     grid-column-gap: 10px;
   }
 `;
@@ -588,6 +590,13 @@ const SponsorMascot = Styled.img`
 const SponsorLogo = Styled.img`
   width: 80%;
   padding: 10px;
+  max-height: 150px;
+`;
+
+const HackIllLogo = Styled.img`
+  width: 100px;
+  margin-top: 250px;
+  margin-bottom: 25px;
 `;
 
 export default class Home extends React.Component {
@@ -772,21 +781,22 @@ export default class Home extends React.Component {
           <SponsorWrapper cols="1fr 1fr">
             <SponsorMascot top={-35} width="27%" src={sponsorBus} />
             {BusSponsors.map(s => (
-              <SponsorLogo src={s} />
+              <SponsorLogo src={s} key={s} />
             ))}
           </SponsorWrapper>
           <SponsorWrapper cols="1fr 1fr 1fr">
             <SponsorMascot top={-35} width="25%" src={sponsorCar} />
             {CarSponsors.map(s => (
-              <SponsorLogo src={s} />
+              <SponsorLogo src={s} key={s} />
             ))}
           </SponsorWrapper>
-          <SponsorWrapper cols="1fr 1fr 1fr 1fr">
+          <SponsorWrapper cols="1fr 1fr 1fr">
             <SponsorMascot top={-30} width="15%" src={sponsorBike} />
             {BikeSponsors.map(s => (
-              <SponsorLogo src={s} />
+              <SponsorLogo src={s} key={s} />
             ))}
           </SponsorWrapper>
+          <HackIllLogo src={logo} alt="" />
         </Sponsors>
       </Container>
     );

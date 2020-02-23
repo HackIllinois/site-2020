@@ -10,6 +10,8 @@ import checkbook from 'assets/sponsors/checkbook.svg';
 import mirusResearch from 'assets/sponsors/mirusResearch.svg';
 import collinsAerospace from 'assets/sponsors/collinsAerospace.svg';
 import schlumberger from 'assets/sponsors/schlumberger.svg';
+import johnDeere from 'assets/sponsors/johnDeere.png';
+import citadel from 'assets/sponsors/citadel.svg';
 
 import orchid from 'assets/sponsors/orchid.svg';
 import bp from 'assets/sponsors/bp.svg';
@@ -20,7 +22,8 @@ export const BusSponsors = [
 ];
 
 export const CarSponsors = [
-    google, grainger, facebook, checkbook, mirusResearch, collinsAerospace, schlumberger,
+    google, grainger, facebook, checkbook,
+    mirusResearch, collinsAerospace, schlumberger, johnDeere, citadel,
 ];
 
 export const BikeSponsors = [
