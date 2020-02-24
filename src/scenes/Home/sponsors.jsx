@@ -16,6 +16,7 @@ import citadel from 'assets/sponsors/citadel.svg';
 import orchid from 'assets/sponsors/orchid.svg';
 import bp from 'assets/sponsors/bp.svg';
 import HRT from 'assets/sponsors/HRT.svg';
+import abbvie from 'assets/sponsors/abbvie.svg';
 
 export const BusSponsors = [
     capitalOne, IMC, caterpillar, optum,
@@ -27,5 +28,5 @@ export const CarSponsors = [
 ];
 
 export const BikeSponsors = [
-    orchid, bp, HRT,
+    orchid, bp, HRT, abbvie,
 ];

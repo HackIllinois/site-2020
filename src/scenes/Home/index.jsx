@@ -790,7 +790,7 @@ export default class Home extends React.Component {
               <SponsorLogo src={s} key={s} />
             ))}
           </SponsorWrapper>
-          <SponsorWrapper cols="1fr 1fr 1fr">
+          <SponsorWrapper cols="1fr 1fr 1fr 1fr">
             <SponsorMascot top={-30} width="15%" src={sponsorBike} />
             {BikeSponsors.map(s => (
               <SponsorLogo src={s} key={s} />
