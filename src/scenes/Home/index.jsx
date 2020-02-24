@@ -12,6 +12,18 @@ import foregroundBush from 'assets/home/foreground_bushes.svg';
 import signBush from 'assets/home/sign_bush.svg';
 import tagline from 'assets/home/tagline.svg';
 
+import sponsorCar from 'assets/sponsors/car.svg';
+import sponsorBike from 'assets/sponsors/bike.svg';
+import sponsorBus from 'assets/sponsors/bus.svg';
+
+import logo from 'assets/home/logo.svg';
+
+import {
+  BusSponsors,
+  CarSponsors,
+  BikeSponsors,
+} from './sponsors';
+
 import {
   BACKGROUND_DECOR,
   DESCRIPTIONS,
@@ -298,10 +310,10 @@ const ForegroundBush = Styled.img`
 `;
 
 const Car = Styled.img.attrs(props => {
-  const p = props.position - 50;
+  const p = props.position * 105;
   return {
     style: {
-      transform: `translate(${p > 0 ? p * 2 : 0}vw)`,
+      transform: `translate(${p}vw)`,
     },
   };
 })`
@@ -491,13 +503,84 @@ const BoldDiv = Styled.div`
   margin-bottom: 4px;
 `;
 
+const Sponsors = Styled.div`
+  background: #4B8655;
+  width: 100vw;
+  margin: -10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+`;
+
+const SponsorWrapper = Styled.div`
+  background: #EEE8E0;
+  width: 80vw;
+  display: grid;
+  margin: 250px 30px 25px 30px;
+  overflow: visible;
+  position: relative;
+  padding: 100px 20px 60px 20px;
+  grid-template-columns: ${props => props.cols};
+  grid-row-gap: 30px;
+  grid-column-gap: 40px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1000px;
+  @media(max-width: 800px) {
+    margin: 150px 30px 25px 30px;
+    padding: 75px 20px 40px 20px;
+  }
+  @media(max-width: 475px) {
+    margin: 100px 30px 25px 30px;
+    padding: 50px 20px 20px 20px;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+  }
+  @media(max-width: 325px) {
+    margin: 50px 30px 25px 30px;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+  }
+`;
+
+const SponsorMascot = Styled.img`
+  width: ${props => props.width};
+  top: ${props => `${props.top}%`};
+  position: absolute;
+  min-width: ${props => props.minwidth};
+  left: 50%;
+  transform: translate(-50%);
+  @media(max-width: 800px) {
+    top: ${props => `${props.top + 10}%`};
+  }
+  @media(max-width: 475px) {
+    top: ${props => `${props.top + 15}%`};
+  }
+  @media(max-width: 325px) {
+    top: ${props => `${props.top + 20}%`};
+  }
+`;
+
+const SponsorLogo = Styled.img`
+  width: 80%;
+  padding: 10px;
+  max-height: 150px;
+`;
+
+const HackIllLogo = Styled.img`
+  width: 100px;
+  margin-top: 250px;
+  margin-bottom: 25px;
+`;
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       PREV_FAQ: '',
       FAQ_STATE: 'General',
-      SCROLL_POS: 0,
+      CAR_POS: 0,
       FAQ_ANIMATION: '',
       IS_MOBILE: false,
     };
@@ -524,10 +607,10 @@ export default class Home extends React.Component {
   }
 
   handleScroll() {
-    const h = document.body.clientHeight;
-    const st = document.body.scrollTop;
-    const sh = document.body.scrollHeight;
-    this.setState({ SCROLL_POS: (st / (sh - h)) * 100 });
+    const h = window.innerHeight;
+    const carRect = document.getElementById('car').getBoundingClientRect();
+    const carPos = carRect.top < h ? (1 - carRect.top / h) : 0;
+    this.setState({ CAR_POS: carPos });
   }
 
   scrollRight() {
@@ -550,7 +633,7 @@ export default class Home extends React.Component {
 
   render() {
     const {
-      FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, FAQ_ANIMATION,
+      FAQ_STATE, PREV_FAQ, CAR_POS, IS_MOBILE, FAQ_ANIMATION,
     } = this.state;
     return (
       <Container>
@@ -585,7 +668,7 @@ export default class Home extends React.Component {
           <GroundContent>
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
-              <Car src={car} alt="car" position={SCROLL_POS} />
+              <Car id="car" src={car} alt="car" position={CAR_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
@@ -668,6 +751,27 @@ export default class Home extends React.Component {
             </FAQMobileWrapper>
           </GroundContent>
         </Content>
+        <Sponsors>
+          <SponsorWrapper cols="1fr 1fr">
+            <SponsorMascot top={-35} width="27%" src={sponsorBus} />
+            {BusSponsors.map(s => (
+              <SponsorLogo src={s} key={s} />
+            ))}
+          </SponsorWrapper>
+          <SponsorWrapper cols="1fr 1fr 1fr">
+            <SponsorMascot top={-35} width="25%" src={sponsorCar} />
+            {CarSponsors.map(s => (
+              <SponsorLogo src={s} key={s} />
+            ))}
+          </SponsorWrapper>
+          <SponsorWrapper cols="1fr 1fr 1fr 1fr">
+            <SponsorMascot top={-30} width="15%" src={sponsorBike} />
+            {BikeSponsors.map(s => (
+              <SponsorLogo src={s} key={s} />
+            ))}
+          </SponsorWrapper>
+          <HackIllLogo src={logo} alt="" />
+        </Sponsors>
       </Container>
     );
   }
