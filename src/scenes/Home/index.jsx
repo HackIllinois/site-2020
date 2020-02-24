@@ -335,10 +335,10 @@ const ForegroundBush = Styled.img`
 `;
 
 const Car = Styled.img.attrs(props => {
-  const p = props.position - 40;
+  const p = props.position * 105;
   return {
     style: {
-      transform: `translate(${p * 8}vw)`,
+      transform: `translate(${p}vw)`,
     },
   };
 })`
@@ -605,7 +605,7 @@ export default class Home extends React.Component {
     this.state = {
       PREV_FAQ: '',
       FAQ_STATE: 'General',
-      SCROLL_POS: 0,
+      CAR_POS: 0,
       FAQ_ANIMATION: '',
       IS_MOBILE: false,
     };
@@ -632,10 +632,10 @@ export default class Home extends React.Component {
   }
 
   handleScroll() {
-    const h = document.body.clientHeight;
-    const st = document.body.scrollTop;
-    const sh = document.body.scrollHeight;
-    this.setState({ SCROLL_POS: (st / (sh - h)) * 100 });
+    const h = window.innerHeight;
+    const carRect = document.getElementById('car').getBoundingClientRect();
+    const carPos = carRect.top < h ? (1 - carRect.top / h) : 0;
+    this.setState({ CAR_POS: carPos });
   }
 
   scrollRight() {
@@ -658,7 +658,7 @@ export default class Home extends React.Component {
 
   render() {
     const {
-      FAQ_STATE, PREV_FAQ, SCROLL_POS, IS_MOBILE, FAQ_ANIMATION,
+      FAQ_STATE, PREV_FAQ, CAR_POS, IS_MOBILE, FAQ_ANIMATION,
     } = this.state;
     return (
       <Container>
@@ -694,7 +694,7 @@ export default class Home extends React.Component {
           <GroundContent>
             <RoadWrapper>
               <BackgroundRoad src={backgroundRoad} alt="backgroundRoad" />
-              <Car src={car} alt="car" position={SCROLL_POS} />
+              <Car id="car" src={car} alt="car" position={CAR_POS} />
               <ForegroundBush src={foregroundBush} alt="foregroundBush" />
             </RoadWrapper>
             <FAQMobileArrows
