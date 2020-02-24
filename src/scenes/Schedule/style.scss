@@ -124,29 +124,34 @@
   flex-direction: row;
   color: #222B5C;
   font-size: 16px;
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
   line-height: 20px;
+
   .event-box-time {
     font-weight: 600;
-    margin: 0 25px 0 0;
-    width: 80px;
-    @media (max-width: 450px){
-      width: 75px;
-      margin: 0 20px 0 0;
+
+    width: 100px;
+    margin-right: 16px;
+  }
+
+  .event-box-text {
+    width: 100%;
+
+    .event-box-name {
+      font-weight: 600;
+      line-height: 20px;
+      margin-bottom: 2px;
+    }
+
+    .event-sponsor {
+      color: #A43B5C;
     }
   }
-  .event-box-name {
-    font-weight: 600;
-    line-height: 20px;
-    margin-bottom: 2px;
-  }
-  .event-sponsor {
-    color: #A43B5C;
-  }
+
   .event-box-hidden {
-    opacity: 0;
-  }
-  @media( max-width: 450px ) {
-    font-size: 14px;
+    visibility: hidden;
   }
 }
 

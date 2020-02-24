@@ -127,7 +127,7 @@ export default class Schedule extends React.Component {
                                   {Schedule.getTime(e.startTime)}
                                 </div>
                               </div>
-                              <div>
+                              <div className="event-box-text">
                                 <div className="event-box-name">
                                   {e.name.toUpperCase()}
                                 </div>
