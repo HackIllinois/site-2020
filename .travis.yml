@@ -11,6 +11,10 @@ before_script:
     else
       echo REACT_APP_URL=https://hackillinois.org > .env;
     fi
+
+  - echo REACT_APP_EMAILJS_TEMPLATE_ID=$EMAILJS_TEMPLATE_ID > .env
+  - echo REACT_APP_EMAILJS_USER_ID=$EMAILJS_USER_ID > .env;
+  
   - npm install
 script:
   - npm run lint
