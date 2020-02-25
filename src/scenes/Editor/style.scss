@@ -2,17 +2,19 @@ html, body {
   background: #272822;
 }
 
-h1, h3, ol, ul, p {
+h1, h3, ol, ul {
   color: lightgray;
   margin: 15px;
 }
 
 p {
-  margin: 0 0 0 15px;
+  color: lightgray;
+  margin-left: 15px;
 }
 
 .content {
   display: flex;
+  margin: 15px;
 }
 
 .submit {
