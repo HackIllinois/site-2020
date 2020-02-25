@@ -29,6 +29,9 @@ export default class Editor extends React.Component {
       name: "",
       problem: "",
       codeValue: starterCode,
+      changeSinceSubmit: true,
+      successfulSubmit: true,
+      statusMessage: "",
     }
   }
 
@@ -41,11 +44,22 @@ export default class Editor extends React.Component {
 
   onEditorChange = newCode => {
     this.setState({
-      codeValue: newCode
+      ...this.state,
+      changeSinceSubmit: true,
+      codeValue: newCode,
     });
   }
   
   submit = () => {
+    if (!this.state.changeSinceSubmit && this.state.successfulSubmit) {
+      this.setState({
+        ...this.state,
+        statusMessage: "No changes since last submit",
+      });
+
+      return;
+    }
+
     const params = {
       name: this.state.name,
       problem: this.state.problem,
@@ -57,14 +71,23 @@ export default class Editor extends React.Component {
 
     emailjs.send('gmail', templateId, params, userId)
       .then((result) => {
-        console.log(result.test);
+        this.setState({
+          ...this.state,
+          changeSinceSubmit: false,
+          statusMessage: "Successful submission",
+        });
       }, (error) => {
-        console.log(error.text);
+        this.setState({
+          ...this.state,
+          changeSinceSubmit: false,
+          statusMessage: error,
+        });
       });
   }
 
   render() {
-    const { name, problem, codeValue } = this.state;
+    const { statusMessage, changeSinceSubmit, successfulSubmit, codeValue } = this.state;
+    const displayStatus = !successfulSubmit || !changeSinceSubmit;
 
     return (
       <div>
@@ -100,6 +123,9 @@ export default class Editor extends React.Component {
 
             <h3>Submission:</h3>
             <div className="submit">
+              <p class={displayStatus ? "status" : "status inactive"}>
+                {statusMessage}
+              </p>
               <label for="name-input">Team Name:</label>
               <input type="text" id="name-input" name="name" onChange={this.onChange} />
               <label for="problem-input">Problem Number:</label>

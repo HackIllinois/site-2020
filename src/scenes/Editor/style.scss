@@ -45,6 +45,10 @@ p {
   margin-left: 40px;
 }
 
+.status.inactive {
+  display: none;
+}
+
 .ace_editor {
   border: 1px solid lightgray;
   font-family: 'Consolas', monospace;
