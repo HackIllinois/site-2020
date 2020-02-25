@@ -33,7 +33,6 @@ export default class Editor extends React.Component {
   }
 
   onChange = event => {
-    console.log(event)
     this.setState({ 
       ...this.state,
       [event.target.name]: event.target.value,
@@ -53,8 +52,8 @@ export default class Editor extends React.Component {
       message_body: this.state.codeValue,
     }
 
-    const templateId = process.env.EMAILJS_TEMPLATE_ID;
-    const userId = process.env.EMAILJS_USER_ID;
+    const templateId = process.env.REACT_APP_EMAIL_TEMPLATE;
+    const userId = process.env.REACT_APP_EMAIL_USER;
 
     emailjs.send('gmail', templateId, params, userId)
       .then((result) => {
