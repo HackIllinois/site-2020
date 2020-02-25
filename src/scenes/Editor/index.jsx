@@ -1,5 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
+import emailjs from 'emailjs-com';
 import './style.scss';
 
 import "ace-builds/src-noconflict/mode-html";
