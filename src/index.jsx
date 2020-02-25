@@ -17,6 +17,7 @@ import Schedule from 'scenes/Schedule';
 import Maps from 'scenes/Maps';
 import Travel from 'scenes/Travel';
 import Mentors from 'scenes/Mentors';
+import Editor from 'scenes/Editor';
 
 import 'index.css';
 
@@ -45,6 +46,8 @@ const App = () => (
       <Route path="/maps" component={Maps} />
       <Route path="/travel" component={Travel} />
       <Route path="/mentors" component={Mentors} />
+
+      <Route path="/editor" component={Editor} />
 
       <Route component={() => <><NavBar /><Message title="404 Not Found" /></>} />
     </Switch>
