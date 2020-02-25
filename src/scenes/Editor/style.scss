@@ -17,6 +17,17 @@ p {
   margin: 15px;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+
+  img {
+    color: white;
+    height: 30px;
+    width: auto;
+  }
+}
+
 .submit {
   display: flex;
   flex-direction: column;

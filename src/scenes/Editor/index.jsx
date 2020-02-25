@@ -1,6 +1,7 @@
 import React from 'react';
 import AceEditor from 'react-ace';
 import emailjs from 'emailjs-com';
+import caterpillar from 'assets/sponsors/caterpillar_white.svg';
 import './style.scss';
 
 import 'ace-builds/src-noconflict/mode-html';
@@ -92,7 +93,11 @@ export default class Editor extends React.Component {
 
     return (
       <div>
-        <h1>Code in the Dark!</h1>
+      <h1>Code in the Dark</h1>
+        <div className="title">
+          <h3>Sponsored by:</h3>
+          <img src={caterpillar} />
+        </div>
 
         <div className="content">
           <AceEditor
