@@ -63,8 +63,8 @@ export default class Editor extends React.Component {
       message_body: this.state.codeValue,
     };
 
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const userId = process.env.REACT_APP_EMAILJS_USER_ID;
+    const templateId = 'template_z0Z6Hki6';
+    const userId = 'user_WBY9ARn5353jWW0nKOxH9';
 
     emailjs.send('gmail', templateId, params, userId)
       .then(() => {
