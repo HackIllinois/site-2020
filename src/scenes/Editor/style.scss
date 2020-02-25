@@ -19,7 +19,13 @@ p {
 
 .title {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+  }
 
   img {
     color: white;

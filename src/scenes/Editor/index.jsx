@@ -93,10 +93,12 @@ export default class Editor extends React.Component {
 
     return (
       <div>
-        <h1>Code in the Dark</h1>
         <div className="title">
-          <h3>Sponsored by:</h3>
-          <img src={caterpillar} alt="Caterpillar logo" />
+          <h1>Code in the Dark</h1>
+          <div>
+            <h3>Sponsored by:</h3>
+            <img src={caterpillar} alt="Caterpillar logo" />
+          </div>
         </div>
 
         <div className="content">
