@@ -20,7 +20,7 @@ const Chicago = [
           },
           {
             title: 'Union Station - 2PM',
-            body: 'Chicago, IL',
+            body: '499 W Jackson Blvd, Chicago, IL',
           },
         ],
       },
@@ -52,7 +52,7 @@ const Chicago = [
         body: [
           {
             title: 'Union Station - 7PM',
-            body: 'Chicago, IL',
+            body: '499 W Jackson Blvd, Chicago, IL',
           },
           {
             title: 'DePaul - 7:30PM',
