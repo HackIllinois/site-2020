@@ -345,14 +345,17 @@ const Pole = Styled.div`
   z-index: 0;
   width: 1vw;
   margin: 0 auto;
+  max-height: 500px;
+  position: relative;
 `;
 
 const SignBush = Styled.img`
   z-index: 10;
   width: 12em;
-  transform: translate(0, 5px);
-  grid-area: 1/1/1/1;
-  margin: auto auto 0 auto;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-45%, 2px);
+
 `;
 
 const Clickable = Styled.div.attrs(props => {
@@ -395,10 +398,13 @@ const FAQHeightMaintainer = Styled.div`
   display: grid;
   grid-template-columns: 100vw;
   overflow: hidden;
-  padding-top: 40px;
+  padding-top: 10px;
   background: #4B8655;
   @media(max-width: 900px) {
     display: none;
+  }
+  @media(min-width: 1650px) {
+    max-height: 600px;
   }
 `;
 
@@ -406,12 +412,12 @@ const FAQMaxHeight = Styled.div`
   display: flex;
   flex-direction: row;
   grid-area: 1/1/2/2;
-  width: 210vw;
+  width: 300vw;
   visibility: hidden;
 `;
 
 const FAQPlaceholder = Styled.div`
-  width: 70vw;
+  width: 100vw;
 `;
 const FAQContainer = Styled.div`
   z-index: 61;
@@ -424,10 +430,10 @@ const FAQContainer = Styled.div`
   width: 100vw;
 
   @media(max-width: 3000px) {
-    padding-bottom: 7vw;
+    padding-bottom: 1vw;
   }
   @media(max-width: 2500px) {
-    padding-bottom: 5vw;
+    padding-bottom: 1vw;
   }
   @media(max-width: 900px) {
     grid-template-columns: 1fr;
@@ -699,7 +705,9 @@ export default class Home extends React.Component {
                 ))}
               </FAQMaxHeight>
               <FAQContainer>
-                <Pole />
+                <Pole>
+                  <SignBush src={signBush} alt="bush" />
+                </Pole>
                 <TimeWrapper>
                   <Clickable isFAQ rotation="-3">
                     FAQ
@@ -715,7 +723,6 @@ export default class Home extends React.Component {
                     </Clickable>
                   ))}
                 </TimeWrapper>
-                <SignBush src={signBush} alt="bush" />
                 {FAQ_PANELS[FAQ_STATE].content.map(e => (
                   <FAQTitle key={e[0].q} className={FAQ_ANIMATION}>
                     {e.map(f => (
@@ -759,13 +766,13 @@ export default class Home extends React.Component {
             ))}
           </SponsorWrapper>
           <SponsorWrapper cols="1fr 1fr 1fr">
-            <SponsorMascot top={-35} width="25%" src={sponsorCar} />
+            <SponsorMascot top={-25} width="25%" src={sponsorCar} />
             {CarSponsors.map(s => (
               <SponsorLogo src={s} key={s} />
             ))}
           </SponsorWrapper>
           <SponsorWrapper cols="1fr 1fr 1fr 1fr">
-            <SponsorMascot top={-30} width="15%" src={sponsorBike} />
+            <SponsorMascot top={-35} width="15%" src={sponsorBike} />
             {BikeSponsors.map(s => (
               <SponsorLogo src={s} key={s} />
             ))}
