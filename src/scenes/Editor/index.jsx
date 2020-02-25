@@ -1,6 +1,7 @@
 import React from 'react';
 import AceEditor from 'react-ace';
 import emailjs from 'emailjs-com';
+
 import caterpillar from 'assets/sponsors/caterpillar_white.svg';
 import './style.scss';
 
@@ -15,9 +16,7 @@ export default class Editor extends React.Component {
   <head>
     <title>Code in the Dark</title>
 
-    <style>
-
-    </style>
+    <style></style>
   </head>
 
   <body>
@@ -64,19 +63,19 @@ export default class Editor extends React.Component {
       message_body: this.state.codeValue,
     };
 
-    const templateId = process.env.REACT_APP_EMAIL_TEMPLATE;
-    const userId = process.env.REACT_APP_EMAIL_USER;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const userId = process.env.REACT_APP_EMAILJS_USER_ID;
 
     emailjs.send('gmail', templateId, params, userId)
       .then(() => {
         this.setState({
           changeSinceSubmit: false,
-          statusMessage: 'Successful submission',
+          statusMessage: '✅ Success! Your submission has been sent.',
         });
       }, error => {
         this.setState({
           changeSinceSubmit: false,
-          statusMessage: error,
+          statusMessage: `🚫 Error: ${error.text}`,
         });
       });
   }
@@ -94,9 +93,9 @@ export default class Editor extends React.Component {
     return (
       <div>
         <div className="title">
-          <h1>Code in the Dark</h1>
+          <h1>CODE IN THE DARK</h1>
           <div>
-            <h3>Sponsored by:</h3>
+            <h3>Sponsored by</h3>
             <img src={caterpillar} alt="Caterpillar logo" />
           </div>
         </div>
@@ -117,28 +116,30 @@ export default class Editor extends React.Component {
           />
 
           <div className="rules">
-            <h3>Rules:</h3>
-            <ol>
-              <li>Do not edit this code until we tell you to</li>
-              <li>Do not navigate away from this tab!</li>
-              <li>Do not preview your HTML code</li>
-            </ol>
-
-            <h3>Tips:</h3>
+            <h3>Rules</h3>
             <ul>
-              <li>Our logo can be found at &quot;assets/logo.png&quot;</li>
+              <li>Wait until the timer starts to begin editing your code</li>
+              <li>You are limited only to HTML/CSS (No libraries, Javascript, etc.)</li>
+              <li>Do not leave this tab to access any external websites or resources</li>
+              <li>Do not preview the result of your code!</li>
             </ul>
 
-            <h3>Submission:</h3>
+            <h3>Tips</h3>
+            <ul>
+              <li>Write your CSS inline, or inside the provided style tags</li>
+              <li>The HackIllinois logo can be found at <b>assets/logo.png</b></li>
+            </ul>
+
+            <h3>Submit</h3>
             <div className="submit">
-              <p className={displayStatus ? 'status' : 'status inactive'}>
-                {statusMessage}
-              </p>
               <p>Team Name:</p>
               <input type="text" id="name-input" name="name" onChange={this.onChange} />
               <p>Problem Number:</p>
               <input type="text" id="problem-input" name="problem" onChange={this.onChange} />
               <button type="button" onClick={this.submit}>Submit</button>
+              <p className={displayStatus ? 'status' : 'status inactive'}>
+                {statusMessage}
+              </p>
             </div>
           </div>
         </div>

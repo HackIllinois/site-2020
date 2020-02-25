@@ -4,17 +4,17 @@ html, body {
 
 h1, h3, ol, ul {
   color: lightgray;
-  margin: 15px;
+  margin: 16px;
 }
 
 p {
   color: lightgray;
-  margin-left: 15px;
+  margin-left: 16px;
 }
 
 .content {
   display: flex;
-  margin: 15px;
+  margin: 16px;
 }
 
 .title {
@@ -24,12 +24,12 @@ p {
   div {
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 16px;
   }
 
   img {
     color: white;
-    height: 30px;
+    height: 32px;
     width: auto;
   }
 }
@@ -37,10 +37,10 @@ p {
 .submit {
   display: flex;
   flex-direction: column;
-  margin: 15px;
+  margin: 16px;
 
   * {
-    margin: 5px 0;
+    margin-bottom: 8px;
   }
 
   label {
@@ -51,12 +51,17 @@ p {
     background: #272822;
     color: lightgray;
     border: 1px solid lightgray;
+    height: 32px;
+    padding-left: 8px;
+    font-size: 16px;
   }
 
   button {
-    height: 30px;
+    margin-top: 8px;
+    height: 32px;
     color: #272822;
     background: lightgray;
+    font-size: 16px;
   }
 }
 
