@@ -91,7 +91,7 @@ export default class Editor extends React.Component {
     const displayStatus = !successfulSubmit || !changeSinceSubmit;
 
     return (
-      <div>
+      <div className="Editor">
         <div className="title">
           <h1>CODE IN THE DARK</h1>
           <div>
