@@ -7,6 +7,8 @@
     "ace-builds": "^1.4.8",
     "emailjs-com": "^2.4.1",
     "formik": "^1.5.8",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
     "node-sass": "^4.13.1",
     "query-string": "^6.9.0",
     "react": "^16.12.0",

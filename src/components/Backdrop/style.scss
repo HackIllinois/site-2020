@@ -14,6 +14,9 @@
     @media (max-width: 900px) {
       display: none;
     }
+    @media (max-width: 1100px) {
+      left: 55px;
+    }
 
     position: absolute;
     bottom: 0;
@@ -86,16 +89,24 @@
   }
 
   .content-container {
+    --top: 80px;
     position: absolute;
-    top: 80px;
-    @media (min-width: 2000px) {
-      top: 160px;
+    top: var(--top);
+
+    // the bottom scenery svg normally has a height of 38px, but if the window width
+    // exceeds the scenery width (1688px), then it expands maintaining aspect ratio
+    // the following keeps the content-container flush with the road
+    bottom: calc(100vw * (38 / 1688)); // hardcoded ratio (road height : scenery width)
+    max-height: calc(100vh - var(--top) - 38px);
+    @media (max-width: 600px) {
+      bottom: 0;
+      max-height: none;
     }
 
-    bottom: 8vh;
-    @media (max-width: 600px) {
-      bottom: 0px;
+    @media (min-width: 2000px) {
+      --top: 160px;
     }
+    
     left: 400px;
     right: 100px;
     @media (max-width: 1100px) {
@@ -117,11 +128,17 @@
     bottom: 0;
     min-width: 100%;
     pointer-events: none; // allows clicks, scrolls, etc. to pass through
+    left: 50%;
+    transform: translateX(-50%);
+
+    // prevent scenery from covering signpost
+    @media (max-width: 1250px) {
+      transform: translateX(-43%);
+    }
 
     &.mobile {
       display: none;
       bottom: -40px;
-      left: 50%;
       transform: translateX(-50%);
     }
 

@@ -1,22 +1,28 @@
 import abdulrahman from 'assets/mentors/abdulrahman.jpg';
 import adar from 'assets/mentors/adar.jpg';
 import amber from 'assets/mentors/amber.jpg';
+import andrew from 'assets/mentors/andrew.jpg';
+import apoorva from 'assets/mentors/apoorva.jpg';
 import brandon from 'assets/mentors/brandon.jpg';
 import christian from 'assets/mentors/christian.jpg';
 import clay from 'assets/mentors/clay.jpg';
 import cody from 'assets/mentors/cody.jpg';
+import corly from 'assets/mentors/corly.jpg';
 import dave from 'assets/mentors/dave.jpg';
 import edward from 'assets/mentors/edward.jpg';
+import frank from 'assets/mentors/frank.jpeg';
 import james from 'assets/mentors/james.jpg';
 import jason from 'assets/mentors/jason.jpg';
 import jeff from 'assets/mentors/jeff.jpg';
 import johnmark from 'assets/mentors/johnmark.jpg';
 import jonathan from 'assets/mentors/jonathan.jpg';
-import joshua from 'assets/mentors/joshua.png';
+import jonathan2 from 'assets/mentors/jonathan2.png';
 import katharine from 'assets/mentors/katharine.jpeg';
 import kelly from 'assets/mentors/kelly.jpg';
+import matt from 'assets/mentors/matt.jpg';
 import maxim from 'assets/mentors/maxim.jpeg';
 import michael from 'assets/mentors/michael.jpg';
+import michael2 from 'assets/mentors/michael2.jpeg';
 import mjumbe from 'assets/mentors/mjumbe.jpg';
 import mustafa from 'assets/mentors/mustafa.jpeg';
 import nate from 'assets/mentors/nate.png';
@@ -31,9 +37,11 @@ import seth from 'assets/mentors/seth.png';
 import shaan from 'assets/mentors/shaan.jpeg';
 import shahzad from 'assets/mentors/shahzad.jpg';
 import shivam from 'assets/mentors/shivam.jpg';
+import srujun from 'assets/mentors/srujun.jpg';
 import sumant from 'assets/mentors/sumant.jpg';
 import thomas from 'assets/mentors/thomas.jpg';
 import trenton from 'assets/mentors/trenton.png';
+import tyler from 'assets/mentors/tyler.jpg';
 import yu from 'assets/mentors/yu.jpeg';
 import zach from 'assets/mentors/zach.jpg';
 
@@ -41,16 +49,58 @@ export const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
 
 export const mentors = [
   {
-    img: trenton,
-    name: 'Trenton Spice',
-    bio: 'I am a full stack software engineer from the Indianapolis area.',
-    tags: [],
-  },
-  {
     img: kelly,
     name: 'Kelly Shen',
     bio: 'I am a data engineer at NYC startup Button. Previously, I was a data engineer at Etsy where I worked on the e-commerce site\'s in-house A/B testing platform. I have been an avid Julia user and contributor since my undergraduate days at MIT.',
     tags: ['LANGUAGES'],
+  },
+  {
+    img: matt,
+    name: 'Matt Sicker',
+    bio: 'I\'m a software engineer and a free/open source software evangelist with a bit of a functional programming background. Outside programming, I\'m interested in coffee, cooking, beer, reading, and many other topics.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: andrew,
+    name: 'Andrew Lundholm',
+    bio: 'I am a software engineer specializing in frontend technologies at OptumRx.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: tyler,
+    name: 'Tyler Leonhardt',
+    bio: 'I\'m a PowerShell team member at Microsoft. All my work is open source. I\'m also a member of @thelivecoders and @PowerShellLive, both communities of live coding Twitch streamers. I like coffee with the word "mouthfeel" on the package ☕️',
+    tags: ['LANGUAGES'],
+  },
+  {
+    img: michael2,
+    name: 'Michael Kruse',
+    bio: 'I graduated with a Master\'s degree in Computer Science from the University of Paderborn in Germany and a PhD from the University Paris-Sud 11. After a Post-Doc at the École Normale Supérieur, I currently work at Argonne National Laboratory. I contribute to the LLVM compiler infrastructure, including Polly, LLVM\'s polyhedral optimizer.',
+    tags: ['LANGUAGES'],
+  },
+  {
+    img: sam,
+    name: 'Sam Moore',
+    bio: 'I am a full-stack developer with years of experience building mobile, web, and back-end applications for a variety of projects. These days, I typically work in JavaScript due to its versatility, but also have professional experience in Swift, Objective-C, Ruby, PHP, and Kotlin.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: corly,
+    name: 'Corly Leung',
+    bio: 'I\'m a Software Engineer working on image understanding and AR in Google Lens!',
+    tags: ['DATA SCI'],
+  },
+  {
+    img: jonathan2,
+    name: 'Jonathan Wexler',
+    bio: 'I\'m a recent grad from UIUC from Chicago who\'s working in prop trading in NYC.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: trenton,
+    name: 'Trenton Spice',
+    bio: 'I am a full stack software engineer from the Indianapolis area.',
+    tags: [],
   },
   {
     img: mjumbe,
@@ -75,12 +125,6 @@ export const mentors = [
     name: 'Maxim Belkin',
     bio: 'I am the Education and Training Coordinator with the Blue Waters petascale supercomputer project at the National Center for Supercomputing Applications (NCSA) with a background in physics and scientific computing. I am also a member of Homebrew and a maintainer of the Linuxbrew/homebrew-xorg repository.',
     tags: ['LANGUAGES'],
-  },
-  {
-    img: seth,
-    name: 'Seth Bromberger',
-    bio: 'I have been involved in network and systems security for over twenty years. My work history spans multiple industries and sectors including government, finance, and energy.',
-    tags: ['DATA SCI'],
   },
   {
     img: sumant,
@@ -149,6 +193,24 @@ export const mentors = [
     tags: ['WEB DEV'],
   },
   {
+    img: zach,
+    name: 'Zach Auten',
+    bio: 'I live in North Carolina and I\'m a Homebrew maintainer.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: nate,
+    name: 'Nate Graham',
+    bio: 'I grew up in Champaign-Urbana, worked at Apple, and now find myself a software developer and project manager with KDE.',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: adar,
+    name: 'Adar Bar-Shalom',
+    bio: 'I am a programmer at NELiX, Inc., a team of ten developers cranking out code on several projects at once for multiple clients. My background in art, music, sports and gaming has nurtured me to become a competitive player and a worthy opponent. I love meeting new people, and making memories with old friends and new.',
+    tags: ['LANGUAGES', 'WEB DEV'],
+  },
+  {
     img: shivam,
     name: 'Shivam Bharuka',
     bio: 'I am a production engineer, supporting the AI infrastructure at Facebook. My research interests include exploring new computer architectures and designing scalable distributed systems. Before joining Facebook, I graduated with a master’s and a bachelor’s degree from University of Illinois at Urbana-Champaign, studying Computer Engineering.',
@@ -169,7 +231,7 @@ export const mentors = [
   {
     img: jonathan,
     name: 'Jonathan Reynolds',
-    bio: 'I\'m Jonathan Reynolds, a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
+    bio: 'I\'m a UIUC \'19 alumnus. I studied Computer Science at U of I, and now I work at Facebook as a software engineer on the PyTorch team. Outside of work, I like working on projects related to computer vision and graphics. I also enjoy running, rock climbing, and gaming in my free time.',
     tags: ['SYSTEMS', 'DATA SCI'],
   },
   {
@@ -197,12 +259,6 @@ export const mentors = [
     tags: ['LANGUAGES', 'DATA SCI'],
   },
   {
-    img: adar,
-    name: 'Adar Bar-Shalom',
-    bio: 'I am a programmer at NELiX, Inc., a team of ten developers cranking out code on several projects at once for multiple clients. My background in art, music, sports and gaming has nurtured me to become a competitive player and a worthy opponent. I love meeting new people, and making memories with old friends and new.',
-    tags: ['LANGUAGES', 'WEB DEV'],
-  },
-  {
     img: dave,
     name: 'Dave Mussulman',
     bio: 'I am an Instructional Technology Facilitator with Engineering IT, helping Grainger College of Engineering faculty innovate with technologies in their classes.',
@@ -219,12 +275,6 @@ export const mentors = [
     name: 'Shaan Patel',
     bio: 'I am a software engineer at IMC Trading.',
     tags: ['SYSTEMS', 'LANGUAGES'],
-  },
-  {
-    img: joshua,
-    name: 'Joshua Gould',
-    bio: 'I am a software engineer and I teach Rust. I am a member of the Rust community team and am excited about anything Rust.',
-    tags: ['LANGUAGES', 'SYSTEMS'],
   },
   {
     img: jason,
@@ -245,27 +295,33 @@ export const mentors = [
     tags: ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'],
   },
   {
-    img: nate,
-    name: 'Nate Graham',
-    bio: 'I grew up in Champaign-Urbana, worked at Apple, and now find myself a software developer and project manager with KDE.',
-    tags: ['SYSTEMS'],
-  },
-  {
-    img: zach,
-    name: 'Zach Auten',
-    bio: 'I live in North Carolina and I\'m a Homebrew maintainer.',
-    tags: ['SYSTEMS'],
-  },
-  {
     img: mustafa,
     name: 'Mustafa Abdul-Kader',
     bio: 'I am a tech enthusiast, urban dweller, and full-time dad to two cats.',
     tags: ['DATA SCI', 'WEB DEV', 'SYSTEMS'],
   },
   {
-    img: sam,
-    name: 'Sam Moore',
-    bio: 'I am a full-stack developer with years of experience building mobile, web, and back-end applications for a variety of projects. These days, I typically work in JavaScript due to its versatility, but also have professional experience in Swift, Objective-C, Ruby, PHP, and Kotlin.',
-    tags: ['WEB DEV'],
+    img: apoorva,
+    name: 'Apoorva Dixit',
+    bio: 'I graduated from UIUC in May 2019, and now work in Display Ads at Google! I was an intern at Google in 2018 and would love to talk about life at Google and answer any of your career related questions!',
+    tags: ['DATA SCI', 'SYSTEMS', 'LANGUAGES', 'WEB DEV'],
+  },
+  {
+    img: frank,
+    name: 'Frank Trampe',
+    bio: 'I\'m based in Missouri and work for clients all over the world, mostly building software, sometimes hardware.',
+    tags: ['SYSTEMS', 'LANGUAGES'],
+  },
+  {
+    img: srujun,
+    name: 'Srujun Thanmay Gupta',
+    bio: 'I am a Software Engineer in Privacy and Data Protection at Google, Chicago. I\'m a UIUC \'18 alumnus who studied Computer Engineering and Business. I am super passionate about large-scale data processing and systems design. Ask me anything about work, advice, or fun!',
+    tags: ['LANGUAGES', 'SYSTEMS'],
+  },
+  {
+    img: seth,
+    name: 'Seth Bromberger',
+    bio: 'I have been involved in network and systems security for over twenty years. My work history spans multiple industries and sectors including government, finance, and energy.',
+    tags: ['DATA SCI'],
   },
 ];

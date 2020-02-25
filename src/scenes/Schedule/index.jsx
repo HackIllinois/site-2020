@@ -1,6 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+import 'moment-timezone';
 import Backdrop from 'components/Backdrop';
-import './styles.scss';
+
+import './style.scss';
 import LIGHT from 'assets/home/billboard-light.svg';
 import ARROW from 'assets/home/expand_more.svg';
 
@@ -19,18 +22,12 @@ export default class Schedule extends React.Component {
   }
 
   static getTime(d) {
-    const correctTime = d * 1000;
-    const p = new Date(correctTime);
-    const min = p.getMinutes();
-    const h = p.getHours();
-    return `${h % 12 === 0 ? '12' : p.getHours() % 12}:${min < 10 ? '0' : ''}${min}${h >= 12 ? 'pm' : 'am'}`;
+    return moment.unix(d).tz('America/Chicago').format('h:mm a');
   }
 
   static getDayofWeek(d) {
-    const p = new Date(d * 1000);
-    const dd = p.getDay();
-    if (dd === 0) return 2;
-    return dd - 5;
+    const dd = moment.unix(d).tz('America/Chicago').day();
+    return (dd + 2) % 7;
   }
 
   getEvents() {
@@ -80,7 +77,16 @@ export default class Schedule extends React.Component {
               <img src={ARROW} alt="" className={`arr ${expanded ? 'turned-over' : 'turned-over-not'}`} />
             </button>
             <div className={`day-holder ${expanded ? 'display-day-holder' : 'hide-day-holder'}`}>
-              {[0, 1, 2].map(e => <button type="button" className={`day-button-style ${currentSection === e ? 'selected' : '' }`} onClick={() => { this.setState({ currentSection: e, expanded: false }); }}>{signs[e]}</button>)}
+              {[0, 1, 2].map(e => (
+                <button
+                  type="button"
+                  className={`day-button-style ${currentSection === e ? 'selected' : '' }`}
+                  onClick={() => this.setState({ currentSection: e, expanded: false })}
+                  key={e}
+                >
+                  {signs[e]}
+                </button>
+              ))}
             </div>
             <div className="spotlight-wrapper">
               <img src={LIGHT} className="spotlight-itself" alt="" />
@@ -96,14 +102,14 @@ export default class Schedule extends React.Component {
               }}
             >{' '}
             </button>
-            <div className="leg-supports">
-              <div className="left-leg">
-                <div className="shade" />
-              </div>
-              <div className="right-leg">
-                <div className="shade" />
-              </div>
+
+            <div className="leg-supports left-leg">
+              <div className="shade" />
             </div>
+            <div className="leg-supports right-leg">
+              <div className="shade" />
+            </div>
+
             <div className="display-board">
               <div className="display-internal">
                 <div className="display-padding">
@@ -112,7 +118,7 @@ export default class Schedule extends React.Component {
                       const len = events.length;
                       const dayOfWeek = Schedule.getDayofWeek(e.startTime);
                       if (dayOfWeek === currentSection
-                        && e.startTime > eventStart && e.startTime < eventEnd) {
+                        && e.startTime >= eventStart && e.startTime <= eventEnd) {
                         return (
                           <div className="event-wrapper" key={e.id}>
                             <div className="event-box">
@@ -121,9 +127,12 @@ export default class Schedule extends React.Component {
                                   {Schedule.getTime(e.startTime)}
                                 </div>
                               </div>
-                              <div>
+                              <div className="event-box-text">
                                 <div className="event-box-name">
                                   {e.name.toUpperCase()}
+                                </div>
+                                <div className="event-sponsor">
+                                  {e.sponsor && `Sponsored by ${e.sponsor}`}
                                 </div>
                                 <div>
                                   {e.locations.map(l => (
