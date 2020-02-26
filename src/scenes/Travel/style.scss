@@ -131,10 +131,6 @@ $dark-blue: #285163;
 
       .inner-text-container {
         padding: 15px;
-
-        @media (max-width: $breakpoint-mobile) {
-          overflow: scroll;
-        }
       }
 
       hr {
