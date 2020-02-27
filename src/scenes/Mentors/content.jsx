@@ -3,13 +3,17 @@ import adar from 'assets/mentors/adar.jpg';
 import amber from 'assets/mentors/amber.jpg';
 import andrew from 'assets/mentors/andrew.jpg';
 import apoorva from 'assets/mentors/apoorva.jpg';
+import ashok from 'assets/mentors/ashok.jpg';
 import brandon from 'assets/mentors/brandon.jpg';
 import christian from 'assets/mentors/christian.jpg';
 import clay from 'assets/mentors/clay.jpg';
 import cody from 'assets/mentors/cody.jpg';
 import corly from 'assets/mentors/corly.jpg';
 import dave from 'assets/mentors/dave.jpg';
+import david from 'assets/mentors/david.jpg';
+import dustin from 'assets/mentors/dustin.jpg';
 import edward from 'assets/mentors/edward.jpg';
+import erik from 'assets/mentors/erik.jpg';
 import frank from 'assets/mentors/frank.jpeg';
 import james from 'assets/mentors/james.jpg';
 import jason from 'assets/mentors/jason.jpg';
@@ -17,6 +21,7 @@ import jeff from 'assets/mentors/jeff.jpg';
 import johnmark from 'assets/mentors/johnmark.jpg';
 import jonathan from 'assets/mentors/jonathan.jpg';
 import jonathan2 from 'assets/mentors/jonathan2.png';
+import justin from 'assets/mentors/justin.jpeg';
 import katharine from 'assets/mentors/katharine.jpeg';
 import kelly from 'assets/mentors/kelly.jpg';
 import matt from 'assets/mentors/matt.jpg';
@@ -24,6 +29,7 @@ import maxim from 'assets/mentors/maxim.jpeg';
 import michael from 'assets/mentors/michael.jpg';
 import michael2 from 'assets/mentors/michael2.jpeg';
 import mjumbe from 'assets/mentors/mjumbe.jpg';
+import monica from 'assets/mentors/monica.jpg';
 import mustafa from 'assets/mentors/mustafa.jpeg';
 import nate from 'assets/mentors/nate.png';
 import nathan from 'assets/mentors/nathan.png';
@@ -32,6 +38,7 @@ import nicolas from 'assets/mentors/nicolas.jpeg';
 import pablo from 'assets/mentors/pablo.jpeg';
 import richard from 'assets/mentors/richard.jpg';
 import robert from 'assets/mentors/robert.jpeg';
+import sachi from 'assets/mentors/sachi.jpg';
 import sam from 'assets/mentors/sam.jpg';
 import seth from 'assets/mentors/seth.png';
 import shaan from 'assets/mentors/shaan.jpeg';
@@ -44,10 +51,29 @@ import trenton from 'assets/mentors/trenton.png';
 import tyler from 'assets/mentors/tyler.jpg';
 import yu from 'assets/mentors/yu.jpeg';
 import zach from 'assets/mentors/zach.jpg';
+import zeeshan from 'assets/mentors/zeeshan.jpg';
 
 export const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
 
 export const mentors = [
+  {
+    img: justin,
+    name: 'Justin Yang',
+    bio: 'I’m a Software Engineer in Google Ads and an Illinois alumnus (BSEE ’19).',
+    tags: [],
+  },
+  {
+    img: monica,
+    name: 'Monica Muthaiya',
+    bio: 'I graduated from UIUC in May 2019 and work at Optum as a software developer. I have professional experience in UI/UX and web development. In my free time, I enjoy traveling, DJing, hiking/backpacking, and volunteering.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: sachi,
+    name: 'Sachi Singh',
+    bio: 'I am a software engineer in the Technology Development Program at Optum. I graduated from UIUC Bioengineering with a minor in CS last May.',
+    tags: ['WEB DEV'],
+  },
   {
     img: kelly,
     name: 'Kelly Shen',
@@ -97,12 +123,6 @@ export const mentors = [
     tags: ['SYSTEMS'],
   },
   {
-    img: trenton,
-    name: 'Trenton Spice',
-    bio: 'I am a full stack software engineer from the Indianapolis area.',
-    tags: [],
-  },
-  {
     img: mjumbe,
     name: 'Mjumbe Poe',
     bio: 'I have been developing civic technology since 2010. I endeavor to use technology to build the capacity of individuals and communities to shape their cities, their neighborhoods, and their own lives. In addition to working as a Data Engineer at Betterment, I am co-founder and CTO of Stepwise, a company dedicated to leveraging open data to help people make smarter, more impactful investments in the built environment.',
@@ -135,7 +155,7 @@ export const mentors = [
   {
     img: cody,
     name: 'Cody Sherman',
-    bio: 'I specialize in clean and modern UI and UX, and am a self declared CSS wizard, tech enthusiast, and video game addict. I have worked for multiple start-ups and run the open source Frow CSS in my free time.',
+    bio: 'I specialize in clean and modern UI and UX, and am a self declared CSS wizard, tech enthusiast, and video game addict. I have worked for multiple start-ups and run the open source project Frow CSS in my free time.',
     tags: ['WEB DEV'],
   },
   {
@@ -187,6 +207,12 @@ export const mentors = [
     tags: ['SYSTEMS'],
   },
   {
+    img: david,
+    name: 'David Garcia Quintas',
+    bio: 'Originally from rainy northern Spain, I\'ve been jumping around for a while: I spent 4 years at CERN (Geneva, Switzerland) 2006-2010. I saw the LHC get started. Twice. Also wrote part of its control software. I moved to the US in 2010 to work at the Lawrence Berkeley National Lab in similar expensive physics toys. I joined Google and joined Waymo in Sep 2019, where I work in the infrastructure team.',
+    tags: ['SYSTEMS'],
+  },
+  {
     img: nicolas,
     name: 'Nicolas Nytko',
     bio: 'I am a CS@UIUC alum and PrairieLearn developer.',
@@ -203,6 +229,24 @@ export const mentors = [
     name: 'Nate Graham',
     bio: 'I grew up in Champaign-Urbana, worked at Apple, and now find myself a software developer and project manager with KDE.',
     tags: ['SYSTEMS'],
+  },
+  {
+    img: dustin,
+    name: 'Dustin George',
+    bio: 'I am a software engineer for Optum. I graduated from UIUC in Spring 2019 ✌🏾🐼',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: ashok,
+    name: 'Ashok Arjunakani',
+    bio: 'I am a full-stack web developer working at OptumRx. I went to U of I for Bioengineering and CS. I am passionate about healthcare technology and how we can use it to help people live healthier lives!',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: trenton,
+    name: 'Trenton Spice',
+    bio: 'I am a full stack software engineer from the Indianapolis area.',
+    tags: ['SYSTEMS', 'WEB DEV'],
   },
   {
     img: adar,
@@ -225,7 +269,7 @@ export const mentors = [
   {
     img: shahzad,
     name: 'Shahzad Bhatti',
-    bio: 'I work at Facebook as a Research Scientist in the AI org. I primarily work on a Language Identification classifier which determines the language of an audio signal if there is human speech in it. I have also developed VAD classifier which detects human speech in an audio signal.',
+    bio: 'I work at Facebook as a Research Scientist in the AI org. I primarily work on a Language Identification classifier which determines the language of an audio signal if there is human speech in it. I have also developed a VAD classifier which detects human speech in an audio signal.',
     tags: ['SYSTEMS', 'DATA SCI'],
   },
   {
@@ -249,13 +293,13 @@ export const mentors = [
   {
     img: pablo,
     name: 'Pablo Aguiar',
-    bio: 'I\'m a computer scientist from Brazil, where I worked as software engineer at Globo.com, Latin America’s largest media and publishing company. Currently, I\'m living in lovely Munich, Germany, creating a disruptive B2B solution for the music industry! I have been writing programs since I was 11, and professionally for at least 20 years. I\'m looking forward to having loads of fun at HackIllinois!',
+    bio: 'I\'m a computer scientist from Brazil, where I worked as a software engineer at Globo.com, Latin America\'s largest media and publishing company. Currently, I\'m living in lovely Munich, Germany, creating a disruptive B2B solution for the music industry! I\'ve been writing programs since I was 11, and professionally for at least 20 years. I can mentor on Python, Go, Elixir, Rust, Lua, OpenCV, Fish Shell/Oh My Fish!, Flask, Tornado, Phoenix/LiveView, and related things. I\'m looking forward to having loads of fun at HackIllinois!',
     tags: ['SYSTEMS', 'WEB DEV'],
   },
   {
     img: jeff,
     name: 'Jeff Bezanson',
-    bio: 'I\'m one of the creators of the Julia programming language.',
+    bio: 'My first program was \'10 PRINT "HELLO WORLD"\' in BASIC. Since then I\'ve been hooked. I am one of the creators of a programming language called Julia, a fun and powerful language where science, machine learning, data science, and compilers meet, and where you can work with a lot of people with different skills and learn a lot!',
     tags: ['LANGUAGES', 'DATA SCI'],
   },
   {
@@ -275,6 +319,18 @@ export const mentors = [
     name: 'Shaan Patel',
     bio: 'I am a software engineer at IMC Trading.',
     tags: ['SYSTEMS', 'LANGUAGES'],
+  },
+  {
+    img: erik,
+    name: 'Erik Torres',
+    bio: 'I am pursuing a career in Software Engineering and Artificial Intelligence. I am experienced in Robotic Process Automation (RPA) development, web development and machine learning with a demonstrated knowledge of software development obtained through my experience and coursework.',
+    tags: ['LANGUAGES', 'WEB DEV'],
+  },
+  {
+    img: zeeshan,
+    name: 'Zeeshan Haidry',
+    bio: 'I graduated from UIUC in May 2018 with a B.S. in Bioengineering. Currently, I focus on backend development for the clinical side of Optum.',
+    tags: ['LANGUAGES', 'WEB DEV'],
   },
   {
     img: jason,
