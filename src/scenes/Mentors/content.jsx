@@ -57,12 +57,6 @@ export const tags = ['DATA SCI', 'LANGUAGES', 'SYSTEMS', 'WEB DEV'];
 
 export const mentors = [
   {
-    img: justin,
-    name: 'Justin Yang',
-    bio: 'I’m a Software Engineer in Google Ads and an Illinois alumnus (BSEE ’19).',
-    tags: [],
-  },
-  {
     img: monica,
     name: 'Monica Muthaiya',
     bio: 'I graduated from UIUC in May 2019 and work at Optum as a software developer. I have professional experience in UI/UX and web development. In my free time, I enjoy traveling, DJing, hiking/backpacking, and volunteering.',
@@ -331,6 +325,12 @@ export const mentors = [
     name: 'Zeeshan Haidry',
     bio: 'I graduated from UIUC in May 2018 with a B.S. in Bioengineering. Currently, I focus on backend development for the clinical side of Optum.',
     tags: ['LANGUAGES', 'WEB DEV'],
+  },
+  {
+    img: justin,
+    name: 'Justin Yang',
+    bio: 'I’m a Software Engineer in Google Ads and an Illinois alumnus (BSEE ’19).',
+    tags: ['SYSTEMS', 'LANGUAGES'],
   },
   {
     img: jason,
