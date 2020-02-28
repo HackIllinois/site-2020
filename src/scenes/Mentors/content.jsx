@@ -1,7 +1,10 @@
 import abdulrahman from 'assets/mentors/abdulrahman.jpg';
 import adar from 'assets/mentors/adar.jpg';
+import alec from 'assets/mentors/alec.jpg';
 import amber from 'assets/mentors/amber.jpg';
 import andrew from 'assets/mentors/andrew.jpg';
+import ann from 'assets/mentors/ann.jpg';
+import anurag from 'assets/mentors/anurag.jpg';
 import apoorva from 'assets/mentors/apoorva.jpg';
 import ashok from 'assets/mentors/ashok.jpg';
 import brandon from 'assets/mentors/brandon.jpg';
@@ -15,16 +18,23 @@ import dustin from 'assets/mentors/dustin.jpg';
 import edward from 'assets/mentors/edward.jpg';
 import erik from 'assets/mentors/erik.jpg';
 import frank from 'assets/mentors/frank.jpeg';
+import gino from 'assets/mentors/gino.jpg';
 import james from 'assets/mentors/james.jpg';
+import james2 from 'assets/mentors/james2.jpg';
 import jason from 'assets/mentors/jason.jpg';
 import jeff from 'assets/mentors/jeff.jpg';
+import john from 'assets/mentors/john.jpg';
 import johnmark from 'assets/mentors/johnmark.jpg';
+import jon from 'assets/mentors/jon.jpg';
 import jonathan from 'assets/mentors/jonathan.jpg';
 import jonathan2 from 'assets/mentors/jonathan2.png';
+import joshua from 'assets/mentors/joshua.jpg';
 import justin from 'assets/mentors/justin.jpeg';
 import katharine from 'assets/mentors/katharine.jpeg';
 import kelly from 'assets/mentors/kelly.jpg';
+import kyle from 'assets/mentors/kyle.jpg';
 import matt from 'assets/mentors/matt.jpg';
+import matthew from 'assets/mentors/matthew.jpg';
 import maxim from 'assets/mentors/maxim.jpeg';
 import michael from 'assets/mentors/michael.jpg';
 import michael2 from 'assets/mentors/michael2.jpeg';
@@ -33,9 +43,11 @@ import monica from 'assets/mentors/monica.jpg';
 import mustafa from 'assets/mentors/mustafa.jpeg';
 import nate from 'assets/mentors/nate.png';
 import nathan from 'assets/mentors/nathan.png';
+import neil from 'assets/mentors/neil.png';
 import nick from 'assets/mentors/nick.jpeg';
 import nicolas from 'assets/mentors/nicolas.jpeg';
 import pablo from 'assets/mentors/pablo.jpeg';
+import praveen from 'assets/mentors/praveen.jpg';
 import richard from 'assets/mentors/richard.jpg';
 import robert from 'assets/mentors/robert.jpeg';
 import sachi from 'assets/mentors/sachi.jpg';
@@ -45,6 +57,7 @@ import shaan from 'assets/mentors/shaan.jpeg';
 import shahzad from 'assets/mentors/shahzad.jpg';
 import shivam from 'assets/mentors/shivam.jpg';
 import srujun from 'assets/mentors/srujun.jpg';
+import steve from 'assets/mentors/steve.jpg';
 import sumant from 'assets/mentors/sumant.jpg';
 import thomas from 'assets/mentors/thomas.jpg';
 import trenton from 'assets/mentors/trenton.png';
@@ -237,6 +250,60 @@ export const mentors = [
     tags: ['WEB DEV'],
   },
   {
+    img: joshua,
+    name: 'Joshua Dyer',
+    bio: 'I\'m a web developer at Mirus Research.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: matthew,
+    name: 'Matthew Dierker',
+    bio: 'Hi! I work on Gmail and I love talking with people. Come say hi!',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: steve,
+    name: 'Steve Loucks',
+    bio: 'I\'ve been working in the software industry for 15 years developing desktop, mobile, and web applications. My passion is to solve hard problems while collaborating with fun people.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: jon,
+    name: 'Jon Spaulding',
+    bio: 'I\'m a web developer with Mirus Research.',
+    tags: ['WEB DEV'],
+  },
+  {
+    img: john,
+    name: 'John Nam',
+    bio: 'I work at Caterpillar as a Sr. Data Scientist. Even though I am not a CS major, I work with lots of data sets and can help you!',
+    tags: ['DATA SCI'],
+  },
+  {
+    img: kyle,
+    name: 'Kyle Cline',
+    bio: 'I\'m an analytics manager with Caterpillar\'s IoT Analytics team in Cat Digital! I have a team of data scientists and engineers who work in Research Park here at UIUC and we are always looking for awesome interns! I graduated from UIUC in Electrical Engineering and have worked at Caterpillar for almost 15 years. As a programmer, I cut my teeth on C++. These days, I love all things Python, Arduino, and Raspberry Pi.',
+    tags: ['DATA SCI'],
+  },
+  {
+    img: james2,
+    name: 'James Mason',
+    bio: 'I am a Senior Data Scientist at Caterpillar with a background in artificial intelligence, database design, graphic design, and more programming languages than I care to mention!',
+    tags: ['DATA SCI'],
+  },
+  {
+    img: neil,
+    name: 'Neil Hinrichsen',
+    bio: 'I am an IT Analyst at Caterpillar. Happy to be here for my first time mentoring! I am a financial analyst gone techie. My interests in tech are anything cloudy, AI, Big Data, and building PCs and servers. If it’s tech and you can take it apart there is a good chance I have. Feel free to come up and chat about your craziest Gaming Rigs Setups or Media Servers! Cheers to a good weekend!',
+    tags: ['SYSTEMS'],
+  },
+  {
+    img: ann,
+    name: 'Ann Peedikayil',
+    bio: 'I work at Caterpillar as a Senior Digital Analyst Project Leader. I started as a structural engineer creating simulations of our large mining trucks using machine performance data. Now I work with data that evaluates our dealers digital capabilities. Looking forward to seeing how you all tackle the Caterpillar challenge!',
+    tags: ['DATA SCI'],
+  },
+  {
     img: trenton,
     name: 'Trenton Spice',
     bio: 'I am a full stack software engineer from the Indianapolis area.',
@@ -333,6 +400,18 @@ export const mentors = [
     tags: ['SYSTEMS', 'LANGUAGES'],
   },
   {
+    img: alec,
+    name: 'Alec Troemel',
+    bio: 'I’m a full stack developer with experience in Javascript, Python, Django, Vue, Docker, Kubernetes, Rust, and a little bit of a bunch more. I’m an emacs devotee who wishes he was a true lisp hacker and had more time to make games in Pico8.',
+    tags: ['WEB DEV', 'LANGUAGES'],
+  },
+  {
+    img: gino,
+    name: 'Gino Corrales',
+    bio: 'I\'m a Cybersecurity Software Engineer with Caterpillar IT HQ! I work for the Identity Access Management team as a Testing Lead of an identity management platform. I am very passionate about open source projects and wearable technologies. Ping me or stop by the Caterpillar booth, I\'ll be so  happy to help with your projects throughout the weekend.',
+    tags: ['SYSTEMS', 'WEB DEV'],
+  },
+  {
     img: jason,
     name: 'Jason Coombs',
     bio: 'I am Site Reliability Manager at Google Pittsburgh, with 20+ years of experience in Python. I am a shared or sole maintainer for over 140 projects in the Python ecosystem, a responsibility which I have accumulated over the past decade of my open source contributions.',
@@ -357,9 +436,21 @@ export const mentors = [
     tags: ['DATA SCI', 'WEB DEV', 'SYSTEMS'],
   },
   {
+    img: praveen,
+    name: 'Praveen Kumar Meenakshi Sundaram Gandhi',
+    bio: 'I\'m a Cloud Software Engineer from Schlumberger. I have a Master\'s degree from USC.',
+    tags: ['DATA SCI', 'SYSTEMS', 'LANGUAGES'],
+  },
+  {
     img: apoorva,
     name: 'Apoorva Dixit',
     bio: 'I graduated from UIUC in May 2019, and now work in Display Ads at Google! I was an intern at Google in 2018 and would love to talk about life at Google and answer any of your career related questions!',
+    tags: ['DATA SCI', 'SYSTEMS', 'LANGUAGES', 'WEB DEV'],
+  },
+  {
+    img: anurag,
+    name: 'Anurag Bihani',
+    bio: 'I\'m a computer geek and a technology enthusiast. I like to acquire new skills in order to solve meaningful problems. I currently work as a back-end software engineer for Seismic / Subsurface Exploration Oil and Gas projects at the Geophysics Technology Center, Schlumberger.',
     tags: ['DATA SCI', 'SYSTEMS', 'LANGUAGES', 'WEB DEV'],
   },
   {
