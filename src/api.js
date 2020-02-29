@@ -76,3 +76,8 @@ export function uploadFile(file, type) {
 export function getQR() {
   return request('GET', '/user/qr/');
 }
+
+export function getPrizes() {
+  return request('GET', '/upload/blobstore/prizes/')
+    .then(res => res.data);
+}

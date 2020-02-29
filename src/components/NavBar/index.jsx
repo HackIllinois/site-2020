@@ -7,11 +7,11 @@ import logoWhite from 'assets/logo_white.svg';
 import menu from 'assets/icons/menu.svg';
 
 const links = [
-  { text: 'Schedule', to: '/schedule' },
   { text: 'Maps', to: '/maps' },
-  // { text: 'Prizes', to: '/prizes' },
-  { text: 'Travel', to: '/travel' },
   { text: 'Mentors', to: '/mentors' },
+  { text: 'Prizes', to: '/prizes' },
+  { text: 'Schedule', to: '/schedule' },
+  { text: 'Travel', to: '/travel' },
 ];
 
 export default class NavBar extends React.Component {

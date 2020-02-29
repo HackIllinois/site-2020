@@ -1,0 +1,129 @@
+$structure-color: #285163;
+$billboard-color: #a43b5c;
+$connector-color: #5f9979;
+
+.scene-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .billboard-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .pole {
+    background: $structure-color;
+    width: 32px;
+    @media (max-width: 480px) {
+      width: 16px;
+    }
+
+    height: 100%;
+    position: absolute;
+
+    &#left {
+      left: 20px;
+    }
+
+    &#right {
+      right: 20px;
+    }
+  }
+
+  .connector {
+    background: $connector-color;
+    width: 16px;
+    @media (max-width: 480px) {
+      width: 8px;
+    }
+    height: 24px;
+    position: absolute;
+
+    &.top {
+      top: 30px;
+    }
+
+    &.bottom {
+      bottom: 93px;
+    }
+
+    &.left {
+      left: 52px;
+      @media (max-width: 480px) {
+        left: 36px;
+      }
+    }
+
+    &.right {
+      right: 52px;
+      @media (max-width: 480px) {
+        right: 36px;
+      }
+    }
+  }
+
+  .billboard {
+    background: $billboard-color;
+    border: 16px solid $structure-color;
+    position: absolute;
+    color: white;
+
+    width: calc(100% - 164px);
+    @media (max-width: 480px) {
+      width: calc(100% - 120px);
+    }
+    top: 16px;
+    bottom: 77px;
+    left: 66px;
+    @media (max-width: 480px) {
+      left: 44px;
+    }
+
+    overflow-y: auto;
+  }
+
+  .prize {
+    margin: 16px 24px;
+    @media (max-width: 480px) {
+      margin: 12px;
+    }
+    padding: 24px;
+    @media (max-width: 480px) {
+      padding: 12px;
+    }
+    border: 1px solid white;
+    border-radius: 10px;
+
+    .prize-name {
+      font-size: 24px;
+      @media (max-width: 480px) {
+        font-size: 16px;
+      }
+      font-weight: 600;
+    }
+
+    .prize-sponsor {
+      font-size: 16px;
+      @media (max-width: 480px) {
+        font-size: 12px;
+      }
+      margin-bottom: 16px;
+    }
+
+    .prize-description {
+      font-size: 16px;
+      @media (max-width: 480px) {
+        font-size: 12px;
+      }
+    }
+  }
+}

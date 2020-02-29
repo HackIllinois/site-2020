@@ -16,6 +16,7 @@ import RSVP from 'scenes/RSVP';
 import Schedule from 'scenes/Schedule';
 import Maps from 'scenes/Maps';
 import Travel from 'scenes/Travel';
+import Prizes from 'scenes/Prizes';
 import Mentors from 'scenes/Mentors';
 import Editor from 'scenes/Editor';
 
@@ -45,6 +46,7 @@ const App = () => (
       <Route path="/schedule" component={Schedule} />
       <Route path="/maps" component={Maps} />
       <Route path="/travel" component={Travel} />
+      <Route path="/prizes" component={Prizes} />
       <Route path="/mentors" component={Mentors} />
 
       <Route path="/editor" component={Editor} />
