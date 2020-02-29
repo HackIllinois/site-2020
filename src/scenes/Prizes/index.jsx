@@ -24,10 +24,7 @@ export default class Prizes extends React.Component {
     const prizesList = this.state.prizes;
 
     return (
-      <Backdrop
-        title="Prizes"
-        signs={[]}
-      >
+      <Backdrop title="Prizes" signs={[]}>
         <div className="scene-content">
           <img className="prizes-front" src={prizesFront} alt="Prizes Banner" />
           <div className="billboard-container">

@@ -8,6 +8,10 @@ $connector-color: #5f9979;
   display: flex;
   flex-direction: column;
 
+  .prizes-front {
+    min-width: 100%;
+  }
+
   .billboard-container {
     position: relative;
     width: 100%;
@@ -92,7 +96,7 @@ $connector-color: #5f9979;
   }
 
   .prize {
-    margin: 16px 24px;
+    margin: 16px;
     @media (max-width: 480px) {
       margin: 12px;
     }
