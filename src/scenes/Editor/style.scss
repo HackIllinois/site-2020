@@ -1,0 +1,86 @@
+.Editor {
+  height: 100%;
+  background: #272822;
+
+  h1, h3, ol, ul {
+    color: lightgray;
+    margin: 16px;
+  }
+
+  p {
+    color: lightgray;
+    margin-left: 16px;
+  }
+
+  .content {
+    display: flex;
+    margin: 16px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+      margin-right: 16px;
+    }
+
+    img {
+      color: white;
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  .submit {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+
+    * {
+      margin-bottom: 8px;
+    }
+
+    label {
+      color: lightgray;
+    }
+
+    input {
+      background: #272822;
+      color: lightgray;
+      border: 1px solid lightgray;
+      height: 32px;
+      padding-left: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 8px;
+      height: 32px;
+      color: #272822;
+      background: lightgray;
+      font-size: 16px;
+    }
+  }
+
+  .rules {
+    margin-left: 40px;
+  }
+
+  .status.inactive {
+    display: none;
+  }
+
+  .ace_editor {
+    border: 1px solid lightgray;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+
+    * {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  }
+}

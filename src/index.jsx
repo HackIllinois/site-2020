@@ -18,6 +18,7 @@ import Maps from 'scenes/Maps';
 import Travel from 'scenes/Travel';
 import Prizes from 'scenes/Prizes';
 import Mentors from 'scenes/Mentors';
+import Editor from 'scenes/Editor';
 
 import 'index.css';
 
@@ -47,6 +48,8 @@ const App = () => (
       <Route path="/travel" component={Travel} />
       <Route path="/prizes" component={Prizes} />
       <Route path="/mentors" component={Mentors} />
+
+      <Route path="/editor" component={Editor} />
 
       <Route component={() => <><NavBar /><Message title="404 Not Found" /></>} />
     </Switch>

@@ -43,7 +43,7 @@ export default class Prizes extends React.Component {
                 <div className="prize">
                   <p className="prize-name">{prize.name}</p>
                   <p className="prize-sponsor">Sponsored by: {prize.sponsor}</p>
-                  <p>{prize.description}</p>
+                  <p className="prize-description">{prize.description}</p>
                 </div>
               ))}
             </div>

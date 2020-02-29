@@ -46,7 +46,7 @@
     &:hover .line {
       width: 100%;
     }
-    
+
     &.active, &:hover {
       color: #A43B5C;
       .line {
@@ -54,7 +54,7 @@
       }
     }
   }
-  
+
   .mobile-menu-toggle {
     padding: 10px;
     cursor: pointer;
@@ -65,7 +65,7 @@
     @media (max-width: 900px) {
       display: initial;
     }
-    
+
     img {
       width: 25px;
     }
@@ -85,13 +85,13 @@
     z-index: 52;
     transform: translateX(100%);
     transition: transform .3s;
-  
+
     .logo {
       margin: 40px 0;
       width: 110px;
       min-width: 0;
     }
-  
+
     .menu-item {
       color: white;
       display: block;
