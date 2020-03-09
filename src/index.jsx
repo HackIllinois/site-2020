@@ -42,6 +42,11 @@ const App = () => (
         path="/sponsor"
         component={() => <PDF path="documents/sponsorship.pdf" />}
       />
+      <Route
+        exact
+        path="/resumes"
+        component={() => <PDF path="documents/resumes.zip" />}
+      />
 
       <Route path="/schedule" component={Schedule} />
       <Route path="/maps" component={Maps} />
