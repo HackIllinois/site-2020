@@ -9,7 +9,7 @@ import NavBar from 'components/NavBar';
 
 import Apply from 'scenes/Apply';
 import Auth from 'scenes/Auth';
-import Home from 'scenes/Home';
+// import Home from 'scenes/Home';
 import MentorRegistration from 'scenes/MentorRegistration';
 import QR from 'scenes/QR';
 import RSVP from 'scenes/RSVP';
@@ -26,7 +26,7 @@ const App = () => (
   <BrowserRouter>
     <Switch>
       {/* <Route exact path="/" component={Home} /> */}
-      <Route path="/" render={() => (window.location = 'https://hackthis.hackillinois.org')} />
+      <Route path="/" render={() => { window.location = 'https://hackthis.hackillinois.org'; }} />
       <AuthenticatedRoute path="/apply" component={Apply} />
       <Route path="/auth" component={Auth} />
       <AuthenticatedRoute path="/mentor-registration" component={MentorRegistration} />
