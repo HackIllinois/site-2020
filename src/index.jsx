@@ -25,7 +25,8 @@ import 'index.css';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Home} />
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route path="/" render={() => (window.location = 'https://hackthis.hackillinois.org')} />
       <AuthenticatedRoute path="/apply" component={Apply} />
       <Route path="/auth" component={Auth} />
       <AuthenticatedRoute path="/mentor-registration" component={MentorRegistration} />
