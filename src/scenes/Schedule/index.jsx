@@ -1,7 +1,10 @@
+/* eslint object-curly-newline: ["error"] */
+
 import React from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 import Backdrop from 'components/Backdrop';
+import { getEvents } from 'api';
 
 import './style.scss';
 import LIGHT from 'assets/home/billboard-light.svg';
@@ -18,7 +21,7 @@ export default class Schedule extends React.Component {
   }
 
   componentDidMount() {
-    this.getEvents();
+    this.getSortedEvents();
   }
 
   static getTime(d) {
@@ -30,20 +33,12 @@ export default class Schedule extends React.Component {
     return (dd + 2) % 7;
   }
 
-  getEvents() {
-    fetch('https://api.hackillinois.org/event/', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then(res => {
-      res.json().then(data => {
-        const temp = data.events;
-        temp.sort((a, b) => a.startTime - b.startTime);
-        this.setState({
-          events: temp,
-        });
+  getSortedEvents() {
+    getEvents().then(data => {
+      const temp = data.events;
+      temp.sort((a, b) => a.startTime - b.startTime);
+      this.setState({
+        events: temp,
       });
     });
   }
